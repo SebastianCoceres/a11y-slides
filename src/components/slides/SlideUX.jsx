@@ -11,7 +11,7 @@ export default function SlideUX() {
         <div className="grid grid-cols-2 gap-8 text-left mt-8">
           {/* Ejemplo Malo */}
           <div className="bg-gray-800 p-6 rounded-xl border border-red-500/50">
-            <div className="text-red-400 font-bold mb-4 uppercase text-sm tracking-wider">Malo: IA genérica</div>
+            <div className="text-red-400 font-bold mb-4 uppercase text-sm tracking-wider">Happy Path Autónomo</div>
             <div className="space-y-3">
               <input type="text" placeholder="Nombre" className="w-full bg-gray-700 p-2 rounded text-sm text-gray-300 border-none" />
               <input type="text" placeholder="Apellidos" className="w-full bg-gray-700 p-2 rounded text-sm text-gray-300 border-none" />
@@ -24,7 +24,7 @@ export default function SlideUX() {
 
           {/* Ejemplo Bueno */}
           <div className="bg-gray-800 p-6 rounded-xl border border-green-500/50">
-            <div className="text-green-400 font-bold mb-4 uppercase text-sm tracking-wider">Bueno: Criterio Humano</div>
+            <div className="text-green-400 font-bold mb-4 uppercase text-sm tracking-wider">Validación: Juez Visual / Humano</div>
             <div className="space-y-4">
               <div>
                 <label className="text-xs text-gray-400 block mb-1">Información Personal</label>

@@ -9,7 +9,7 @@ export default function SlideProduct() {
         {/* CTAs Directos (Malo) */}
         <div className="bg-gray-800 p-6 rounded-xl border border-red-500/50 flex flex-col justify-between">
           <div>
-            <div className="text-red-400 font-bold mb-4 uppercase text-sm tracking-wider">Código IA (Directo)</div>
+            <div className="text-red-400 font-bold mb-4 uppercase text-sm tracking-wider">Happy Path Autónomo (Directo)</div>
             <div className="bg-gray-900 p-6 rounded-lg text-center border border-gray-700">
               <h4 className="text-white text-lg font-bold mb-2">Cancelar suscripción</h4>
               <p className="text-gray-400 text-sm mb-6">¿Estás seguro de que deseas irte?</p>
@@ -18,13 +18,13 @@ export default function SlideProduct() {
               </button>
             </div>
           </div>
-          <p className="text-sm text-gray-400 mt-6">Pierde al cliente en el primer intento. Visión cortoplacista.</p>
+          <p className="text-sm text-gray-400 mt-6">Cumple su objetivo literal rápido, pero carece de contexto de retención de usuarios.</p>
         </div>
 
         {/* Retención (Bueno) */}
         <div className="bg-gray-800 p-6 rounded-xl border border-green-500/50 flex flex-col justify-between">
           <div>
-            <div className="text-green-400 font-bold mb-4 uppercase text-sm tracking-wider">Criterio Humano (Retención)</div>
+            <div className="text-green-400 font-bold mb-4 uppercase text-sm tracking-wider">Validación: Skills de Producto (Retención)</div>
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-700">
               <h4 className="text-white text-lg font-bold mb-4 text-center">Antes de irte...</h4>
               <div className="space-y-3">
