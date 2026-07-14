@@ -1,4 +1,7 @@
 import { Slide } from '@revealjs/react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { PlusCircle, AlertCircle } from 'lucide-react';
 
 export default function SlideAccessibility() {
   return (
@@ -13,15 +16,15 @@ export default function SlideAccessibility() {
             <div className="flex flex-col gap-2">
               <span className="text-xs text-red-400 uppercase font-bold">Happy Path (Por defecto)</span>
               <button className="bg-blue-600 p-3 rounded shadow hover:bg-blue-500 w-fit">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
+                <PlusCircle className="w-5 h-5 text-white" />
               </button>
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-xs text-green-400 uppercase font-bold">Iteración guiada</span>
-              <button className="bg-blue-600 px-4 py-3 rounded shadow hover:bg-blue-500 flex items-center gap-2 w-fit text-white text-sm font-semibold">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
+              <Button className="bg-blue-600 hover:bg-blue-500 text-white font-semibold flex items-center gap-2">
+                <PlusCircle className="w-5 h-5" />
                 <span>Añadir Proyecto</span>
-              </button>
+              </Button>
             </div>
           </div>
           <p className="text-sm text-gray-400">La IA a menudo genera botones con íconos sin `aria-label` o texto, al buscar la ruta más rápida.</p>
@@ -38,12 +41,12 @@ export default function SlideAccessibility() {
             <div>
               <span className="text-xs text-green-400 uppercase font-bold block mb-1">Validación mediante Skills</span>
               <div className="relative">
-                <input type="text" defaultValue="usuario_incorrecto" className="w-full bg-gray-900 border border-red-500 p-2 rounded text-sm text-gray-300 pr-10" />
+                <Input defaultValue="usuario_incorrecto" className="bg-gray-900 border-red-500 pr-10 text-gray-300" />
                 <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                  <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"></path></svg>
+                  <AlertCircle className="h-5 w-5 text-red-500" />
                 </div>
               </div>
-              <p className="text-xs text-red-400 mt-1">Este nombre de usuario ya está en uso.</p>
+              <p className="text-xs text-red-400 mt-1 font-medium">Este nombre de usuario ya está en uso.</p>
             </div>
           </div>
         </div>
