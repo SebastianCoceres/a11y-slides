@@ -1,19 +1,29 @@
 import { Slide } from '@revealjs/react';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function SlideChecklist() {
+  const items = [
+    '¿Guía la atención?',
+    '¿Reduce la carga cognitiva?',
+    '¿Respeta el Design System?',
+    '¿Cumple accesibilidad?',
+    '¿Responde al negocio?',
+    '¿Estados resueltos?',
+    '¿Microinteracciones?',
+    '¿Transmite confianza?',
+  ];
+
   return (
     <Slide>
       <h2 className="text-4xl text-cyan-300 mb-8">✅ Validación: Juez Visual / Humano</h2>
-      <ul className="text-xl text-left space-y-3 grid grid-cols-2 gap-x-8">
-        <li><span className="text-green-400">✔</span> ¿Guía la atención?</li>
-        <li><span className="text-green-400">✔</span> ¿Reduce la carga cognitiva?</li>
-        <li><span className="text-green-400">✔</span> ¿Respeta el Design System?</li>
-        <li><span className="text-green-400">✔</span> ¿Cumple accesibilidad?</li>
-        <li><span className="text-green-400">✔</span> ¿Responde al negocio?</li>
-        <li><span className="text-green-400">✔</span> ¿Estados resueltos?</li>
-        <li><span className="text-green-400">✔</span> ¿Microinteracciones?</li>
-        <li><span className="text-green-400">✔</span> ¿Transmite confianza?</li>
-      </ul>
+      <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-left text-xl">
+        {items.map((item) => (
+          <div key={item} className="flex items-center gap-3 text-gray-200">
+            <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
     </Slide>
   );
 }
