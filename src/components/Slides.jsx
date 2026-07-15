@@ -5,6 +5,7 @@ import 'reveal.js/theme/moon.css'; // The default dark theme
 import SlideTitle from './slides/SlideTitle';
 import SlidePremise from './slides/SlidePremise';
 import SlideUX from './slides/SlideUX';
+import SlideUXStates from './slides/SlideUXStates';
 import SlideDesign from './slides/SlideDesign';
 import SlideAccessibility from './slides/SlideAccessibility';
 import SlideProduct from './slides/SlideProduct';
@@ -18,6 +19,7 @@ export default function Slides() {
         <SlideTitle />
         <SlidePremise />
         <SlideUX />
+        <SlideUXStates />
         <SlideDesign />
         <SlideAccessibility />
         <SlideProduct />
