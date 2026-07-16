@@ -4,13 +4,11 @@ import 'reveal.js/theme/moon.css'; // The default dark theme
 
 import SlideTitle from './slides/SlideTitle';
 import SlidePremise from './slides/SlidePremise';
-import SlideUX from './slides/SlideUX';
-import SlideUXStates from './slides/SlideUXStates';
-import SlideDesign from './slides/SlideDesign';
+import SlideSituations from './slides/SlideSituations';
+import SlideBusinessImpact from './slides/SlideBusinessImpact';
 import SlideAccessibility from './slides/SlideAccessibility';
-import SlideProduct from './slides/SlideProduct';
-import SlideEdgeCases from './slides/SlideEdgeCases';
-import SlideChecklist from './slides/SlideChecklist';
+import SlideAdvancedPrinciples from './slides/SlideAdvancedPrinciples';
+import SlideTools from './slides/SlideTools';
 
 export default function Slides() {
   return (
@@ -18,13 +16,11 @@ export default function Slides() {
       <Deck>
         <SlideTitle />
         <SlidePremise />
-        <SlideUX />
-        <SlideUXStates />
-        <SlideDesign />
+        <SlideSituations />
+        <SlideBusinessImpact />
         <SlideAccessibility />
-        <SlideProduct />
-        <SlideEdgeCases />
-        <SlideChecklist />
+        <SlideAdvancedPrinciples />
+        <SlideTools />
       </Deck>
     </div>
   );
