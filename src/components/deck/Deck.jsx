@@ -33,10 +33,10 @@ export function Deck({ children }) {
   return (
     <DeckContext.Provider value={contextValue}>
       <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#002b36] text-[#93a1a1]">
-        <AnimatePresence mode="wait">
+        <AnimatePresence initial={false}>
           <motion.div
             key={index}
-            className="h-full w-full"
+            className="absolute inset-0 h-full w-full bg-[#002b36]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

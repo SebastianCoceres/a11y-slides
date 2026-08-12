@@ -26,8 +26,9 @@ export default function SlideAccessibility() {
           <li>Considerar protanopia, deuteranopia, tritanopia y acromatopsia: nunca depender solo del color.</li>
         </ul>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center gap-4">
           <ExampleLink href="/ejemplos/contraste-color">Ver ejemplo interactivo</ExampleLink>
+          <ExampleLink href="/ejemplos/daltonismo">Simular daltonismo</ExampleLink>
         </div>
       </Slide>
 

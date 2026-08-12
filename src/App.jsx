@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Slides from './components/Slides';
 import ColorContrast from './pages/examples/ColorContrast';
+import ColorBlindness from './pages/examples/ColorBlindness';
 import Typography from './pages/examples/Typography';
 import KeyboardNav from './pages/examples/KeyboardNav';
 import AltText from './pages/examples/AltText';
@@ -18,6 +19,7 @@ function App() {
             </div>
           } />
         <Route path="/ejemplos/contraste-color" element={<ColorContrast />} />
+        <Route path="/ejemplos/daltonismo" element={<ColorBlindness />} />
         <Route path="/ejemplos/tipografia" element={<Typography />} />
         <Route path="/ejemplos/navegacion-teclado" element={<KeyboardNav />} />
         <Route path="/ejemplos/texto-alternativo" element={<AltText />} />
