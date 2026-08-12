@@ -1,6 +1,4 @@
-import { Deck } from '@revealjs/react';
-import 'reveal.js/reveal.css';
-import 'reveal.js/theme/moon.css'; // The default dark theme
+import { Deck } from '@/components/deck';
 
 import SlideTitle from './slides/SlideTitle';
 import SlidePremise from './slides/SlidePremise';

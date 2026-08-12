@@ -1,4 +1,4 @@
-import { Slide, Stack } from '@revealjs/react';
+import { Slide, Stack } from '@/components/deck';
 import { ArrowUpRight, MousePointer2, Keyboard } from 'lucide-react';
 
 const linkClasses =

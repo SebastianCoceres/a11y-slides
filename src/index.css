@@ -166,3 +166,12 @@ body,
     @apply font-sans;
   }
 }
+
+.deck-slide h1,
+.deck-slide h2,
+.deck-slide h3,
+.deck-slide h4 {
+  font-family: Impact, "Anton", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}

@@ -1,4 +1,4 @@
-import { Slide } from '@revealjs/react';
+import { Slide } from '@/components/deck';
 import { Card, CardContent } from '@/components/ui/card';
 import { Brain, Battery, Repeat, ShieldAlert, MonitorSmartphone, LayoutGrid } from 'lucide-react';
 

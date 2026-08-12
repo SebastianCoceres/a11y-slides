@@ -1,4 +1,4 @@
-import { Slide } from '@revealjs/react';
+import { Slide } from '@/components/deck';
 
 export default function SlidePremise() {
   return (

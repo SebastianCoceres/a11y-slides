@@ -1,4 +1,4 @@
-import { Slide } from '@revealjs/react';
+import { Slide } from '@/components/deck';
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, TrendingUp, Scale, Users, Heart, Coins, Rocket, Wrench, Zap } from 'lucide-react';
 
