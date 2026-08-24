@@ -4,25 +4,12 @@ import LightRays from '../LightRays';
 import { DeckControls } from './DeckControls';
 import { DeckContext } from './DeckContext';
 import { ProgressBar } from './ProgressBar';
-import { Stack } from './Stack';
-import { useDeckController } from './useDeckController';
+import { useDeckRouter } from './useDeckRouter';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
-function flattenSlides(children) {
-  const slides = [];
-  for (const child of Children.toArray(children)) {
-    if (child.type === Stack) {
-      slides.push(...Children.toArray(child.props.children));
-    } else {
-      slides.push(child);
-    }
-  }
-  return slides;
-}
-
-export function Deck({ children }) {
-  const slides = useMemo(() => flattenSlides(children), [children]);
-  const { index, next, prev, goTo, total } = useDeckController(slides.length);
+export function Deck({ children, basePath = '/presentacion' }) {
+  const slides = useMemo(() => Children.toArray(children), [children]);
+  const { index, next, prev, goTo, total } = useDeckRouter(slides.length, basePath);
 
   useKeyboardNavigation({ next, prev, goTo, total });
 

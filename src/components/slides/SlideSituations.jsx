@@ -1,4 +1,4 @@
-import { Slide, Stack } from '@/components/deck';
+import { Slide } from '@/components/deck';
 import {
   Baby,
   Bandage,
@@ -38,27 +38,29 @@ function SituationRow({ icon: Icon, situation, helps }) {
   );
 }
 
-export default function SlideSituations() {
+export function SlideSituationsPartOne() {
   return (
-    <Stack>
-      <Slide>
-        <h2 className="text-4xl text-purple-300 mb-2">¿Por qué nos interesa aplicarla?</h2>
-        <p className="text-lg text-gray-400 mb-8 italic">Todos podemos experimentar una discapacidad temporal o situacional.</p>
-        <div className="space-y-3 max-w-4xl mx-auto">
-          {situationsPageOne.map((row) => (
-            <SituationRow key={row.situation} {...row} />
-          ))}
-        </div>
-      </Slide>
+    <Slide>
+      <h2 className="text-4xl text-purple-300 mb-2">¿Por qué nos interesa aplicarla?</h2>
+      <p className="text-lg text-gray-400 mb-8 italic">Todos podemos experimentar una discapacidad temporal o situacional.</p>
+      <div className="space-y-3 max-w-4xl mx-auto">
+        {situationsPageOne.map((row) => (
+          <SituationRow key={row.situation} {...row} />
+        ))}
+      </div>
+    </Slide>
+  );
+}
 
-      <Slide>
-        <h2 className="text-4xl text-purple-300 mb-8">Situaciones y ayudas de accesibilidad</h2>
-        <div className="space-y-3 max-w-4xl mx-auto">
-          {situationsPageTwo.map((row) => (
-            <SituationRow key={row.situation} {...row} />
-          ))}
-        </div>
-      </Slide>
-    </Stack>
+export function SlideSituationsPartTwo() {
+  return (
+    <Slide>
+      <h2 className="text-4xl text-purple-300 mb-8">Situaciones y ayudas de accesibilidad</h2>
+      <div className="space-y-3 max-w-4xl mx-auto">
+        {situationsPageTwo.map((row) => (
+          <SituationRow key={row.situation} {...row} />
+        ))}
+      </div>
+    </Slide>
   );
 }

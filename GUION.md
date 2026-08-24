@@ -220,9 +220,13 @@ _(Fin)_
 ## Notas de producción
 
 - Mapeo directo a los componentes del deck: `SlideTitle` → Bloque 0,
-  `SlidePremise` → Bloque 1, `SlideSituations` → Bloque 2,
-  `SlideBusinessImpact` → Bloque 3, `SlideAccessibility` (5 sub-slides) →
-  Bloque 4, `SlideAdvancedPrinciples` → Bloque 5, `SlideTools` → Bloque 6.
+  `SlidePremise` → Bloque 1, `SlideSituationsPartOne` + `SlideSituationsPartTwo`
+  → Bloque 2, `SlideBusinessImpact` → Bloque 3, `SlideColorUsage` +
+  `SlideTypography` + `SlideKeyboardNav` + `SlideAltText` + `SlideFocusTrap`
+  → Bloque 4, `SlideAdvancedPrinciples` → Bloque 5, `SlideTools` → Bloque 6.
+  Cada uno de estos componentes es hoy una slide de nivel superior con ruta
+  propia (`/presentacion/:slide`) — ya no hay sub-páginas anidadas dentro de
+  una sola ruta.
 - Formato de charla única (TEDx): el orador no dialoga con nadie en escena.
   Las pausas marcadas en cursiva son el único recurso escénico — se usan
   para dejar que un rol específico de la sala (finanzas, ingeniería, ventas)
