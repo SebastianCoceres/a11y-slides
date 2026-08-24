@@ -156,11 +156,19 @@ competencia. Esto es lo que separa un parche de una ventaja real:
   error no se corrige en la pantalla, se corrige tres días después con una
   devolución logística que cuesta diez veces más que la validación que
   faltaba.
-- **Diseño inclusivo:** nuestro vendedor está haciendo una demo en la
-  notebook del cliente, en una resolución que no es la nuestra, con la
-  conexión del cliente, bajo la presión de cerrar el trato. Si el layout se
-  rompe ahí, no perdimos un ticket de soporte, perdimos la demo que definía
-  el contrato.
+- **Diseño inclusivo:** asumir que quien usa nuestro software no está ahí
+  para aprender cómo funciona. Está ahí para hacer su trabajo. El operario
+  quiere gestionar el stock, la vendedora quiere atender al cliente, la
+  persona de oficina quiere cerrar su tarea — ninguno debería tener que
+  pararse a pensar qué espera el software de ellos. Diseñamos para
+  situaciones reales: con prisa, con interrupciones, cansados, bajo presión.
+  Si para hacer su trabajo alguien tiene que seguirle el rastro a nuestro
+  software, le estamos trasladando nuestra complejidad interna a la persona
+  que nos paga por usarlo. Y esa complejidad no se queda ahí: se convierte
+  en un operario que cuenta mal el stock, en una vendedora que pierde la
+  venta por la fila que se cansó de esperar, en un cliente que no nos
+  renueva porque su gente perdió más tiempo peleando con el software que
+  haciendo su trabajo.
 - **Componentes antes que páginas:** tenemos doce modales distintos en el
   producto porque cada equipo construyó el suyo. Cuando aparece un bug de
   navegación por teclado, lo pagamos doce veces — o lo encuentra el cliente
