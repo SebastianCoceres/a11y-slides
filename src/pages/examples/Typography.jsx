@@ -45,7 +45,7 @@ function GoodExample() {
 
 export function TypographyBad() {
   return (
-    <AppShell active="Pedidos" section="Pedidos" title="Pedidos recientes">
+    <AppShell active="Pedidos" title="Pedidos recientes">
       <BadExample />
     </AppShell>
   );
@@ -53,7 +53,7 @@ export function TypographyBad() {
 
 export function TypographyGood() {
   return (
-    <AppShell active="Pedidos" section="Pedidos" title="Pedidos recientes">
+    <AppShell active="Pedidos" title="Pedidos recientes">
       <GoodExample />
     </AppShell>
   );

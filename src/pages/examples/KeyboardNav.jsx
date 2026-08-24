@@ -65,7 +65,7 @@ function GoodExample() {
 
 export function KeyboardNavBad() {
   return (
-    <AppShell active="Contactos" section="Contactos" title="Nuevo contacto">
+    <AppShell active="Contactos" title="Nuevo contacto">
       <BadExample />
     </AppShell>
   );
@@ -73,7 +73,7 @@ export function KeyboardNavBad() {
 
 export function KeyboardNavGood() {
   return (
-    <AppShell active="Contactos" section="Contactos" title="Nuevo contacto">
+    <AppShell active="Contactos" title="Nuevo contacto">
       <GoodExample />
     </AppShell>
   );

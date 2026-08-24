@@ -197,7 +197,7 @@ function GoodDataTable() {
 
 export function ColorContrastBad() {
   return (
-    <AppShell active="Facturas" section="Facturas" title="Facturas por cobrar">
+    <AppShell active="Facturas" title="Facturas por cobrar">
       <BadDataTable />
     </AppShell>
   );
@@ -205,7 +205,7 @@ export function ColorContrastBad() {
 
 export function ColorContrastGood() {
   return (
-    <AppShell active="Facturas" section="Facturas" title="Facturas por cobrar">
+    <AppShell active="Facturas" title="Facturas por cobrar">
       <GoodDataTable />
     </AppShell>
   );

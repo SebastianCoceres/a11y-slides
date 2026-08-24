@@ -78,7 +78,7 @@ function GoodModal() {
 
 export function FocusTrapBad() {
   return (
-    <AppShell active="Facturas" section="Facturas" title="Factura #F-2451">
+    <AppShell active="Facturas" title="Factura #F-2451">
       <BadModal />
       <p className="mt-4 text-sm text-gray-600">
         Probá: abrí el modal, tocá <kbd>Tab</kbd> varias veces (el foco se escapa hacia el resto de la página) y
@@ -90,7 +90,7 @@ export function FocusTrapBad() {
 
 export function FocusTrapGood() {
   return (
-    <AppShell active="Facturas" section="Facturas" title="Factura #F-2451">
+    <AppShell active="Facturas" title="Factura #F-2451">
       <GoodModal />
       <p className="mt-4 text-sm text-gray-600">
         Probá: abrí el modal, tocá <kbd>Tab</kbd> varias veces (el foco cicla dentro del modal) y tocá{' '}

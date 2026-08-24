@@ -13,8 +13,13 @@ import {
 } from './slides/SlideAccessibility';
 import { SlideColorBlindnessTypes } from './slides/SlideColorBlindnessTypes';
 import {
-  SlideAdvancedPrinciplesPartOne,
-  SlideAdvancedPrinciplesPartTwo,
+  SlideCognitiveLoad,
+  SlideMotorComplexity,
+  SlideInteractionFatigue,
+  SlideConsistency,
+  SlideErrorPrevention,
+  SlideErrorRecovery,
+  SlideInclusiveDesign,
 } from './slides/SlideAdvancedPrinciples';
 import SlideTools from './slides/SlideTools';
 import SlideClosing from './slides/SlideClosing';
@@ -24,6 +29,13 @@ import { TypographyBad, TypographyGood } from '@/pages/examples/Typography';
 import { KeyboardNavBad, KeyboardNavGood } from '@/pages/examples/KeyboardNav';
 import { AltTextBad, AltTextGood } from '@/pages/examples/AltText';
 import { FocusTrapBad, FocusTrapGood } from '@/pages/examples/FocusTrap';
+import { CognitiveLoadBad, CognitiveLoadGood } from '@/pages/examples/CognitiveLoad';
+import { MotorComplexityBad, MotorComplexityGood } from '@/pages/examples/MotorComplexity';
+import { InteractionFatigueBad, InteractionFatigueGood } from '@/pages/examples/InteractionFatigue';
+import { ConsistencyBad, ConsistencyGood } from '@/pages/examples/Consistency';
+import { ErrorPreventionBad, ErrorPreventionGood } from '@/pages/examples/ErrorPrevention';
+import { ErrorRecoveryBad, ErrorRecoveryGood } from '@/pages/examples/ErrorRecovery';
+import { InclusiveDesignBad, InclusiveDesignGood } from '@/pages/examples/InclusiveDesign';
 
 export default function Slides() {
   return (
@@ -50,8 +62,27 @@ export default function Slides() {
         <SlideFocusTrap />
         <FocusTrapBad />
         <FocusTrapGood />
-        <SlideAdvancedPrinciplesPartOne />
-        <SlideAdvancedPrinciplesPartTwo />
+        <SlideCognitiveLoad />
+        <CognitiveLoadBad />
+        <CognitiveLoadGood />
+        <SlideMotorComplexity />
+        <MotorComplexityBad />
+        <MotorComplexityGood />
+        <SlideInteractionFatigue />
+        <InteractionFatigueBad />
+        <InteractionFatigueGood />
+        <SlideConsistency />
+        <ConsistencyBad />
+        <ConsistencyGood />
+        <SlideErrorPrevention />
+        <ErrorPreventionBad />
+        <ErrorPreventionGood />
+        <SlideErrorRecovery />
+        <ErrorRecoveryBad />
+        <ErrorRecoveryGood />
+        <SlideInclusiveDesign />
+        <InclusiveDesignBad />
+        <InclusiveDesignGood />
         <SlideTools />
         <SlideClosing />
       </Deck>

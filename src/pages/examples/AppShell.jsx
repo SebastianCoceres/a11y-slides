@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Receipt, Package, Users, BarChart3, Settings, Search, Bell } from 'lucide-react';
+import { LayoutDashboard, Receipt, Package, Users, BarChart3, Boxes, Settings, Search, Bell } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: 'Facturas', icon: Receipt },
   { label: 'Pedidos', icon: Package },
   { label: 'Contactos', icon: Users },
+  { label: 'Inventario', icon: Boxes },
   { label: 'Reportes', icon: BarChart3 },
 ];
 
@@ -25,7 +26,7 @@ function NavItem({ icon: Icon, label, active, onClick }) {
   );
 }
 
-export default function AppShell({ active, section, title, children }) {
+export default function AppShell({ active, title, wide, children }) {
   const [currentSection, setCurrentSection] = useState(active);
   const onDemoSection = currentSection === active;
 
@@ -73,7 +74,7 @@ export default function AppShell({ active, section, title, children }) {
         </header>
 
         <main className="flex-1 overflow-y-auto bg-slate-50/60">
-          <div className="mx-auto max-w-3xl px-8 py-8">
+          <div className={cn('mx-auto px-8 py-8', wide ? 'max-w-5xl' : 'max-w-3xl')}>
             <div className="mb-6">
               <p className="text-xs font-semibold tracking-wide text-indigo-500 uppercase">{currentSection}</p>
               <h1 className="mt-1 text-xl font-bold text-slate-900">{onDemoSection ? title : currentSection}</h1>

@@ -60,7 +60,7 @@ function GoodExample() {
 
 export function AltTextBad() {
   return (
-    <AppShell active="Reportes" section="Reportes" title="Ventas — Q3">
+    <AppShell active="Reportes" title="Ventas — Q3">
       <BadExample />
     </AppShell>
   );
@@ -68,7 +68,7 @@ export function AltTextBad() {
 
 export function AltTextGood() {
   return (
-    <AppShell active="Reportes" section="Reportes" title="Ventas — Q3">
+    <AppShell active="Reportes" title="Ventas — Q3">
       <GoodExample />
     </AppShell>
   );
