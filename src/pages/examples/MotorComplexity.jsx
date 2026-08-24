@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Minus, Plus } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Minus, Plus, Vibrate } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import AppShell from './AppShell';
 
 function useCounter(initial) {
@@ -9,6 +10,88 @@ function useCounter(initial) {
     inc: () => setCount((c) => c + 1),
     dec: () => setCount((c) => Math.max(0, c - 1)),
   };
+}
+
+// Simulates hand tremor: the visible cursor drifts around the real pointer
+// position with a damped random walk, instead of tracking it 1:1.
+function useTremorCursor() {
+  const [active, setActive] = useState(false);
+  const [renderPos, setRenderPos] = useState({ x: -100, y: -100 });
+  const targetRef = useRef({ x: -100, y: -100 });
+  const offsetRef = useRef({ x: 0, y: 0 });
+  const velRef = useRef({ x: 0, y: 0 });
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    if (!active) return;
+
+    function onMove(e) {
+      targetRef.current = { x: e.clientX, y: e.clientY };
+    }
+    window.addEventListener('mousemove', onMove);
+
+    function tick() {
+      velRef.current.x = (velRef.current.x + (Math.random() - 0.5) * 5) * 0.85;
+      velRef.current.y = (velRef.current.y + (Math.random() - 0.5) * 5) * 0.85;
+      offsetRef.current.x += velRef.current.x;
+      offsetRef.current.y += velRef.current.y;
+
+      const maxRadius = 16;
+      const dist = Math.hypot(offsetRef.current.x, offsetRef.current.y);
+      if (dist > maxRadius) {
+        offsetRef.current.x = (offsetRef.current.x / dist) * maxRadius;
+        offsetRef.current.y = (offsetRef.current.y / dist) * maxRadius;
+      }
+
+      setRenderPos({
+        x: targetRef.current.x + offsetRef.current.x,
+        y: targetRef.current.y + offsetRef.current.y,
+      });
+      rafRef.current = requestAnimationFrame(tick);
+    }
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [active]);
+
+  return { active, toggle: () => setActive((a) => !a), renderPos };
+}
+
+function TremorToggle({ active, onToggle }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={cn(
+        'fixed top-1/2 right-6 z-[201] flex -translate-y-1/2 items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold shadow-lg transition-colors',
+        active ? 'bg-red-600 text-white' : 'border border-slate-200 bg-white text-gray-700 hover:bg-slate-50',
+      )}>
+      <Vibrate className="h-4 w-4" />
+      {active ? 'Detener tremor' : 'Simular tremor'}
+    </button>
+  );
+}
+
+function MotorComplexityShell({ children }) {
+  const { active, toggle, renderPos } = useTremorCursor();
+
+  return (
+    <>
+      {active && <style>{'*, *::before, *::after { cursor: none !important; }'}</style>}
+      <AppShell active="Inventario" title="Ajustar stock">
+        {children}
+      </AppShell>
+      <TremorToggle active={active} onToggle={toggle} />
+      {active && (
+        <div
+          className="pointer-events-none fixed z-[200] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-red-500 bg-red-500/20"
+          style={{ left: renderPos.x, top: renderPos.y }} />
+      )}
+    </>
+  );
 }
 
 function BadExample() {
@@ -63,16 +146,16 @@ function GoodExample() {
 
 export function MotorComplexityBad() {
   return (
-    <AppShell active="Inventario" title="Ajustar stock">
+    <MotorComplexityShell>
       <BadExample />
-    </AppShell>
+    </MotorComplexityShell>
   );
 }
 
 export function MotorComplexityGood() {
   return (
-    <AppShell active="Inventario" title="Ajustar stock">
+    <MotorComplexityShell>
       <GoodExample />
-    </AppShell>
+    </MotorComplexityShell>
   );
 }

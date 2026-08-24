@@ -83,7 +83,7 @@ function GoodExample() {
 
 export function CognitiveLoadBad() {
   return (
-    <AppShell active="Contactos" title="Alta de cliente" wide>
+    <AppShell active="Contactos" title="Alta de cliente">
       <BadExample />
     </AppShell>
   );
@@ -91,7 +91,7 @@ export function CognitiveLoadBad() {
 
 export function CognitiveLoadGood() {
   return (
-    <AppShell active="Contactos" title="Alta de cliente" wide>
+    <AppShell active="Contactos" title="Alta de cliente">
       <GoodExample />
     </AppShell>
   );

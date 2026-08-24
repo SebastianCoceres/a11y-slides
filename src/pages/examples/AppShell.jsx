@@ -26,7 +26,7 @@ function NavItem({ icon: Icon, label, active, onClick }) {
   );
 }
 
-export default function AppShell({ active, title, wide, children }) {
+export default function AppShell({ active, title, children }) {
   const [currentSection, setCurrentSection] = useState(active);
   const onDemoSection = currentSection === active;
 
@@ -74,7 +74,7 @@ export default function AppShell({ active, title, wide, children }) {
         </header>
 
         <main className="flex-1 overflow-y-auto bg-slate-50/60">
-          <div className={cn('mx-auto px-8 py-8', wide ? 'max-w-5xl' : 'max-w-3xl')}>
+          <div className="px-8 py-8">
             <div className="mb-6">
               <p className="text-xs font-semibold tracking-wide text-indigo-500 uppercase">{currentSection}</p>
               <h1 className="mt-1 text-xl font-bold text-slate-900">{onDemoSection ? title : currentSection}</h1>

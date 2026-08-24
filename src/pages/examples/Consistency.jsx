@@ -56,7 +56,7 @@ function GoodExample() {
 
 export function ConsistencyBad() {
   return (
-    <AppShell active="Dashboard" title="Consistencia entre módulos" wide>
+    <AppShell active="Dashboard" title="Consistencia entre módulos">
       <BadExample />
     </AppShell>
   );
@@ -64,7 +64,7 @@ export function ConsistencyBad() {
 
 export function ConsistencyGood() {
   return (
-    <AppShell active="Dashboard" title="Consistencia entre módulos" wide>
+    <AppShell active="Dashboard" title="Consistencia entre módulos">
       <GoodExample />
     </AppShell>
   );
