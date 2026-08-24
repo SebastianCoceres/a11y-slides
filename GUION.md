@@ -137,33 +137,59 @@ quién usa nuestro software ocho horas por día, todos los días:
 
 ## BLOQUE 5 — Lo que separa un parche de una base de código sana (Slide: Principios avanzados)
 
-Hasta acá hablamos de dejar de generarnos trabajo de más. Ahora hablemos de
-lo que realmente cambia cómo se siente developear sobre este producto. Esto
-es lo que separa un parche de una base de código sana:
+Antes de seguir, una aclaración corta: lo que viene no son criterios de
+WCAG. Son lentes de diseño — formas de mirar un problema de interfaz que
+casi nunca aparecen en un checklist de accesibilidad, pero que explican por
+qué algo "funciona" y aun así nos sigue generando trabajo. Esto es lo que
+separa un parche de una base de código sana:
 
-- **Carga cognitiva:** nuestro formulario de alta de cliente tiene 40 campos
-  en una sola pantalla. La persona que lo carga se pierde a la mitad, cursa
-  mal un dato, y ese error aparece recién en otro módulo, semanas después,
-  como un ticket que soporte nos escala sin poder explicar de dónde salió.
-  Lo partimos en pasos con feedback claro y el error desaparece en el mismo
-  movimiento en que desaparece el ticket.
-- **Fatiga por interacción:** un agente de soporte que scrollea quince veces
-  por ticket para encontrar el historial del cliente no solo tarda más:
-  también se equivoca más, y esos errores nos vuelven como bugs reportados
-  que en realidad son errores humanos causados por una interfaz que exige
-  demasiado. Menos scroll, menos fricción, menos tickets mal cargados que
-  después tenemos que destrabar nosotros.
-- **Consistencia:** si el botón "Guardar" está arriba a la derecha en un
-  módulo y abajo a la izquierda en otro del mismo producto, cada dev que
-  toca ese código reintroduce el mismo patrón inconsistente sin darse
-  cuenta, porque no hay un único lugar de referencia. Eso no es un detalle
-  visual — es deuda técnica de interfaz que se sigue acumulando cada sprint.
-- **Prevención de errores:** un operador de depósito carga "150" en vez de
-  "15" en la cantidad de un envío porque el campo no valida ni confirma. Ese
-  error no se corrige en el momento — se corrige días después, cuando ya
-  perdimos el contexto, con alguien de nuestro equipo revisando logs para
-  entender qué pasó. Una validación en el frontend hoy es media hora menos
-  de investigación después.
+- **Carga cognitiva:** accesibilidad también es cuánto tiene que recordar y
+  procesar una persona para completar una tarea. Nuestro formulario de alta
+  de cliente tiene 40 campos en una sola pantalla — la persona tiene que
+  recordar qué le falta, distinguir qué es obligatorio, interpretar errores
+  y sostener en la cabeza lo que ya cargó mientras busca el resto. Cuando la
+  interfaz exige demasiada memoria, el error no aparece ahí: aparece días
+  después en otro módulo, cuando ya nadie se acuerda qué pasó. Partir el
+  proceso en pasos y mostrar el contexto necesario no es "hacer la UI más
+  linda". Es reducir lo que alguien tiene que sostener en la cabeza para
+  hacer bien su trabajo.
+- **Complejidad motriz:** no todos interactúan con una interfaz con la misma
+  precisión, velocidad o margen de error. Un botón chico, dos controles
+  pegados o un drag-and-drop son triviales con un mouse, en un escritorio,
+  sin apuro — y un problema real para alguien con una mano ocupada, en una
+  tablet, o moviéndose por el depósito. Si una tarea pide diez movimientos
+  precisos cuando alcanza con una acción simple, esa precisión de más es una
+  barrera que pusimos nosotros, no una que vino con el trabajo.
+- **Fatiga por interacción:** un agente de soporte que hace quince scrolls
+  para encontrar el historial de un cliente puede completar la tarea una vez
+  sin problema. El tema es que la hace cien veces por día — ahí deja de ser
+  un detalle de UX y se convierte en una carga operativa que después nos
+  vuelve como tickets mal cargados y errores humanos que en realidad causó
+  la interfaz.
+- **Consistencia:** no es que toda la aplicación se vea igual. Es que la
+  misma intención produzca siempre el mismo comportamiento. Si "Guardar"
+  está en un lugar distinto en cada módulo, cada persona tiene que
+  reinterpretar la interfaz una y otra vez — y cada dev que toca ese código
+  reintroduce el mismo patrón inconsistente, porque no hay un único lugar de
+  referencia. Un componente accesible y reutilizable evita que cada equipo
+  reimplemente desde cero foco, estados, teclado y semántica. Un design
+  system no es solo una herramienta visual: también es una herramienta de
+  accesibilidad.
+- **Prevención de errores:** no alcanza con explicar qué salió mal después
+  de que la persona ya se equivocó. Si un operador de depósito puede cargar
+  150 cuando el máximo es 15, mostrar el error después de enviar el
+  formulario ya es tarde — mejor impedir la entrada imposible y avisar
+  mientras se está cargando el dato. Corregir un error obliga a detectarlo,
+  entenderlo y recuperarse. Prevenirlo elimina esas tres etapas, y el costo
+  de no prevenirlo no se queda en la pantalla: se convierte en datos
+  incorrectos, operaciones manuales, tickets, e investigación en logs tres
+  días después.
+- **Recuperación de errores:** los errores van a pasar igual. La pregunta es
+  qué tan fácil es volver atrás. Si alguien borra un registro, "registro
+  eliminado correctamente" no alcanza — hace falta poder deshacerlo,
+  recuperarlo, y que quede claro qué pasó. Un sistema que permite
+  equivocarse y recuperarse rápido es más accesible que uno que exige
+  precisión perfecta para no quedar atrapado.
 - **Diseño inclusivo:** asumir que quien usa nuestro software no está ahí
   para aprender cómo funciona. Está ahí para hacer su trabajo. El operario
   quiere gestionar el stock, la vendedora quiere atender al cliente, la
@@ -177,10 +203,15 @@ es lo que separa un parche de una base de código sana:
   tropezando con la complejidad que nunca resolvimos de raíz — solo que cada
   vez con un ticket distinto y un contexto que hay que reconstruir de cero.
 
-Si a alguien de esta sala le interesó ese último punto en particular —una
-sola corrección, beneficio en todos lados— es porque entendió el argumento
-completo: esto no es trabajo extra que le sumamos al sprint. Es trabajo que
-dejamos de repetir en cada sprint que viene.
+Cada vez que obligamos a alguien a recordar algo que la interfaz podría
+mostrar, a hacer una acción que podría evitarse, a interpretar algo que
+podría explicarse, o a recuperarse de un error que podríamos haber
+prevenido, le estamos trasladando complejidad del software a la persona. Y
+en software empresarial esa complejidad no desaparece: vuelve a nosotros,
+como errores de datos, tickets, operaciones manuales y deuda técnica. Una
+buena interfaz no solo hace que la tarea se pueda completar. Hace que sea
+difícil hacerla mal, fácil recuperarse cuando algo sale mal, y razonable
+repetirla cien veces por día.
 
 ---
 
@@ -214,47 +245,8 @@ mismo ticket volvió a aparecer.
 
 ## BLOQUE 7 — Cierre
 
-_(pausa larga, el orador vuelve al centro del escenario)_
-
-Volvamos a esa persona del principio, la que el trimestre pasado no pudo
-usar algo que construimos. Todavía no sabemos quién fue. Pero ahora sabemos
-que probablemente sea el analista de este mismo equipo que no distingue el
-rojo del verde, o la persona a dos años de jubilarse que sabe más de este
-trabajo que cualquiera de nosotros, o el operador de depósito que cargó mal
-un dato porque el campo nunca le avisó del error.
-
 La pregunta no es si esto nos cuesta tiempo. La pregunta es si preferimos
-gastarlo ahora, escribiendo la validación o el `alt` que falta, o después,
-reproduciendo un bug que ya sabíamos que iba a pasar, con menos contexto,
-más apuro, y el mismo ticket volviendo por tercera vez.
-
-Empecemos por el checklist. Es la primera decisión que nos ahorra trabajo de
-verdad, y la toma cada persona en esta sala, no solo quien lidera el equipo.
-
-_(Fin)_
+gastarlo ahora o después,
+reproduciendo un error que podriamos haber evitado tan solo con un poco de atención al detalle.
 
 ---
-
-## Notas de producción
-
-- Mapeo directo a los componentes del deck: `SlideTitle` → Bloque 0,
-  `SlidePremise` → Bloque 1, `SlideSituationsPartOne` + `SlideSituationsPartTwo`
-  → Bloque 2, `SlideBusinessImpact` → Bloque 3, `SlideColorUsage` +
-  `SlideTypography` + `SlideKeyboardNav` + `SlideAltText` + `SlideFocusTrap`
-  → Bloque 4, `SlideAdvancedPrinciples` → Bloque 5, `SlideTools` → Bloque 6.
-  Cada uno de estos componentes es hoy una slide de nivel superior con ruta
-  propia (`/presentacion/:slide`) — ya no hay sub-páginas anidadas dentro de
-  una sola ruta.
-- Formato de charla única (TEDx): el orador no dialoga con nadie en escena.
-  Las pausas marcadas en cursiva son el único recurso escénico — se usan
-  para dejar que un rol específico de la sala (soporte, QA, ingeniería,
-  guardia) se reconozca en el argumento antes de seguir.
-- El eje argumental es el trabajo que nos ahorramos como equipo (tickets,
-  bugs repetidos, parches de emergencia, tiempo de investigación), no el
-  impacto financiero en la empresa. Si en algún bloque se cuela una métrica
-  de negocio (plata, contratos, multas), no es intencional — revisar contra
-  esta nota antes de dar la charla.
-- Pensado para caminar el escenario mientras habla, no para leer detrás de
-  un atril — las oraciones son cortas a propósito para sostener el ritmo
-  hablado.
-- Timing sugerido: ~1.5 a 2 min por bloque, ~12-15 min de charla total.
