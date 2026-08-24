@@ -2,11 +2,9 @@ import { Slide, Stack } from '@/components/deck';
 import {
   Baby,
   Bandage,
-  VolumeX,
   Sun,
   Wifi,
   Snowflake,
-  Mic,
   Glasses,
   PersonStanding,
   Languages,
@@ -16,14 +14,12 @@ import {
 const situationsPageOne = [
   { icon: Baby, situation: 'Sostener un bebé en brazos y usar solo una mano', helps: 'Botones grandes, áreas táctiles amplias, navegación sencilla' },
   { icon: Bandage, situation: 'Tener una lesión temporal (brazo enyesado, dedo vendado)', helps: 'Navegación por teclado, atajos, controles fáciles de pulsar' },
-  { icon: VolumeX, situation: 'Estar en un lugar ruidoso o en una biblioteca silenciosa', helps: 'Transcripciones y subtítulos para no depender del sonido' },
   { icon: Sun, situation: 'Estar al sol y no ver bien la pantalla', helps: 'Alto contraste y buen tamaño de texto' },
   { icon: Wifi, situation: 'Tener una conexión lenta', helps: 'Páginas ligeras, imágenes optimizadas, carga progresiva' },
   { icon: Snowflake, situation: 'Llevar guantes (invierno o trabajo)', helps: 'Botones grandes y gestos sencillos' },
 ];
 
 const situationsPageTwo = [
-  { icon: Mic, situation: 'Conducir o cocinar usando asistentes de voz', helps: 'Compatibilidad con lectores de pantalla y control por voz' },
   { icon: Glasses, situation: 'Romperse las gafas o haber olvidado las lentillas', helps: 'Posibilidad de ampliar el texto sin perder funcionalidad' },
   { icon: PersonStanding, situation: 'Ser una persona mayor con pérdida de visión o destreza', helps: 'Tipografía legible, buen contraste, interfaces simples' },
   { icon: Languages, situation: 'Estar aprendiendo el idioma', helps: 'Lenguaje claro, íconos comprensibles y estructura consistente' },

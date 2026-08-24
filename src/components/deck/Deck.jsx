@@ -1,5 +1,6 @@
 import { Children, useMemo } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import LightRays from '../LightRays';
 import { DeckControls } from './DeckControls';
 import { DeckContext } from './DeckContext';
 import { ProgressBar } from './ProgressBar';
@@ -32,11 +33,14 @@ export function Deck({ children }) {
 
   return (
     <DeckContext.Provider value={contextValue}>
-      <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-[#002b36] text-[#93a1a1]">
-        <AnimatePresence initial={false}>
+      <div className="fixed inset-0 h-screen w-screen overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <LightRays raysColor="#2aa198" raysOrigin="top-center" rayLength={1.5} mouseInfluence={0.08} />
+        </div>
+        <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={index}
-            className="absolute inset-0 h-full w-full bg-[#002b36]"
+            className="absolute inset-0 z-10 h-full w-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

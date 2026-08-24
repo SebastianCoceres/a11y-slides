@@ -23,6 +23,7 @@
   },
   "registries": {
     "@reui": "https://reui.io/r/{style}/{name}.json",
-    "@slide-cn": "https://slide-cn.com/r/{name}.json"
+    "@slide-cn": "https://slide-cn.com/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }
