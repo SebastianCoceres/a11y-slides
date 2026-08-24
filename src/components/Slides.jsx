@@ -11,11 +11,16 @@ import {
   SlideAltText,
   SlideFocusTrap,
 } from './slides/SlideAccessibility';
+import {
+  SlideDeuteranopia,
+  SlideProtanopia,
+  SlideTritanopia,
+  SlideAcromatopsia,
+} from './slides/SlideColorBlindnessTypes';
 import SlideAdvancedPrinciples from './slides/SlideAdvancedPrinciples';
 import SlideTools from './slides/SlideTools';
 
 import { ColorContrastBad, ColorContrastGood } from '@/pages/examples/ColorContrast';
-import { ColorBlindnessBad, ColorBlindnessGood } from '@/pages/examples/ColorBlindness';
 import { TypographyBad, TypographyGood } from '@/pages/examples/Typography';
 import { KeyboardNavBad, KeyboardNavGood } from '@/pages/examples/KeyboardNav';
 import { AltTextBad, AltTextGood } from '@/pages/examples/AltText';
@@ -33,8 +38,10 @@ export default function Slides() {
         <SlideColorUsage />
         <ColorContrastBad />
         <ColorContrastGood />
-        <ColorBlindnessBad />
-        <ColorBlindnessGood />
+        <SlideDeuteranopia />
+        <SlideProtanopia />
+        <SlideTritanopia />
+        <SlideAcromatopsia />
         <SlideTypography />
         <TypographyBad />
         <TypographyGood />

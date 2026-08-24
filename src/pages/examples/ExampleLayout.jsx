@@ -9,27 +9,25 @@ export default function ExampleLayout({ title, description, bad, good, children 
           {description && <p className="mt-2 text-base text-gray-600">{description}</p>}
         </header>
 
-        {(bad || good) && (
-          <div className={hasBoth ? 'grid gap-8 md:grid-cols-2' : 'grid gap-8'}>
-            {bad && (
-              <section aria-labelledby="example-bad-heading" className="rounded-xl border-2 border-red-200 bg-red-50/40 p-6">
-                <h2 id="example-bad-heading" className="mb-4 text-sm font-bold uppercase tracking-wide text-red-700">
-                  Malo
-                </h2>
-                {bad}
-              </section>
-            )}
+        {hasBoth && (
+          <div className="grid gap-8 md:grid-cols-2">
+            <section aria-labelledby="example-bad-heading" className="rounded-xl border-2 border-red-200 bg-red-50/40 p-6">
+              <h2 id="example-bad-heading" className="mb-4 text-sm font-bold uppercase tracking-wide text-red-700">
+                Malo
+              </h2>
+              {bad}
+            </section>
 
-            {good && (
-              <section aria-labelledby="example-good-heading" className="rounded-xl border-2 border-green-200 bg-green-50/40 p-6">
-                <h2 id="example-good-heading" className="mb-4 text-sm font-bold uppercase tracking-wide text-green-700">
-                  Bueno
-                </h2>
-                {good}
-              </section>
-            )}
+            <section aria-labelledby="example-good-heading" className="rounded-xl border-2 border-green-200 bg-green-50/40 p-6">
+              <h2 id="example-good-heading" className="mb-4 text-sm font-bold uppercase tracking-wide text-green-700">
+                Bueno
+              </h2>
+              {good}
+            </section>
           </div>
         )}
+
+        {!hasBoth && (bad || good)}
 
         {children}
       </div>
