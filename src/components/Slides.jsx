@@ -31,9 +31,9 @@ export default function Slides() {
         <SlideSituationsPartTwo />
         <SlideBusinessImpact />
         <SlideColorUsage />
+        <SlideColorBlindnessTypes />
         <ColorContrastBad />
         <ColorContrastGood />
-        <SlideColorBlindnessTypes />
         <SlideTypography />
         <TypographyBad />
         <TypographyGood />

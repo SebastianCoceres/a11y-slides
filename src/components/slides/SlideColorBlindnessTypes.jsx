@@ -87,7 +87,7 @@ export function SlideColorBlindnessTypes() {
               src={pigment}
               alt=""
               aria-hidden="true"
-              className="aspect-[4/3] w-full rounded-lg object-cover"
+              className="aspect-4/3 w-full rounded-lg object-cover"
               style={type.filterId ? { filter: `url(#${type.filterId})` } : undefined} />
             <h3 className="mt-3 text-sm font-bold text-gray-900">{type.name}</h3>
             {type.description && <p className="mt-1 text-xs text-gray-600">{type.description}</p>}
