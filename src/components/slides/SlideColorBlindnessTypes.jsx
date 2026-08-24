@@ -1,57 +1,99 @@
-import { Slide } from '@/components/deck';
+import pigment from '@/assets/pigment.jpg';
+import ExampleLayout from '@/pages/examples/ExampleLayout';
 
-export function SlideDeuteranopia() {
+// Standard Brettel/Viénot-style CVD simulation matrices (same ones used by
+// tools like Coblis/Colorblindly). Black/white and alpha pass through
+// untouched.
+function CvdFilters() {
   return (
-    <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-2">Deuteranopia</h2>
-      <p className="text-base text-gray-400 mb-4 italic">Sensibilidad reducida al verde. Es el tipo más común de daltonismo.</p>
-
-      <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
-        <li>El rojo y el verde se confunden: ambos se perciben como un tono amarillento parecido.</li>
-        <li>Un estado "aprobado" en verde y "rechazado" en rojo, sin ícono ni texto, se leen igual.</li>
-      </ul>
-    </Slide>
+    <svg width="0" height="0" className="absolute" aria-hidden="true">
+      <defs>
+        <filter id="cvd-protanopia" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="0.567 0.433 0     0 0
+                    0.558 0.442 0     0 0
+                    0     0.242 0.758 0 0
+                    0     0     0     1 0" />
+        </filter>
+        <filter id="cvd-deuteranopia" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="0.625 0.375 0   0 0
+                    0.7   0.3   0   0 0
+                    0     0.3   0.7 0 0
+                    0     0     0   1 0" />
+        </filter>
+        <filter id="cvd-tritanopia" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="0.95 0.05  0     0 0
+                    0    0.433 0.567 0 0
+                    0    0.475 0.525 0 0
+                    0    0     0     1 0" />
+        </filter>
+        <filter id="cvd-acromatopsia" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="0.299 0.587 0.114 0 0
+                    0.299 0.587 0.114 0 0
+                    0.299 0.587 0.114 0 0
+                    0     0     0     1 0" />
+        </filter>
+      </defs>
+    </svg>
   );
 }
 
-export function SlideProtanopia() {
+const TYPES = [
+  {
+    name: 'Visión típica',
+    description: null,
+    filterId: null,
+  },
+  {
+    name: 'Deuteranopia',
+    description: 'Sensibilidad reducida al verde. Es el tipo más común de daltonismo.',
+    filterId: 'cvd-deuteranopia',
+  },
+  {
+    name: 'Protanopia',
+    description: 'Sensibilidad reducida al rojo.',
+    filterId: 'cvd-protanopia',
+  },
+  {
+    name: 'Tritanopia',
+    description: 'Sensibilidad reducida al azul. Muy poco común.',
+    filterId: 'cvd-tritanopia',
+  },
+  {
+    name: 'Monocromacia (Acromatopsia)',
+    description: 'Visión en escala de grises. Ocurre en aproximadamente 1 de cada 33.000 personas.',
+    filterId: 'cvd-acromatopsia',
+  },
+];
+
+export function SlideColorBlindnessTypes() {
   return (
-    <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-2">Protanopia</h2>
-      <p className="text-base text-gray-400 mb-4 italic">Sensibilidad reducida al rojo.</p>
+    <ExampleLayout
+      title="Tipos de deficiencia de visión del color"
+      description="La misma imagen, tal como la ve cada tipo de daltonismo.">
+      <CvdFilters />
 
-      <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
-        <li>El rojo se percibe apagado y oscuro: puede confundirse con un verde oscuro o directamente con gris.</li>
-        <li>Una alerta roja de "vencido" puede pasar desapercibida como un detalle neutro más de la pantalla.</li>
-      </ul>
-    </Slide>
-  );
-}
-
-export function SlideTritanopia() {
-  return (
-    <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-2">Tritanopia</h2>
-      <p className="text-base text-gray-400 mb-4 italic">Sensibilidad reducida al azul. Muy poco común.</p>
-
-      <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
-        <li>El azul y el verde se confunden entre sí, igual que el amarillo con el violeta.</li>
-        <li>Un link celeste sobre un fondo verdoso pierde el contraste que lo distingue como interactivo.</li>
-      </ul>
-    </Slide>
-  );
-}
-
-export function SlideAcromatopsia() {
-  return (
-    <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-2">Monocromacia (Acromatopsia)</h2>
-      <p className="text-base text-gray-400 mb-4 italic">Visión en escala de grises. Ocurre en aproximadamente 1 de cada 33.000 personas.</p>
-
-      <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
-        <li>Ningún color comunica nada: todo depende de la forma, el texto y el contraste de luminancia.</li>
-        <li>Un gráfico que solo distingue sus valores por color queda directamente ilegible.</li>
-      </ul>
-    </Slide>
+      <div className="grid gap-6 sm:grid-cols-3">
+        {TYPES.map((type) => (
+          <div key={type.name} className="rounded-xl border border-gray-200 p-3">
+            <img
+              src={pigment}
+              alt=""
+              aria-hidden="true"
+              className="aspect-[4/3] w-full rounded-lg object-cover"
+              style={type.filterId ? { filter: `url(#${type.filterId})` } : undefined} />
+            <h3 className="mt-3 text-sm font-bold text-gray-900">{type.name}</h3>
+            {type.description && <p className="mt-1 text-xs text-gray-600">{type.description}</p>}
+          </div>
+        ))}
+      </div>
+    </ExampleLayout>
   );
 }

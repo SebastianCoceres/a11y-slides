@@ -11,12 +11,7 @@ import {
   SlideAltText,
   SlideFocusTrap,
 } from './slides/SlideAccessibility';
-import {
-  SlideDeuteranopia,
-  SlideProtanopia,
-  SlideTritanopia,
-  SlideAcromatopsia,
-} from './slides/SlideColorBlindnessTypes';
+import { SlideColorBlindnessTypes } from './slides/SlideColorBlindnessTypes';
 import SlideAdvancedPrinciples from './slides/SlideAdvancedPrinciples';
 import SlideTools from './slides/SlideTools';
 
@@ -38,10 +33,7 @@ export default function Slides() {
         <SlideColorUsage />
         <ColorContrastBad />
         <ColorContrastGood />
-        <SlideDeuteranopia />
-        <SlideProtanopia />
-        <SlideTritanopia />
-        <SlideAcromatopsia />
+        <SlideColorBlindnessTypes />
         <SlideTypography />
         <TypographyBad />
         <TypographyGood />
