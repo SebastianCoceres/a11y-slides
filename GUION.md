@@ -1,35 +1,39 @@
-# GUION.md — "Accesibilidad: el negocio que estás dejando sobre la mesa"
+# GUION.md — "Accesibilidad: el tiempo de desarrollo que estamos regalando"
+
+---
 
 ## BLOQUE 0 — Apertura (Slide: Título)
 
 _(Pantalla en negro. Aparece: "Poder usar tus productos". El orador entra sin
 diapositiva de bienvenida, arranca directo.)_
 
-El trimestre pasado, en algún momento, alguien no pudo usar algo que nosotros
-construimos. No sé quién fue. No sé en qué pantalla se trabó. Pero sé que
-pasó, porque siempre pasa, y sé que a esa persona no le mandamos una
-disculpa: le mandamos silencio, y ella se fue.
+El trimestre pasado, en algún momento, alguien no pudo usar algo que
+nosotros construimos. No sé quién fue. No sé en qué pantalla se trabó. Pero
+sé que pasó, porque siempre pasa, y sé que a esa persona no le mandamos una
+disculpa: simplemente se fue.
 
 _(pausa)_
 
-Esta charla no es sobre ese usuario en abstracto. Es sobre cuánta plata de
-esta sala —de tu sueldo, de tu bono, de tu presupuesto del año que viene—
-depende de que dejemos de repetir ese error. Y créanme: es más plata de la
-que cualquiera acá adentro piensa.
+Esta charla no es sobre ese usuario en abstracto. Es sobre el trabajo que
+eso nos genera a nosotros: el ticket que alguien de soporte escaló sin saber
+bien qué responder, el bug que un dev no pudo reproducir porque "en mi
+máquina anda", el parche que salió apurado un viernes a la tarde. Y depende
+de que dejemos de repetir ese error.
 
 ---
 
 ## BLOQUE 1 — Redefiniendo el problema (Slide: Premisa)
 
 Cuando alguien escucha "accesibilidad", piensa en discapacidad, piensa en
-un nicho chico, piensa "no es mi público". Es el error más caro que vamos a
-discutir hoy, así que empecemos por ahí.
+un nicho chico, piensa "no es mi público". Es el malentendido que más
+trabajo repetido nos hace generar, así que empecemos por ahí.
 
 Accesibilidad no es diseñar para "personas con discapacidad". Es diseñar un
 producto que funcione para cualquiera, en cualquier condición. Y "cualquier
-condición" les incluye a ustedes. Al de sistemas que un día tiene el brazo
-enyesado. A la de ventas que abre el celular al sol y no ve la pantalla. Al
-de finanzas con la conexión del hotel que anda mal en el viaje de negocios.
+condición" les incluye a ustedes. Al que hace QA con el brazo enyesado. A la
+persona de soporte que abre el celular al sol y no ve bien la pantalla. Al
+desarrollador con la conexión del hotel que anda mal, en medio de una demo
+en una conferencia.
 
 Nadie en esta sala es la persona de 25 a 45 años sana, con buena vista, buena
 conexión y tiempo de sobra, las 24 horas del día. Esa persona no existe. Ni
@@ -37,125 +41,129 @@ siquiera ustedes son esa persona todo el tiempo.
 
 ---
 
-## BLOQUE 2 — El mercado que no estamos viendo (Slide: Situaciones)
+## BLOQUE 2 — Los casos que no estamos testeando (Slide: Situaciones)
 
 _(Se proyecta la tabla de situaciones)_
 
 Miren esta lista: alguien sosteniendo un bebé con una sola mano. Alguien con
-una lesión temporal. Alguien al sol. Alguien con conexión lenta. Alguien con
-guantes. Alguien que rompió los lentes. Una persona mayor. Alguien
-aprendiendo el idioma. Alguien caminando y mirando el celular.
+una lesión temporal. Alguien con el reflejo del sol. Alguien con conexión lenta. Alguien con
+guantes. Alguien que rompió los lentes. Una persona mayor. Alguien caminando y mirando el celular.
 
 ¿Se dieron cuenta de qué es esta lista? Es literalmente todo el mundo, en
-algún momento del día. No es una minoría con una condición especial. Es
-ustedes, es sus clientes, es sus proveedores, es la persona que se sienta a
-su lado en la próxima reunión.
+algún momento del día. No es un edge case remoto que casi nunca pasa. Es el
+caso más común que tenemos, y es justo el que no estamos simulando en
+ningún ambiente de test.
 
-Cada uno de esos momentos, si nuestro producto no aguanta, es una conversión
-que se cae, un trámite que se abandona, alguien que cierra la pestaña y no
-vuelve. Y eso todavía es una historia. Vamos al número.
+Cada uno de esos momentos, si nuestro producto no aguanta, es un bug
+reportado que no podemos reproducir en nuestro entorno, porque depende del
+contexto real de quien lo usa, no de los datos que probamos nosotros. Y eso
+significa horas nuestras, no de ellos, tratando de entender qué pasó. Vamos
+a ver por qué nos conviene prevenirlo.
 
 ---
 
-## BLOQUE 3 — El argumento que le importa a cada uno (Slide: Impacto en el negocio)
+## BLOQUE 3 — Lo que nos ahorramos como equipo (Slide: Impacto en el negocio)
 
 _(Se proyecta la grilla de impacto)_
 
-Voy a dar nueve razones. Ninguna es "porque está bien hacerlo". Cada una está
-puesta acá porque le pega directo al bolsillo de alguien específico de esta
-sala. Encuentren la suya.
+Voy a dar cinco razones. Ninguna es "porque está bien hacerlo". Cada una le
+pega directo al trabajo diario de alguien específico de esta sala. Encuentren
+la suya.
 
-- **Si están en legales o en dirección:** litigios y sanciones. La Directiva
-  UE 2019/882 y el Decreto-ley 1/2022 ya nos alcanzan si vendemos online. No
-  es una sugerencia, es una fecha límite con multa.
-- **Si están en producto o en ventas:** cuota de mercado. Cada competidor que
-  no resuelve esto nos está regalando clientes. El primero que lo resuelve,
-  se los queda.
-- **Si están en atención al cliente:** cada ticket de "no puedo usar esto" es
-  un cliente frustrado y una hora de alguien de este equipo pagando por algo
-  que el producto debería haber resuelto solo.
-- **Si están en ingeniería:** aplicar esto desde el diseño es más barato que
-  parchearlo después. No es una inversión nueva, es dejar de pagar refactors
-  de pánico.
-- **Si están en finanzas:** retención. Usuario que puede usar el producto sin
-  pelear con él, vuelve. Usuario que vuelve, paga de nuevo.
+- **Si están en soporte:** menos tickets escalados como "bug crítico" que en
+  realidad son problemas de accesibilidad ya conocidos. Cada vez que un
+  ticket se reabre tres veces porque el fix real nunca se hizo, es tiempo de
+  ese equipo — y después es tiempo nuestro, cuando lo terminan escalando a
+  desarrollo igual.
+- **Si están en QA:** menos casos de "no reproduce en mi entorno". Los bugs
+  de accesibilidad dependen del contexto real —teclado, zoom, contraste,
+  lectura— y si no los cubrimos desde el desarrollo, terminan siendo
+  hallazgos tardíos que frenan un release entero.
+- **Si están en desarrollo:** aplicar esto desde el diseño es más rápido que
+  parchearlo después. No es trabajo nuevo, es dejar de escribir el mismo fix
+  de emergencia dos o tres veces en módulos distintos.
+- **Si están onboardeando gente nueva:** un código con estos principios ya
+  incorporados es más fácil de leer y de replicar. Un dev nuevo que copia un
+  patrón inconsistente propaga el mismo bug a otro módulo sin darse cuenta.
 
-Y para quien todavía piensa "a nosotros no nos van a demandar" — perfecto,
-supongamos que tienen razón. Igual ganan en conversión, en retención y en
-costo de desarrollo. Es la única inversión de esta empresa donde ganan algo
-_aunque tengan razón en que el riesgo legal nunca los alcanza_. El riesgo
-legal es el piso de este argumento, no el techo.
+Y para quien todavía piensa "esto no es prioridad, todavía no explotó nada
+grave" — perfecto, supongamos que tienen razón. Igual se reduce el tiempo
+que gastamos reproduciendo bugs raros, el tiempo que gastamos
+re-explicándole el mismo patrón a cada persona nueva, y el tiempo que
+soporte nos hace perder escalando algo que ya sabíamos que iba a pasar.
+Prevenir es el piso de este argumento, no el techo.
 
 ---
 
-## BLOQUE 4 — Mostrame que no es caro (Slide: Uso de color / Tipografía / Teclado / Alt text / Focus trap)
+## BLOQUE 4 — Mostrame que esto no es tanto laburo (Slide: Uso de color / Tipografía / Teclado / Alt text / Focus trap)
 
 Sé lo que está pensando alguien en esta sala ahora mismo: "somos B2B, no
-vamos a contratar ciegos para trabajar con una PC, esto no me sirve para mi
-negocio". Bien. No les voy a vender un cliente que no tienen. Les voy a
-vender a su propia gente. Miren quién usa nuestro software ocho horas por
-día, todos los días:
+vamos a tener usuarios ciegos trabajando con esto, esto no me sirve". Bien.
+No les voy a hablar de un usuario que no tienen. Les voy a hablar de los
+quién usa nuestro software ocho horas por día, todos los días:
 
-- **Color:** en cualquier equipo de operaciones, finanzas o logística, uno
-  de cada doce varones tiene algún tipo de daltonismo. Si nuestro dashboard
-  marca "vencido" solo con rojo sobre verde, ese analista —que puede estar
-  sentado en esta sala ahora mismo— no lo distingue, y aprueba un pago que no
-  debía aprobar, o deja pasar una alerta crítica. Un ícono al lado del color
-  cuesta una línea de CSS y evita el error operativo.
-- **Tipografía:** nuestro cliente enterprise no tiene 25 años. Tiene un
-  gerente de compras de 55 revisando nuestro ERP toda la mañana con vista
-  cansada. Texto chico sin interlineado no es estética, es la razón por la
-  que deja de usar el módulo y llama a soporte para que le expliquemos lo
-  que ya tiene adelante.
-- **Teclado:** el operador que carga 400 registros por día en nuestro CRM no
-  quiere tocar el mouse. Cada campo que no se navega con Tab en orden
-  lógico es un segundo perdido, multiplicado por cada carga, cada operador,
-  todo el año. Eso es productividad medible en la nómina, no un checkbox de
-  compliance.
-- **Alt text:** piensen en la persona a dos años de jubilarse, veinte de
-  antigüedad, que hoy ve peor y trabaja con el zoom del sistema al 150%. Un
-  ícono sin `alt` es un botón que no identifica y un flujo en el que se
-  traba. Con `alt` descriptivo, la persona que tiene todo el conocimiento
-  institucional de esta empresa sigue siendo productiva sin que nadie tenga
-  que re-entrenarla.
-- **Focus trap:** un modal que no atrapa el foco es nuestro operador de call
-  center perdiendo el hilo del formulario a mitad de una llamada. Eso es
-  llamada más larga, cliente más frustrado y un KPI de atención que se cae.
-
-Y para el que sigue pensando que esto es un detalle de implementación y no
-una estrategia: correcto, es un detalle. Esa es la buena noticia. No estoy
-pidiendo presupuesto de innovación ni que piensen en un usuario que no
-tienen. Estoy pidiendo que dejemos de perder plata con la gente que ya nos
-paga el sueldo y con la gente que ya nos paga la factura.
+- **Color:** Uno de cada doce varones tiene algún tipo de daltonismo.
+  Si el datatable marca “vencido” solo con rojo sobre verde, el analista
+  puede no identificar cuáles son las filas problemáticas al seleccionar
+  varios elementos. Un ícono con texto podría indicarle claramente cuáles
+  están vencidos y evitar la frustración de no saber por qué “Confirmar”
+  está deshabilitado.
+- **Tipografía:** uno operador revisando nuestro ERP toda la
+  mañana con vista cansada puede tener dificultades para leer textos
+  pequeños o con poco interlineado. Probablemente no identifique la causa
+  como un problema de tipografía: simplemente tendrá que esforzarse más
+  para leer la información o recurrir a soporte para confirmar algo que
+  debería poder interpretar por sí mismo.
+- **Teclado:** el operador que carga 400 registros por día en nuestro CRM
+  puede usar Tab para recorrer rápidamente los campos del formulario. Si el
+  foco salta de un campo a otro sin un orden lógico, tendrá que volver atrás
+  o usar el mouse para continuar. Un orden de foco correcto le permite
+  completar la misma tarea de forma más rápida y sin interrupciones.
+- **Alt text:** un usuario revisando un reporte puede encontrarse con
+  información presentada únicamente mediante un gráfico o una imagen. Si
+  esa imagen no tiene alt, al no cargarse correctamente por una conexión
+  lenta puede quedar sin contexto sobre la información que representa. Un
+  texto alternativo permite comunicar ese contenido incluso cuando la imagen
+  no está disponible.
+- **Focus trap:** un usuario que navega con teclado puede abrir un modal y,
+  si el foco se escapa hacia los elementos que están detrás, tendrá que
+  volver al mouse para regresar al modal. Para un usuario que navega con
+  mouse, este problema puede no existir, pero el scroll o la interacción
+  con el contenido detrás del modal también pueden generar una experiencia
+  confusa. Con la etiqueta dialog, gran parte de este comportamiento ya se gestiona
+  de forma nativa.
 
 ---
 
-## BLOQUE 5 — Lo que separa un parche de una ventaja competitiva (Slide: Principios avanzados)
+## BLOQUE 5 — Lo que separa un parche de una base de código sana (Slide: Principios avanzados)
 
-Hasta acá hablamos de no perder plata. Ahora hablemos de ganar más que la
-competencia. Esto es lo que separa un parche de una ventaja real:
+Hasta acá hablamos de dejar de generarnos trabajo de más. Ahora hablemos de
+lo que realmente cambia cómo se siente developear sobre este producto. Esto
+es lo que separa un parche de una base de código sana:
 
 - **Carga cognitiva:** nuestro formulario de alta de cliente tiene 40 campos
-  en una sola pantalla. La persona de onboarding se pierde a la mitad, carga
-  mal un dato, y ese error aparece recién en facturación, tres meses
-  después, como una nota de crédito que alguien de esta sala tiene que
-  investigar. Lo partimos en pasos con feedback claro y bajamos el tiempo de
-  alta y el error de carga en el mismo movimiento.
+  en una sola pantalla. La persona que lo carga se pierde a la mitad, cursa
+  mal un dato, y ese error aparece recién en otro módulo, semanas después,
+  como un ticket que soporte nos escala sin poder explicar de dónde salió.
+  Lo partimos en pasos con feedback claro y el error desaparece en el mismo
+  movimiento en que desaparece el ticket.
 - **Fatiga por interacción:** un agente de soporte que scrollea quince veces
-  por ticket para encontrar el historial del cliente resuelve menos tickets
-  por hora que uno que lo tiene a la vista. Multipliquen esa diferencia por
-  turno, por agente, por mes — es la diferencia entre necesitar cuatro
-  agentes o necesitar cinco para el mismo volumen.
+  por ticket para encontrar el historial del cliente no solo tarda más:
+  también se equivoca más, y esos errores nos vuelven como bugs reportados
+  que en realidad son errores humanos causados por una interfaz que exige
+  demasiado. Menos scroll, menos fricción, menos tickets mal cargados que
+  después tenemos que destrabar nosotros.
 - **Consistencia:** si el botón "Guardar" está arriba a la derecha en un
-  módulo y abajo a la izquierda en otro del mismo producto, cada persona
-  nueva tarda más en volverse productiva y cada persona con antigüedad
-  comete más errores al saltar entre módulos. Eso es costo de capacitación
-  repetido, no una decisión de diseño libre.
+  módulo y abajo a la izquierda en otro del mismo producto, cada dev que
+  toca ese código reintroduce el mismo patrón inconsistente sin darse
+  cuenta, porque no hay un único lugar de referencia. Eso no es un detalle
+  visual — es deuda técnica de interfaz que se sigue acumulando cada sprint.
 - **Prevención de errores:** un operador de depósito carga "150" en vez de
   "15" en la cantidad de un envío porque el campo no valida ni confirma. Ese
-  error no se corrige en la pantalla, se corrige tres días después con una
-  devolución logística que cuesta diez veces más que la validación que
-  faltaba.
+  error no se corrige en el momento — se corrige días después, cuando ya
+  perdimos el contexto, con alguien de nuestro equipo revisando logs para
+  entender qué pasó. Una validación en el frontend hoy es media hora menos
+  de investigación después.
 - **Diseño inclusivo:** asumir que quien usa nuestro software no está ahí
   para aprender cómo funciona. Está ahí para hacer su trabajo. El operario
   quiere gestionar el stock, la vendedora quiere atender al cliente, la
@@ -164,42 +172,43 @@ competencia. Esto es lo que separa un parche de una ventaja real:
   situaciones reales: con prisa, con interrupciones, cansados, bajo presión.
   Si para hacer su trabajo alguien tiene que seguirle el rastro a nuestro
   software, le estamos trasladando nuestra complejidad interna a la persona
-  que nos paga por usarlo. Y esa complejidad no se queda ahí: se convierte
-  en un operario que cuenta mal el stock, en una vendedora que pierde la
-  venta por la fila que se cansó de esperar, en un cliente que no nos
-  renueva porque su gente perdió más tiempo peleando con el software que
-  haciendo su trabajo.
-- **Componentes antes que páginas:** tenemos doce modales distintos en el
-  producto porque cada equipo construyó el suyo. Cuando aparece un bug de
-  navegación por teclado, lo pagamos doce veces — o lo encuentra el cliente
-  equivocado en la demo equivocada. Un solo componente de modal bien hecho
-  se corrige una vez y el beneficio se replica solo, sin que nadie tenga que
-  acordarse de los otros once.
+  que lo usa. Y esa complejidad no se queda ahí: vuelve a nosotros como el
+  mismo bug reportado una y otra vez por soporte, porque el usuario sigue
+  tropezando con la complejidad que nunca resolvimos de raíz — solo que cada
+  vez con un ticket distinto y un contexto que hay que reconstruir de cero.
 
 Si a alguien de esta sala le interesó ese último punto en particular —una
-sola inversión, beneficio en todos lados— es porque entendió el argumento
-completo: no estamos comprando accesibilidad. Estamos comprando
-apalancamiento.
+sola corrección, beneficio en todos lados— es porque entendió el argumento
+completo: esto no es trabajo extra que le sumamos al sprint. Es trabajo que
+dejamos de repetir en cada sprint que viene.
 
 ---
 
-## BLOQUE 6 — No hace falta presupuesto nuevo (Slide: Herramientas)
+## BLOQUE 6 — No hace falta un proyecto nuevo (Slide: Herramientas)
 
-Y ahora la objeción de siempre, la que seguro está pensando alguien de
-finanzas en este momento: ¿cuánto cuesta medir todo esto, y con qué equipo?
+Y ahora la objeción de siempre, la que seguro está pensando alguien ahora
+mismo: ¿con qué herramientas hacemos esto?
+
+- **Componentes antes que páginas:** tenemos doce modales distintos en el
+  producto porque cada equipo construyó el suyo. Cuando aparece un bug de
+  navegación por teclado, lo arreglamos doce veces — o lo encuentra QA en el
+  módulo equivocado, en el peor momento del sprint. Un solo componente de
+  modal bien hecho se corrige una vez y el arreglo se replica solo, sin que
+  nadie tenga que acordarse de los otros once.
 
 Con lo que ya tenemos instalado:
 
-- **DevTools**, gratis, ya está en el navegador de cada desarrollador de esta
-  empresa.
+- **DevTools**, gratis, ya está en el navegador de cada desarrollador de
+  este equipo.
 - **Lighthouse**, gratis, audita accesibilidad junto con performance.
 - **axe-core**, gratis, motor de reglas WCAG que corre en nuestro propio DOM.
 - **Playwright**, que ya usamos o deberíamos usar, y valida accesibilidad
   como parte del pipeline de CI, así el problema nunca llega a producción.
 
-Cero herramientas nuevas. Cero licencias. Cero equipo nuevo. La única
-inversión real es que, desde el próximo sprint, decidamos hacerlo bien en
-vez de arreglarlo con un abogado después.
+Cero herramientas nuevas. Cero configuración exótica. Lo único que hace
+falta es que, desde el próximo sprint, decidamos hacerlo bien la primera
+vez, en vez de volver sobre el mismo módulo dentro de tres meses porque el
+mismo ticket volvió a aparecer.
 
 ---
 
@@ -209,17 +218,18 @@ _(pausa larga, el orador vuelve al centro del escenario)_
 
 Volvamos a esa persona del principio, la que el trimestre pasado no pudo
 usar algo que construimos. Todavía no sabemos quién fue. Pero ahora sabemos
-que probablemente sea el analista de esta misma empresa que no distingue el
+que probablemente sea el analista de este mismo equipo que no distingue el
 rojo del verde, o la persona a dos años de jubilarse que sabe más de este
-negocio que cualquiera de nosotros, o el cliente que decidió el contrato en
-la demo que se rompió en su notebook.
+trabajo que cualquiera de nosotros, o el operador de depósito que cargó mal
+un dato porque el campo nunca le avisó del error.
 
-La pregunta no es si esto cuesta plata. La pregunta es si prefieren gastarla
-ahora, en una línea de código, o después, en una multa, en un agente de más
-en la nómina, y en un cliente que ya se fue con el que sí lo resolvió.
+La pregunta no es si esto nos cuesta tiempo. La pregunta es si preferimos
+gastarlo ahora, escribiendo la validación o el `alt` que falta, o después,
+reproduciendo un bug que ya sabíamos que iba a pasar, con menos contexto,
+más apuro, y el mismo ticket volviendo por tercera vez.
 
-Empecemos por el checklist. Es la primera decisión rentable que tomamos hoy,
-y la toma cada persona en esta sala, no solo quien firma el presupuesto.
+Empecemos por el checklist. Es la primera decisión que nos ahorra trabajo de
+verdad, y la toma cada persona en esta sala, no solo quien lidera el equipo.
 
 _(Fin)_
 
@@ -237,8 +247,13 @@ _(Fin)_
   una sola ruta.
 - Formato de charla única (TEDx): el orador no dialoga con nadie en escena.
   Las pausas marcadas en cursiva son el único recurso escénico — se usan
-  para dejar que un rol específico de la sala (finanzas, ingeniería, ventas)
-  se reconozca en el argumento antes de seguir.
+  para dejar que un rol específico de la sala (soporte, QA, ingeniería,
+  guardia) se reconozca en el argumento antes de seguir.
+- El eje argumental es el trabajo que nos ahorramos como equipo (tickets,
+  bugs repetidos, parches de emergencia, tiempo de investigación), no el
+  impacto financiero en la empresa. Si en algún bloque se cuela una métrica
+  de negocio (plata, contratos, multas), no es intencional — revisar contra
+  esta nota antes de dar la charla.
 - Pensado para caminar el escenario mientras habla, no para leer detrás de
   un atril — las oraciones son cortas a propósito para sostener el ritmo
   hablado.
