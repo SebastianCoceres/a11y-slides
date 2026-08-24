@@ -14,6 +14,13 @@ import {
 import SlideAdvancedPrinciples from './slides/SlideAdvancedPrinciples';
 import SlideTools from './slides/SlideTools';
 
+import { ColorContrastBad, ColorContrastGood } from '@/pages/examples/ColorContrast';
+import { ColorBlindnessBad, ColorBlindnessGood } from '@/pages/examples/ColorBlindness';
+import { TypographyBad, TypographyGood } from '@/pages/examples/Typography';
+import { KeyboardNavBad, KeyboardNavGood } from '@/pages/examples/KeyboardNav';
+import { AltTextBad, AltTextGood } from '@/pages/examples/AltText';
+import { FocusTrapBad, FocusTrapGood } from '@/pages/examples/FocusTrap';
+
 export default function Slides() {
   return (
     <div className="w-full h-full">
@@ -24,10 +31,22 @@ export default function Slides() {
         <SlideSituationsPartTwo />
         <SlideBusinessImpact />
         <SlideColorUsage />
+        <ColorContrastBad />
+        <ColorContrastGood />
+        <ColorBlindnessBad />
+        <ColorBlindnessGood />
         <SlideTypography />
+        <TypographyBad />
+        <TypographyGood />
         <SlideKeyboardNav />
+        <KeyboardNavBad />
+        <KeyboardNavGood />
         <SlideAltText />
+        <AltTextBad />
+        <AltTextGood />
         <SlideFocusTrap />
+        <FocusTrapBad />
+        <FocusTrapGood />
         <SlideAdvancedPrinciples />
         <SlideTools />
       </Deck>

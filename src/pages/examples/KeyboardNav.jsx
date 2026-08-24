@@ -48,12 +48,13 @@ function GoodExample() {
   );
 }
 
-export default function KeyboardNav() {
-  return (
-    <ExampleLayout
-      title="Navegación por teclado"
-      description="Todo elemento interactivo debe ser alcanzable y operable con teclado, sin depender del mouse."
-      bad={<BadExample />}
-      good={<GoodExample />} />
-  );
+const TITLE = 'Navegación por teclado';
+const DESCRIPTION = 'Todo elemento interactivo debe ser alcanzable y operable con teclado, sin depender del mouse.';
+
+export function KeyboardNavBad() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadExample />} />;
+}
+
+export function KeyboardNavGood() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodExample />} />;
 }

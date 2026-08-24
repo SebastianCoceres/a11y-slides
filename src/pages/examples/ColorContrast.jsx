@@ -81,12 +81,14 @@ function GoodExample() {
   );
 }
 
-export default function ColorContrast() {
-  return (
-    <ExampleLayout
-      title="Contraste de color y dependencia del color"
-      description="La información de error nunca debe depender únicamente del color: usuarios con baja visión o daltonismo necesitan texto y contraste suficiente."
-      bad={<BadExample />}
-      good={<GoodExample />} />
-  );
+const TITLE = 'Contraste de color y dependencia del color';
+const DESCRIPTION =
+  'La información de error nunca debe depender únicamente del color: usuarios con baja visión o daltonismo necesitan texto y contraste suficiente.';
+
+export function ColorContrastBad() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadExample />} />;
+}
+
+export function ColorContrastGood() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodExample />} />;
 }

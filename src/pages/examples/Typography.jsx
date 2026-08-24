@@ -26,12 +26,14 @@ function GoodExample() {
   );
 }
 
-export default function Typography() {
-  return (
-    <ExampleLayout
-      title="Tipografía legible"
-      description="El tamaño de fuente, el interlineado y la jerarquía visual determinan cuánto esfuerzo requiere leer un texto."
-      bad={<BadExample />}
-      good={<GoodExample />} />
-  );
+const TITLE = 'Tipografía legible';
+const DESCRIPTION =
+  'El tamaño de fuente, el interlineado y la jerarquía visual determinan cuánto esfuerzo requiere leer un texto.';
+
+export function TypographyBad() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadExample />} />;
+}
+
+export function TypographyGood() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodExample />} />;
 }

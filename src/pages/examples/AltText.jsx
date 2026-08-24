@@ -61,12 +61,14 @@ function GoodExample() {
   );
 }
 
-export default function AltText() {
-  return (
-    <ExampleLayout
-      title="Texto alternativo en imágenes"
-      description="El atributo alt define el nombre accesible de una imagen. Sin él, un lector de pantalla no tiene forma confiable de describirla."
-      bad={<BadExample />}
-      good={<GoodExample />} />
-  );
+const TITLE = 'Texto alternativo en imágenes';
+const DESCRIPTION =
+  'El atributo alt define el nombre accesible de una imagen. Sin él, un lector de pantalla no tiene forma confiable de describirla.';
+
+export function AltTextBad() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadExample />} />;
+}
+
+export function AltTextGood() {
+  return <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodExample />} />;
 }

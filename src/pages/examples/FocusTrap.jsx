@@ -76,11 +76,15 @@ function GoodModal() {
   );
 }
 
-export default function FocusTrap() {
+const TITLE = 'Focus trap en modales';
+const DESCRIPTION =
+  'Un modal accesible atrapa el foco dentro de sí mismo, se cierra con Escape y devuelve el foco a quien lo abrió.';
+
+export function FocusTrapBad() {
   return (
     <ExampleLayout
-      title="Focus trap en modales"
-      description="Un modal accesible atrapa el foco dentro de sí mismo, se cierra con Escape y devuelve el foco a quien lo abrió."
+      title={TITLE}
+      description={DESCRIPTION}
       bad={
         <div>
           <BadModal />
@@ -89,7 +93,15 @@ export default function FocusTrap() {
             tocá <kbd>Escape</kbd> (no pasa nada).
           </p>
         </div>
-      }
+      } />
+  );
+}
+
+export function FocusTrapGood() {
+  return (
+    <ExampleLayout
+      title={TITLE}
+      description={DESCRIPTION}
       good={
         <div>
           <GoodModal />

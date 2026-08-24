@@ -132,13 +132,24 @@ const CVD_TYPES = [
   { name: 'Monocromacia (acromatopsia)', detail: 'Visión en escala de grises. Ocurre en aproximadamente 1 de cada 33.000 personas.' },
 ];
 
-export default function ColorBlindness() {
+const TITLE = 'Daltonismo: simular deficiencias de visión del color';
+const DESCRIPTION =
+  '1 de cada 12 hombres y 1 de cada 200 mujeres tiene alguna deficiencia de visión del color (CVD). Nunca comuniques información usando solo el color.';
+
+export function ColorBlindnessBad() {
   return (
     <ExampleLayout
-      title="Daltonismo: simular deficiencias de visión del color"
-      description="1 de cada 12 hombres y 1 de cada 200 mujeres tiene alguna deficiencia de visión del color (CVD). Nunca comuniques información usando solo el color."
-      bad={<BadOrderList />}
-      good={<GoodOrderList />}
+      title={TITLE}
+      description={DESCRIPTION}
+      bad={
+        <div className="space-y-8">
+          <BadOrderList />
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-red-700">Gráfico solo por color</h3>
+            <BadChart />
+          </div>
+        </div>
+      }
     >
       <section className="mt-10 rounded-xl border-2 border-blue-200 bg-blue-50/40 p-6">
         <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-blue-700">
@@ -155,18 +166,25 @@ export default function ColorBlindness() {
           En Firefox: panel de Accesibilidad → ícono de simulación de visión, arriba a la derecha del panel.
         </p>
       </section>
+    </ExampleLayout>
+  );
+}
 
-      <section className="mt-10 grid gap-8 md:grid-cols-2">
-        <div className="rounded-xl border-2 border-red-200 bg-red-50/40 p-6">
-          <h2 className="mb-4 text-sm font-bold uppercase tracking-wide text-red-700">Malo: gráfico solo por color</h2>
-          <BadChart />
+export function ColorBlindnessGood() {
+  return (
+    <ExampleLayout
+      title={TITLE}
+      description={DESCRIPTION}
+      good={
+        <div className="space-y-8">
+          <GoodOrderList />
+          <div>
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-green-700">Valor, texto y patrón</h3>
+            <GoodChart />
+          </div>
         </div>
-        <div className="rounded-xl border-2 border-green-200 bg-green-50/40 p-6">
-          <h2 className="mb-4 text-sm font-bold uppercase tracking-wide text-green-700">Bueno: valor, texto y patrón</h2>
-          <GoodChart />
-        </div>
-      </section>
-
+      }
+    >
       <section className="mt-10">
         <h2 className="mb-4 text-sm font-bold uppercase tracking-wide text-gray-700">Tipos de deficiencia de visión del color</h2>
         <ul className="grid gap-3 sm:grid-cols-2">
