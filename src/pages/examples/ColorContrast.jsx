@@ -83,8 +83,8 @@ function BadDataTable() {
             const rowClass = isSelected
               ? 'bg-blue-50 hover:bg-blue-50'
               : invoice.estado === 'vencido'
-                ? 'bg-red-100 hover:bg-red-100'
-                : 'bg-green-50 hover:bg-green-50';
+                ? 'bg-red-50 hover:bg-red-100'
+                : 'bg-green-50 hover:bg-green-100';
 
             return (
               <TableRow key={invoice.id} className={rowClass}>
@@ -156,12 +156,12 @@ function GoodDataTable() {
                 <TableCell>{invoice.cliente}</TableCell>
                 <TableCell>
                   {invoice.estado === 'vencido' ? (
-                    <Badge variant="destructive">
+                    <Badge variant="danger">
                       <AlertTriangle data-icon="inline-start" />
                       Vencido
                     </Badge>
                   ) : (
-                    <Badge variant="secondary">
+                    <Badge variant="success">
                       <CheckCircle2 data-icon="inline-start" />
                       Al día
                     </Badge>
