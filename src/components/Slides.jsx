@@ -12,8 +12,12 @@ import {
   SlideFocusTrap,
 } from './slides/SlideAccessibility';
 import { SlideColorBlindnessTypes } from './slides/SlideColorBlindnessTypes';
-import SlideAdvancedPrinciples from './slides/SlideAdvancedPrinciples';
+import {
+  SlideAdvancedPrinciplesPartOne,
+  SlideAdvancedPrinciplesPartTwo,
+} from './slides/SlideAdvancedPrinciples';
 import SlideTools from './slides/SlideTools';
+import SlideClosing from './slides/SlideClosing';
 
 import { ColorContrastBad, ColorContrastGood } from '@/pages/examples/ColorContrast';
 import { TypographyBad, TypographyGood } from '@/pages/examples/Typography';
@@ -46,8 +50,10 @@ export default function Slides() {
         <SlideFocusTrap />
         <FocusTrapBad />
         <FocusTrapGood />
-        <SlideAdvancedPrinciples />
+        <SlideAdvancedPrinciplesPartOne />
+        <SlideAdvancedPrinciplesPartTwo />
         <SlideTools />
+        <SlideClosing />
       </Deck>
     </div>
   );

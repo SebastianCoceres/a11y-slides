@@ -75,10 +75,6 @@ la suya.
   ticket se reabre tres veces porque el fix real nunca se hizo, es tiempo de
   ese equipo — y después es tiempo nuestro, cuando lo terminan escalando a
   desarrollo igual.
-- **Si están en QA:** menos casos de "no reproduce en mi entorno". Los bugs
-  de accesibilidad dependen del contexto real —teclado, zoom, contraste,
-  lectura— y si no los cubrimos desde el desarrollo, terminan siendo
-  hallazgos tardíos que frenan un release entero.
 - **Si están en desarrollo:** aplicar esto desde el diseño es más rápido que
   parchearlo después. No es trabajo nuevo, es dejar de escribir el mismo fix
   de emergencia dos o tres veces en módulos distintos.

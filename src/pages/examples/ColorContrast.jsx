@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import ExampleLayout from './ExampleLayout';
+import AppShell from './AppShell';
 
 function DevToolsInfo() {
   return (
@@ -116,6 +116,8 @@ function BadDataTable() {
           </Alert>
         )}
       </div>
+
+      <DevToolsInfo />
     </div>
   );
 }
@@ -187,26 +189,24 @@ function GoodDataTable() {
           </Alert>
         )}
       </div>
+
+      <DevToolsInfo />
     </div>
   );
 }
 
-const TITLE = 'Uso de color en un datatable';
-const DESCRIPTION =
-  'Si el estado de una factura se comunica solo con color, seleccionar filas puede taparlo — y un botón deshabilitado sin explicación termina en un ticket de soporte.';
-
 export function ColorContrastBad() {
   return (
-    <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadDataTable />}>
-      <DevToolsInfo />
-    </ExampleLayout>
+    <AppShell active="Facturas" section="Facturas" title="Facturas por cobrar">
+      <BadDataTable />
+    </AppShell>
   );
 }
 
 export function ColorContrastGood() {
   return (
-    <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodDataTable />}>
-      <DevToolsInfo />
-    </ExampleLayout>
+    <AppShell active="Facturas" section="Facturas" title="Facturas por cobrar">
+      <GoodDataTable />
+    </AppShell>
   );
 }

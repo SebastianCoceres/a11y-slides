@@ -1,74 +1,75 @@
-import { useEffect, useRef, useState } from 'react';
-import ExampleLayout from './ExampleLayout';
+import { useState } from 'react';
+import { WifiOff } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import AppShell from './AppShell';
 
-const PLACEHOLDER_SRC =
+const CHART_SRC =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200"><rect width="320" height="200" fill="#d1d5db"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="24" fill="#6b7280">IMG</text></svg>'
+    '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180"><rect width="320" height="180" fill="#eef2ff"/><rect x="30" y="90" width="40" height="70" fill="#6366f1"/><rect x="100" y="50" width="40" height="110" fill="#6366f1"/><rect x="170" y="110" width="40" height="50" fill="#6366f1"/><rect x="240" y="70" width="40" height="90" fill="#6366f1"/></svg>'
   );
+const BROKEN_SRC = '/no-existe-esta-imagen.jpg';
 
-function useAnnouncedName(ref) {
-  const [announced, setAnnounced] = useState('');
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const alt = el.getAttribute('alt');
-
-    if (alt === null) {
-      setAnnounced('"imagen" — sin atributo alt, el lector recurre al nombre de archivo o la ignora');
-    } else if (alt.trim() === '') {
-      setAnnounced('(nada — alt vacío, tratada como decorativa)');
-    } else {
-      setAnnounced(`"${alt}"`);
-    }
-  }, [ref]);
-
-  return announced;
+function useSlowConnection() {
+  const [slow, setSlow] = useState(false);
+  return { slow, toggle: () => setSlow((current) => !current) };
 }
 
 function BadExample() {
-  const imgRef = useRef(null);
-  const announced = useAnnouncedName(imgRef);
+  const { slow, toggle } = useSlowConnection();
 
   return (
-    <div>
-      <img ref={imgRef} src={PLACEHOLDER_SRC} className="rounded border border-gray-300" />
-      <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-gray-500">
-        Lo que anunciaría un lector de pantalla
-      </p>
-      <code className="mt-1 block rounded bg-gray-100 p-2 text-sm text-gray-700">{announced}</code>
+    <div className="w-80">
+      <img
+        src={slow ? BROKEN_SRC : CHART_SRC}
+        className="h-[180px] w-[320px] rounded border border-gray-200 bg-gray-50 object-contain" />
+      <Button onClick={toggle} variant="outline" size="sm" className="mt-3">
+        <WifiOff data-icon="inline-start" />
+        {slow ? 'Restaurar conexión' : 'Simular conexión lenta'}
+      </Button>
+      {slow && (
+        <p className="mt-2 text-xs text-red-600">
+          Sin <code>alt</code>, la imagen rota no dice nada sobre las ventas del trimestre.
+        </p>
+      )}
     </div>
   );
 }
 
 function GoodExample() {
-  const imgRef = useRef(null);
-  const announced = useAnnouncedName(imgRef);
+  const { slow, toggle } = useSlowConnection();
 
   return (
-    <div>
+    <div className="w-80">
       <img
-        ref={imgRef}
-        src={PLACEHOLDER_SRC}
-        alt="Equipo de producto celebrando el lanzamiento alrededor de una laptop en la oficina"
-        className="rounded border border-gray-300" />
-      <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-gray-500">
-        Lo que anunciaría un lector de pantalla
-      </p>
-      <code className="mt-1 block rounded bg-gray-100 p-2 text-sm text-gray-700">{announced}</code>
+        src={slow ? BROKEN_SRC : CHART_SRC}
+        alt="Gráfico de barras: ventas por región, con el Centro liderando el trimestre"
+        className="h-[180px] w-[320px] rounded border border-gray-200 bg-gray-50 object-contain" />
+      <Button onClick={toggle} variant="outline" size="sm" className="mt-3">
+        <WifiOff data-icon="inline-start" />
+        {slow ? 'Restaurar conexión' : 'Simular conexión lenta'}
+      </Button>
+      {slow && (
+        <p className="mt-2 text-xs text-green-700">
+          Con <code>alt</code>, aunque la imagen no cargó, el contexto se entiende igual.
+        </p>
+      )}
     </div>
   );
 }
 
-const TITLE = 'Texto alternativo en imágenes';
-const DESCRIPTION =
-  'El atributo alt define el nombre accesible de una imagen. Sin él, un lector de pantalla no tiene forma confiable de describirla.';
-
 export function AltTextBad() {
-  return <ExampleLayout title={TITLE} description={DESCRIPTION} bad={<BadExample />} />;
+  return (
+    <AppShell active="Reportes" section="Reportes" title="Ventas — Q3">
+      <BadExample />
+    </AppShell>
+  );
 }
 
 export function AltTextGood() {
-  return <ExampleLayout title={TITLE} description={DESCRIPTION} good={<GoodExample />} />;
+  return (
+    <AppShell active="Reportes" section="Reportes" title="Ventas — Q3">
+      <GoodExample />
+    </AppShell>
+  );
 }
