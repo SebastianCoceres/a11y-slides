@@ -4,7 +4,7 @@ import { MousePointer2, Keyboard } from 'lucide-react';
 export function SlideColorUsage() {
   return (
     <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-2">Uso de color adecuado</h2>
+      <h2 className="text-3xl text-brand-light mb-2">Uso de color adecuado</h2>
       <p className="text-base text-gray-400 mb-4 italic">Uno de cada doce varones tiene algún tipo de daltonismo.</p>
 
       <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
@@ -18,7 +18,7 @@ export function SlideColorUsage() {
 export function SlideTypography() {
   return (
     <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-6">Tipografía legible</h2>
+      <h2 className="text-3xl text-brand-light mb-6">Tipografía legible</h2>
 
       <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
         <li>Un operador revisando el ERP toda la mañana, con la vista cansada, no siempre identifica el problema como "tipografía".</li>
@@ -31,7 +31,7 @@ export function SlideTypography() {
 export function SlideKeyboardNav() {
   return (
     <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-6">Navegación por teclado</h2>
+      <h2 className="text-3xl text-brand-light mb-6">Navegación por teclado</h2>
       <div className="flex items-center justify-center gap-4 mb-6 text-gray-400">
         <MousePointer2 className="w-6 h-6" /> <span className="line-through text-red-400">Dependencia del ratón</span>
         <span className="mx-4 text-2xl">vs</span>
@@ -51,7 +51,7 @@ export function SlideKeyboardNav() {
 export function SlideAltText() {
   return (
     <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-6">Texto alternativo para imágenes</h2>
+      <h2 className="text-3xl text-brand-light mb-6">Texto alternativo para imágenes</h2>
 
       <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
         <li>Un reporte puede mostrar información solo mediante un gráfico o una imagen.</li>
@@ -65,7 +65,7 @@ export function SlideAltText() {
 export function SlideFocusTrap() {
   return (
     <Slide>
-      <h2 className="text-3xl text-yellow-300 mb-6">Focus trap</h2>
+      <h2 className="text-3xl text-brand-light mb-6">Focus trap</h2>
 
       <ul className="max-w-3xl mx-auto text-left text-gray-300 list-disc pl-5 space-y-1.5 mb-6">
         <li>Un modal sin focus trap deja escapar el foco: hay que volver al mouse para regresar a él.</li>

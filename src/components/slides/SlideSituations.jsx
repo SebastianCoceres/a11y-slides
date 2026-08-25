@@ -7,58 +7,35 @@ import {
   Snowflake,
   Glasses,
   PersonStanding,
-  Footprints,
 } from 'lucide-react';
 
-const situationsPageOne = [
-  { icon: Baby, situation: 'Sostener un bebé con una sola mano', helps: 'Botones grandes, áreas táctiles amplias, navegación sencilla' },
-  { icon: Bandage, situation: 'Tener una lesión temporal (brazo enyesado, dedo vendado)', helps: 'Navegación por teclado, atajos, controles fáciles de pulsar' },
-  { icon: Sun, situation: 'Sentir el reflejo del sol y no ver bien la pantalla', helps: 'Alto contraste y buen tamaño de texto' },
-  { icon: Wifi, situation: 'Tener una conexión lenta', helps: 'Páginas ligeras, imágenes optimizadas, carga progresiva' },
+const situations = [
+  { icon: Sun, situation: 'Sentir el reflejo del sol y no ver bien la pantalla' },
+  { icon: Wifi, situation: 'Tener una conexión lenta' },
+  { icon: Snowflake, situation: 'Llevar guantes (invierno o trabajo)' },
+  { icon: Glasses, situation: 'Romperse las gafas o haber olvidado las lentillas' },
+  { icon: PersonStanding, situation: 'Ser una persona mayor con pérdida de visión o destreza' },
+  { icon: Baby, situation: 'Sostener un bebé con una sola mano' },
+  { icon: Bandage, situation: 'Tener una lesión temporal (dedo vendado)' },
 ];
 
-const situationsPageTwo = [
-  { icon: Snowflake, situation: 'Llevar guantes (invierno o trabajo)', helps: 'Botones grandes y gestos sencillos' },
-  { icon: Glasses, situation: 'Romperse las gafas o haber olvidado las lentillas', helps: 'Posibilidad de ampliar el texto sin perder funcionalidad' },
-  { icon: PersonStanding, situation: 'Ser una persona mayor con pérdida de visión o destreza', helps: 'Tipografía legible, buen contraste, interfaces simples' },
-  { icon: Footprints, situation: 'Caminar mientras se mira el celular', helps: 'Interfaz simple, botones accesibles y navegación predecible' },
-];
-
-function SituationRow({ icon: Icon, situation, helps }) {
-  return (
-    <div className="flex items-center gap-4 bg-gray-800 border border-gray-700 rounded-lg px-5 py-3">
-      <div className="shrink-0 bg-purple-500/10 text-purple-300 rounded-full p-2">
-        <Icon className="w-5 h-5" />
-      </div>
-      <span className="text-gray-200 text-sm flex-1">{situation}</span>
-      <span className="text-purple-200 text-sm flex-1 text-right">{helps}</span>
-    </div>
-  );
-}
-
-export function SlideSituationsPartOne() {
+export default function SlideSituations() {
   return (
     <Slide>
-      <h2 className="text-4xl text-purple-300 mb-2">¿Por qué nos interesa aplicarla?</h2>
+      <h2 className="text-4xl text-brand-light mb-2">¿Por qué nos interesa aplicarla?</h2>
       <p className="text-lg text-gray-400 mb-8 italic">
         Es literalmente todo el mundo, en algún momento del día.
       </p>
-      <div className="space-y-3 max-w-4xl mx-auto">
-        {situationsPageOne.map((row) => (
-          <SituationRow key={row.situation} {...row} />
-        ))}
-      </div>
-    </Slide>
-  );
-}
-
-export function SlideSituationsPartTwo() {
-  return (
-    <Slide>
-      <h2 className="text-4xl text-purple-300 mb-8">Situaciones y ayudas de accesibilidad</h2>
-      <div className="space-y-3 max-w-4xl mx-auto">
-        {situationsPageTwo.map((row) => (
-          <SituationRow key={row.situation} {...row} />
+      <div className="grid grid-cols-4 gap-4 max-w-5xl mx-auto">
+        {situations.map(({ icon: Icon, situation }) => (
+          <div
+            key={situation}
+            className="flex flex-col items-center gap-3 bg-gray-800 border border-gray-700 rounded-lg p-5 text-center">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-300">
+              <Icon className="w-5 h-5" />
+            </span>
+            <span className="text-gray-200 text-sm">{situation}</span>
+          </div>
         ))}
       </div>
     </Slide>

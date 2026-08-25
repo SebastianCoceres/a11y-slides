@@ -12,7 +12,7 @@ const tools = [
 export default function SlideTools() {
   return (
     <Slide>
-      <h2 className="text-4xl text-cyan-300 mb-6">¿Qué herramientas podemos usar?</h2>
+      <h2 className="text-4xl text-brand-light mb-6">¿Qué herramientas podemos usar?</h2>
 
       <Card className="bg-gray-800 border-gray-700 shadow-none max-w-3xl mx-auto mb-8">
         <CardContent className="p-5 flex items-start gap-3 text-left">

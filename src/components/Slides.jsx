@@ -2,7 +2,10 @@ import { Deck } from '@/components/deck';
 
 import SlideTitle from './slides/SlideTitle';
 import SlidePremise from './slides/SlidePremise';
-import { SlideSituationsPartOne, SlideSituationsPartTwo } from './slides/SlideSituations';
+import SlideWcagStandard from './slides/SlideWcagStandard';
+import SlidePourPrinciples from './slides/SlidePourPrinciples';
+import SlideAccessBenefits from './slides/SlideAccessBenefits';
+import SlideSituations from './slides/SlideSituations';
 import SlideBusinessImpact from './slides/SlideBusinessImpact';
 import {
   SlideColorUsage,
@@ -43,8 +46,10 @@ export default function Slides() {
       <Deck>
         <SlideTitle />
         <SlidePremise />
-        <SlideSituationsPartOne />
-        <SlideSituationsPartTwo />
+        <SlideWcagStandard />
+        <SlidePourPrinciples />
+        <SlideAccessBenefits />
+        <SlideSituations />
         <SlideBusinessImpact />
         <SlideColorUsage />
         <SlideColorBlindnessTypes />
