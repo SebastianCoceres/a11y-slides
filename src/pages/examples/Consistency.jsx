@@ -26,7 +26,7 @@ function BadExample() {
         <p className="text-sm text-gray-500">Pedido #4521</p>
         <div className="mt-16 h-16 rounded bg-slate-50" />
         <div className="mt-4 flex justify-start">
-          <Button className="bg-red-600 text-white hover:bg-red-500">Actualizar</Button>
+          <Button className="bg-slate-900 text-white hover:bg-slate-800">Actualizar</Button>
         </div>
       </Panel>
     </div>

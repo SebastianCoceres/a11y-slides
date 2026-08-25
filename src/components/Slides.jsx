@@ -16,6 +16,7 @@ import {
 } from './slides/SlideAccessibility';
 import { SlideColorBlindnessTypes } from './slides/SlideColorBlindnessTypes';
 import {
+  SlideAdvancedPrinciplesIntro,
   SlideCognitiveLoad,
   SlideMotorComplexity,
   SlideInteractionFatigue,
@@ -67,6 +68,7 @@ export default function Slides() {
         <SlideFocusTrap />
         <FocusTrapBad />
         <FocusTrapGood />
+        <SlideAdvancedPrinciplesIntro />
         <SlideCognitiveLoad />
         <CognitiveLoadBad />
         <CognitiveLoadGood />

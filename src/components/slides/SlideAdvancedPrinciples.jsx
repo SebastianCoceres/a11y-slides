@@ -1,4 +1,4 @@
-import { Slide } from '@/components/deck';
+import { Slide } from "@/components/deck";
 
 function Kicker() {
   return (
@@ -8,13 +8,26 @@ function Kicker() {
   );
 }
 
+export function SlideAdvancedPrinciplesIntro() {
+  return (
+    <Slide>
+      <h2 className="text-4xl text-brand-light mb-6">Más allá de lo básico</h2>
+      <p className="max-w-3xl mx-auto text-lg text-gray-300 mb-4">
+        Formas de mirar una interfaz que casi nunca aparecen en un checklist de
+        accesibilidad.
+      </p>
+    </Slide>
+  );
+}
+
 export function SlideCognitiveLoad() {
   return (
     <Slide>
       <Kicker />
       <h2 className="text-3xl text-brand-light mb-2">Carga cognitiva</h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        Cuánto tiene que recordar y procesar una persona para completar una tarea.
+        Cuánto tiene que recordar y procesar una persona para completar una
+        tarea.
       </p>
     </Slide>
   );
@@ -26,7 +39,8 @@ export function SlideMotorComplexity() {
       <Kicker />
       <h2 className="text-3xl text-brand-light mb-2">Complejidad motriz</h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        No todos interactúan con una interfaz con la misma precisión, velocidad o margen de error.
+        No todos interactúan con una interfaz con la misma precisión, velocidad
+        o margen de error.
       </p>
     </Slide>
   );
@@ -38,7 +52,8 @@ export function SlideInteractionFatigue() {
       <Kicker />
       <h2 className="text-3xl text-brand-light mb-2">Fatiga por interacción</h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        Cada interacción tiene un costo, y ese costo se multiplica cuando se repite cien veces por día.
+        Cada interacción tiene un costo, y ese costo se multiplica cuando se
+        repite cien veces por día.
       </p>
     </Slide>
   );
@@ -62,7 +77,8 @@ export function SlideErrorPrevention() {
       <Kicker />
       <h2 className="text-3xl text-brand-light mb-2">Prevención de errores</h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        No alcanza con explicar qué salió mal después de que la persona ya se equivocó.
+        No alcanza con explicar qué salió mal después de que la persona ya se
+        equivocó.
       </p>
     </Slide>
   );
@@ -72,9 +88,12 @@ export function SlideErrorRecovery() {
   return (
     <Slide>
       <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">Recuperación de errores</h2>
+      <h2 className="text-3xl text-brand-light mb-2">
+        Recuperación de errores
+      </h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        Los errores van a pasar igual. La pregunta es qué tan fácil es volver atrás.
+        Los errores van a pasar igual. La pregunta es qué tan fácil es volver
+        atrás.
       </p>
     </Slide>
   );
@@ -86,7 +105,8 @@ export function SlideInclusiveDesign() {
       <Kicker />
       <h2 className="text-3xl text-brand-light mb-2">Diseño inclusivo</h2>
       <p className="text-base text-gray-400 mb-4 italic">
-        Quien usa nuestro software no está ahí para aprender cómo funciona. Está ahí para hacer su trabajo.
+        Quien usa nuestro software no está ahí para aprender cómo funciona. Está
+        ahí para hacer su trabajo.
       </p>
     </Slide>
   );

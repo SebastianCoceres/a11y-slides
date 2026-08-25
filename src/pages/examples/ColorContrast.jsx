@@ -145,9 +145,14 @@ function GoodDataTable() {
         <TableBody>
           {INVOICES.map((invoice) => {
             const isSelected = selected.has(invoice.id);
+            const rowClass = isSelected
+              ? 'bg-blue-50 hover:bg-blue-50'
+              : invoice.estado === 'vencido'
+                ? 'bg-red-50 hover:bg-red-100'
+                : 'bg-green-50 hover:bg-green-100';
 
             return (
-              <TableRow key={invoice.id} data-state={isSelected ? 'selected' : undefined}>
+              <TableRow key={invoice.id} className={rowClass}>
                 <TableCell>
                   <Checkbox
                     checked={isSelected}
