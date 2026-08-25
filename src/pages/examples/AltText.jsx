@@ -1,75 +1,135 @@
-import { useState } from 'react';
-import { WifiOff } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import AppShell from './AppShell';
+import { Trash2, Volume2 } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import AppShell from "./AppShell";
 
-const CHART_SRC =
-  'data:image/svg+xml;utf8,' +
+const PRODUCTS = [
+  {
+    id: "p1",
+    nombre: "Tornillos M6 (caja x100)",
+    ubicacion: "Depósito Norte — estantería B4",
+    stock: 24,
+  },
+  {
+    id: "p2",
+    nombre: "Guantes de nitrilo (caja x50)",
+    ubicacion: "Depósito Sur — estantería A2",
+    stock: 8,
+  },
+  {
+    id: "p3",
+    nombre: "Cinta aisladora 3M",
+    ubicacion: "Depósito Norte — estantería C1",
+    stock: 45,
+  },
+  {
+    id: "p4",
+    nombre: "Casco de seguridad",
+    ubicacion: "Depósito Este — estantería D3",
+    stock: 3,
+  },
+];
+
+const THUMB_SRC =
+  "data:image/svg+xml;utf8," +
   encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180"><rect width="320" height="180" fill="#eef2ff"/><rect x="30" y="90" width="40" height="70" fill="#6366f1"/><rect x="100" y="50" width="40" height="110" fill="#6366f1"/><rect x="170" y="110" width="40" height="50" fill="#6366f1"/><rect x="240" y="70" width="40" height="90" fill="#6366f1"/></svg>'
+    '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect width="32" height="32" rx="6" fill="#e2e8f0"/><circle cx="12" cy="12" r="2.5" fill="#94a3b8"/><path d="M6 24l7-8 5 5 4-5 6 8" stroke="#94a3b8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
   );
-const BROKEN_SRC = '/no-existe-esta-imagen.jpg';
 
-function useSlowConnection() {
-  const [slow, setSlow] = useState(false);
-  return { slow, toggle: () => setSlow((current) => !current) };
+function ProductTable({ good }) {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-10" />
+          <TableHead>Producto</TableHead>
+          <TableHead>Ubicación</TableHead>
+          <TableHead className="text-right">Stock</TableHead>
+          <TableHead className="w-10" />
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {PRODUCTS.map((p) => (
+          <TableRow key={p.id}>
+            <TableCell>
+              <img
+                src={THUMB_SRC}
+                alt={good ? "" : p.nombre}
+                className="h-8 w-8 rounded object-contain"
+              />
+            </TableCell>
+            <TableCell>{p.nombre}</TableCell>
+            <TableCell className="text-gray-500">{p.ubicacion}</TableCell>
+            <TableCell className="text-right">{p.stock}</TableCell>
+            <TableCell>
+              <button
+                aria-label={good ? `Eliminar ${p.nombre}` : undefined}
+                className="text-gray-400 hover:text-red-600"
+              >
+                <Trash2 className="h-4 w-4" />
+              </button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
 }
 
-function BadExample() {
-  const { slow, toggle } = useSlowConnection();
-
+function Transcript({ good }) {
   return (
-    <div className="w-80">
-      <img
-        src={slow ? BROKEN_SRC : CHART_SRC}
-        className="h-[180px] w-[320px] rounded border border-gray-200 bg-gray-50 object-contain" />
-      <Button onClick={toggle} variant="outline" size="sm" className="mt-3">
-        <WifiOff data-icon="inline-start" />
-        {slow ? 'Restaurar conexión' : 'Simular conexión lenta'}
-      </Button>
-      {slow && (
-        <p className="mt-2 text-xs text-red-600">
-          Sin <code>alt</code>, la imagen rota no dice nada sobre las ventas del trimestre.
-        </p>
-      )}
+    <div className="mt-4 rounded-md bg-gray-900 p-3 font-mono text-xs text-gray-100">
+      <p className="mb-2 flex items-center gap-1.5 font-sans text-gray-400">
+        <Volume2 className="h-3.5 w-3.5" />
+        Lo que anuncia un lector de pantalla
+      </p>
+      <div className="space-y-2">
+        {PRODUCTS.map((p, i) => (
+          <p key={p.id}>
+            <span className="text-gray-500">Fila {i + 1}: </span>
+            {good ? (
+              <>
+                "{p.nombre}. {p.ubicacion}. {p.stock}. Eliminar {p.nombre}, botón."
+              </>
+            ) : (
+              <>
+                "{p.nombre}, imagen. {p.nombre}. {p.ubicacion}. {p.stock}. botón."
+              </>
+            )}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
 
-function GoodExample() {
-  const { slow, toggle } = useSlowConnection();
-
+function Example({ good }) {
   return (
-    <div className="w-80">
-      <img
-        src={slow ? BROKEN_SRC : CHART_SRC}
-        alt="Gráfico de barras: ventas por región, con el Centro liderando el trimestre"
-        className="h-[180px] w-[320px] rounded border border-gray-200 bg-gray-50 object-contain" />
-      <Button onClick={toggle} variant="outline" size="sm" className="mt-3">
-        <WifiOff data-icon="inline-start" />
-        {slow ? 'Restaurar conexión' : 'Simular conexión lenta'}
-      </Button>
-      {slow && (
-        <p className="mt-2 text-xs text-green-700">
-          Con <code>alt</code>, aunque la imagen no cargó, el contexto se entiende igual.
-        </p>
-      )}
+    <div>
+      <ProductTable good={good} />
+      <Transcript good={good} />
     </div>
   );
 }
 
 export function AltTextBad() {
   return (
-    <AppShell active="Reportes" title="Ventas — Q3">
-      <BadExample />
+    <AppShell active="Inventario" title="Productos">
+      <Example good={false} />
     </AppShell>
   );
 }
 
 export function AltTextGood() {
   return (
-    <AppShell active="Reportes" title="Ventas — Q3">
-      <GoodExample />
+    <AppShell active="Inventario" title="Productos">
+      <Example good />
     </AppShell>
   );
 }

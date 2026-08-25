@@ -42,7 +42,7 @@ export function SlideAltText() {
     <Slide>
       <h2 className="text-3xl text-brand-light mb-2">Texto alternativo para imágenes</h2>
       <p className="text-base text-gray-400 italic">
-        Una conexión inestable alcanza para que una imagen nunca llegue a cargar.
+        Es lo único que tiene un lector de pantalla para describir una imagen.
       </p>
     </Slide>
   );
