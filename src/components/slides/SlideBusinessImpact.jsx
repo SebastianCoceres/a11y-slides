@@ -1,5 +1,6 @@
 import { Slide } from "@/components/deck";
 import { Card, CardContent } from "@/components/ui/card";
+import { Users } from "lucide-react";
 import { Headset, Code2, UserPlus } from "lucide-react";
 
 const impacts = [
@@ -14,14 +15,24 @@ const impacts = [
     text: "Aplicarlo desde el diseño es más rápido que parchearlo después",
   },
   {
-    icon: UserPlus,
+    icon: Users,
     role: "Usuarios",
     text: "La app se vuelve más fácil de usar y predecible en su comportamiento.",
   },
   {
     icon: UserPlus,
     role: "Onboarding",
-    text: "Un código con estos principios ya incorporados es más fácil de leer y de replicar.",
+    text: "Un código con estos principios ya incorporados previamente validados es más fácil de replicar.",
+  },
+  {
+    icon: Code2,
+    role: "Negocio y Alcance",
+    text: "Amplía el mercado total direccionable y abre puertas a clientes que exigen cumplimiento legal (corporativos o gubernamentales)",
+  },
+  {
+    icon: Code2,
+    role: "Legal y Riesgo",
+    text: "Previene multas y bloqueos normativos",
   },
 ];
 
