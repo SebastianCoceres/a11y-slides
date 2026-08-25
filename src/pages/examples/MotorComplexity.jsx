@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { Minus, Plus, Vibrate } from 'lucide-react';
+import { Info, Minus, Plus, Star, Vibrate } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Checkbox } from '@/components/ui/checkbox';
 import AppShell from './AppShell';
 
 function useCounter(initial) {
@@ -75,6 +77,19 @@ function TremorToggle({ active, onToggle }) {
   );
 }
 
+function TargetSizeAlert() {
+  return (
+    <Alert className="mt-4 border-blue-200 bg-blue-50/60 text-blue-900 [&_svg]:text-blue-600">
+      <Info />
+      <AlertTitle>Tamaño mínimo de objetivos táctiles</AlertTitle>
+      <AlertDescription className="text-blue-800/80">
+        WCAG 2.5.8 pide al menos 24×24px (44×44px recomendado en el nivel AAA) y espacio entre controles cercanos,
+        para que un clic impreciso no dispare el control vecino.
+      </AlertDescription>
+    </Alert>
+  );
+}
+
 function MotorComplexityShell({ children }) {
   const { active, toggle, renderPos } = useTremorCursor();
 
@@ -83,6 +98,7 @@ function MotorComplexityShell({ children }) {
       {active && <style>{'*, *::before, *::after { cursor: none !important; }'}</style>}
       <AppShell active="Inventario" title="Ajustar stock">
         {children}
+        <TargetSizeAlert />
       </AppShell>
       <TremorToggle active={active} onToggle={toggle} />
       {active && (
@@ -96,11 +112,24 @@ function MotorComplexityShell({ children }) {
 
 function BadExample() {
   const { count, inc, dec } = useCounter(24);
+  const [fav, setFav] = useState(false);
+  const [autoReponer, setAutoReponer] = useState(false);
 
   return (
     <div className="w-80 rounded-lg border border-slate-200 bg-white p-5">
-      <p className="mb-1 text-sm font-semibold text-gray-900">Tornillos M6 (caja x100)</p>
-      <p className="mb-4 text-xs text-gray-500">Depósito Norte — estantería B4</p>
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <p className="text-sm font-semibold text-gray-900">Tornillos M6 (caja x100)</p>
+          <p className="text-xs text-gray-500">Depósito Norte — estantería B4</p>
+        </div>
+        <button
+          onClick={() => setFav((f) => !f)}
+          aria-label="Marcar como favorito"
+          className="flex h-5 w-5 items-center justify-center text-slate-400 hover:text-amber-500">
+          <Star className={cn('h-4 w-4', fav && 'fill-amber-400 text-amber-400')} />
+        </button>
+      </div>
+
       <div className="flex items-center gap-1">
         <button
           onClick={dec}
@@ -114,18 +143,35 @@ function BadExample() {
           <Plus className="h-3 w-3" />
         </button>
       </div>
-      <p className="mt-4 text-xs text-gray-500">Botones de 20px, pegados entre sí.</p>
+
+      <div className="mt-4 flex items-center gap-1.5">
+        <Checkbox checked={autoReponer} onCheckedChange={setAutoReponer} aria-label="Reponer automáticamente" />
+        <span className="text-xs text-gray-600">Reponer automáticamente</span>
+      </div>
     </div>
   );
 }
 
 function GoodExample() {
   const { count, inc, dec } = useCounter(24);
+  const [fav, setFav] = useState(false);
+  const [autoReponer, setAutoReponer] = useState(false);
 
   return (
     <div className="w-80 rounded-lg border border-slate-200 bg-white p-5">
-      <p className="mb-1 text-sm font-semibold text-gray-900">Tornillos M6 (caja x100)</p>
-      <p className="mb-4 text-xs text-gray-500">Depósito Norte — estantería B4</p>
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <p className="text-sm font-semibold text-gray-900">Tornillos M6 (caja x100)</p>
+          <p className="text-xs text-gray-500">Depósito Norte — estantería B4</p>
+        </div>
+        <button
+          onClick={() => setFav((f) => !f)}
+          aria-label="Marcar como favorito"
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-amber-500">
+          <Star className={cn('h-5 w-5', fav && 'fill-amber-400 text-amber-400')} />
+        </button>
+      </div>
+
       <div className="flex items-center gap-3">
         <button
           onClick={dec}
@@ -139,7 +185,11 @@ function GoodExample() {
           <Plus className="h-5 w-5" />
         </button>
       </div>
-      <p className="mt-4 text-xs text-gray-500">Botones de 48px, con espacio de sobra entre sí.</p>
+
+      <label className="mt-5 flex items-center gap-2.5 py-1.5">
+        <Checkbox checked={autoReponer} onCheckedChange={setAutoReponer} />
+        <span className="text-sm text-gray-700">Reponer automáticamente</span>
+      </label>
     </div>
   );
 }

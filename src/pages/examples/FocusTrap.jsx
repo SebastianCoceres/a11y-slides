@@ -27,8 +27,7 @@ function BadModal() {
           <div className="w-full max-w-sm rounded-xl bg-white p-5 shadow-xl">
             <h3 className="mb-2 text-base font-semibold text-gray-900">Eliminar factura #F-2451</h3>
             <p className="mb-4 text-sm text-gray-600">
-              Este modal no atrapa el foco: no maneja <kbd>Escape</kbd>, no hace auto-focus y no devuelve el foco al
-              cerrarse.
+              ¿Confirmás que querés eliminarla? Esta acción no se puede deshacer.
             </p>
             <Input placeholder="Motivo (opcional)" className="mb-4" />
             <div className="flex justify-end gap-2">
@@ -53,23 +52,18 @@ function BadModal() {
 function GoodModal() {
   return (
     <Dialog>
-      <DialogTrigger render={<Button className="bg-green-600 text-white hover:bg-green-500" />}>
+      <DialogTrigger render={<Button className="bg-red-600 text-white hover:bg-red-500" />}>
         Eliminar factura #F-2451
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Eliminar factura #F-2451</DialogTitle>
-          <DialogDescription>
-            Este modal atrapa el foco dentro suyo, se cierra con <kbd>Escape</kbd> y devuelve el foco al botón que lo
-            abrió.
-          </DialogDescription>
+          <DialogDescription>¿Confirmás que querés eliminarla? Esta acción no se puede deshacer.</DialogDescription>
         </DialogHeader>
         <Input placeholder="Motivo (opcional)" />
         <DialogFooter>
           <DialogClose render={<Button variant="outline" />}>Cancelar</DialogClose>
-          <DialogClose render={<Button className="bg-green-600 text-white hover:bg-green-500" />}>
-            Eliminar
-          </DialogClose>
+          <DialogClose render={<Button className="bg-red-600 text-white hover:bg-red-500" />}>Eliminar</DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
@@ -80,10 +74,6 @@ export function FocusTrapBad() {
   return (
     <AppShell active="Facturas" title="Factura #F-2451">
       <BadModal />
-      <p className="mt-4 text-sm text-gray-600">
-        Probá: abrí el modal, tocá <kbd>Tab</kbd> varias veces (el foco se escapa hacia el resto de la página) y
-        tocá <kbd>Escape</kbd> (no pasa nada).
-      </p>
     </AppShell>
   );
 }
@@ -92,10 +82,6 @@ export function FocusTrapGood() {
   return (
     <AppShell active="Facturas" title="Factura #F-2451">
       <GoodModal />
-      <p className="mt-4 text-sm text-gray-600">
-        Probá: abrí el modal, tocá <kbd>Tab</kbd> varias veces (el foco cicla dentro del modal) y tocá{' '}
-        <kbd>Escape</kbd> (se cierra y el foco vuelve al botón).
-      </p>
     </AppShell>
   );
 }
