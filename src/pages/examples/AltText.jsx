@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import AppShell from "./AppShell";
+import InfoBlock from "./InfoBlock";
 
 const PRODUCTS = [
   {
@@ -120,7 +121,18 @@ function Example({ good }) {
 
 export function AltTextBad() {
   return (
-    <AppShell active="Inventario" title="Productos">
+    <AppShell
+      active="Inventario"
+      title="Productos"
+      info={
+        <InfoBlock variant="warning" title="Ícono decorativo, no silencioso">
+          <p className="text-sm text-gray-700">
+            El ícono de cada fila es un placeholder genérico, no una foto real del producto — pero tiene el
+            mismo texto que la celda de al lado. Un lector de pantalla anuncia el nombre del producto dos
+            veces por fila, y el botón de eliminar no dice a cuál producto corresponde.
+          </p>
+        </InfoBlock>
+      }>
       <Example good={false} />
     </AppShell>
   );
@@ -128,7 +140,18 @@ export function AltTextBad() {
 
 export function AltTextGood() {
   return (
-    <AppShell active="Inventario" title="Productos">
+    <AppShell
+      active="Inventario"
+      title="Productos"
+      info={
+        <InfoBlock title='alt="" para lo decorativo'>
+          <p className="text-sm text-gray-700">
+            Como el ícono no aporta información que no esté ya en el texto de la fila, se marca{' '}
+            <code>alt=""</code> para que el lector de pantalla lo saltee. El botón de eliminar suma un{' '}
+            <code>aria-label</code> con el nombre del producto en vez de quedar mudo.
+          </p>
+        </InfoBlock>
+      }>
       <Example good />
     </AppShell>
   );

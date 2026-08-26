@@ -23,7 +23,7 @@ function BadExample() {
       <div className="flex items-center gap-3">
         <Volume2 className="h-5 w-5 shrink-0 text-brand" />
         <div>
-          <p className="text-sm font-semibold text-slate-900">Resumen semanal en audio</p>
+          <p className="text-sm font-semibold text-slate-900">Llamada de soporte — Estudio Delgado</p>
           <p className="text-xs text-slate-400">Reproduciendo automáticamente…</p>
         </div>
       </div>
@@ -42,12 +42,12 @@ function GoodExample() {
         <button
           type="button"
           onClick={() => setPlaying((p) => !p)}
-          aria-label={playing ? 'Pausar resumen' : 'Reproducir resumen'}
+          aria-label={playing ? 'Pausar grabación' : 'Reproducir grabación'}
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand text-white hover:bg-brand/90">
           {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
         </button>
         <div>
-          <p className="text-sm font-semibold text-slate-900">Resumen semanal en audio</p>
+          <p className="text-sm font-semibold text-slate-900">Llamada de soporte — Estudio Delgado</p>
           <p className="text-xs text-slate-400">{playing ? 'Reproduciendo…' : 'En pausa'}</p>
         </div>
       </div>
@@ -61,13 +61,13 @@ function GoodExample() {
 export function AudioControlBad() {
   return (
     <AppShell
-      active="Reportes"
-      title="Resumen semanal"
+      active="Contactos"
+      title="Llamada grabada"
       info={
         <InfoBlock variant="warning" title="Sin forma de pararlo">
           <p className="text-sm text-gray-700">
-            El audio arranca solo al entrar a la pantalla y no hay ningún control visible para pausarlo,
-            detenerlo o bajarle el volumen. Si alguien está usando un lector de pantalla, esta pista tapa
+            La grabación arranca sola al abrir el contacto y no hay ningún control visible para pausarla,
+            detenerla o bajarle el volumen. Si alguien está usando un lector de pantalla, esta pista tapa
             todo lo que el lector intente anunciar.
           </p>
         </InfoBlock>
@@ -80,8 +80,8 @@ export function AudioControlBad() {
 export function AudioControlGood() {
   return (
     <AppShell
-      active="Reportes"
-      title="Resumen semanal"
+      active="Contactos"
+      title="Llamada grabada"
       info={
         <InfoBlock title="El control tiene que estar antes de los 3 segundos">
           <p className="text-sm text-gray-700">

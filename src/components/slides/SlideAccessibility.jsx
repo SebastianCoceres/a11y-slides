@@ -19,8 +19,8 @@ export function SlideTypography() {
     <Slide>
       <h2 className="text-3xl text-brand-light mb-2">Tipografía legible</h2>
       <p className="text-base text-gray-400 italic">
-        Un texto chico o con poco contraste cansa la vista de cualquiera, tenga
-        o no problemas de visión.
+        Un texto con poco contraste cansa la vista de cualquiera, tenga o no
+        problemas de visión.
       </p>
       <WcagRef>WCAG 1.4.3 — Contraste mínimo (AA)</WcagRef>
     </Slide>

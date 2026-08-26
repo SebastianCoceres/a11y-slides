@@ -1,50 +1,24 @@
-import { useState } from 'react';
-import { ZoomIn } from 'lucide-react';
 import AppShell from './AppShell';
 import InfoBlock from './InfoBlock';
 
-function ZoomToggle({ zoomed, onToggle }) {
-  return (
-    <button
-      type="button"
-      onClick={onToggle}
-      className="mb-4 flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm hover:bg-slate-50">
-      <ZoomIn className="h-3.5 w-3.5" />
-      {zoomed ? 'Volver a 100%' : 'Simular zoom 200%'}
-    </button>
-  );
-}
-
+// El alto en vh es la parte que rompe con el zoom real del navegador: al acercar el zoom, el
+// viewport mide menos píxeles CSS, así que este contenedor se achica — pero el texto (en rem/px)
+// no, porque esas unidades no dependen del viewport. Con un alto fijo en rem/px en vez de vh esto
+// no se reproduce: contenedor y texto escalan juntos y nunca se corta (confirmado a mano).
 function BadExample() {
-  const [zoomed, setZoomed] = useState(false);
   return (
-    <div className="w-72">
-      <ZoomToggle zoomed={zoomed} onToggle={() => setZoomed((z) => !z)} />
-      <div className="h-16 w-56 overflow-hidden rounded-lg border border-slate-200 bg-white px-3 py-2.5">
-        <p className="truncate font-semibold text-slate-900" style={{ fontSize: zoomed ? '24px' : '12px' }}>
-          Tornillos M6 (caja x100)
-        </p>
-        <p className="truncate text-slate-400" style={{ fontSize: zoomed ? '18px' : '10px' }}>
-          Depósito Norte — estantería B4
-        </p>
-      </div>
+    <div className="w-56 overflow-hidden rounded-lg border border-slate-200 bg-white px-3 py-2.5" style={{ height: '7vh' }}>
+      <p className="truncate text-sm font-semibold text-slate-900">Tornillos M6 (caja x100)</p>
+      <p className="truncate text-xs text-slate-400">Depósito Norte — estantería B4</p>
     </div>
   );
 }
 
 function GoodExample() {
-  const [zoomed, setZoomed] = useState(false);
   return (
-    <div className="w-72">
-      <ZoomToggle zoomed={zoomed} onToggle={() => setZoomed((z) => !z)} />
-      <div className="w-56 rounded-lg border border-slate-200 bg-white px-3 py-2.5">
-        <p className={zoomed ? 'text-2xl font-semibold text-slate-900' : 'text-sm font-semibold text-slate-900'}>
-          Tornillos M6 (caja x100)
-        </p>
-        <p className={zoomed ? 'mt-1 text-base text-slate-400' : 'text-xs text-slate-400'}>
-          Depósito Norte — estantería B4
-        </p>
-      </div>
+    <div className="w-56 rounded-lg border border-slate-200 bg-white px-3 py-2.5">
+      <p className="text-sm font-semibold text-slate-900">Tornillos M6 (caja x100)</p>
+      <p className="text-xs text-slate-400">Depósito Norte — estantería B4</p>
     </div>
   );
 }
@@ -57,9 +31,10 @@ export function TextResizeBad() {
       info={
         <InfoBlock variant="warning" title="Se corta a los 200%">
           <p className="text-sm text-gray-700">
-            El contenedor tiene una altura fija y <code>overflow: hidden</code>. Al simular el zoom al
-            200%, el texto crece pero el contenedor no, así que el nombre y la ubicación del producto se
-            truncan o desaparecen.
+            El contenedor mide su alto en <code>vh</code> con <code>overflow: hidden</code>. Al acercar
+            el zoom real del navegador (Ctrl/Cmd y +) el viewport pasa a medir menos píxeles, así que ese
+            alto se achica — pero el texto no, porque no depende del viewport. El nombre y la ubicación
+            terminan cortados.
           </p>
         </InfoBlock>
       }>
@@ -74,11 +49,11 @@ export function TextResizeGood() {
       active="Inventario"
       title="Ficha de producto"
       info={
-        <InfoBlock title="La altura fija es el problema, no el zoom">
+        <InfoBlock title="Alto libre, no atado al viewport">
           <p className="text-sm text-gray-700">
-            El contenedor de la izquierda tiene una altura fija y <code>overflow: hidden</code>, así que a
-            200% el texto se corta. Sacando la altura fija — que crezca con el contenido — alcanza para
-            que el mismo texto siga siendo legible.
+            Mismo texto, mismo ancho — el contenedor no tiene un alto fijo en <code>vh</code>: crece con
+            el contenido. Probalo con el zoom real del navegador (Ctrl/Cmd y +): a cualquier nivel, sigue
+            legible.
           </p>
         </InfoBlock>
       }>
