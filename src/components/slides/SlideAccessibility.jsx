@@ -50,7 +50,7 @@ export function SlideAltText() {
     <Slide>
       <h2 className="text-3xl text-brand-light mb-2">Texto alternativo</h2>
       <p className="text-base text-gray-400 italic">
-        Es lo único que tiene un lector de pantalla para describir una imagen.
+        Tu contenido puede ser inaccesible para personas con discapacidad visual
       </p>
     </Slide>
   );

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Bell, MessageSquare, Package, Receipt } from "lucide-react";
+import { Bell, Code2, MessageSquare, Package, Receipt, RotateCcw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 import AppShell from "./AppShell";
 
 const NOTIFICATIONS = [
@@ -26,27 +25,59 @@ function usePrefersReducedMotion() {
     return () => query.removeEventListener("change", onChange);
   }, []);
 
-  return [reduced, setReduced];
+  return reduced;
 }
 
-function PreferenceToggle({ reduced, onToggle }) {
+function SolutionInfo() {
+  return (
+    <section className="mt-10 rounded-xl border-2 border-blue-200 bg-blue-50/40 p-6">
+      <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-blue-700">
+        <Code2 className="h-4 w-4" aria-hidden="true" />
+        Cómo se respeta la preferencia
+      </h2>
+      <p className="mb-3 text-sm text-gray-700">
+        Con animaciones controladas por JS (como acá, con <code>motion/react</code>), hay que leer la
+        preferencia con <code>matchMedia</code> y suscribirse a sus cambios:
+      </p>
+      <pre className="overflow-x-auto rounded-lg bg-slate-900 p-4 text-xs text-slate-100">
+        <code>{`const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+let reduced = query.matches;
+
+query.addEventListener("change", (event) => {
+  reduced = event.matches;
+});`}</code>
+      </pre>
+      <p className="mt-3 mb-3 text-sm text-gray-700">
+        Si las animaciones son CSS puro, alcanza con la media query, sin JavaScript:
+      </p>
+      <pre className="overflow-x-auto rounded-lg bg-slate-900 p-4 text-xs text-slate-100">
+        <code>{`.notification-card {
+  animation: bounce-in 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notification-card {
+    animation: fade-in 0.15s ease-out;
+  }
+}`}</code>
+      </pre>
+      <p className="mt-3 text-xs text-gray-600">
+        En ambos casos la fuente de verdad es la preferencia real del sistema operativo del usuario,
+        no un control manual en la UI.
+      </p>
+    </section>
+  );
+}
+
+function ReplayButton({ onReplay }) {
   return (
     <button
       type="button"
-      role="switch"
-      aria-checked={reduced}
-      onClick={onToggle}
-      className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm"
+      onClick={onReplay}
+      className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm hover:bg-slate-50"
     >
-      <span
-        className={cn(
-          "flex h-4 w-7 items-center rounded-full p-0.5 transition-colors",
-          reduced ? "justify-end bg-brand" : "justify-start bg-slate-200",
-        )}
-      >
-        <span className="h-3 w-3 rounded-full bg-white shadow" />
-      </span>
-      Reducir movimiento (preferencia del SO)
+      <RotateCcw className="h-3.5 w-3.5" />
+      Repetir animación
     </button>
   );
 }
@@ -94,34 +125,36 @@ function NotificationsPanel({ animated }) {
 }
 
 export function ReducedMotionBad() {
-  const [reduced, setReduced] = useState(false);
+  const [replayKey, setReplayKey] = useState(0);
   return (
     <AppShell active="Dashboard" title="Centro de notificaciones">
       <div className="mb-4">
-        <PreferenceToggle reduced={reduced} onToggle={() => setReduced((r) => !r)} />
+        <ReplayButton onReplay={() => setReplayKey((k) => k + 1)} />
         <p className="mt-2 text-xs text-slate-400">
           La preferencia del sistema operativo se ignora: las animaciones se reproducen siempre,
           esté activa o no.
         </p>
       </div>
-      <NotificationsPanel animated />
+      <NotificationsPanel key={replayKey} animated />
     </AppShell>
   );
 }
 
 export function ReducedMotionGood() {
-  const [reduced, setReduced] = usePrefersReducedMotion();
+  const reduced = usePrefersReducedMotion();
+  const [replayKey, setReplayKey] = useState(0);
   return (
     <AppShell active="Dashboard" title="Centro de notificaciones">
       <div className="mb-4">
-        <PreferenceToggle reduced={reduced} onToggle={() => setReduced((r) => !r)} />
+        <ReplayButton onReplay={() => setReplayKey((k) => k + 1)} />
         <p className="mt-2 text-xs text-slate-400">
           {reduced
             ? "Se respeta prefers-reduced-motion: sin rebotes ni parpadeos, solo un fundido breve."
-            : "Sin la preferencia activada, se permite la animación completa."}
+            : "Preferencia del SO desactivada: se permite la animación completa."}
         </p>
       </div>
-      <NotificationsPanel animated={!reduced} />
+      <NotificationsPanel key={replayKey} animated={!reduced} />
+      <SolutionInfo />
     </AppShell>
   );
 }
