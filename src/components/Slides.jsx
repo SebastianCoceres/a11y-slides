@@ -36,7 +36,11 @@ import {
 import { TypographyBad, TypographyGood } from "@/pages/examples/Typography";
 import { KeyboardNavBad, KeyboardNavGood } from "@/pages/examples/KeyboardNav";
 import { AltTextBad, AltTextGood } from "@/pages/examples/AltText";
-import { FocusTrapBad, FocusTrapGood } from "@/pages/examples/FocusTrap";
+import {
+  FocusTrapBad,
+  FocusTrapNoEscape,
+  FocusTrapGood,
+} from "@/pages/examples/FocusTrap";
 import {
   ReducedMotionBad,
   ReducedMotionGood,
@@ -94,6 +98,7 @@ export default function Slides() {
         <AltTextGood />
         <SlideFocusTrap />
         <FocusTrapBad />
+        <FocusTrapNoEscape />
         <FocusTrapGood />
         <SlideReducedMotion />
         <ReducedMotionBad />

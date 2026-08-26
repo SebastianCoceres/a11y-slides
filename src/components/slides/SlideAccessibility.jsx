@@ -1,5 +1,14 @@
 import { Slide } from "@/components/deck";
 import { MousePointer2, Keyboard } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+
+function WcagRef({ children }) {
+  return (
+    <Badge variant="info" className="mt-4">
+      {children}
+    </Badge>
+  );
+}
 
 export function SlideColorUsage() {
   return (
@@ -8,6 +17,7 @@ export function SlideColorUsage() {
       <p className="text-base text-gray-400 italic">
         Uno de cada doce varones tiene algún tipo de daltonismo.
       </p>
+      <WcagRef>WCAG 1.4.1 — Uso del color (A)</WcagRef>
     </Slide>
   );
 }
@@ -20,6 +30,7 @@ export function SlideTypography() {
         Un texto chico o con poco contraste cansa la vista de cualquiera, tenga
         o no problemas de visión.
       </p>
+      <WcagRef>WCAG 1.4.3 — Contraste mínimo (AA)</WcagRef>
     </Slide>
   );
 }
@@ -41,6 +52,7 @@ export function SlideKeyboardNav() {
           Navegabilidad 100% teclado
         </span>
       </div>
+      <WcagRef>WCAG 2.1.1 — Teclado (A)</WcagRef>
     </Slide>
   );
 }
@@ -52,6 +64,7 @@ export function SlideAltText() {
       <p className="text-base text-gray-400 italic">
         Tu contenido puede ser inaccesible para personas con discapacidad visual
       </p>
+      <WcagRef>WCAG 1.1.1 — Contenido no textual (A)</WcagRef>
     </Slide>
   );
 }
@@ -64,6 +77,7 @@ export function SlideFocusTrap() {
         Sin manejo de foco, un modal puede dejar a un usuario de teclado
         atrapado o perdido en la página.
       </p>
+      <WcagRef>WCAG 2.1.2 — Sin trampas de teclado (A)</WcagRef>
     </Slide>
   );
 }
@@ -76,6 +90,7 @@ export function SlideReducedMotion() {
         Rebotes, parallax y auto-scroll pueden marear a quien tiene un trastorno
         vestibular o migrañas.
       </p>
+      <WcagRef>WCAG 2.3.3 — Animación desde interacciones (AAA)</WcagRef>
     </Slide>
   );
 }
