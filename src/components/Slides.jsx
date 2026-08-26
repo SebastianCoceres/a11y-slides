@@ -13,6 +13,7 @@ import {
   SlideKeyboardNav,
   SlideAltText,
   SlideFocusTrap,
+  SlideReducedMotion,
 } from "./slides/SlideAccessibility";
 import { SlideColorBlindnessTypes } from "./slides/SlideColorBlindnessTypes";
 import {
@@ -36,6 +37,10 @@ import { TypographyBad, TypographyGood } from "@/pages/examples/Typography";
 import { KeyboardNavBad, KeyboardNavGood } from "@/pages/examples/KeyboardNav";
 import { AltTextBad, AltTextGood } from "@/pages/examples/AltText";
 import { FocusTrapBad, FocusTrapGood } from "@/pages/examples/FocusTrap";
+import {
+  ReducedMotionBad,
+  ReducedMotionGood,
+} from "@/pages/examples/ReducedMotion";
 import {
   CognitiveLoadBad,
   CognitiveLoadGood,
@@ -90,6 +95,9 @@ export default function Slides() {
         <SlideFocusTrap />
         <FocusTrapBad />
         <FocusTrapGood />
+        <SlideReducedMotion />
+        <ReducedMotionBad />
+        <ReducedMotionGood />
         <SlideAdvancedPrinciplesIntro />
         <SlideCognitiveLoad />
         <CognitiveLoadBad />

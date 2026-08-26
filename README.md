@@ -38,6 +38,10 @@ Problemas comunes que solmenos manejar
   - descripciones concisas para tecnologías asistivas.
   - lectores de pantalla
   - subtitulado y transcripciones para audio y video
+- movimiento reducido
+  - trastornos vestibulares, migrañas, mareo por movimiento
+  - preferencia del sistema operativo: prefers-reduced-motion
+  - animaciones de entrada, parallax, auto-scroll, parpadeo
 
 Mas alla de los basico
 

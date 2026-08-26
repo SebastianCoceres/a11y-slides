@@ -91,7 +91,7 @@ Prevenir es el piso de este argumento, no el techo.
 
 ---
 
-## BLOQUE 4 — Mostrame que esto no es tanto laburo (Slide: Uso de color / Tipografía / Teclado / Alt text / Focus trap)
+## BLOQUE 4 — Mostrame que esto no es tanto laburo (Slide: Uso de color / Tipografía / Teclado / Alt text / Focus trap / Movimiento reducido)
 
 Sé lo que está pensando alguien en esta sala ahora mismo: "somos B2B, no
 vamos a tener usuarios ciegos trabajando con esto, esto no me sirve". Bien.
@@ -128,6 +128,14 @@ quién usa nuestro software ocho horas por día, todos los días:
   con el contenido detrás del modal también pueden generar una experiencia
   confusa. Con la etiqueta dialog, gran parte de este comportamiento ya se gestiona
   de forma nativa.
+- **Movimiento reducido:** una persona con un trastorno vestibular o
+  migrañas puede abrir nuestro dashboard y encontrarse con notificaciones
+  que rebotan, parpadean o se desplazan solas. Si el sistema operativo ya
+  tiene activada la preferencia de reducir movimiento, esa animación no
+  debería reproducirse igual — pero si la ignoramos, la persona no tiene
+  forma de evitarla. Respetar `prefers-reduced-motion`, un estándar nativo
+  del navegador, es la diferencia entre una interfaz usable y una que hay
+  que abandonar.
 
 ---
 
