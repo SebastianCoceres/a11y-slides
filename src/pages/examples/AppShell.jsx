@@ -26,7 +26,7 @@ function NavItem({ icon: Icon, label, active, onClick }) {
   );
 }
 
-export default function AppShell({ active, title, children }) {
+export default function AppShell({ active, title, info, children }) {
   const [currentSection, setCurrentSection] = useState(active);
   const onDemoSection = currentSection === active;
 
@@ -80,7 +80,14 @@ export default function AppShell({ active, title, children }) {
               <h1 className="mt-1 text-xl font-bold text-slate-900">{onDemoSection ? title : currentSection}</h1>
             </div>
             {onDemoSection ? (
-              children
+              info ? (
+                <div className="grid grid-cols-[1fr_360px] items-start gap-8">
+                  <div>{children}</div>
+                  {info}
+                </div>
+              ) : (
+                children
+              )
             ) : (
               <div className="rounded-lg border border-dashed border-slate-300 bg-white p-10 text-center text-sm text-slate-400">
                 Esta sección no forma parte de la demo.

@@ -1,14 +1,6 @@
 import { Slide } from "@/components/deck";
 import { MousePointer2, Keyboard } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-
-function WcagRef({ children }) {
-  return (
-    <Badge variant="info" className="mt-4">
-      {children}
-    </Badge>
-  );
-}
+import { WcagRef } from "./WcagRef";
 
 export function SlideColorUsage() {
   return (

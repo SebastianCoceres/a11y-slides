@@ -15,6 +15,20 @@ import {
   SlideFocusTrap,
   SlideReducedMotion,
 } from "./slides/SlideAccessibility";
+import {
+  SlideMediaAlternatives,
+  SlideSemanticStructure,
+  SlideMeaningfulSequence,
+  SlideSensoryCharacteristics,
+  SlideInputPurpose,
+  SlideAudioControl,
+  SlideTextResize,
+  SlideImagesOfText,
+  SlideReflow,
+  SlideNonTextContrast,
+  SlideTextSpacing,
+  SlideHoverContent,
+} from "./slides/SlidePerceptible";
 import { SlideColorBlindnessTypes } from "./slides/SlideColorBlindnessTypes";
 import {
   SlideAdvancedPrinciplesIntro,
@@ -29,13 +43,55 @@ import {
 import SlideTools from "./slides/SlideTools";
 import SlideClosing from "./slides/SlideClosing";
 
+import { AltTextBad, AltTextGood } from "@/pages/examples/AltText";
+import {
+  MediaAlternativesBad,
+  MediaAlternativesGood,
+} from "@/pages/examples/MediaAlternatives";
+import {
+  SemanticStructureBad,
+  SemanticStructureGood,
+} from "@/pages/examples/SemanticStructure";
+import {
+  MeaningfulSequenceBad,
+  MeaningfulSequenceGood,
+} from "@/pages/examples/MeaningfulSequence";
+import {
+  SensoryCharacteristicsBad,
+  SensoryCharacteristicsGood,
+} from "@/pages/examples/SensoryCharacteristics";
+import {
+  InputPurposeBad,
+  InputPurposeGood,
+} from "@/pages/examples/InputPurpose";
 import {
   ColorContrastBad,
   ColorContrastGood,
 } from "@/pages/examples/ColorContrast";
+import {
+  AudioControlBad,
+  AudioControlGood,
+} from "@/pages/examples/AudioControl";
 import { TypographyBad, TypographyGood } from "@/pages/examples/Typography";
+import { TextResizeBad, TextResizeGood } from "@/pages/examples/TextResize";
+import {
+  ImagesOfTextBad,
+  ImagesOfTextGood,
+} from "@/pages/examples/ImagesOfText";
+import { ReflowBad, ReflowGood } from "@/pages/examples/Reflow";
+import {
+  NonTextContrastBad,
+  NonTextContrastGood,
+} from "@/pages/examples/NonTextContrast";
+import {
+  TextSpacingBad,
+  TextSpacingGood,
+} from "@/pages/examples/TextSpacing";
+import {
+  HoverContentBad,
+  HoverContentGood,
+} from "@/pages/examples/HoverContent";
 import { KeyboardNavBad, KeyboardNavGood } from "@/pages/examples/KeyboardNav";
-import { AltTextBad, AltTextGood } from "@/pages/examples/AltText";
 import {
   FocusTrapBad,
   FocusTrapNoEscape,
@@ -83,19 +139,59 @@ export default function Slides() {
         <SlideAccessBenefits />
         <SlideSituations />
         <SlideBusinessImpact />
-        <SlideColorUsage />
-        <SlideColorBlindnessTypes />
-        <ColorContrastBad />
-        <ColorContrastGood />
-        <SlideTypography />
-        <TypographyBad />
-        <TypographyGood />
-        <SlideKeyboardNav />
-        <KeyboardNavBad />
-        <KeyboardNavGood />
+
+        {/* 1. Perceptible */}
         <SlideAltText />
         <AltTextBad />
         <AltTextGood />
+        <SlideMediaAlternatives />
+        <MediaAlternativesBad />
+        <MediaAlternativesGood />
+        <SlideSemanticStructure />
+        <SemanticStructureBad />
+        <SemanticStructureGood />
+        <SlideMeaningfulSequence />
+        <MeaningfulSequenceBad />
+        <MeaningfulSequenceGood />
+        <SlideSensoryCharacteristics />
+        <SensoryCharacteristicsBad />
+        <SensoryCharacteristicsGood />
+        <SlideInputPurpose />
+        <InputPurposeBad />
+        <InputPurposeGood />
+        <SlideColorUsage />
+        <ColorContrastBad />
+        <ColorContrastGood />
+        <SlideColorBlindnessTypes />
+        <SlideAudioControl />
+        <AudioControlBad />
+        <AudioControlGood />
+        <SlideTypography />
+        <TypographyBad />
+        <TypographyGood />
+        <SlideTextResize />
+        <TextResizeBad />
+        <TextResizeGood />
+        <SlideImagesOfText />
+        <ImagesOfTextBad />
+        <ImagesOfTextGood />
+        <SlideReflow />
+        <ReflowBad />
+        <ReflowGood />
+        <SlideNonTextContrast />
+        <NonTextContrastBad />
+        <NonTextContrastGood />
+        <SlideTextSpacing />
+        <TextSpacingBad />
+        <TextSpacingGood />
+        <SlideHoverContent />
+        <HoverContentBad />
+        <HoverContentGood />
+
+        {/* 2. Operable (pendiente de completar en la próxima tanda) */}
+        <SlideKeyboardNav />
+        <KeyboardNavBad />
+        <KeyboardNavGood />
         <SlideFocusTrap />
         <FocusTrapBad />
         <FocusTrapNoEscape />

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Bell, Code2, MessageSquare, Package, Receipt, RotateCcw } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import AppShell from "./AppShell";
+import InfoBlock from "./InfoBlock";
 
 const NOTIFICATIONS = [
   { id: "n1", icon: Package, title: "Pedido #4521 confirmado", time: "hace 2 min" },
@@ -30,11 +31,7 @@ function usePrefersReducedMotion() {
 
 function SolutionInfo() {
   return (
-    <section className="mt-10 rounded-xl border-2 border-blue-200 bg-blue-50/40 p-6">
-      <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-blue-700">
-        <Code2 className="h-4 w-4" aria-hidden="true" />
-        Cómo se respeta la preferencia
-      </h2>
+    <InfoBlock title="Cómo se respeta la preferencia" icon={Code2} className="mt-10">
       <p className="mb-3 text-sm text-gray-700">
         Con animaciones controladas por JS (como acá, con <code>motion/react</code>), hay que leer la
         preferencia con <code>matchMedia</code> y suscribirse a sus cambios:
@@ -65,7 +62,7 @@ query.addEventListener("change", (event) => {
         En ambos casos la fuente de verdad es la preferencia real del sistema operativo del usuario,
         no un control manual en la UI.
       </p>
-    </section>
+    </InfoBlock>
   );
 }
 

@@ -6,14 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 function DevToolsInfo() {
   return (
-    <section className="mt-10 rounded-xl border-2 border-blue-200 bg-blue-50/40 p-6">
-      <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-blue-700">
-        <MonitorCog className="h-4 w-4" aria-hidden="true" />
-        Probalo en vivo con las DevTools del navegador
-      </h2>
+    <InfoBlock title="Probalo en vivo con las DevTools del navegador" icon={MonitorCog} className="mt-10">
       <ol className="list-decimal space-y-1 pl-5 text-sm text-gray-700">
         <li>Abrí las DevTools (<kbd>F12</kbd> o clic derecho → Inspeccionar).</li>
         <li>Abrí el menú <kbd>⋮</kbd> → <strong>More tools</strong> → <strong>Rendering</strong>.</li>
@@ -23,7 +20,7 @@ function DevToolsInfo() {
       <p className="mt-3 text-xs text-gray-600">
         En Firefox: panel de Accesibilidad → ícono de simulación de visión, arriba a la derecha del panel.
       </p>
-    </section>
+    </InfoBlock>
   );
 }
 
