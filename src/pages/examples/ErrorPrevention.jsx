@@ -47,11 +47,30 @@ function GoodExample() {
   const helpId = 'good-stock-quantity-help';
   const statusId = 'good-stock-quantity-status';
 
+  const validate = (raw) => {
+    const quantity = Number(raw);
+    if (!Number.isFinite(quantity) || raw === '' || quantity < 0 || quantity > MAX_STOCK) {
+      return `Ingresá una cantidad entre 0 y ${MAX_STOCK}.`;
+    }
+    return null;
+  };
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+    if (newValue === '') {
+      setStatus(null);
+      return;
+    }
+    const message = validate(newValue);
+    setStatus(message ? { kind: 'error', message } : null);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const quantity = Number(value);
-    if (!Number.isFinite(quantity) || value === '' || quantity < 0 || quantity > MAX_STOCK) {
-      setStatus({ kind: 'error', message: `Ingresá una cantidad entre 0 y ${MAX_STOCK}.` });
+    const message = validate(value);
+    if (message) {
+      setStatus({ kind: 'error', message });
       return;
     }
     setStatus({ kind: 'success', message: 'Stock cargado correctamente.' });
@@ -65,10 +84,7 @@ function GoodExample() {
         name="quantity"
         type="number"
         value={value}
-        onChange={(event) => {
-          setValue(event.target.value);
-          setStatus(null);
-        }}
+        onChange={handleChange}
         min="0"
         max={MAX_STOCK}
         required

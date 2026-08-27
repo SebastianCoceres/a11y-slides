@@ -137,6 +137,18 @@ export function SlideTextSpacing() {
   );
 }
 
+export function SlideOrientation() {
+  return (
+    <Slide>
+      <h2 className="text-3xl text-brand-light mb-2">Orientación</h2>
+      <p className="text-base text-gray-400 italic">
+        Bloquear una pantalla en vertical u horizontal deja afuera a quien montó el celular en un soporte fijo, salvo que esa orientación sea esencial para la función (ej. un piano virtual).
+      </p>
+      <WcagRef>WCAG 1.3.4 — Orientación (AA)</WcagRef>
+    </Slide>
+  );
+}
+
 export function SlideHoverContent() {
   return (
     <Slide>
