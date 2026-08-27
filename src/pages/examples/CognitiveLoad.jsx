@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -44,10 +44,11 @@ const STEPS = [
 ];
 
 function MiniField({ label }) {
+  const inputId = useId();
   return (
     <div>
-      <Label className="mb-1 block text-xs text-gray-600">{label}</Label>
-      <Input className="h-8 text-sm" />
+      <Label htmlFor={inputId} className="mb-1 block text-xs text-gray-600">{label}</Label>
+      <Input id={inputId} className="h-8 text-sm" />
     </div>
   );
 }

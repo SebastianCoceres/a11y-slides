@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Dialog,
   DialogClose,
@@ -111,7 +112,10 @@ function GoodModal() {
           <DialogTitle>Eliminar factura #F-2451</DialogTitle>
           <DialogDescription>¿Confirmás que querés eliminarla? Esta acción no se puede deshacer.</DialogDescription>
         </DialogHeader>
-        <Input placeholder="Motivo (opcional)" />
+        <div className="grid gap-1.5">
+          <Label htmlFor="good-delete-reason">Motivo (opcional)</Label>
+          <Input id="good-delete-reason" name="delete-reason" />
+        </div>
         <DialogFooter>
           <DialogClose render={<Button variant="outline" />}>Cancelar</DialogClose>
           <DialogClose render={<Button className="bg-red-600 text-white hover:bg-red-500" />}>Eliminar</DialogClose>

@@ -48,7 +48,7 @@ function GoodExample() {
         </button>
         <div>
           <p className="text-sm font-semibold text-slate-900">Llamada de soporte — Estudio Delgado</p>
-          <p className="text-xs text-slate-400">{playing ? 'Reproduciendo…' : 'En pausa'}</p>
+          <p className="text-xs text-slate-600">{playing ? 'Reproduciendo…' : 'En pausa'}</p>
         </div>
       </div>
       <div className="mt-4">

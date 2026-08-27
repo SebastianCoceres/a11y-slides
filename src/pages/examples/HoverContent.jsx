@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { HelpCircle, X } from 'lucide-react';
+import { useEffect, useId, useState } from 'react';
+import { HelpCircle } from 'lucide-react';
 import AppShell from './AppShell';
 import InfoBlock from './InfoBlock';
 
@@ -25,6 +25,7 @@ function BadExample() {
 
 function GoodExample() {
   const [open, setOpen] = useState(false);
+  const tooltipId = useId();
 
   useEffect(() => {
     if (!open) return;
@@ -37,29 +38,28 @@ function GoodExample() {
     <div className="w-72 rounded-lg border border-slate-200 bg-white p-5">
       <div className="flex items-center gap-1.5">
         <p className="text-sm font-medium text-slate-700">Stock mínimo</p>
-        <span className="relative flex" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+        <span
+          className="relative flex"
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          onFocusCapture={() => setOpen(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+          }}
+        >
           <button
             type="button"
-            onFocus={() => setOpen(true)}
-            onBlur={() => setOpen(false)}
             aria-label="Qué significa stock mínimo"
-            className="flex h-4 w-4 items-center justify-center text-slate-400 hover:text-slate-600">
+            aria-describedby={open ? tooltipId : undefined}
+            className="flex h-7 w-7 items-center justify-center rounded text-slate-400 hover:text-slate-600">
             <HelpCircle className="h-3.5 w-3.5" />
           </button>
           {open && (
             <span
+              id={tooltipId}
               role="tooltip"
-              onMouseEnter={() => setOpen(true)}
-              onMouseLeave={() => setOpen(false)}
               className="absolute bottom-full left-1/2 mb-2 w-52 -translate-x-1/2 rounded-md bg-slate-900 p-2.5 text-xs text-white">
               Cantidad debajo de la cual se dispara una reposición automática.
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Cerrar"
-                className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-700 text-white">
-                <X className="h-2.5 w-2.5" />
-              </button>
             </span>
           )}
         </span>
@@ -97,8 +97,7 @@ export function HoverContentGood() {
         <InfoBlock title="Hoverable, dismissible, persistente">
           <p className="text-sm text-gray-700">
             El tooltip tiene que poder recibirse por foco de teclado (no solo mouse), quedarse abierto si
-            el mouse se mueve hacia él, y cerrarse con Escape o un botón — sin que otra interacción lo
-            tape.
+            el mouse se mueve hacia él, y cerrarse con Escape — sin que otra interacción lo tape.
           </p>
         </InfoBlock>
       }>

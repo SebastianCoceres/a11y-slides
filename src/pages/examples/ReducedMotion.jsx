@@ -73,7 +73,7 @@ function ReplayButton({ onReplay }) {
       onClick={onReplay}
       className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm hover:bg-slate-50"
     >
-      <RotateCcw className="h-3.5 w-3.5" />
+      <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
       Repetir animación
     </button>
   );
@@ -91,10 +91,10 @@ function NotificationCard({ icon: Icon, title, time, index, animated }) {
       }
       className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-4 py-3"
     >
-      <Icon className="h-4 w-4 shrink-0 text-brand" />
+      <Icon className="h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium text-slate-800">{title}</p>
-        <p className="text-xs text-slate-400">{time}</p>
+        <p className="text-xs text-slate-600">{time}</p>
       </div>
     </motion.li>
   );

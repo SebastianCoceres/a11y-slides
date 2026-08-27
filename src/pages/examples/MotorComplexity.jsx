@@ -165,8 +165,10 @@ function GoodExample() {
           <p className="text-xs text-gray-500">Depósito Norte — estantería B4</p>
         </div>
         <button
+          type="button"
           onClick={() => setFav((f) => !f)}
-          aria-label="Marcar como favorito"
+          aria-label={fav ? 'Quitar de favoritos' : 'Marcar como favorito'}
+          aria-pressed={fav}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-amber-500">
           <Star className={cn('h-5 w-5', fav && 'fill-amber-400 text-amber-400')} />
         </button>
@@ -174,22 +176,31 @@ function GoodExample() {
 
       <div className="flex items-center gap-3">
         <button
+          type="button"
           onClick={dec}
+          aria-label="Reducir cantidad"
           className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">
           <Minus className="h-5 w-5" />
         </button>
-        <span className="w-10 text-center text-lg font-semibold text-gray-900">{count}</span>
+        <output aria-live="polite" aria-label={`Cantidad: ${count}`} className="w-10 text-center text-lg font-semibold text-gray-900">{count}</output>
         <button
+          type="button"
           onClick={inc}
+          aria-label="Aumentar cantidad"
           className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">
           <Plus className="h-5 w-5" />
         </button>
       </div>
 
-      <label className="mt-5 flex items-center gap-2.5 py-1.5">
-        <Checkbox checked={autoReponer} onCheckedChange={setAutoReponer} />
-        <span className="text-sm text-gray-700">Reponer automáticamente</span>
-      </label>
+      <div className="mt-5 flex items-center gap-2.5 py-1.5">
+        <Checkbox
+          id="good-auto-reponer"
+          checked={autoReponer}
+          onCheckedChange={setAutoReponer}
+          className="size-5"
+        />
+        <label htmlFor="good-auto-reponer" className="text-sm text-gray-700">Reponer automáticamente</label>
+      </div>
     </div>
   );
 }

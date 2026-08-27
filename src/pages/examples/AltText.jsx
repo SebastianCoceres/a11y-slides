@@ -48,11 +48,11 @@ function ProductTable({ good }) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-10" />
+          <TableHead className="w-10"><span className="sr-only">Imagen</span></TableHead>
           <TableHead>Producto</TableHead>
           <TableHead>Ubicación</TableHead>
           <TableHead className="text-right">Stock</TableHead>
-          <TableHead className="w-10" />
+          <TableHead className="w-12"><span className="sr-only">Acciones</span></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -70,8 +70,9 @@ function ProductTable({ good }) {
             <TableCell className="text-right">{p.stock}</TableCell>
             <TableCell>
               <button
+                type="button"
                 aria-label={good ? `Eliminar ${p.nombre}` : undefined}
-                className="text-gray-400 hover:text-red-600"
+                className={good ? 'flex h-11 w-11 items-center justify-center text-gray-400 hover:text-red-600' : 'text-gray-400 hover:text-red-600'}
               >
                 <Trash2 className="h-4 w-4" />
               </button>

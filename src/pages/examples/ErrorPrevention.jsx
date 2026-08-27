@@ -41,21 +41,48 @@ function BadExample() {
 
 function GoodExample() {
   const [value, setValue] = useState('');
+  const [status, setStatus] = useState(null); // { kind: 'error' | 'success', message: string }
+  const inputId = 'good-stock-quantity';
+  const helpId = 'good-stock-quantity-help';
+  const statusId = 'good-stock-quantity-status';
 
-  const handleChange = (e) => {
-    const raw = e.target.value;
-    if (raw === '') return setValue('');
-    const n = Math.max(0, Math.min(MAX_STOCK, Number(raw)));
-    setValue(String(n));
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const quantity = Number(value);
+    if (!Number.isFinite(quantity) || value === '' || quantity < 0 || quantity > MAX_STOCK) {
+      setStatus({ kind: 'error', message: `Ingresá una cantidad entre 0 y ${MAX_STOCK}.` });
+      return;
+    }
+    setStatus({ kind: 'success', message: 'Stock cargado correctamente.' });
   };
 
   return (
-    <div className="w-80 rounded-lg border border-slate-200 bg-white p-5">
-      <Label className="mb-1 block text-sm text-gray-700">Cantidad a cargar</Label>
-      <Input type="number" value={value} onChange={handleChange} max={MAX_STOCK} placeholder="0" />
-      <p className="mt-1.5 text-xs text-gray-500">Máximo {MAX_STOCK} unidades disponibles.</p>
-      <Button className="mt-4">Cargar</Button>
-    </div>
+    <form className="w-80 rounded-lg border border-slate-200 bg-white p-5" onSubmit={handleSubmit} noValidate>
+      <Label htmlFor={inputId} className="mb-1 block text-sm text-gray-700">Cantidad a cargar</Label>
+      <Input
+        id={inputId}
+        name="quantity"
+        type="number"
+        value={value}
+        onChange={(event) => {
+          setValue(event.target.value);
+          setStatus(null);
+        }}
+        min="0"
+        max={MAX_STOCK}
+        required
+        aria-invalid={status?.kind === 'error'}
+        aria-describedby={`${helpId} ${status ? statusId : ''}`.trim()}
+        placeholder="0"
+      />
+      <p id={helpId} className="mt-1.5 text-xs text-gray-500">Máximo {MAX_STOCK} unidades disponibles.</p>
+      {status && (
+        <p id={statusId} role={status.kind === 'error' ? 'alert' : 'status'} className="mt-2 text-sm text-gray-700">
+          {status.message}
+        </p>
+      )}
+      <Button type="submit" className="mt-4">Cargar</Button>
+    </form>
   );
 }
 

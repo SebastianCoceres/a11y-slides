@@ -52,9 +52,9 @@ function GoodExample() {
             type="button"
             onClick={() => setCaptions((c) => !c)}
             aria-pressed={captions}
-            aria-label="Subtítulos"
+            aria-label={captions ? 'Desactivar subtítulos' : 'Activar subtítulos'}
             className={cn(
-              'absolute bottom-3 left-3 flex h-6 w-6 items-center justify-center rounded',
+              'absolute bottom-3 left-3 flex h-8 w-8 items-center justify-center rounded',
               captions ? 'bg-white text-slate-900' : 'bg-black/60 text-white',
             )}>
             <Captions className="h-3.5 w-3.5" />
@@ -62,12 +62,17 @@ function GoodExample() {
         </VideoMock>
         <div className="mt-2 flex items-center justify-between gap-3">
           <p className="text-sm font-semibold text-slate-900">Onboarding de ventas — Módulo 1</p>
-          <a href="#" className="flex shrink-0 items-center gap-1 text-xs font-medium text-brand hover:underline">
-            <FileText className="h-3 w-3" />
-            Ver transcripción
-          </a>
+          <details className="relative shrink-0 text-xs font-medium text-brand">
+            <summary className="flex cursor-pointer items-center gap-1 hover:underline">
+              <FileText className="h-3 w-3" aria-hidden="true" />
+              Ver transcripción
+            </summary>
+            <p className="absolute z-10 mt-2 w-64 rounded bg-white p-3 text-slate-700 shadow-lg">
+              La capacitación explica cómo crear oportunidades, asignar responsables y registrar el próximo paso.
+            </p>
+          </details>
         </div>
-        <p className="mt-0.5 text-xs text-slate-400">Incluye audiodescripción en la pista de audio.</p>
+        <p className="mt-0.5 text-xs text-slate-600">Incluye audiodescripción en la pista de audio.</p>
       </div>
       <div>
         <VideoMock live />

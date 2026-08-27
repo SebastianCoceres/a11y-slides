@@ -18,7 +18,7 @@ function GoodExample() {
   return (
     <div className="w-56 rounded-lg border border-slate-200 bg-white px-3 py-2.5">
       <p className="text-sm font-semibold text-slate-900">Tornillos M6 (caja x100)</p>
-      <p className="text-xs text-slate-400">Depósito Norte — estantería B4</p>
+      <p className="text-xs text-slate-600">Depósito Norte — estantería B4</p>
     </div>
   );
 }

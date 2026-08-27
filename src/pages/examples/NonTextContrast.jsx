@@ -38,19 +38,19 @@ function GoodExample() {
         <button
           type="button"
           aria-label="Editar pedido"
-          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900">
+          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-brand">
           <Pencil className="h-4 w-4" />
         </button>
         <button
           type="button"
           aria-label="Duplicar pedido"
-          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900">
+          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-brand">
           <Copy className="h-4 w-4" />
         </button>
         <button
           type="button"
           aria-label="Eliminar pedido"
-          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900">
+          className="flex h-8 w-8 items-center justify-center rounded border border-slate-300 text-slate-600 hover:border-slate-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-brand">
           <Trash2 className="h-4 w-4" />
         </button>
       </div>

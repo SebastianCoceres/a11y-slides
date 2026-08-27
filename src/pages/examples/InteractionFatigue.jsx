@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import AppShell from "./AppShell";
@@ -83,6 +84,7 @@ function BadExample() {
 
 function GoodExample() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const tabRefs = useRef([]);
   const requestedTab = searchParams.get("tab");
   const tab = TABS.includes(requestedTab) ? requestedTab : DEFAULT_TAB;
 
@@ -97,13 +99,39 @@ function GoodExample() {
     );
   };
 
+  const selectTab = (nextTab) => {
+    setTab(nextTab);
+    tabRefs.current[TABS.indexOf(nextTab)]?.focus();
+  };
+
+  const handleTabKeyDown = (event, index) => {
+    let nextIndex = index;
+    if (event.key === "ArrowRight") nextIndex = (index + 1) % TABS.length;
+    else if (event.key === "ArrowLeft") nextIndex = (index - 1 + TABS.length) % TABS.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = TABS.length - 1;
+    else return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    selectTab(TABS[nextIndex]);
+  };
+
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5">
-      <div className="mb-4 flex gap-1 border-b border-slate-200">
-        {TABS.map((t) => (
+      <div role="tablist" aria-label="Información del contacto" className="mb-4 flex gap-1 border-b border-slate-200">
+        {TABS.map((t, index) => (
           <button
             key={t}
+            ref={(node) => { tabRefs.current[index] = node; }}
+            id={`contact-tab-${t}`}
+            type="button"
+            role="tab"
+            aria-selected={tab === t}
+            aria-controls={`contact-panel-${t}`}
+            tabIndex={tab === t ? 0 : -1}
             onClick={() => setTab(t)}
+            onKeyDown={(event) => handleTabKeyDown(event, index)}
             className={cn(
               "border-b-2 px-3 py-2 text-sm font-medium",
               tab === t
@@ -116,9 +144,13 @@ function GoodExample() {
         ))}
       </div>
 
-      {tab === "Historial" && <HistoryList />}
+      {tab === "Historial" && (
+        <div id="contact-panel-Historial" role="tabpanel" aria-labelledby="contact-tab-Historial">
+          <HistoryList />
+        </div>
+      )}
       {tab === "Perfil" && (
-        <div className="space-y-4">
+        <div id="contact-panel-Perfil" role="tabpanel" aria-labelledby="contact-tab-Perfil" className="space-y-4">
           <Section title="Datos generales">
             <p className="text-sm text-gray-500">
               Estudio Delgado — CUIT 30-71234567-9 — Cliente desde 2021
@@ -140,11 +172,13 @@ function GoodExample() {
         </div>
       )}
       {tab === "Notas" && (
-        <Section title="Notas">
-          <p className="text-sm text-gray-500">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-        </Section>
+        <div id="contact-panel-Notas" role="tabpanel" aria-labelledby="contact-tab-Notas">
+          <Section title="Notas">
+            <p className="text-sm text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </Section>
+        </div>
       )}
     </div>
   );

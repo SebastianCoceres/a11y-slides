@@ -55,8 +55,6 @@ function BadExample() {
 }
 
 function GoodExample() {
-  const [open, setOpen] = useState(false);
-
   return (
     <ReportCard>
       <div className="flex items-center gap-2">
@@ -64,34 +62,31 @@ function GoodExample() {
           <Download data-icon="inline-start" />
           Descargar
         </Button>
-        <div className="relative">
-          <button
-            onClick={() => setOpen((o) => !o)}
-            className="flex h-8 w-8 items-center justify-center rounded-md border border-slate-200 text-gray-500 hover:bg-slate-50">
-            <MoreVertical className="h-4 w-4" />
-          </button>
-          {open && (
-            <div className="absolute right-0 z-10 mt-1 w-44 rounded-md border border-slate-200 bg-white py-1 shadow-lg">
-              <div className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-700 hover:bg-slate-50">
+        <details className="relative">
+          <summary className="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-md border border-slate-200 text-gray-500 hover:bg-slate-50 [&::-webkit-details-marker]:hidden">
+            <MoreVertical className="h-4 w-4" aria-hidden="true" />
+            <span className="sr-only">Más acciones del reporte</span>
+          </summary>
+          <div className="absolute right-0 z-10 mt-1 w-44 rounded-md border border-slate-200 bg-white py-1 shadow-lg">
+            <button type="button" className="flex min-h-10 w-full items-center gap-2 px-3 py-1.5 text-left text-sm text-gray-700 hover:bg-slate-50">
                 <Share2 className="h-3.5 w-3.5 text-gray-400" />
                 Compartir
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-700 hover:bg-slate-50">
+            </button>
+            <button type="button" className="flex min-h-10 w-full items-center gap-2 px-3 py-1.5 text-left text-sm text-gray-700 hover:bg-slate-50">
                 <Copy className="h-3.5 w-3.5 text-gray-400" />
                 Duplicar
-              </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-700 hover:bg-slate-50">
+            </button>
+            <button type="button" className="flex min-h-10 w-full items-center gap-2 px-3 py-1.5 text-left text-sm text-gray-700 hover:bg-slate-50">
                 <Archive className="h-3.5 w-3.5 text-gray-400" />
                 Archivar
-              </div>
-              <div className="my-1 border-t border-slate-100" />
-              <div className="flex items-center gap-2 px-3 py-1.5 text-sm text-red-600 hover:bg-red-50">
+            </button>
+            <div className="my-1 border-t border-slate-100" />
+            <button type="button" className="flex min-h-10 w-full items-center gap-2 px-3 py-1.5 text-left text-sm text-red-600 hover:bg-red-50">
                 <Trash2 className="h-3.5 w-3.5" />
                 Eliminar
-              </div>
-            </div>
-          )}
-        </div>
+            </button>
+          </div>
+        </details>
       </div>
     </ReportCard>
   );

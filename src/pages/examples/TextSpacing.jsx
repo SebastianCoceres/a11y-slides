@@ -11,6 +11,7 @@ function SpacingToggle({ spaced, onToggle }) {
     <button
       type="button"
       onClick={onToggle}
+      aria-pressed={spaced}
       className="mb-4 flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 shadow-sm hover:bg-slate-50">
       <AlignJustify className="h-3.5 w-3.5" />
       {spaced ? 'Espaciado por defecto' : 'Aplicar más espaciado'}
