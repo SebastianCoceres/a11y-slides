@@ -1,256 +1,304 @@
-# GUION.md — "Accesibilidad: el tiempo de desarrollo que estamos regalando"
+# GUION.md — Accesibilidad web: de checklist a ventaja operativa
+
+Guion de presentación alineado al orden real de la aplicación (`src/components/Slides.jsx`). Cada sección corresponde a un tramo del deck: primero la diapositiva conceptual, luego la comparación interactiva Bad/Good cuando existe. El criterio WCAG 2.2 correspondiente figura entre paréntesis.
 
 ---
 
-## BLOQUE 0 — Apertura (Slide: Título)
+## Introducción
 
-_(Pantalla en negro. Aparece: "Poder usar tus productos". El orador entra sin
-diapositiva de bienvenida, arranca directo.)_
+**Título — A11Y**
 
-El trimestre pasado, en algún momento, alguien no pudo usar algo que
-nosotros construimos. No sé quién fue. No sé en qué pantalla se trabó. Pero
-sé que pasó, porque siempre pasa, y sé que a esa persona no le mandamos una
-disculpa: simplemente se fue.
+Esta charla trata sobre accesibilidad web: qué es, por qué afecta directamente el trabajo de un equipo de producto, y cómo aplicarla sin agregar procesos nuevos.
 
-_(pausa)_
+**Premisa — ¿Qué es A11Y?**
 
-Esta charla no es sobre ese usuario en abstracto. Es sobre el trabajo que
-eso nos genera a nosotros: el ticket que alguien de soporte escaló sin saber
-bien qué responder, el bug que un dev no pudo reproducir porque "en mi
-máquina anda", el parche que salió apurado un viernes a la tarde. Y depende
-de que dejemos de repetir ese error.
+A11Y es la abreviatura numérica de "Accessibility" (A + 11 letras + Y). Accesibilidad significa diseñar un producto que funcione para cualquier persona, en cualquier condición. No es una categoría de usuarios aparte: es una propiedad de calidad del software, en la misma familia que el rendimiento o la seguridad.
 
----
+**Estándar global — WCAG 2.2**
 
-## BLOQUE 1 — Redefiniendo el problema (Slide: Premisa)
+El W3C define las Web Content Accessibility Guidelines (WCAG) desde 1994. La versión vigente es la 2.2, con criterios verificables organizados en tres niveles de conformidad: A (mínimo), AA (el exigido por normativas como la directiva UE 2019/882) y AAA (óptimo, no siempre aplicable). Esta charla se apoya en los 55 criterios de nivel A y AA.
 
-Cuando alguien escucha "accesibilidad", piensa en discapacidad, piensa en
-un nicho chico, piensa "no es mi público". Es el malentendido que más
-trabajo repetido nos hace generar, así que empecemos por ahí.
+**Principios básicos — POUR**
 
-Accesibilidad no es diseñar para "personas con discapacidad". Es diseñar un
-producto que funcione para cualquiera, en cualquier condición. Y "cualquier
-condición" les incluye a ustedes. Al que hace QA con el brazo enyesado. A la
-persona de soporte que abre el celular al sol y no ve bien la pantalla. Al
-desarrollador con la conexión del hotel que anda mal, en medio de una demo
-en una conferencia.
+Los criterios de WCAG se agrupan en cuatro principios:
 
-Nadie en esta sala es la persona de 25 a 45 años sana, con buena vista, buena
-conexión y tiempo de sobra, las 24 horas del día. Esa persona no existe. Ni
-siquiera ustedes son esa persona todo el tiempo.
+- **Perceptible**: la información debe poder percibirse, sea cual sea el sentido disponible.
+- **Operable**: los controles deben poder manejarse con teclado, mouse, voz u otros dispositivos.
+- **Comprensible**: la información y el comportamiento de la interfaz deben ser predecibles.
+- **Robusto**: el contenido debe funcionar con distintos navegadores y tecnologías asistivas.
 
----
+El resto de la charla sigue este mismo orden.
 
-## BLOQUE 2 — Los casos que no estamos testeando (Slide: Situaciones)
+**Beneficios — El efecto rampa de acceso**
 
-_(Se proyecta la tabla de situaciones)_
+La rampa en la vereda se construyó para sillas de ruedas. Hoy la usan carritos de bebé, repartidores y ciclistas. Ese es el efecto rampa de acceso: una mejora diseñada para un caso específico termina beneficiando a la base de usuarios completa.
 
-Miren esta lista: alguien sosteniendo un bebé con una sola mano. Alguien con
-una lesión temporal. Alguien con el reflejo del sol. Alguien con conexión lenta. Alguien con
-guantes. Alguien que rompió los lentes. Una persona mayor. Alguien caminando y mirando el celular.
+**Situaciones — ¿Por qué nos interesa aplicarla?**
 
-¿Se dieron cuenta de qué es esta lista? Es literalmente todo el mundo, en
-algún momento del día. No es un edge case remoto que casi nunca pasa. Es el
-caso más común que tenemos, y es justo el que no estamos simulando en
-ningún ambiente de test.
+La lista de situaciones que se muestra en esta diapositiva no describe casos excepcionales: describe circunstancias que cualquier persona del equipo puede atravesar en un día de trabajo normal (luz solar sobre la pantalla, una conexión lenta, una lesión temporal, cansancio visual). Accesibilidad es diseñar considerando esa variabilidad como la norma, no como la excepción.
 
-Cada uno de esos momentos, si nuestro producto no aguanta, es un bug
-reportado que no podemos reproducir en nuestro entorno, porque depende del
-contexto real de quien lo usa, no de los datos que probamos nosotros. Y eso
-significa horas nuestras, no de ellos, tratando de entender qué pasó. Vamos
-a ver por qué nos conviene prevenirlo.
+**Impacto en el negocio — Lo que nos ahorramos como equipo**
+
+Los beneficios de aplicar accesibilidad se distribuyen en toda la organización: menos tickets de soporte por problemas ya conocidos, menor costo de desarrollo al aplicar el criterio desde el diseño en lugar de corregirlo después, onboarding más rápido sobre un código consistente, ampliación del mercado direccionable y reducción de riesgo legal y normativo.
 
 ---
 
-## BLOQUE 3 — Lo que nos ahorramos como equipo (Slide: Impacto en el negocio)
+## Bloque 1 — Perceptible
 
-_(Se proyecta la grilla de impacto)_
+La información y los componentes de la interfaz deben poder percibirse, independientemente del sentido con el que se acceda a ellos.
 
-Voy a dar cinco razones. Ninguna es "porque está bien hacerlo". Cada una le
-pega directo al trabajo diario de alguien específico de esta sala. Encuentren
-la suya.
+**Texto alternativo (1.1.1, A)**
 
-- **Si están en soporte:** menos tickets escalados como "bug crítico" que en
-  realidad son problemas de accesibilidad ya conocidos. Cada vez que un
-  ticket se reabre tres veces porque el fix real nunca se hizo, es tiempo de
-  ese equipo — y después es tiempo nuestro, cuando lo terminan escalando a
-  desarrollo igual.
-- **Si están en desarrollo:** aplicar esto desde el diseño es más rápido que
-  parchearlo después. No es trabajo nuevo, es dejar de escribir el mismo fix
-  de emergencia dos o tres veces en módulos distintos.
-- **Si están onboardeando gente nueva:** un código con estos principios ya
-  incorporados es más fácil de leer y de replicar. Un dev nuevo que copia un
-  patrón inconsistente propaga el mismo bug a otro módulo sin darse cuenta.
+Todo contenido no textual (imágenes, íconos, gráficos) requiere una alternativa textual equivalente. Mostrar comparación: sin texto alternativo, un lector de pantalla no comunica ninguna información sobre el elemento; con `alt` descriptivo, el contenido queda disponible incluso si la imagen no carga.
 
-Y para quien todavía piensa "esto no es prioridad, todavía no explotó nada
-grave" — perfecto, supongamos que tienen razón. Igual se reduce el tiempo
-que gastamos reproduciendo bugs raros, el tiempo que gastamos
-re-explicándole el mismo patrón a cada persona nueva, y el tiempo que
-soporte nos hace perder escalando algo que ya sabíamos que iba a pasar.
-Prevenir es el piso de este argumento, no el techo.
+**Medios basados en tiempo (1.2.1–1.2.5, A/AA)**
 
----
+Contenido de audio o video grabado requiere alternativas equivalentes: transcripción para audio, subtítulos sincronizados y audiodescripción para video. Sin esas alternativas, el contenido queda inaccesible para quien no puede percibir el canal original.
 
-## BLOQUE 4 — Mostrame que esto no es tanto laburo (Slide: Uso de color / Tipografía / Teclado / Alt text / Focus trap / Movimiento reducido)
+**Información y relaciones (1.3.1, A)**
 
-Sé lo que está pensando alguien en esta sala ahora mismo: "somos B2B, no
-vamos a tener usuarios ciegos trabajando con esto, esto no me sirve". Bien.
-No les voy a hablar de un usuario que no tienen. Les voy a hablar de los
-quién usa nuestro software ocho horas por día, todos los días:
+La estructura de una interfaz (encabezados, listas, relaciones entre campo y etiqueta) debe existir en el marcado semántico, no solamente en el estilo visual. Si la jerarquía se logra únicamente con CSS, una tecnología asistiva no puede reconstruirla.
 
-- **Color:** Uno de cada doce varones tiene algún tipo de daltonismo.
-  Si el datatable marca “vencido” solo con rojo sobre verde, el analista
-  puede no identificar cuáles son las filas problemáticas al seleccionar
-  varios elementos. Un ícono con texto podría indicarle claramente cuáles
-  están vencidos y evitar la frustración de no saber por qué “Confirmar”
-  está deshabilitado.
-- **Tipografía:** uno operador revisando nuestro ERP toda la
-  mañana con vista cansada puede tener dificultades para leer textos
-  pequeños o con poco interlineado. Probablemente no identifique la causa
-  como un problema de tipografía: simplemente tendrá que esforzarse más
-  para leer la información o recurrir a soporte para confirmar algo que
-  debería poder interpretar por sí mismo.
-- **Teclado:** el operador que carga 400 registros por día en nuestro CRM
-  puede usar Tab para recorrer rápidamente los campos del formulario. Si el
-  foco salta de un campo a otro sin un orden lógico, tendrá que volver atrás
-  o usar el mouse para continuar. Un orden de foco correcto le permite
-  completar la misma tarea de forma más rápida y sin interrupciones.
-- **Alt text:** un usuario revisando un reporte puede encontrarse con
-  información presentada únicamente mediante un gráfico o una imagen. Si
-  esa imagen no tiene alt, al no cargarse correctamente por una conexión
-  lenta puede quedar sin contexto sobre la información que representa. Un
-  texto alternativo permite comunicar ese contenido incluso cuando la imagen
-  no está disponible.
-- **Focus trap:** un usuario que navega con teclado puede abrir un modal y,
-  si el foco se escapa hacia los elementos que están detrás, tendrá que
-  volver al mouse para regresar al modal. Para un usuario que navega con
-  mouse, este problema puede no existir, pero el scroll o la interacción
-  con el contenido detrás del modal también pueden generar una experiencia
-  confusa. Con la etiqueta dialog, gran parte de este comportamiento ya se gestiona
-  de forma nativa.
-- **Movimiento reducido:** una persona con un trastorno vestibular o
-  migrañas puede abrir nuestro dashboard y encontrarse con notificaciones
-  que rebotan, parpadean o se desplazan solas. Si el sistema operativo ya
-  tiene activada la preferencia de reducir movimiento, esa animación no
-  debería reproducirse igual — pero si la ignoramos, la persona no tiene
-  forma de evitarla. Respetar `prefers-reduced-motion`, un estándar nativo
-  del navegador, es la diferencia entre una interfaz usable y una que hay
-  que abandonar.
+**Secuencia significativa (1.3.2, A)**
+
+El orden en el que el contenido se presenta a un lector de pantalla debe conservar el significado, incluso cuando no coincide con el orden visual logrado por CSS. Mostrar comparación: un formulario reordenado visualmente sin tocar el DOM produce una lectura fuera de orden.
+
+**Características sensoriales (1.3.3, A)**
+
+Las instrucciones no pueden depender exclusivamente de forma, color, tamaño o posición ("el botón redondo verde"). Deben incluir un identificador textual que no dependa de la percepción visual.
+
+**Orientación (1.3.4, AA)**
+
+El contenido debe funcionar tanto en orientación vertical como horizontal, salvo que una orientación sea esencial para la función (por ejemplo, una aplicación de piano). Bloquear la orientación sin justificación excluye a quien usa el dispositivo en un soporte fijo.
+
+**Identificar el propósito de la entrada (1.3.5, AA)**
+
+Los campos de datos personales comunes (nombre, teléfono, dirección) deben identificarse programáticamente mediante `autocomplete`. Sin ese atributo, cada formulario se completa manualmente, sin aprovechar el autocompletado del navegador o de un gestor de contraseñas.
+
+**Uso de color adecuado (1.4.1, A)**
+
+El color no puede ser el único medio para transmitir información o distinguir un estado. Uno de cada doce hombres presenta algún tipo de daltonismo; la diapositiva siguiente muestra cómo se percibe el mismo contenido bajo protanopia, deuteranopia, tritanopia y monocromacia. Mostrar comparación: un estado marcado solo con color rojo/verde frente al mismo estado reforzado con ícono y texto.
+
+**Control de audio (1.4.2, A)**
+
+Todo audio que se reproduce automáticamente por más de tres segundos debe poder pausarse, detenerse o silenciarse. Un audio que arranca solo y no ofrece control interfiere con cualquier lector de pantalla activo en la página.
+
+**Tipografía legible — Contraste mínimo (1.4.3, AA)**
+
+El texto debe mantener una relación de contraste de al menos 4.5:1 con su fondo (3:1 para texto grande). Un contraste insuficiente exige un esfuerzo visual adicional a cualquier persona, tenga o no una condición de visión diagnosticada.
+
+**Cambio de tamaño del texto (1.4.4, AA)**
+
+El texto debe poder ampliarse hasta el 200% sin pérdida de contenido ni de funcionalidad. Si el texto se corta o superpone al agrandarlo, la interfaz queda inutilizable para baja visión.
+
+**Imágenes de texto (1.4.5, AA)**
+
+Debe usarse texto real en lugar de texto incrustado en una imagen, salvo casos esenciales como logotipos. Un texto renderizado como imagen no puede seleccionarse, traducirse, ni redimensionarse.
+
+**Reflow (1.4.10, AA)**
+
+El contenido debe adaptarse a un ancho de 320px sin generar scroll horizontal ni pérdida de información. La aparición de scroll horizontal a ese ancho es el primer síntoma de un layout que no escala.
+
+**Contraste de elementos no textuales (1.4.11, AA)**
+
+Íconos, bordes y estados de controles deben mantener al menos 3:1 de contraste contra su fondo. La misma exigencia de legibilidad aplicada al texto corresponde a cualquier elemento gráfico funcional.
+
+**Espaciado de texto (1.4.12, AA)**
+
+El contenido debe seguir siendo legible cuando una persona aumenta el interlineado o el espaciado entre letras y párrafos desde su navegador o su tecnología asistiva. Un contenedor de altura fija impide ese ajuste.
+
+**Contenido al pasar el cursor o enfocar (1.4.13, AA)**
+
+El contenido adicional que aparece con hover o focus (tooltips, menús) debe poder descartarse, debe ser persistente mientras el cursor permanece sobre él, y debe ser alcanzable con el puntero. Un tooltip que desaparece antes de poder leerse no cumple ninguna función.
 
 ---
 
-## BLOQUE 5 — Lo que separa un parche de una base de código sana (Slide: Principios avanzados)
+## Bloque 2 — Operable
 
-Antes de seguir, una aclaración corta: lo que viene no son criterios de
-WCAG. Son lentes de diseño — formas de mirar un problema de interfaz que
-casi nunca aparecen en un checklist de accesibilidad, pero que explican por
-qué algo "funciona" y aun así nos sigue generando trabajo. Esto es lo que
-separa un parche de una base de código sana:
+Los componentes de navegación y los controles deben poder manejarse mediante teclado, voz u otros dispositivos, sin límites de tiempo ni gestos que excluyan a una parte de los usuarios.
 
-- **Carga cognitiva:** accesibilidad también es cuánto tiene que recordar y
-  procesar una persona para completar una tarea. Nuestro formulario de alta
-  de cliente tiene 40 campos en una sola pantalla — la persona tiene que
-  recordar qué le falta, distinguir qué es obligatorio, interpretar errores
-  y sostener en la cabeza lo que ya cargó mientras busca el resto. Cuando la
-  interfaz exige demasiada memoria, el error no aparece ahí: aparece días
-  después en otro módulo, cuando ya nadie se acuerda qué pasó. Partir el
-  proceso en pasos y mostrar el contexto necesario no es "hacer la UI más
-  linda". Es reducir lo que alguien tiene que sostener en la cabeza para
-  hacer bien su trabajo.
-- **Complejidad motriz:** no todos interactúan con una interfaz con la misma
-  precisión, velocidad o margen de error. Un botón chico, dos controles
-  pegados o un drag-and-drop son triviales con un mouse, en un escritorio,
-  sin apuro — y un problema real para alguien con una mano ocupada, en una
-  tablet, o moviéndose por el depósito. Si una tarea pide diez movimientos
-  precisos cuando alcanza con una acción simple, esa precisión de más es una
-  barrera que pusimos nosotros, no una que vino con el trabajo.
-- **Fatiga por interacción:** un agente de soporte que hace quince scrolls
-  para encontrar el historial de un cliente puede completar la tarea una vez
-  sin problema. El tema es que la hace cien veces por día — ahí deja de ser
-  un detalle de UX y se convierte en una carga operativa que después nos
-  vuelve como tickets mal cargados y errores humanos que en realidad causó
-  la interfaz.
-- **Consistencia:** no es que toda la aplicación se vea igual. Es que la
-  misma intención produzca siempre el mismo comportamiento. Si "Guardar"
-  está en un lugar distinto en cada módulo, cada persona tiene que
-  reinterpretar la interfaz una y otra vez — y cada dev que toca ese código
-  reintroduce el mismo patrón inconsistente, porque no hay un único lugar de
-  referencia. Un componente accesible y reutilizable evita que cada equipo
-  reimplemente desde cero foco, estados, teclado y semántica. Un design
-  system no es solo una herramienta visual: también es una herramienta de
-  accesibilidad.
-- **Prevención de errores:** no alcanza con explicar qué salió mal después
-  de que la persona ya se equivocó. Si un operador de depósito puede cargar
-  150 cuando el máximo es 15, mostrar el error después de enviar el
-  formulario ya es tarde — mejor impedir la entrada imposible y avisar
-  mientras se está cargando el dato. Corregir un error obliga a detectarlo,
-  entenderlo y recuperarse. Prevenirlo elimina esas tres etapas, y el costo
-  de no prevenirlo no se queda en la pantalla: se convierte en datos
-  incorrectos, operaciones manuales, tickets, e investigación en logs tres
-  días después.
-- **Recuperación de errores:** los errores van a pasar igual. La pregunta es
-  qué tan fácil es volver atrás. Si alguien borra un registro, "registro
-  eliminado correctamente" no alcanza — hace falta poder deshacerlo,
-  recuperarlo, y que quede claro qué pasó. Un sistema que permite
-  equivocarse y recuperarse rápido es más accesible que uno que exige
-  precisión perfecta para no quedar atrapado.
-- **Diseño inclusivo:** asumir que quien usa nuestro software no está ahí
-  para aprender cómo funciona. Está ahí para hacer su trabajo. El operario
-  quiere gestionar el stock, la vendedora quiere atender al cliente, la
-  persona de oficina quiere cerrar su tarea — ninguno debería tener que
-  pararse a pensar qué espera el software de ellos. Diseñamos para
-  situaciones reales: con prisa, con interrupciones, cansados, bajo presión.
-  Si para hacer su trabajo alguien tiene que seguirle el rastro a nuestro
-  software, le estamos trasladando nuestra complejidad interna a la persona
-  que lo usa. Y esa complejidad no se queda ahí: vuelve a nosotros como el
-  mismo bug reportado una y otra vez por soporte, porque el usuario sigue
-  tropezando con la complejidad que nunca resolvimos de raíz — solo que cada
-  vez con un ticket distinto y un contexto que hay que reconstruir de cero.
+**Navegación por teclado (2.1.1, A)**
 
-Cada vez que obligamos a alguien a recordar algo que la interfaz podría
-mostrar, a hacer una acción que podría evitarse, a interpretar algo que
-podría explicarse, o a recuperarse de un error que podríamos haber
-prevenido, le estamos trasladando complejidad del software a la persona. Y
-en software empresarial esa complejidad no desaparece: vuelve a nosotros,
-como errores de datos, tickets, operaciones manuales y deuda técnica. Una
-buena interfaz no solo hace que la tarea se pueda completar. Hace que sea
-difícil hacerla mal, fácil recuperarse cuando algo sale mal, y razonable
-repetirla cien veces por día.
+Toda la funcionalidad debe estar disponible desde el teclado. Afecta a cualquier persona que no pueda o no quiera depender del mouse: lesiones por esfuerzo repetitivo, uso prolongado de formularios, o simplemente preferencia de flujo de trabajo.
 
----
+**Focus trap — Sin trampas de teclado (2.1.2, A)**
 
-## BLOQUE 6 — No hace falta un proyecto nuevo (Slide: Herramientas)
+El foco debe poder salir de cualquier componente usando exclusivamente el teclado. Mostrar tres variantes: sin manejo de foco (el foco se escapa detrás del modal), manejo parcial (el foco queda atrapado sin salida) y manejo correcto (el foco se gestiona con `<dialog>` nativo, incluyendo cierre con Escape).
 
-Y ahora la objeción de siempre, la que seguro está pensando alguien ahora
-mismo: ¿con qué herramientas hacemos esto?
+**Atajos de un carácter (2.1.4, A)**
 
-- **Componentes antes que páginas:** tenemos doce modales distintos en el
-  producto porque cada equipo construyó el suyo. Cuando aparece un bug de
-  navegación por teclado, lo arreglamos doce veces — o lo encuentra QA en el
-  módulo equivocado, en el peor momento del sprint. Un solo componente de
-  modal bien hecho se corrige una vez y el arreglo se replica solo, sin que
-  nadie tenga que acordarse de los otros once.
+Un atajo compuesto por una sola tecla debe poder desactivarse, remapearse, o limitarse a cuando un control específico tiene el foco. Mostrar comparación: un atajo global sin esas condiciones se dispara mientras la persona escribe en cualquier campo de texto de la página.
 
-Con lo que ya tenemos instalado:
+**Tiempo ajustable (2.2.1, A)**
 
-- **DevTools**, gratis, ya está en el navegador de cada desarrollador de
-  este equipo.
-- **Lighthouse**, gratis, audita accesibilidad junto con performance.
-- **axe-core**, gratis, motor de reglas WCAG que corre en nuestro propio DOM.
-- **Playwright**, que ya usamos o deberíamos usar, y valida accesibilidad
-  como parte del pipeline de CI, así el problema nunca llega a producción.
+Cuando existe un límite de tiempo, debe poder extenderse. Mostrar comparación con un caso de reserva de stock (patrón equivalente al de las plataformas de venta de entradas al reservar asientos): sin aviso ni opción de extender, la reserva se libera sin que la persona tenga oportunidad de reaccionar; con aviso a los últimos diez segundos y botón de extensión, el tiempo queda bajo control de la persona. Mencionar las excepciones del criterio: eventos en tiempo real esenciales sin alternativa posible, límites cuya extensión invalidaría la actividad, y límites superiores a veinte horas.
 
-Cero herramientas nuevas. Cero configuración exótica. Lo único que hace
-falta es que, desde el próximo sprint, decidamos hacerlo bien la primera
-vez, en vez de volver sobre el mismo módulo dentro de tres meses porque el
-mismo ticket volvió a aparecer.
+**Movimiento controlable — Pausar, detener, ocultar (2.2.2, A)**
+
+Contenido que se mueve, parpadea o se actualiza automáticamente debe poder pausarse. Mostrar comparación: un carrusel que rota sin control disponible frente al mismo carrusel con botón de pausa.
+
+**Tres destellos o por debajo del umbral (2.3.1, A)**
+
+Ningún contenido puede destellar más de tres veces por segundo: puede inducir convulsiones en personas con epilepsia fotosensible. Este criterio se explica sin demostración en vivo, por razones de seguridad para la audiencia.
+
+**Movimiento reducido (2.3.3, AAA)**
+
+Rebotes, parallax y auto-scroll pueden provocar mareo en personas con trastornos vestibulares o migrañas. Respetar la preferencia del sistema operativo `prefers-reduced-motion` es la diferencia entre una interfaz utilizable y una que la persona debe abandonar.
+
+**Evitar bloques repetidos (2.4.1, A)**
+
+Debe existir un mecanismo para saltear bloques de contenido que se repiten en cada página, como la navegación principal. Sin ese mecanismo, cada página cuesta lo mismo: tabular por todo el menú antes de llegar al contenido.
+
+**Título de página (2.4.2, A)**
+
+Cada página debe tener un título que describa su tema o propósito. Un título genérico no permite distinguir pestañas del navegador ni orienta a un lector de pantalla al cambiar de contexto.
+
+**Orden del foco (2.4.3, A)**
+
+El orden en el que se recibe el foco debe conservar el significado y la operabilidad de la interfaz. Un ajuste de CSS que reordena visualmente sin modificar el DOM produce un recorrido de teclado que no corresponde al orden visual.
+
+**Propósito del enlace, en contexto (2.4.4, A)**
+
+El propósito de un enlace debe poder entenderse por su texto o por el contexto inmediato. Repetir "Ver más" en una lista sin contexto adicional no permite distinguir un enlace de otro fuera de esa lista.
+
+**Múltiples vías (2.4.5, AA)**
+
+Debe existir más de un mecanismo para llegar a un contenido determinado: búsqueda, filtro o navegación estructurada. Depender exclusivamente del scroll en una lista extensa no constituye una vía razonable de acceso.
+
+**Encabezados y etiquetas (2.4.6, AA)**
+
+Los encabezados y las etiquetas de formulario deben describir el tema o propósito del contenido que acompañan. Etiquetas genéricas ("Campo 1") son técnicamente válidas pero no comunican información utilizable.
+
+**Foco visible (2.4.7, AA)**
+
+Todo elemento que recibe foco de teclado debe mostrar un indicador visible. Eliminar el `outline` sin reemplazo dificulta que una persona que navega con teclado identifique su posición actual en la interfaz.
+
+**Foco no ocultado, mínimo (2.4.11, AA)**
+
+El elemento con foco no puede quedar completamente tapado por otro contenido, como un encabezado fijo. Mostrar comparación: una lista con encabezado `sticky` sin `scroll-margin` oculta los elementos inferiores al enfocarlos; con el margen correspondiente, el elemento enfocado permanece visible.
+
+**Gestos del puntero (2.5.1, A)**
+
+Toda función activada mediante un gesto de trayectoria o multipunto (como deslizar) debe tener una alternativa de un solo punto. Una galería navegable únicamente por swipe excluye a quien no puede ejecutar ese gesto.
+
+**Cancelación del puntero (2.5.2, A)**
+
+Las acciones deben confirmarse al soltar el clic, no al presionar, y deben poder cancelarse arrastrando el puntero fuera del control antes de soltar. Disparar una acción destructiva en `pointerdown` elimina esa última oportunidad de cancelar.
+
+**Etiqueta en el nombre (2.5.3, A)**
+
+El nombre accesible de un control debe incluir el texto visible que lo identifica. Si el texto visible y el nombre accesible no coinciden, el control por voz que repite el texto visible no logra activar el control.
+
+**Activación por movimiento (2.5.4, A)**
+
+Las funciones activadas por el movimiento del dispositivo (agitar, inclinar) deben tener un control equivalente en pantalla y poder desactivarse. Este criterio se explica sin demostración, dado que requiere un dispositivo físico móvil.
+
+**Movimientos de arrastre (2.5.7, AA)**
+
+Toda función de arrastrar y soltar debe tener una alternativa que no dependa del arrastre. Reordenar una lista únicamente por drag-and-drop excluye a quien no puede sostener ese gesto con precisión.
+
+**Tamaño del objetivo, mínimo (2.5.8, AA)**
+
+Los objetivos táctiles deben medir al menos 24×24px, o contar con espacio suficiente entre controles adyacentes. Esta diapositiva incluye un simulador de temblor de mano: activarlo antes de comparar los tamaños de objetivo evidencia la dificultad de acertar un control por debajo del mínimo.
 
 ---
 
-## BLOQUE 7 — Cierre
+## Bloque 3 — Comprensible
 
-La pregunta no es si esto nos cuesta tiempo. La pregunta es si preferimos
-gastarlo ahora o después,
-reproduciendo un error que podriamos haber evitado tan solo con un poco de atención al detalle.
+La información y el funcionamiento de la interfaz deben ser predecibles y fáciles de interpretar.
+
+**Idioma de la página (3.1.1, A)**
+
+El idioma principal del documento debe declararse mediante el atributo `lang`. Sin esa declaración, un lector de pantalla puede aplicar reglas fonéticas de otro idioma a todo el contenido. Este criterio se explica a nivel de documento, sin demostración interactiva.
+
+**Idioma de las partes (3.1.2, AA)**
+
+Un fragmento de texto en un idioma distinto al principal del documento debe marcarse con su propio atributo `lang`. Mostrar comparación: una cita en inglés sin marcar se pronuncia con fonética del idioma principal del documento.
+
+**Al recibir el foco (3.2.1, A)**
+
+Ningún control puede disparar un cambio de contexto por el solo hecho de recibir el foco. Mostrar comparación: un `<select>` que navega apenas se tabula hacia él, antes de que la persona elija una opción, frente a la misma navegación disparada únicamente tras una selección explícita.
+
+**Al recibir entrada de datos (3.2.2, A)**
+
+Ningún control puede disparar un cambio de contexto automático por el solo hecho de modificar su valor. Un filtro que navega o descarta datos no guardados apenas cambia de valor debe reemplazarse por un paso de confirmación explícito.
+
+**Navegación consistente (3.2.3, AA)**
+
+Los mecanismos de navegación que se repiten deben aparecer en el mismo orden en todas las páginas. Un menú que cambia de orden entre pantallas obliga a reinterpretar la navegación en cada una.
+
+**Identificación consistente (3.2.4, AA)**
+
+Los componentes con la misma función deben identificarse de forma consistente en toda la aplicación. Si la acción "Guardar" ocupa una posición distinta en cada módulo, cada persona debe reinterpretar la interfaz cada vez.
+
+**Ayuda consistente (3.2.6, A)**
+
+Cuando existe un mecanismo de ayuda, debe aparecer en la misma posición relativa en todas las páginas. Un botón de ayuda que cambia de esquina entre pantallas obliga a buscarlo de nuevo cada vez.
+
+**Identificación de errores (3.3.1, A)**
+
+Los errores de un formulario deben identificarse y describirse en texto, asociados al campo correspondiente mediante `aria-invalid` y `aria-describedby`, y anunciados en tiempo real. Mostrar comparación: un error que aparece como texto suelto y solo tras el envío del formulario, frente a un error asociado al campo y anunciado apenas ocurre.
+
+**Etiquetas o instrucciones (3.3.2, A)**
+
+Los campos de un formulario deben contar con etiquetas o instrucciones claras sobre el formato esperado, disponibles antes de que la persona cometa un error. Mostrar comparación: un formato indicado únicamente mediante `placeholder` (que desaparece al escribir y no está asociado al campo) frente a una instrucción persistente y vinculada mediante `aria-describedby`.
+
+**Sugerencia ante errores (3.3.3, AA)**
+
+Cuando se detecta un error, debe sugerirse cómo corregirlo. Un mensaje genérico ("dato inválido") obliga a adivinar; un mensaje específico indica exactamente qué falta corregir.
+
+**Prevención de errores: legal, financiero, datos (3.3.4, AA)**
+
+En acciones significativas o irreversibles, debe ofrecerse la posibilidad de revisar, corregir o cancelar antes de confirmar. Mostrar comparación: una eliminación ejecutada al primer clic frente a la misma acción mediada por un diálogo de confirmación explícito.
+
+**Entrada redundante (3.3.7, A)**
+
+No debe solicitarse a la persona que vuelva a ingresar información ya provista en el mismo proceso. Pedir dos veces la misma dirección en un mismo formulario es trabajo evitable.
+
+**Autenticación accesible, mínimo (3.3.8, AA)**
+
+El proceso de autenticación no debe depender exclusivamente de una prueba cognitiva, salvo que exista una alternativa. Bloquear el pegado en un campo de contraseña no aporta seguridad adicional: solo impide el uso de gestores de contraseñas y obliga a transcribir manualmente.
 
 ---
+
+## Bloque 4 — Robusto
+
+El contenido debe ser compatible con una amplia variedad de navegadores y tecnologías asistivas.
+
+**Nombre, rol, valor (4.1.2, A)**
+
+Todo componente de interfaz personalizado debe exponer su nombre, rol y estado a las tecnologías de asistencia. Mostrar comparación: un control estilizado como interruptor pero construido sobre un `<div>` sin rol ni estado accesible, frente al mismo control implementado como `<button role="switch" aria-checked>`.
+
+**Mensajes de estado (4.1.3, AA)**
+
+Los mensajes de estado (confirmaciones, errores) deben anunciarse a lectores de pantalla sin robar el foco, mediante regiones `aria-live`. Un mensaje de confirmación que solo aparece visualmente no llega a quien no puede ver la pantalla en ese momento.
+
+---
+
+## Bloque 5 — Más allá de lo básico
+
+Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por qué una interfaz técnicamente conforme puede seguir generando fricción operativa.
+
+**Carga cognitiva**
+
+Es la cantidad de información que una persona debe recordar y procesar para completar una tarea. Un formulario extenso en una sola pantalla exige sostener en la memoria qué falta completar, qué es obligatorio y qué errores hay que corregir. Dividir el proceso en pasos reduce esa carga.
+
+**Fatiga por interacción**
+
+Cada interacción tiene un costo. Una tarea que exige múltiples pasos repetitivos es tolerable una vez, pero se convierte en carga operativa cuando se repite decenas de veces por día.
+
+**Diseño inclusivo**
+
+Quien usa un producto no está ahí para aprender cómo funciona: está ahí para completar una tarea. Diseñar para condiciones reales (interrupciones, presión de tiempo, cansancio) evita trasladar la complejidad del software a la persona que lo usa.
+
+---
+
+## Cierre
+
+**Herramientas**
+
+La implementación no requiere herramientas nuevas: DevTools del navegador para inspección de contraste y árbol de accesibilidad, Lighthouse para auditoría automatizada, axe-core como motor de reglas WCAG sobre el DOM, y Playwright para validar accesibilidad como parte del pipeline de integración continua. Priorizar componentes reutilizables sobre implementaciones ad hoc por página evita corregir el mismo defecto múltiples veces.
+
+**Cierre**
+
+La pregunta no es si la accesibilidad implica una inversión de tiempo. La pregunta es si esa inversión se realiza durante el diseño o se paga más tarde, en forma de soporte, corrección de errores y deuda técnica.
