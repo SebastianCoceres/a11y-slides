@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import AppShell from "./AppShell";
+import InfoBlock from "./InfoBlock";
 
 const TABS = ["Perfil", "Historial", "Notas"];
 const DEFAULT_TAB = "Historial";
@@ -186,7 +187,18 @@ function GoodExample() {
 
 export function InteractionFatigueBad() {
   return (
-    <AppShell active="Contactos" title="Estudio Delgado">
+    <AppShell
+      active="Contactos"
+      title="Estudio Delgado"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Las siete secciones del perfil están una debajo de la otra en un solo scroll. Para llegar al
+            historial de pedidos hay que scrollear más allá de cinco secciones — si es una tarea repetida
+            cien veces por día, ese desplazamiento acumulado se convierte en el verdadero costo.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </AppShell>
   );
@@ -194,7 +206,18 @@ export function InteractionFatigueBad() {
 
 export function InteractionFatigueGood() {
   return (
-    <AppShell active="Contactos" title="Estudio Delgado">
+    <AppShell
+      active="Contactos"
+      title="Estudio Delgado"
+      info={
+        <InfoBlock title="La info que se necesita, a un clic">
+          <p className="text-sm text-gray-700">
+            Las mismas secciones ahora están detrás de un tablist accesible por teclado (flechas, Home/End)
+            y el tab activo persiste en la URL. La sección buscada aparece de una, sin scrollear, y el link
+            a <code>?tab=Historial</code> se puede compartir directo.
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </AppShell>
   );

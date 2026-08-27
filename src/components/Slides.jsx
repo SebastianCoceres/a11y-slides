@@ -188,7 +188,7 @@ export default function Slides() {
         <HoverContentBad />
         <HoverContentGood />
 
-        {/* 2. Operable (pendiente de completar en la próxima tanda) */}
+        {/* 2. Operable */}
         <SlideKeyboardNav />
         <KeyboardNavBad />
         <KeyboardNavGood />

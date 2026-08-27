@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 function BadModal() {
   const [open, setOpen] = useState(false);
@@ -127,7 +128,18 @@ function GoodModal() {
 
 export function FocusTrapBad() {
   return (
-    <AppShell active="Facturas" title="Factura #F-2451">
+    <AppShell
+      active="Facturas"
+      title="Factura #F-2451"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            El modal no gestiona el foco: al abrirse, el foco se queda donde estaba, y Tab lo hace seguir
+            avanzando por los elementos de fondo, tapados por el overlay. Quien navega con teclado puede
+            terminar interactuando con contenido invisible sin darse cuenta.
+          </p>
+        </InfoBlock>
+      }>
       <BadModal />
     </AppShell>
   );
@@ -135,7 +147,18 @@ export function FocusTrapBad() {
 
 export function FocusTrapNoEscape() {
   return (
-    <AppShell active="Facturas" title="Factura #F-2451">
+    <AppShell
+      active="Facturas"
+      title="Factura #F-2451"
+      info={
+        <InfoBlock variant="warning" title="Mejor, pero sigue mal">
+          <p className="text-sm text-gray-700">
+            Ahora el foco entra al modal y Tab no se escapa hacia el fondo — pero el bloqueo es total: no
+            hay forma de salir con teclado, ni con Escape ni tabulando hasta el final. Es una trampa de
+            teclado real (viola WCAG 2.1.2, Sin trampas de teclado).
+          </p>
+        </InfoBlock>
+      }>
       <NoEscapeModal />
     </AppShell>
   );
@@ -143,7 +166,18 @@ export function FocusTrapNoEscape() {
 
 export function FocusTrapGood() {
   return (
-    <AppShell active="Facturas" title="Factura #F-2451">
+    <AppShell
+      active="Facturas"
+      title="Factura #F-2451"
+      info={
+        <InfoBlock title="Foco correctamente gestionado">
+          <p className="text-sm text-gray-700">
+            El Dialog mueve el foco adentro al abrirse, lo retiene con Tab sin dejarlo escapar al fondo,
+            cierra con Escape y devuelve el foco al botón que lo abrió — todo sin una línea de manejo
+            manual de foco (WCAG 2.1.2, Sin trampas de teclado).
+          </p>
+        </InfoBlock>
+      }>
       <GoodModal />
     </AppShell>
   );

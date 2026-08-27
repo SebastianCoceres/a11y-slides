@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MoreVertical, Share2, Copy, Download, Archive, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 function ReportCard({ children }) {
   return (
@@ -94,7 +95,18 @@ function GoodExample() {
 
 export function InclusiveDesignBad() {
   return (
-    <AppShell active="Reportes" title="Ventas — Q3">
+    <AppShell
+      active="Reportes"
+      title="Ventas — Q3"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Las opciones del menú ("Compartir", "Duplicar"...) son <code>div</code> sin rol, sin{' '}
+            <code>onClick</code> y sin foco — no son botones, son texto con estilo de botón. No se pueden
+            activar ni con mouse ni con teclado; solo parecen interactivas.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </AppShell>
   );
@@ -102,7 +114,19 @@ export function InclusiveDesignBad() {
 
 export function InclusiveDesignGood() {
   return (
-    <AppShell active="Reportes" title="Ventas — Q3">
+    <AppShell
+      active="Reportes"
+      title="Ventas — Q3"
+      info={
+        <InfoBlock title="Elementos reales, no solo con la apariencia">
+          <p className="text-sm text-gray-700">
+            Cada opción es un <code>button</code> real, con <code>min-h-10</code> (dentro del mínimo de
+            WCAG 2.5.8) y accesible por teclado. El disparador usa <code>summary</code> con{' '}
+            <code>aria-hidden</code> en el ícono y un <code>sr-only</code> que describe la acción ("Más
+            acciones del reporte") en vez de depender solo del ícono.
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </AppShell>
   );

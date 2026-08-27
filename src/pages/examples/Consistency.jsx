@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 function Panel({ label, children }) {
   return (
@@ -56,7 +57,19 @@ function GoodExample() {
 
 export function ConsistencyBad() {
   return (
-    <AppShell active="Dashboard" title="Consistencia entre módulos">
+    <AppShell
+      active="Dashboard"
+      title="Consistencia entre módulos"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            "Editar factura" usa un botón outline arriba a la derecha con el texto "Guardar"; "Editar
+            pedido" usa un botón sólido abajo a la izquierda con el texto "Actualizar". Misma acción, dos
+            estilos, dos textos y dos posiciones distintas — quien aprendió a buscar el botón en un módulo
+            tiene que reaprenderlo en el otro.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </AppShell>
   );
@@ -64,7 +77,18 @@ export function ConsistencyBad() {
 
 export function ConsistencyGood() {
   return (
-    <AppShell active="Dashboard" title="Consistencia entre módulos">
+    <AppShell
+      active="Dashboard"
+      title="Consistencia entre módulos"
+      info={
+        <InfoBlock title="Misma acción, mismo lugar, mismo texto">
+          <p className="text-sm text-gray-700">
+            Ambos módulos usan el mismo componente <code>Button</code>, el mismo texto ("Guardar") y la
+            misma posición (abajo a la derecha) — cumpliendo WCAG 3.2.4: componentes con la misma
+            funcionalidad se identifican de forma consistente en toda la interfaz.
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </AppShell>
   );

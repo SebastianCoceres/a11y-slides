@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import AppShell from "./AppShell";
+import InfoBlock from "./InfoBlock";
 
 const ALL_FIELDS = [
   "Nombre",
@@ -149,24 +150,58 @@ function GroupedExample() {
 
 export function CognitiveLoadBad() {
   return (
-    <AppShell active="Contactos" title="Alta de cliente">
+    <AppShell
+      active="Contactos"
+      title="Alta de cliente"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Catorce campos sueltos, todos con el mismo peso visual, sin agrupar ni indicar cuántos quedan.
+            La persona tiene que sostener en la cabeza el formulario completo para saber si le falta algo —
+            el costo cognitivo crece con la cantidad de campos, no con la dificultad de cada uno.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
-    </AppShell>
-  );
-}
-
-export function CognitiveLoadGood() {
-  return (
-    <AppShell active="Contactos" title="Alta de cliente">
-      <GoodExample />
     </AppShell>
   );
 }
 
 export function CognitiveLoadGrouped() {
   return (
-    <AppShell active="Contactos" title="Alta de cliente">
+    <AppShell
+      active="Contactos"
+      title="Alta de cliente"
+      info={
+        <InfoBlock title="Agrupado, pero todavía en una sola pantalla">
+          <p className="text-sm text-gray-700">
+            Los catorce campos ahora están agrupados con <code>fieldset</code>/<code>legend</code>{' '}
+            semántico — mejor exploración con lector de pantalla y menos sensación de lista infinita —,
+            pero siguen siendo catorce campos visibles al mismo tiempo, sin el progreso incremental de un
+            wizard.
+          </p>
+        </InfoBlock>
+      }>
       <GroupedExample />
+    </AppShell>
+  );
+}
+
+export function CognitiveLoadGood() {
+  return (
+    <AppShell
+      active="Contactos"
+      title="Alta de cliente"
+      info={
+        <InfoBlock title="Menos para sostener en la cabeza a la vez">
+          <p className="text-sm text-gray-700">
+            Los mismos catorce campos, divididos en tres pasos con progreso visible. En cualquier momento
+            hay entre tres y seis campos a la vista, y el indicador de pasos dice cuánto falta — sin sacar
+            ningún campo del formulario.
+          </p>
+        </InfoBlock>
+      }>
+      <GoodExample />
     </AppShell>
   );
 }

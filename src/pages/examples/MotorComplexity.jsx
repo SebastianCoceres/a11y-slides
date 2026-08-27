@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Checkbox } from '@/components/ui/checkbox';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 function useCounter(initial) {
   const [count, setCount] = useState(initial);
@@ -90,13 +91,13 @@ function TargetSizeAlert() {
   );
 }
 
-function MotorComplexityShell({ children }) {
+function MotorComplexityShell({ info, children }) {
   const { active, toggle, renderPos } = useTremorCursor();
 
   return (
     <>
       {active && <style>{'*, *::before, *::after { cursor: none !important; }'}</style>}
-      <AppShell active="Inventario" title="Ajustar stock">
+      <AppShell active="Inventario" title="Ajustar stock" info={info}>
         {children}
         <TargetSizeAlert />
       </AppShell>
@@ -207,7 +208,16 @@ function GoodExample() {
 
 export function MotorComplexityBad() {
   return (
-    <MotorComplexityShell>
+    <MotorComplexityShell
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Los controles +/- y el ícono de favorito miden 20×20px, por debajo del mínimo de 24×24px que
+            pide WCAG 2.5.8. Activá "Simular tremor" arriba a la derecha para sentir lo difícil que es
+            acertarle a un botón chico con la mano temblando.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </MotorComplexityShell>
   );
@@ -215,7 +225,16 @@ export function MotorComplexityBad() {
 
 export function MotorComplexityGood() {
   return (
-    <MotorComplexityShell>
+    <MotorComplexityShell
+      info={
+        <InfoBlock title="Objetivos dentro del mínimo">
+          <p className="text-sm text-gray-700">
+            Los mismos controles ahora miden 40×40 y 48×48px, con más espacio entre ellos — dentro del
+            mínimo AA de 24×24px de WCAG 2.5.8. Probá "Simular tremor" para comparar cuánto más fácil es
+            acertarles.
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </MotorComplexityShell>
   );

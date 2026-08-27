@@ -1,71 +1,120 @@
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import AppShell from './AppShell';
+import { useId } from "react";
+import { MoveHorizontal, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import AppShell from "./AppShell";
+import InfoBlock from "./InfoBlock";
 
-function Field({ order, label, id }) {
+const ACTIONS = ["Nuevo pedido", "Nueva factura", "Nuevo contacto"];
+
+function NavActions() {
   return (
-    <div>
-      <div className="mb-1 flex items-center gap-2">
-        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold text-white">
-          {order}
-        </span>
-        <Label htmlFor={id} className="text-sm text-gray-700">
+    <>
+      {ACTIONS.map((label) => (
+        <Button
+          key={label}
+          type="button"
+          variant="outline"
+          size="sm"
+          className="w-full shrink-0 @lg:w-auto"
+        >
           {label}
-        </Label>
+        </Button>
+      ))}
+    </>
+  );
+}
+
+function SearchField({ id, className }) {
+  return (
+    <div className={`relative min-w-0 w-full ${className ?? ""}`}>
+      <Search
+        className="pointer-events-none absolute top-1/2 left-2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+        aria-hidden="true"
+      />
+      <Input
+        id={id}
+        type="search"
+        aria-label="Buscar"
+        placeholder="Buscar..."
+        className="pl-7"
+      />
+    </div>
+  );
+}
+
+function ResizableFrame({ children }) {
+  return (
+    <div className="w-fit max-w-full">
+      <div
+        className="@container max-w-full resize-x overflow-auto rounded-lg border border-slate-300 bg-white"
+        style={{ width: 360, minWidth: 240 }}
+      >
+        {children}
       </div>
-      <Input id={id} />
+      <p className="mt-2 flex items-center gap-1.5 text-xs text-gray-500">
+        <MoveHorizontal className="h-3.5 w-3.5" aria-hidden="true" />
+        Arrastrá el borde inferior derecho del recuadro para achicarlo o
+        agrandarlo.
+      </p>
     </div>
   );
 }
 
 function BadExample() {
+  const searchId = useId();
   return (
-    <div className="pt-3 pl-3">
-      <div className="flex gap-8">
-        <div className="flex w-48 flex-col gap-6">
-          <Field order={1} label="Nombre" id="bad-nombre" />
-          <Field order={2} label="Email" id="bad-email" />
-          <Field order={3} label="Empresa" id="bad-empresa" />
-          <Field order={4} label="Dirección" id="bad-direccion" />
-        </div>
-        <div className="flex w-48 flex-col gap-6">
-          <Field order={5} label="Apellido" id="bad-apellido" />
-          <Field order={6} label="Teléfono" id="bad-telefono" />
-          <Field order={7} label="Cargo" id="bad-cargo" />
-          <Field order={8} label="Ciudad" id="bad-ciudad" />
-        </div>
-      </div>
-      <p className="mt-8 text-xs text-gray-500">
-        Los números marcan el orden real de <kbd>Tab</kbd>. Probá: hacé clic en "Nombre" y tocá <kbd>Tab</kbd> —
-        el foco salta de columna en columna en vez de seguir la fila.
-      </p>
-    </div>
+    <ResizableFrame>
+      <nav
+        aria-label="Accesos rápidos"
+        className="flex flex-col gap-2 p-4 @lg:flex-row @lg:items-center"
+      >
+        <SearchField
+          id={searchId}
+          className="@lg:order-last @lg:ml-auto @lg:w-56"
+        />
+        <NavActions />
+      </nav>
+    </ResizableFrame>
   );
 }
 
 function GoodExample() {
+  const mobileSearchId = useId();
+  const desktopSearchId = useId();
   return (
-    <div className="pt-3 pl-3">
-      <div className="grid w-full max-w-md grid-cols-2 gap-6">
-        <Field order={1} label="Nombre" id="good-nombre" />
-        <Field order={2} label="Apellido" id="good-apellido" />
-        <Field order={3} label="Email" id="good-email" />
-        <Field order={4} label="Teléfono" id="good-telefono" />
-        <Field order={5} label="Empresa" id="good-empresa" />
-        <Field order={6} label="Cargo" id="good-cargo" />
-        <Field order={7} label="Dirección" id="good-direccion" />
-        <Field order={8} label="Ciudad" id="good-ciudad" />
-      </div>
-      <p className="mt-8 text-xs text-gray-500">
-        El orden del DOM sigue la fila visual: <kbd>Tab</kbd> avanza fila por fila, tal como se lee la pantalla.
-      </p>
-    </div>
+    <ResizableFrame>
+      <nav aria-label="Accesos rápidos">
+        <div className="flex flex-col gap-2 p-4 @lg:hidden">
+          <SearchField id={mobileSearchId} />
+          <NavActions />
+        </div>
+        <div className="hidden items-center gap-2 p-4 @lg:flex">
+          <NavActions />
+          <SearchField id={desktopSearchId} className="@lg:ml-auto @lg:w-56" />
+        </div>
+      </nav>
+    </ResizableFrame>
   );
 }
 
 export function KeyboardNavBad() {
   return (
-    <AppShell active="Contactos" title="Nuevo contacto">
+    <AppShell
+      active="Dashboard"
+      title="Accesos rápidos"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            El buscador está primero en el DOM (para que en mobile aparezca
+            arriba de todo) y en pantallas anchas se lo reubica visualmente al
+            final con <code>order-last</code> + <code>ml-auto</code>. El orden
+            de tabulación no cambia con el CSS: Tab sigue yendo primero al
+            buscador aunque visualmente esté a la derecha.
+          </p>
+        </InfoBlock>
+      }
+    >
       <BadExample />
     </AppShell>
   );
@@ -73,7 +122,22 @@ export function KeyboardNavBad() {
 
 export function KeyboardNavGood() {
   return (
-    <AppShell active="Contactos" title="Nuevo contacto">
+    <AppShell
+      active="Dashboard"
+      title="Accesos rápidos"
+      info={
+        <InfoBlock title="Cada ancho tiene su propio orden de DOM">
+          <p className="text-sm text-gray-700">
+            En vez de reordenar con CSS, hay dos barras — una para mobile
+            (buscador primero) y otra para desktop (acciones primero, buscador
+            al final) — y solo una está visible según el ancho del contenedor.{" "}
+            <code>display: none</code> saca la barra inactiva del árbol de
+            accesibilidad, así que Tab siempre sigue el orden visual real (WCAG
+            2.4.3, Orden de foco).
+          </p>
+        </InfoBlock>
+      }
+    >
       <GoodExample />
     </AppShell>
   );

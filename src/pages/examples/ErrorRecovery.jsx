@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Trash2, CheckCircle2 } from 'lucide-react';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 const INITIAL_CONTACTS = [
   { id: 1, name: 'Estudio Delgado' },
@@ -91,7 +92,19 @@ function GoodExample() {
 
 export function ErrorRecoveryBad() {
   return (
-    <AppShell active="Contactos" title="Contactos">
+    <AppShell
+      active="Contactos"
+      title="Contactos"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Al eliminar un contacto aparece un toast de confirmación sin <code>role</code> ni{' '}
+            <code>aria-live</code> — un lector de pantalla no anuncia nada, así que quien no ve la pantalla
+            no se entera de que borró algo ni tiene forma de deshacerlo. El toast además desaparece solo, a
+            los dos segundos.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </AppShell>
   );
@@ -99,7 +112,18 @@ export function ErrorRecoveryBad() {
 
 export function ErrorRecoveryGood() {
   return (
-    <AppShell active="Contactos" title="Contactos">
+    <AppShell
+      active="Contactos"
+      title="Contactos"
+      info={
+        <InfoBlock title="Se anuncia el cambio y se puede deshacer">
+          <p className="text-sm text-gray-700">
+            El aviso usa <code>role="status"</code> + <code>aria-live="polite"</code> (WCAG 4.1.3, Mensajes
+            de estado) para que se anuncie solo, incluye un botón "Deshacer" que recibe el foco al
+            aparecer, y se queda visible hasta que la persona decide qué hacer — no desaparece solo.
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </AppShell>
   );

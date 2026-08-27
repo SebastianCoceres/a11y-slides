@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AppShell from './AppShell';
+import InfoBlock from './InfoBlock';
 
 const MAX_STOCK = 15;
 
@@ -88,7 +89,18 @@ function GoodExample() {
 
 export function ErrorPreventionBad() {
   return (
-    <AppShell active="Inventario" title="Cargar stock">
+    <AppShell
+      active="Inventario"
+      title="Cargar stock"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            El error aparece como texto suelto debajo del input, sin <code>aria-describedby</code> ni{' '}
+            <code>aria-invalid</code> que lo asocien al campo, y solo se valida al hacer submit — nunca
+            antes. Quien usa lector de pantalla no se entera de qué campo falló ni por qué.
+          </p>
+        </InfoBlock>
+      }>
       <BadExample />
     </AppShell>
   );
@@ -96,7 +108,19 @@ export function ErrorPreventionBad() {
 
 export function ErrorPreventionGood() {
   return (
-    <AppShell active="Inventario" title="Cargar stock">
+    <AppShell
+      active="Inventario"
+      title="Cargar stock"
+      info={
+        <InfoBlock title="Error identificado y asociado al campo">
+          <p className="text-sm text-gray-700">
+            El input valida en tiempo real (<code>min</code>, <code>max</code>, <code>required</code>) y
+            linkea el mensaje al campo con <code>aria-describedby</code> + <code>aria-invalid</code>, con{' '}
+            <code>role="alert"</code> para que se anuncie apenas aparece (WCAG 3.3.1, Identificación de
+            errores).
+          </p>
+        </InfoBlock>
+      }>
       <GoodExample />
     </AppShell>
   );

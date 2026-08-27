@@ -124,7 +124,18 @@ function NotificationsPanel({ animated }) {
 export function ReducedMotionBad() {
   const [replayKey, setReplayKey] = useState(0);
   return (
-    <AppShell active="Dashboard" title="Centro de notificaciones">
+    <AppShell
+      active="Dashboard"
+      title="Centro de notificaciones"
+      info={
+        <InfoBlock variant="warning" title="Qué falta">
+          <p className="text-sm text-gray-700">
+            Las animaciones (rebote elástico, escalado infinito del badge) se reproducen siempre, sin leer
+            la preferencia del sistema operativo. Para alguien con un trastorno vestibular o migrañas, ese
+            movimiento constante puede marear o disparar síntomas.
+          </p>
+        </InfoBlock>
+      }>
       <div className="mb-4">
         <ReplayButton onReplay={() => setReplayKey((k) => k + 1)} />
         <p className="mt-2 text-xs text-slate-400">
@@ -141,7 +152,18 @@ export function ReducedMotionGood() {
   const reduced = usePrefersReducedMotion();
   const [replayKey, setReplayKey] = useState(0);
   return (
-    <AppShell active="Dashboard" title="Centro de notificaciones">
+    <AppShell
+      active="Dashboard"
+      title="Centro de notificaciones"
+      info={
+        <InfoBlock title="Se respeta la preferencia del sistema">
+          <p className="text-sm text-gray-700">
+            Con <code>prefers-reduced-motion: reduce</code> activo, las animaciones cambian a un fundido
+            breve y el badge deja de pulsar — sin desactivar la funcionalidad, solo el movimiento (WCAG
+            2.3.3, Animación desde interacciones, AAA). Abajo está el código de la implementación.
+          </p>
+        </InfoBlock>
+      }>
       <div className="mb-4">
         <ReplayButton onReplay={() => setReplayKey((k) => k + 1)} />
         <p className="mt-2 text-xs text-slate-400">
