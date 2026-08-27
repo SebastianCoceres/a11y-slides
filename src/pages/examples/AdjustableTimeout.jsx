@@ -1,113 +1,101 @@
 import { useEffect, useState } from 'react';
 import { AlertTriangle, Clock } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import AppShell from './AppShell';
 import InfoBlock from './InfoBlock';
 
-const TIMEOUT_SECONDS = 10;
+const HOLD_SECONDS = 30;
+const WARNING_THRESHOLD = 10;
 
 function BadExample() {
-  const [open, setOpen] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(TIMEOUT_SECONDS);
-  const [sessionEnded, setSessionEnded] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(HOLD_SECONDS);
 
   useEffect(() => {
-    if (!open) return undefined;
-    if (secondsLeft <= 0) {
-      setOpen(false);
-      setSessionEnded(true);
-      return undefined;
-    }
+    if (secondsLeft <= 0) return undefined;
     const id = setInterval(() => setSecondsLeft((s) => s - 1), 1000);
     return () => clearInterval(id);
-  }, [open, secondsLeft]);
+  }, [secondsLeft]);
 
-  const simulate = () => {
-    setSessionEnded(false);
-    setSecondsLeft(TIMEOUT_SECONDS);
-    setOpen(true);
-  };
+  const released = secondsLeft <= 0;
 
   return (
-    <div className="w-96 rounded-lg border border-slate-200 bg-white p-5">
-      <p className="text-sm font-semibold text-gray-900">Panel de facturación</p>
-      <p className="mt-1 text-xs text-gray-500">Simulá una sesión a punto de expirar.</p>
-      <Button onClick={simulate} className="mt-4">Simular sesión por expirar</Button>
-
-      {sessionEnded && (
-        <p className="mt-4 flex items-center gap-1.5 text-sm text-red-600">
-          <AlertTriangle className="h-4 w-4 shrink-0" />
-          Sesión cerrada automáticamente. El trabajo sin guardar se perdió.
-        </p>
-      )}
-
-      {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-          <div className="w-full max-w-sm rounded-xl bg-white p-5 shadow-xl">
-            <h3 className="mb-2 flex items-center gap-1.5 text-base font-semibold text-gray-900">
-              <Clock className="h-4 w-4 shrink-0 text-red-600" />
-              Tu sesión está por expirar
-            </h3>
-            <p className="text-sm text-gray-600">
-              Se cerrará automáticamente en <span className="font-semibold text-gray-900">{secondsLeft}</span> segundos.
-            </p>
-          </div>
-        </div>
-      )}
+    <div className="relative w-96 rounded-lg border border-slate-200 bg-white p-5">
+      <div aria-hidden="true" className="absolute top-3 right-3 flex items-center gap-1 text-xs font-medium text-gray-400">
+        <Clock className="h-3.5 w-3.5" />
+        {released ? '0:00' : `0:${String(secondsLeft).padStart(2, '0')}`}
+      </div>
+      <p className="text-sm font-semibold text-gray-900">Nuevo pedido</p>
+      <p className="mt-1 text-xs text-gray-500">Depósito Norte</p>
+      <div className="mt-4 rounded-md border border-slate-100 bg-slate-50 p-3 text-sm">
+        {released ? (
+          <p className="flex items-center gap-1.5 text-red-600">
+            <AlertTriangle className="h-4 w-4 shrink-0" />
+            La reserva expiró. Los ítems fueron liberados.
+          </p>
+        ) : (
+          <p className="text-gray-700">12 unidades de Tornillos M6 reservadas para este pedido.</p>
+        )}
+      </div>
     </div>
   );
 }
 
 function GoodExample() {
-  const [open, setOpen] = useState(false);
-  const [secondsLeft, setSecondsLeft] = useState(TIMEOUT_SECONDS);
-  const [extended, setExtended] = useState(false);
+  const [secondsLeft, setSecondsLeft] = useState(HOLD_SECONDS);
 
   useEffect(() => {
-    if (!open) return undefined;
-    if (secondsLeft <= 0) {
-      setOpen(false);
-      return undefined;
-    }
+    if (secondsLeft <= 0) return undefined;
     const id = setInterval(() => setSecondsLeft((s) => s - 1), 1000);
     return () => clearInterval(id);
-  }, [open, secondsLeft]);
+  }, [secondsLeft]);
 
-  const simulate = () => {
-    setExtended(false);
-    setSecondsLeft(TIMEOUT_SECONDS);
-    setOpen(true);
-  };
+  const released = secondsLeft <= 0;
+  const showWarning = !released && secondsLeft <= WARNING_THRESHOLD;
 
-  const extendSession = () => {
-    setSecondsLeft(TIMEOUT_SECONDS);
-    setExtended(true);
-  };
+  const extend = () => setSecondsLeft(HOLD_SECONDS);
 
   return (
-    <div className="w-96 rounded-lg border border-slate-200 bg-white p-5">
-      <p className="text-sm font-semibold text-gray-900">Panel de facturación</p>
-      <p className="mt-1 text-xs text-gray-500">Simulá una sesión a punto de expirar.</p>
-      <Button onClick={simulate} className="mt-4">Simular sesión por expirar</Button>
+    <div className="relative w-96 rounded-lg border border-slate-200 bg-white p-5">
+      <div
+        aria-hidden="true"
+        className={cn(
+          'absolute top-3 right-3 flex items-center gap-1 text-xs font-medium',
+          showWarning ? 'text-amber-600' : 'text-gray-400',
+        )}>
+        <Clock className="h-3.5 w-3.5" />
+        {released ? '0:00' : `0:${String(secondsLeft).padStart(2, '0')}`}
+      </div>
+      <p className="text-sm font-semibold text-gray-900">Nuevo pedido</p>
+      <p className="mt-1 text-xs text-gray-500">Depósito Norte</p>
+      <div className="mt-4 rounded-md border border-slate-100 bg-slate-50 p-3 text-sm">
+        {released ? (
+          <p className="flex items-center gap-1.5 text-red-600">
+            <AlertTriangle className="h-4 w-4 shrink-0" />
+            La reserva expiró. Los ítems fueron liberados.
+          </p>
+        ) : (
+          <p className="text-gray-700">12 unidades de Tornillos M6 reservadas para este pedido.</p>
+        )}
+      </div>
 
-      {open && (
+      {showWarning && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
           <div
             role="alertdialog"
-            aria-labelledby="session-warning-title"
-            aria-describedby="session-warning-desc"
+            aria-labelledby="hold-warning-title"
+            aria-describedby="hold-warning-desc"
             className="w-full max-w-sm rounded-xl bg-white p-5 shadow-xl">
-            <h3 id="session-warning-title" className="mb-2 flex items-center gap-1.5 text-base font-semibold text-gray-900">
+            <h3 id="hold-warning-title" className="mb-2 flex items-center gap-1.5 text-base font-semibold text-gray-900">
               <Clock className="h-4 w-4 shrink-0 text-amber-600" />
-              Tu sesión está por expirar
+              Tu reserva está por expirar
             </h3>
-            <p id="session-warning-desc" className="text-sm text-gray-600">
-              Se cerrará automáticamente en{' '}
+            <p id="hold-warning-desc" className="text-sm text-gray-600">
+              Se liberarán los ítems en{' '}
               <output aria-live="polite" className="font-semibold text-gray-900">{secondsLeft} segundos</output>.
             </p>
-            {extended && <p className="mt-2 text-xs text-emerald-600">Sesión extendida.</p>}
             <div className="mt-4 flex justify-end">
-              <Button onClick={extendSession}>Extender sesión</Button>
+              <Button onClick={extend}>Extender reserva</Button>
             </div>
           </div>
         </div>
@@ -119,14 +107,15 @@ function GoodExample() {
 export function AdjustableTimeoutBad() {
   return (
     <AppShell
-      active="Dashboard"
-      title="Aviso de sesión por expirar"
+      active="Pedidos"
+      title="Nuevo pedido"
       info={
         <InfoBlock variant="warning" title="Qué falta">
           <p className="text-sm text-gray-700">
-            La cuenta regresiva llega a cero y cierra la sesión sin dar ninguna forma de extenderla. Quien
-            necesita más tiempo para leer o completar un formulario —por lectura lenta, un lector de
-            pantalla o simplemente una interrupción— pierde el trabajo sin aviso previo real.
+            La reserva de stock se libera a los {HOLD_SECONDS} segundos sin ningún aviso previo ni forma de
+            extenderla. Quien tarda en completar el pedido — por revisar datos, una interrupción, o
+            necesitar más tiempo por cualquier motivo — pierde la reserva sin enterarse hasta que ya es
+            tarde.
           </p>
         </InfoBlock>
       }>
@@ -138,14 +127,19 @@ export function AdjustableTimeoutBad() {
 export function AdjustableTimeoutGood() {
   return (
     <AppShell
-      active="Dashboard"
-      title="Aviso de sesión por expirar"
+      active="Pedidos"
+      title="Nuevo pedido"
       info={
-        <InfoBlock title="Tiempo extensible">
+        <InfoBlock title="Aviso con opción de extender">
           <p className="text-sm text-gray-700">
-            El aviso muestra un botón "Extender sesión" visible durante toda la cuenta regresiva, que
-            resetea el timer sin cerrar nada. La cuenta regresiva se anuncia con <code>aria-live</code>{' '}
-            (WCAG 2.2.1, Tiempo ajustable).
+            A los {WARNING_THRESHOLD} segundos de vencer aparece un aviso con la opción "Extender reserva",
+            que resetea el tiempo sin perder los ítems. Es el mismo patrón que usan las plataformas de venta
+            de entradas de cine al reservar asientos (WCAG 2.2.1, Tiempo ajustable).
+          </p>
+          <p className="mt-3 text-sm text-gray-700">
+            Excepciones: este criterio no aplica si el límite es parte esencial de un evento en tiempo real
+            (ej. una subasta) y no hay alternativa posible, si extenderlo invalidaría la actividad, o si el
+            límite dura más de 20 horas.
           </p>
         </InfoBlock>
       }>

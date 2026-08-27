@@ -91,8 +91,8 @@ export function SlideAdjustableTimeout() {
     <Slide>
       <h2 className="text-3xl text-brand-light mb-2">Tiempo ajustable</h2>
       <p className="text-base text-gray-400 italic">
-        Una sesión que se cierra sola a los 10 segundos no te da tiempo de terminar nada — dale a la
-        persona el control del reloj, no al revés.
+        Una reserva que se libera sin aviso ni forma de extenderla no te da tiempo de terminar nada — dale
+        a la persona el control del reloj, no al revés.
       </p>
       <WcagRef>WCAG 2.2.1 — Tiempo ajustable (A)</WcagRef>
     </Slide>
