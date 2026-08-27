@@ -1,17 +1,27 @@
-import { Children, useMemo } from 'react';
+import { Children, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import LightRays from '../LightRays';
 import { DeckControls } from './DeckControls';
 import { DeckContext } from './DeckContext';
 import { ProgressBar } from './ProgressBar';
+import { SlideIndexOverlay } from './SlideIndexOverlay';
 import { useDeckRouter } from './useDeckRouter';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
 export function Deck({ children, basePath = '/presentacion' }) {
   const slides = useMemo(() => Children.toArray(children), [children]);
   const { index, next, prev, goTo, total } = useDeckRouter(slides.length, basePath);
+  const [indexOpen, setIndexOpen] = useState(false);
 
-  useKeyboardNavigation({ next, prev, goTo, total });
+  useKeyboardNavigation({
+    next,
+    prev,
+    goTo,
+    total,
+    indexOpen,
+    onToggleIndex: () => setIndexOpen((open) => !open),
+    onCloseIndex: () => setIndexOpen(false),
+  });
 
   const contextValue = useMemo(
     () => ({ index, next, prev, goTo, total }),
@@ -38,6 +48,16 @@ export function Deck({ children, basePath = '/presentacion' }) {
         </AnimatePresence>
         <DeckControls prev={prev} next={next} index={index} total={total} />
         <ProgressBar index={index} total={total} />
+        <SlideIndexOverlay
+          open={indexOpen}
+          slides={slides}
+          currentIndex={index}
+          onSelect={(target) => {
+            goTo(target);
+            setIndexOpen(false);
+          }}
+          onClose={() => setIndexOpen(false)}
+        />
       </div>
     </DeckContext.Provider>
   );

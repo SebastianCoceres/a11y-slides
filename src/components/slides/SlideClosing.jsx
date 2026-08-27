@@ -2,7 +2,7 @@ import { Slide } from '@/components/deck';
 
 export default function SlideClosing() {
   return (
-    <Slide>
+    <Slide id="closing">
       <p className="text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
         La pregunta no es si esto nos cuesta tiempo.
       </p>

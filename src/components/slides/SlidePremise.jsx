@@ -1,6 +1,7 @@
 import { Slide } from "@/components/deck";
 import { Brain, Ear, Eye, Hand, PersonStanding } from "lucide-react";
 import { motion } from "motion/react";
+import slideCatalog from "@/data/slideCatalog.json";
 
 const SATELLITES = [
   { Icon: Eye, label: "Visión", position: "top-0 left-0", delay: 0 },
@@ -40,8 +41,9 @@ function FloatingVisual() {
 }
 
 export default function SlidePremise() {
+  const info = slideCatalog.premise;
   return (
-    <Slide>
+    <Slide id="premise">
       <div className="grid items-center gap-16 text-left md:grid-cols-2">
         <div>
           <h2 className="inline-flex gap-4 mb-6 text-5xl text-brand-light">
@@ -55,7 +57,7 @@ export default function SlidePremise() {
                 strokeWidth={2.5}
               />
             </motion.div>
-            ¿Qué es A11Y?
+            {info.title}
           </h2>
           <p className="mb-4 text-lg italic text-gray-400">
             El término hace referencia a "Accesibilidad".

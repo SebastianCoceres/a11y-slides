@@ -8,6 +8,7 @@ import {
   Glasses,
   PersonStanding,
 } from "lucide-react";
+import slideCatalog from "@/data/slideCatalog.json";
 
 const situations = [
   {
@@ -29,10 +30,11 @@ const situations = [
 ];
 
 export default function SlideSituations() {
+  const info = slideCatalog.situations;
   return (
-    <Slide>
+    <Slide id="situations">
       <h2 className="text-4xl text-brand-light mb-2">
-        ¿Por qué nos interesa aplicarla?
+        {info.title}
       </h2>
       <p className="text-lg text-gray-400 mb-8 italic">
         Es para todo el mundo, en algún momento...

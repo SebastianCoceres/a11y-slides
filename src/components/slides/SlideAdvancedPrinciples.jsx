@@ -1,5 +1,10 @@
 import { Slide } from "@/components/deck";
+import slideCatalog from "@/data/slideCatalog.json";
 import { WcagRef } from "./WcagRef";
+
+function formatWcag(wcag) {
+  return `WCAG ${wcag.code} — ${wcag.name} (${wcag.level})`;
+}
 
 function Kicker() {
   return (
@@ -10,9 +15,10 @@ function Kicker() {
 }
 
 export function SlideAdvancedPrinciplesIntro() {
+  const info = slideCatalog.advancedPrinciplesIntro;
   return (
-    <Slide>
-      <h2 className="text-4xl text-brand-light mb-6">Más allá de lo básico</h2>
+    <Slide id="advancedPrinciplesIntro">
+      <h2 className="text-4xl text-brand-light mb-6">{info.title}</h2>
       <p className="max-w-3xl mx-auto text-lg text-gray-300 mb-4">
         Formas de mirar una interfaz que casi nunca aparecen en un checklist de
         accesibilidad.
@@ -22,10 +28,11 @@ export function SlideAdvancedPrinciplesIntro() {
 }
 
 export function SlideCognitiveLoad() {
+  const info = slideCatalog.cognitiveLoad;
   return (
-    <Slide>
+    <Slide id="cognitiveLoad">
       <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">Carga cognitiva</h2>
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Cuánto tiene que recordar y procesar una persona para completar una
         tarea.
@@ -35,23 +42,25 @@ export function SlideCognitiveLoad() {
 }
 
 export function SlideMotorComplexity() {
+  const info = slideCatalog.motorComplexity;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Complejidad motriz</h2>
+    <Slide id="motorComplexity">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         No todos interactúan con una interfaz con la misma precisión, velocidad
         o margen de error.
       </p>
-      <WcagRef>WCAG 2.5.8 — Tamaño del objetivo (mínimo) (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideInteractionFatigue() {
+  const info = slideCatalog.interactionFatigue;
   return (
-    <Slide>
+    <Slide id="interactionFatigue">
       <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">Fatiga por interacción</h2>
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Cada interacción tiene un costo, y ese costo se multiplica cuando se
         repite cien veces por día.
@@ -61,200 +70,216 @@ export function SlideInteractionFatigue() {
 }
 
 export function SlidePageLanguage() {
+  const info = slideCatalog.pageLanguage;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Idioma de la página</h2>
+    <Slide id="pageLanguage">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Sin <code>lang="es"</code> en el documento, un lector de pantalla puede leer todo el contenido con
         las reglas fonéticas de otro idioma.
       </p>
-      <WcagRef>WCAG 3.1.1 — Idioma de la página (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlidePartsLanguage() {
+  const info = slideCatalog.partsLanguage;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Idioma de las partes</h2>
+    <Slide id="partsLanguage">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Una cita en inglés sin marcar se lee con fonética española — y se vuelve ruido.
       </p>
-      <WcagRef>WCAG 3.1.2 — Idioma de las partes (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideOnFocusChange() {
+  const info = slideCatalog.onFocusChange;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Al recibir el foco</h2>
+    <Slide id="onFocusChange">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Tabular hasta un control no es una decisión — no debería cambiar nada.
       </p>
-      <WcagRef>WCAG 3.2.1 — Al recibir el foco (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideOnInputChange() {
+  const info = slideCatalog.onInputChange;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Al recibir entrada de datos</h2>
+    <Slide id="onInputChange">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Elegir una opción de un filtro no debería borrar lo que alguien estaba escribiendo.
       </p>
-      <WcagRef>WCAG 3.2.2 — Al recibir entrada de datos (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideConsistentNavigation() {
+  const info = slideCatalog.consistentNavigation;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Navegación consistente</h2>
+    <Slide id="consistentNavigation">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Si el menú cambia de orden entre páginas, cada clic hay que pensarlo de nuevo.
       </p>
-      <WcagRef>WCAG 3.2.3 — Navegación consistente (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideConsistency() {
+  const info = slideCatalog.consistency;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Consistencia</h2>
+    <Slide id="consistency">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         La misma intención debe producir siempre el mismo comportamiento.
       </p>
-      <WcagRef>WCAG 3.2.4 — Identificación consistente (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideConsistentHelp() {
+  const info = slideCatalog.consistentHelp;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Ayuda consistente</h2>
+    <Slide id="consistentHelp">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Un botón de ayuda que salta de esquina no ayuda, obliga a buscarlo.
       </p>
-      <WcagRef>WCAG 3.2.6 — Ayuda consistente (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideErrorPrevention() {
+  const info = slideCatalog.errorPrevention;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Prevención de errores</h2>
+    <Slide id="errorPrevention">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         No alcanza con explicar qué salió mal después de que la persona ya se
         equivocó.
       </p>
-      <WcagRef>WCAG 3.3.1 — Identificación de errores (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideAnticipatoryHelp() {
+  const info = slideCatalog.anticipatoryHelp;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Ayuda anticipada</h2>
+    <Slide id="anticipatoryHelp">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Explicar la regla antes de que la rompan es mejor que explicarla
         después.
       </p>
-      <WcagRef>WCAG 3.3.2 — Etiquetas o instrucciones (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideErrorSuggestion() {
+  const info = slideCatalog.errorSuggestion;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Sugerí cómo corregir</h2>
+    <Slide id="errorSuggestion">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Un error que no dice qué falta obliga a adivinar; decir exactamente qué corregir no es opcional, es
         el criterio.
       </p>
-      <WcagRef>WCAG 3.3.3 — Sugerencia ante errores (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideConfirmDestructive() {
+  const info = slideCatalog.confirmDestructive;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Confirmá antes de borrar</h2>
+    <Slide id="confirmDestructive">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Una acción financiera irreversible sin paso de confirmación es un click de distancia de un
         desastre.
       </p>
-      <WcagRef>WCAG 3.3.4 — Prevención de errores: legal, financiero, datos (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideRedundantEntry() {
+  const info = slideCatalog.redundantEntry;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">No repitas el dato</h2>
+    <Slide id="redundantEntry">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Si el sistema ya tiene el dato, pedirlo de nuevo es trabajo extra sin ninguna razón técnica.
       </p>
-      <WcagRef>WCAG 3.3.7 — Entrada redundante (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideAccessibleAuth() {
+  const info = slideCatalog.accessibleAuth;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Dejá pegar la contraseña</h2>
+    <Slide id="accessibleAuth">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Bloquear el pegado no suma seguridad, solo rompe gestores de contraseñas y le suma una prueba
         cognitiva innecesaria al login.
       </p>
-      <WcagRef>WCAG 3.3.8 — Autenticación accesible, mínimo (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideNameRoleValue() {
+  const info = slideCatalog.nameRoleValue;
   return (
-    <Slide>
-      <h2 className="text-3xl text-brand-light mb-2">Parecer no es ser</h2>
+    <Slide id="nameRoleValue">
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Un div que parece un switch pero no expone rol ni estado es invisible para quien usa lector de
         pantalla, por más bonito que se vea.
       </p>
-      <WcagRef>WCAG 4.1.2 — Nombre, rol, valor (A)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideErrorRecovery() {
+  const info = slideCatalog.errorRecovery;
   return (
-    <Slide>
+    <Slide id="errorRecovery">
       <h2 className="text-3xl text-brand-light mb-2">
-        Recuperación de errores
+        {info.title}
       </h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Los errores van a pasar igual. La pregunta es qué tan fácil es volver
         atrás.
       </p>
-      <WcagRef>WCAG 4.1.3 — Mensajes de estado (AA)</WcagRef>
+      <WcagRef>{formatWcag(info.wcag)}</WcagRef>
     </Slide>
   );
 }
 
 export function SlideInclusiveDesign() {
+  const info = slideCatalog.inclusiveDesign;
   return (
-    <Slide>
+    <Slide id="inclusiveDesign">
       <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">Diseño inclusivo</h2>
+      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-base text-gray-400 mb-4 italic">
         Quien usa nuestro software no está ahí para aprender cómo funciona. Está
         ahí para hacer su trabajo.

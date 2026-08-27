@@ -1,6 +1,7 @@
 import { Slide } from '@/components/deck';
 import { Card, CardContent } from '@/components/ui/card';
 import { Eye, Keyboard, MessageSquareText, ShieldCheck } from 'lucide-react';
+import slideCatalog from '@/data/slideCatalog.json';
 
 const principles = [
   {
@@ -26,9 +27,10 @@ const principles = [
 ];
 
 export default function SlidePourPrinciples() {
+  const info = slideCatalog.pourPrinciples;
   return (
-    <Slide>
-      <h2 className="text-4xl text-brand-light mb-2">Principios básicos</h2>
+    <Slide id="pourPrinciples">
+      <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-lg text-gray-400 mb-8 italic">
         Las cuatro columnas sobre las que se paran todos los criterios de WCAG.
       </p>

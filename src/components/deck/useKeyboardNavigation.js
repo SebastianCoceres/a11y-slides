@@ -1,9 +1,24 @@
 import { useEffect } from 'react';
 
-export function useKeyboardNavigation({ next, prev, goTo, total }) {
+export function useKeyboardNavigation({ next, prev, goTo, total, indexOpen, onToggleIndex, onCloseIndex }) {
   useEffect(() => {
     function handleKeyDown(event) {
       if (event.repeat) return;
+
+      if ((event.key === 'Control' && event.shiftKey) || (event.key === 'Shift' && event.ctrlKey)) {
+        event.preventDefault();
+        onToggleIndex();
+        return;
+      }
+
+      if (indexOpen) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          onCloseIndex();
+        }
+        return;
+      }
+
       if (event.target.closest('input, textarea, [contenteditable]')) return;
 
       switch (event.key) {
@@ -33,5 +48,5 @@ export function useKeyboardNavigation({ next, prev, goTo, total }) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [next, prev, goTo, total]);
+  }, [next, prev, goTo, total, indexOpen, onToggleIndex, onCloseIndex]);
 }

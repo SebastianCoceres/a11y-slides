@@ -2,6 +2,7 @@ import { Slide } from "@/components/deck";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users } from "lucide-react";
 import { Headset, Code2, UserPlus } from "lucide-react";
+import slideCatalog from "@/data/slideCatalog.json";
 
 const impacts = [
   {
@@ -37,10 +38,11 @@ const impacts = [
 ];
 
 export default function SlideBusinessImpact() {
+  const info = slideCatalog.businessImpact;
   return (
-    <Slide>
+    <Slide id="businessImpact">
       <h2 className="text-4xl text-brand-light mb-2">
-        Lo que nos ahorramos como equipo
+        {info.title}
       </h2>
       <p className="text-lg text-gray-400 mb-6 italic">
         Encuentren la suya en esta lista.

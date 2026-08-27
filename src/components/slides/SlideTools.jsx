@@ -1,6 +1,7 @@
 import { Slide } from '@/components/deck';
 import { Card, CardContent } from '@/components/ui/card';
 import { MonitorSmartphone, Lightbulb, ShieldCheck, TestTube2, LayoutGrid } from 'lucide-react';
+import slideCatalog from '@/data/slideCatalog.json';
 
 const tools = [
   { icon: MonitorSmartphone, title: 'DevTools', desc: 'Inspección de contraste, orden del foco y árbol de accesibilidad del navegador.' },
@@ -10,9 +11,10 @@ const tools = [
 ];
 
 export default function SlideTools() {
+  const info = slideCatalog.tools;
   return (
-    <Slide>
-      <h2 className="text-4xl text-brand-light mb-6">¿Qué herramientas podemos usar?</h2>
+    <Slide id="tools">
+      <h2 className="text-4xl text-brand-light mb-6">{info.title}</h2>
 
       <Card className="bg-gray-800 border-gray-700 shadow-none max-w-3xl mx-auto mb-8">
         <CardContent className="p-5 flex items-start gap-3 text-left">

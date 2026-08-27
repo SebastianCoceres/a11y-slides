@@ -6,6 +6,7 @@ import {
   Image as ImageIcon,
   Volume2,
 } from "lucide-react";
+import slideCatalog from "@/data/slideCatalog.json";
 
 function DotGrid({ className }) {
   return (
@@ -188,13 +189,14 @@ function DecorativeGrid() {
 }
 
 export default function SlideTitle() {
+  const info = slideCatalog.title;
   return (
-    <Slide>
+    <Slide id="title">
       <DotGrid className="bottom-[6%] left-[24%]" />
       <DotGrid className="bottom-[4%] right-[3%]" />
       <DecorativeGrid />
 
-      <h1 className="text-8xl text-brand-light">A11Y</h1>
+      <h1 className="text-8xl text-brand-light">{info.title}</h1>
       <p className="mt-4 text-2xl italic text-gray-400">
         Poder usar tus productos
       </p>

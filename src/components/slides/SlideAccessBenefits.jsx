@@ -1,6 +1,7 @@
 import { Slide } from '@/components/deck';
 import { Accessibility, Baby, Bike, Luggage, ShoppingCart } from 'lucide-react';
 import { motion } from 'motion/react';
+import slideCatalog from '@/data/slideCatalog.json';
 
 const BENEFICIARIES = [
   { Icon: Baby, label: 'Cochecitos', position: 'top-0 left-0', delay: 0 },
@@ -42,11 +43,12 @@ function RampVisual() {
 }
 
 export default function SlideAccessBenefits() {
+  const info = slideCatalog.accessBenefits;
   return (
-    <Slide>
+    <Slide id="accessBenefits">
       <div className="grid items-center gap-16 text-left md:grid-cols-2">
         <div>
-          <h2 className="text-4xl text-brand-light mb-2">Beneficios: el efecto rampa de acceso</h2>
+          <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
           <p className="mb-4 text-lg italic text-gray-400">Diseñado para uno, terminan usándolo todos.</p>
           <p className="mb-4 text-gray-400">
             La rampa en la vereda se construyó para sillas de ruedas. Hoy la usan cochecitos, repartidores,

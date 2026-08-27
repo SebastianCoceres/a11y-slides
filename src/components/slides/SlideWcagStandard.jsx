@@ -1,6 +1,7 @@
 import { Slide } from "@/components/deck";
 import { Card, CardContent } from "@/components/ui/card";
 import { Globe, ScrollText, Layers } from "lucide-react";
+import slideCatalog from "@/data/slideCatalog.json";
 
 const facts = [
   {
@@ -21,10 +22,11 @@ const facts = [
 ];
 
 export default function SlideWcagStandard() {
+  const info = slideCatalog.wcagStandard;
   return (
-    <Slide>
+    <Slide id="wcagStandard">
       <h2 className="inline-flex items-center gap-4 text-4xl text-brand-light mb-2">
-        Estándar global
+        {info.title}
       </h2>
       <p className="text-lg text-gray-400 mb-8 italic">
         Son recomendaciones que establecen criterios para hacer el contenido
