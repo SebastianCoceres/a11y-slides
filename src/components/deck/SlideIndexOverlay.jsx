@@ -1,20 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Search } from 'lucide-react';
 import slideCatalog from '@/data/slideCatalog.json';
-import { Slide } from './Slide';
+import { getSlideId } from './slideId';
 
 function extractSlideEntry(element, index) {
-  try {
-    const rendered = element.type(element.props);
-    if (rendered?.type !== Slide) return null;
-    const id = rendered.props?.id;
-    const info = id && slideCatalog[id];
-    if (!info) return null;
-    return { index, label: info.title, wcag: info.wcag?.code || null };
-  } catch (error) {
-    console.error('extractSlideEntry failed', index, error);
-    return null;
-  }
+  const id = getSlideId(element);
+  const info = id && slideCatalog[id];
+  if (!info) return null;
+  return { index, label: info.title, wcag: info.wcag?.code || null };
 }
 
 export function SlideIndexOverlay({ open, slides, currentIndex, onSelect, onClose }) {

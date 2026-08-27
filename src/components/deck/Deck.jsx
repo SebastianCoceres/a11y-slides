@@ -1,9 +1,11 @@
-import { Children, useMemo, useState } from 'react';
+import { Children, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import LightRays from '../LightRays';
 import { DeckControls } from './DeckControls';
 import { DeckContext } from './DeckContext';
+import { NOTES_CHANNEL } from './notesChannel';
 import { ProgressBar } from './ProgressBar';
+import { getSlideId } from './slideId';
 import { SlideIndexOverlay } from './SlideIndexOverlay';
 import { useDeckRouter } from './useDeckRouter';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
@@ -12,6 +14,24 @@ export function Deck({ children, basePath = '/presentacion' }) {
   const slides = useMemo(() => Children.toArray(children), [children]);
   const { index, next, prev, goTo, total } = useDeckRouter(slides.length, basePath);
   const [indexOpen, setIndexOpen] = useState(false);
+
+  const topicIds = useMemo(() => slides.map((slide) => getSlideId(slide)), [slides]);
+  const topicId = useMemo(() => {
+    for (let i = index; i >= 0; i -= 1) {
+      if (topicIds[i]) return topicIds[i];
+    }
+    return null;
+  }, [index, topicIds]);
+
+  useEffect(() => {
+    const channel = new BroadcastChannel(NOTES_CHANNEL);
+    const post = () => channel.postMessage({ type: 'slide', index, topicId });
+    channel.onmessage = (event) => {
+      if (event.data?.type === 'requestState') post();
+    };
+    post();
+    return () => channel.close();
+  }, [index, topicId]);
 
   useKeyboardNavigation({
     next,

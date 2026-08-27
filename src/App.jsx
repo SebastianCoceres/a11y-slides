@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Slides from './components/Slides';
+import PresenterNotes from './pages/PresenterNotes';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
               <Slides />
             </div>
           } />
+        <Route path="/notas" element={<PresenterNotes />} />
       </Routes>
     </BrowserRouter>
   );

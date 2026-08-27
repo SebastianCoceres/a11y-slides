@@ -23,7 +23,7 @@ const situations = [
   },
   {
     icon: PersonStanding,
-    situation: "Ser una persona mayor con pérdida de visión o destreza",
+    situation: "Envejecer viene con pérdida de visión y destreza",
   },
   { icon: Baby, situation: "Sostener un bebé con una sola mano" },
   { icon: Bandage, situation: "Tener una lesión temporal (dedo vendado)" },
@@ -33,9 +33,7 @@ export default function SlideSituations() {
   const info = slideCatalog.situations;
   return (
     <Slide id="situations">
-      <h2 className="text-4xl text-brand-light mb-2">
-        {info.title}
-      </h2>
+      <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-lg text-gray-400 mb-8 italic">
         Es para todo el mundo, en algún momento...
       </p>

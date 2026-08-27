@@ -251,187 +251,187 @@ export default function Slides() {
   return (
     <div className="w-full h-full">
       <Deck>
-        <SlideTitle />
-        <SlidePremise />
-        <SlideWcagStandard />
-        <SlidePourPrinciples />
-        <SlideAccessBenefits />
-        <SlideSituations />
-        <SlideBusinessImpact />
+        <SlideTitle topicId="title" />
+        <SlidePremise topicId="premise" />
+        <SlideWcagStandard topicId="wcagStandard" />
+        <SlidePourPrinciples topicId="pourPrinciples" />
+        <SlideAccessBenefits topicId="accessBenefits" />
+        <SlideSituations topicId="situations" />
+        <SlideBusinessImpact topicId="businessImpact" />
 
         {/* 1. Perceptible */}
-        <SlideAltText />
+        <SlideAltText topicId="altText" />
         <AltTextBad />
         <AltTextGood />
-        <SlideMediaAlternatives />
+        <SlideMediaAlternatives topicId="mediaAlternatives" />
         <MediaAlternativesBad />
         <MediaAlternativesGood />
-        <SlideSemanticStructure />
+        <SlideSemanticStructure topicId="semanticStructure" />
         <SemanticStructureBad />
         <SemanticStructureGood />
-        <SlideMeaningfulSequence />
+        <SlideMeaningfulSequence topicId="meaningfulSequence" />
         <MeaningfulSequenceBad />
         <MeaningfulSequenceGood />
-        <SlideSensoryCharacteristics />
+        <SlideSensoryCharacteristics topicId="sensoryCharacteristics" />
         <SensoryCharacteristicsBad />
         <SensoryCharacteristicsGood />
-        <SlideOrientation />
-        <SlideInputPurpose />
+        <SlideOrientation topicId="orientation" />
+        <SlideInputPurpose topicId="inputPurpose" />
         <InputPurposeBad />
         <InputPurposeGood />
-        <SlideColorUsage />
+        <SlideColorUsage topicId="colorUsage" />
         <ColorContrastBad />
         <ColorContrastGood />
         <SlideColorBlindnessTypes />
-        <SlideAudioControl />
+        <SlideAudioControl topicId="audioControl" />
         <AudioControlBad />
         <AudioControlGood />
-        <SlideTypography />
+        <SlideTypography topicId="typography" />
         <TypographyBad />
         <TypographyGood />
-        <SlideTextResize />
+        <SlideTextResize topicId="textResize" />
         <TextResizeBad />
         <TextResizeGood />
-        <SlideImagesOfText />
+        <SlideImagesOfText topicId="imagesOfText" />
         <ImagesOfTextBad />
         <ImagesOfTextGood />
-        <SlideReflow />
+        <SlideReflow topicId="reflow" />
         <ReflowBad />
         <ReflowGood />
-        <SlideNonTextContrast />
+        <SlideNonTextContrast topicId="nonTextContrast" />
         <NonTextContrastBad />
         <NonTextContrastGood />
-        <SlideTextSpacing />
+        <SlideTextSpacing topicId="textSpacing" />
         <TextSpacingBad />
         <TextSpacingGood />
-        <SlideHoverContent />
+        <SlideHoverContent topicId="hoverContent" />
         <HoverContentBad />
         <HoverContentGood />
 
         {/* 2. Operable */}
-        <SlideKeyboardNav />
+        <SlideKeyboardNav topicId="keyboardNav" />
         <KeyboardNavBad />
         <KeyboardNavGood />
-        <SlideFocusTrap />
+        <SlideFocusTrap topicId="focusTrap" />
         <FocusTrapBad />
         <FocusTrapNoEscape />
         <FocusTrapGood />
-        <SlideSingleCharShortcuts />
+        <SlideSingleCharShortcuts topicId="singleCharShortcuts" />
         <SingleCharShortcutsBad />
         <SingleCharShortcutsGood />
-        <SlideAdjustableTimeout />
+        <SlideAdjustableTimeout topicId="adjustableTimeout" />
         <AdjustableTimeoutBad />
         <AdjustableTimeoutGood />
-        <SlidePausableCarousel />
+        <SlidePausableCarousel topicId="pausableCarousel" />
         <PausableCarouselBad />
         <PausableCarouselGood />
-        <SlideThreeFlashes />
-        <SlideReducedMotion />
+        <SlideThreeFlashes topicId="threeFlashes" />
+        <SlideReducedMotion topicId="reducedMotion" />
         <ReducedMotionBad />
         <ReducedMotionGood />
-        <SlideSkipLinks />
+        <SlideSkipLinks topicId="skipLinks" />
         <SkipLinksBad />
         <SkipLinksGood />
-        <SlidePageTitle />
+        <SlidePageTitle topicId="pageTitle" />
         <PageTitleBad />
         <PageTitleGood />
-        <SlideFocusOrder />
+        <SlideFocusOrder topicId="focusOrder" />
         <FocusOrderBad />
         <FocusOrderGood />
-        <SlideLinkPurpose />
+        <SlideLinkPurpose topicId="linkPurpose" />
         <LinkPurposeBad />
         <LinkPurposeGood />
-        <SlideMultipleWays />
+        <SlideMultipleWays topicId="multipleWays" />
         <MultipleWaysBad />
         <MultipleWaysGood />
-        <SlideDescriptiveLabels />
+        <SlideDescriptiveLabels topicId="descriptiveLabels" />
         <DescriptiveLabelsBad />
         <DescriptiveLabelsGood />
-        <SlideVisibleFocus />
+        <SlideVisibleFocus topicId="visibleFocus" />
         <VisibleFocusBad />
         <VisibleFocusGood />
-        <SlideFocusNotObscured />
+        <SlideFocusNotObscured topicId="focusNotObscured" />
         <FocusNotObscuredBad />
         <FocusNotObscuredGood />
-        <SlidePointerGestures />
+        <SlidePointerGestures topicId="pointerGestures" />
         <PointerGesturesBad />
         <PointerGesturesGood />
-        <SlidePointerCancellation />
+        <SlidePointerCancellation topicId="pointerCancellation" />
         <PointerCancellationBad />
         <PointerCancellationGood />
-        <SlideLabelInName />
+        <SlideLabelInName topicId="labelInName" />
         <LabelInNameBad />
         <LabelInNameGood />
-        <SlideMotionActivation />
-        <SlideDragMovements />
+        <SlideMotionActivation topicId="motionActivation" />
+        <SlideDragMovements topicId="dragMovements" />
         <DragMovementsBad />
         <DragMovementsGood />
-        <SlideMotorComplexity />
+        <SlideMotorComplexity topicId="motorComplexity" />
         <MotorComplexityBad />
         <MotorComplexityGood />
 
         {/* 3. Comprensible */}
-        <SlidePageLanguage />
-        <SlidePartsLanguage />
+        <SlidePageLanguage topicId="pageLanguage" />
+        <SlidePartsLanguage topicId="partsLanguage" />
         <PartsLanguageBad />
         <PartsLanguageGood />
-        <SlideOnFocusChange />
+        <SlideOnFocusChange topicId="onFocusChange" />
         <OnFocusChangeBad />
         <OnFocusChangeGood />
-        <SlideOnInputChange />
+        <SlideOnInputChange topicId="onInputChange" />
         <OnInputChangeBad />
         <OnInputChangeGood />
-        <SlideConsistentNavigation />
+        <SlideConsistentNavigation topicId="consistentNavigation" />
         <ConsistentNavigationBad />
         <ConsistentNavigationGood />
-        <SlideConsistency />
+        <SlideConsistency topicId="consistency" />
         <ConsistencyBad />
         <ConsistencyGood />
-        <SlideConsistentHelp />
+        <SlideConsistentHelp topicId="consistentHelp" />
         <ConsistentHelpBad />
         <ConsistentHelpGood />
-        <SlideErrorPrevention />
+        <SlideErrorPrevention topicId="errorPrevention" />
         <ErrorPreventionBad />
         <ErrorPreventionGood />
-        <SlideAnticipatoryHelp />
+        <SlideAnticipatoryHelp topicId="anticipatoryHelp" />
         <AnticipatoryHelpBad />
         <AnticipatoryHelpGood />
-        <SlideErrorSuggestion />
+        <SlideErrorSuggestion topicId="errorSuggestion" />
         <ErrorSuggestionBad />
         <ErrorSuggestionGood />
-        <SlideConfirmDestructive />
+        <SlideConfirmDestructive topicId="confirmDestructive" />
         <ConfirmDestructiveBad />
         <ConfirmDestructiveGood />
-        <SlideRedundantEntry />
+        <SlideRedundantEntry topicId="redundantEntry" />
         <RedundantEntryBad />
         <RedundantEntryGood />
-        <SlideAccessibleAuth />
+        <SlideAccessibleAuth topicId="accessibleAuth" />
         <AccessibleAuthBad />
         <AccessibleAuthGood />
 
         {/* 4. Robusto */}
-        <SlideNameRoleValue />
+        <SlideNameRoleValue topicId="nameRoleValue" />
         <NameRoleValueBad />
         <NameRoleValueGood />
-        <SlideErrorRecovery />
+        <SlideErrorRecovery topicId="errorRecovery" />
         <ErrorRecoveryBad />
         <ErrorRecoveryGood />
 
         {/* Más allá de lo básico */}
-        <SlideAdvancedPrinciplesIntro />
-        <SlideCognitiveLoad />
+        <SlideAdvancedPrinciplesIntro topicId="advancedPrinciplesIntro" />
+        <SlideCognitiveLoad topicId="cognitiveLoad" />
         <CognitiveLoadBad />
         <CognitiveLoadGrouped />
         <CognitiveLoadGood />
-        <SlideInteractionFatigue />
+        <SlideInteractionFatigue topicId="interactionFatigue" />
         <InteractionFatigueBad />
         <InteractionFatigueGood />
-        <SlideInclusiveDesign />
+        <SlideInclusiveDesign topicId="inclusiveDesign" />
         <InclusiveDesignBad />
         <InclusiveDesignGood />
 
-        <SlideTools />
-        <SlideClosing />
+        <SlideTools topicId="tools" />
+        <SlideClosing topicId="closing" />
       </Deck>
     </div>
   );
