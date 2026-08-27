@@ -15,6 +15,39 @@ const SATELLITES = [
   },
 ];
 
+function NumeronymBreakdown() {
+  return (
+    <div
+      aria-hidden="true"
+      className="mb-6 flex items-end justify-start gap-1.5"
+    >
+      <span className="text-6xl font-bold text-brand-light">A</span>
+      <div className="relative px-1.5 pt-8">
+        <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-sm font-bold text-brand">
+          11
+        </span>
+        <svg
+          viewBox="0 0 100 24"
+          preserveAspectRatio="none"
+          className="absolute left-0 top-5 h-5 w-full text-brand/70"
+        >
+          <path
+            d="M2,22 Q50,-6 98,22"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </svg>
+        <span className="text-3xl tracking-wide text-gray-500">
+          ccessibilit
+        </span>
+      </div>
+      <span className="text-6xl font-bold text-brand-light">Y</span>
+    </div>
+  );
+}
+
 function FloatingVisual() {
   return (
     <div className="relative mx-auto aspect-video w-full max-w-md">
@@ -59,8 +92,9 @@ export default function SlidePremise() {
             </motion.div>
             {info.title}
           </h2>
+          <NumeronymBreakdown />
           <p className="mb-4 text-lg italic text-gray-400">
-            El término hace referencia a "Accesibilidad".
+            A11Y es el numerónimo de "Accessibility" (A + 11 letras + Y).
           </p>
           <p className="text-lg italic text-gray-400">
             Es diseñar un producto que funcione para cualquiera, en cualquier

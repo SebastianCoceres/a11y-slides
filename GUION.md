@@ -16,16 +16,16 @@ A11Y es la abreviatura numérica de "Accessibility" (A + 11 letras + Y). Accesib
 
 **Estándar global — WCAG 2.2**
 
-El W3C define las Web Content Accessibility Guidelines (WCAG) desde 1994. La versión vigente es la 2.2, con criterios verificables organizados en tres niveles de conformidad: A (mínimo), AA (el exigido por normativas como la directiva UE 2019/882) y AAA (óptimo, no siempre aplicable). Esta charla se apoya en los 55 criterios de nivel A y AA.
+El W3C define las Web Content Accessibility Guidelines (WCAG) desde 1994. La versión vigente es la 2.2 (2023), con criterios verificables organizados en tres niveles de conformidad: A (mínimo), AA (el exigido por normativas como la directiva UE 2019/882) y AAA (óptimo, no siempre aplicable). Esta charla se apoya en los 55 criterios de nivel A y AA.
 
 **Principios básicos — POUR**
 
 Los criterios de WCAG se agrupan en cuatro principios:
 
-- **Perceptible**: la información debe poder percibirse, sea cual sea el sentido disponible.
-- **Operable**: los controles deben poder manejarse con teclado, mouse, voz u otros dispositivos.
-- **Comprensible**: la información y el comportamiento de la interfaz deben ser predecibles.
-- **Robusto**: el contenido debe funcionar con distintos navegadores y tecnologías asistivas.
+- **Perceptible** (Perceivable): la información debe poder percibirse, sea cual sea el sentido disponible.
+- **Operable** (Operable): los controles deben poder manejarse con teclado, mouse, voz u otros dispositivos.
+- **Comprensible** (Understandable): la información y el comportamiento de la interfaz deben ser predecibles.
+- **Robusto** (Robust): el contenido debe funcionar con distintos navegadores y tecnologías asistivas.
 
 El resto de la charla sigue este mismo orden.
 
