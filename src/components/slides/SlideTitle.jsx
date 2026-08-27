@@ -197,9 +197,6 @@ export default function SlideTitle() {
       <DecorativeGrid />
 
       <h1 className="text-8xl text-brand-light">{info.title}</h1>
-      <p className="mt-4 text-2xl italic text-gray-400">
-        Poder usar tus productos
-      </p>
     </Slide>
   );
 }

@@ -37,6 +37,7 @@ import {
   SlideSemanticStructure,
   SlideMeaningfulSequence,
   SlideSensoryCharacteristics,
+  SlideOrientation,
   SlideInputPurpose,
   SlideAudioControl,
   SlideTextResize,
@@ -274,6 +275,7 @@ export default function Slides() {
         <SlideSensoryCharacteristics />
         <SensoryCharacteristicsBad />
         <SensoryCharacteristicsGood />
+        <SlideOrientation />
         <SlideInputPurpose />
         <InputPurposeBad />
         <InputPurposeGood />
