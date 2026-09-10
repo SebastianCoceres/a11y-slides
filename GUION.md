@@ -77,7 +77,7 @@ La información y los componentes de la interfaz deben poder percibirse, indepen
 
 **Texto alternativo (1.1.1, A)**
 
-Todo contenido no textual (imágenes, íconos, gráficos) requiere una alternativa textual equivalente. Mostrar comparación: sin texto alternativo, un lector de pantalla no comunica ninguna información sobre el elemento; con `alt` descriptivo, el contenido queda disponible incluso si la imagen no carga.
+Todo contenido no textual (imágenes, íconos, gráficos) requiere una alternativa textual equivalente.
 
 - **Qué está mal:** la imagen repite el nombre del producto (ya visible al lado) y el botón de eliminar no tiene nombre accesible — el lector solo dice "botón".
 - **Solución:** `alt=""` en la imagen decorativa, `aria-label` con el nombre del producto en el botón.
@@ -110,7 +110,7 @@ La estructura de una interfaz (encabezados, listas, relaciones entre campo y eti
 
 **Secuencia significativa (1.3.2, A)**
 
-El orden en el que el contenido se presenta a un lector de pantalla debe conservar el significado, incluso cuando no coincide con el orden visual logrado por CSS. Mostrar comparación: un formulario reordenado visualmente sin tocar el DOM produce una lectura fuera de orden.
+El orden en el que el contenido se presenta a un lector de pantalla debe conservar el significado, incluso cuando no coincide con el orden visual logrado por CSS.
 
 - **Qué está mal:** el DOM va Email → Nombre → Empresa pero clases `order-*` lo muestran al revés.
 - **Solución:** se saca el `order-*` y el marcado sigue el mismo orden que se ve.
@@ -151,7 +151,7 @@ Los campos de datos personales comunes (nombre, teléfono, dirección) deben ide
 
 **Uso de color adecuado (1.4.1, A)**
 
-El color no puede ser el único medio para transmitir información o distinguir un estado. Uno de cada doce hombres presenta algún tipo de daltonismo; la diapositiva siguiente muestra cómo se percibe el mismo contenido bajo protanopia, deuteranopia, tritanopia y monocromacia. Mostrar comparación: un estado marcado solo con color rojo/verde frente al mismo estado reforzado con ícono y texto.
+El color no puede ser el único medio para transmitir información o distinguir un estado. Uno de cada doce hombres presenta algún tipo de daltonismo; la diapositiva siguiente muestra cómo se percibe el mismo contenido bajo protanopia, deuteranopia, tritanopia y monocromacia.
 
 - **Qué está mal:** vencido/al día se distingue solo por el color de fondo de la fila.
 - **Solución:** columna "Estado" con ícono + texto, además del color.
@@ -267,8 +267,9 @@ Toda la funcionalidad debe estar disponible desde el teclado. Afecta a cualquier
 
 **Focus trap — Sin trampas de teclado (2.1.2, A)**
 
-El foco debe poder salir de cualquier componente usando exclusivamente el teclado. Mostrar tres variantes: sin manejo de foco (el foco se escapa detrás del modal), manejo parcial (el foco queda atrapado sin salida) y manejo correcto (el foco se gestiona con `<dialog>` nativo, incluyendo cierre con Escape).
+El foco debe poder salir de cualquier componente usando exclusivamente el teclado.
 
+- **Mostrar:** las tres variantes en orden — sin manejo de foco, manejo parcial (atrapado) y manejo correcto con `<dialog>` nativo.
 - **Qué está mal:** sin manejo de foco el Tab se escapa del modal; con manejo casero, el foco queda atrapado sin salida.
 - **Solución:** `Dialog` de shadcn/ui gestiona todo el ciclo de foco, incluido Escape.
 
@@ -278,7 +279,7 @@ El foco debe poder salir de cualquier componente usando exclusivamente el teclad
 
 **Atajos de un carácter (2.1.4, A)**
 
-Un atajo compuesto por una sola tecla debe poder desactivarse, remapearse, o limitarse a cuando un control específico tiene el foco. Mostrar comparación: un atajo global sin esas condiciones se dispara mientras la persona escribe en cualquier campo de texto de la página.
+Un atajo compuesto por una sola tecla debe poder desactivarse, remapearse, o limitarse a cuando un control específico tiene el foco.
 
 - **Qué está mal:** la tecla "n" abre el modal aunque estés escribiendo en un input.
 - **Solución:** se ignora el atajo si el foco está en un campo de texto.
@@ -289,8 +290,9 @@ Un atajo compuesto por una sola tecla debe poder desactivarse, remapearse, o lim
 
 **Tiempo ajustable (2.2.1, A)**
 
-Cuando existe un límite de tiempo, debe poder extenderse. Mostrar comparación con un caso de reserva de stock (patrón equivalente al de las plataformas de venta de entradas al reservar asientos): sin aviso ni opción de extender, la reserva se libera sin que la persona tenga oportunidad de reaccionar; con aviso a los últimos diez segundos y botón de extensión, el tiempo queda bajo control de la persona. Mencionar las excepciones del criterio: eventos en tiempo real esenciales sin alternativa posible, límites cuya extensión invalidaría la actividad, y límites superiores a veinte horas.
+Cuando existe un límite de tiempo, debe poder extenderse — el mismo patrón que usan las plataformas de venta de entradas al reservar asientos.
 
+- **Mencionar:** las excepciones del criterio — eventos en tiempo real sin alternativa, límites que se invalidarían al extenderse, y límites de más de veinte horas.
 - **Qué está mal:** la reserva se libera a los 30 segundos sin ningún aviso previo.
 - **Solución:** aviso a los 10 segundos con diálogo y botón "Extender reserva".
 
@@ -300,7 +302,7 @@ Cuando existe un límite de tiempo, debe poder extenderse. Mostrar comparación 
 
 **Movimiento controlable — Pausar, detener, ocultar (2.2.2, A)**
 
-Contenido que se mueve, parpadea o se actualiza automáticamente debe poder pausarse. Mostrar comparación: un carrusel que rota sin control disponible frente al mismo carrusel con botón de pausa.
+Contenido que se mueve, parpadea o se actualiza automáticamente debe poder pausarse.
 
 - **Qué está mal:** el banner rota cada 2.5s sin control ni región en vivo.
 - **Solución:** botón de pausa + `aria-live="polite"` para anunciar cada cambio.
@@ -407,7 +409,7 @@ Todo elemento que recibe foco de teclado debe mostrar un indicador visible. Elim
 
 **Foco no ocultado, mínimo (2.4.11, AA)**
 
-El elemento con foco no puede quedar completamente tapado por otro contenido, como un encabezado fijo. Mostrar comparación: una lista con encabezado `sticky` sin `scroll-margin` oculta los elementos inferiores al enfocarlos; con el margen correspondiente, el elemento enfocado permanece visible.
+El elemento con foco no puede quedar completamente tapado por otro contenido, como un encabezado fijo.
 
 - **Qué está mal:** sin `scroll-margin-top`, el header sticky tapa el ítem enfocado.
 - **Solución:** `scroll-margin-top` igual a la altura del header.
@@ -470,8 +472,9 @@ Toda función de arrastrar y soltar debe tener una alternativa que no dependa de
 
 **Tamaño del objetivo, mínimo (2.5.8, AA)**
 
-Los objetivos táctiles deben medir al menos 24×24px, o contar con espacio suficiente entre controles adyacentes. Esta diapositiva incluye un simulador de temblor de mano: activarlo antes de comparar los tamaños de objetivo evidencia la dificultad de acertar un control por debajo del mínimo.
+Los objetivos táctiles deben medir al menos 24×24px, o contar con espacio suficiente entre controles adyacentes.
 
+- **Mostrar:** activá el simulador de temblor de mano antes de comparar los tamaños — hace evidente lo difícil que es acertar un objetivo chico.
 - **Qué está mal:** botones de 20×20px, por debajo del mínimo, y un checkbox sin `<label>` real.
 - **Solución:** controles a 40-48px y `<label>` vinculado ampliando el área clickeable.
 
@@ -495,7 +498,7 @@ El idioma principal del documento debe declararse mediante el atributo `lang`. S
 
 **Idioma de las partes (3.1.2, AA)**
 
-Un fragmento de texto en un idioma distinto al principal del documento debe marcarse con su propio atributo `lang`. Mostrar comparación: una cita en inglés sin marcar se pronuncia con fonética del idioma principal del documento.
+Un fragmento de texto en un idioma distinto al principal del documento debe marcarse con su propio atributo `lang`.
 
 - **Qué está mal:** "It just works" en inglés, sin marcar, se lee con fonética española.
 - **Solución:** `<span lang="en">` conmuta la voz al inglés solo en ese fragmento.
@@ -506,7 +509,7 @@ Un fragmento de texto en un idioma distinto al principal del documento debe marc
 
 **Al recibir el foco (3.2.1, A)**
 
-Ningún control puede disparar un cambio de contexto por el solo hecho de recibir el foco. Mostrar comparación: un `<select>` que navega apenas se tabula hacia él, antes de que la persona elija una opción, frente a la misma navegación disparada únicamente tras una selección explícita.
+Ningún control puede disparar un cambio de contexto por el solo hecho de recibir el foco.
 
 - **Qué está mal:** el `<select>` navega apenas recibe el foco, antes de elegir nada.
 - **Solución:** el cambio se mueve a `onChange`, tras una selección explícita.
@@ -561,7 +564,7 @@ Cuando existe un mecanismo de ayuda, debe aparecer en la misma posición relativ
 
 **Identificación de errores (3.3.1, A)**
 
-Los errores de un formulario deben identificarse y describirse en texto, asociados al campo correspondiente mediante `aria-invalid` y `aria-describedby`, y anunciados en tiempo real. Mostrar comparación: un error que aparece como texto suelto y solo tras el envío del formulario, frente a un error asociado al campo y anunciado apenas ocurre.
+Los errores de un formulario deben identificarse y describirse en texto, asociados al campo correspondiente mediante `aria-invalid` y `aria-describedby`, y anunciados en tiempo real.
 
 - **Qué está mal:** valida recién al enviar, sin `aria-invalid` ni `aria-describedby`.
 - **Solución:** valida en cada cambio y linkea el error al campo con `role="alert"`.
@@ -572,7 +575,7 @@ Los errores de un formulario deben identificarse y describirse en texto, asociad
 
 **Etiquetas o instrucciones (3.3.2, A)**
 
-Los campos de un formulario deben contar con etiquetas o instrucciones claras sobre el formato esperado, disponibles antes de que la persona cometa un error. Mostrar comparación: un formato indicado únicamente mediante `placeholder` (que desaparece al escribir y no está asociado al campo) frente a una instrucción persistente y vinculada mediante `aria-describedby`.
+Los campos de un formulario deben contar con etiquetas o instrucciones claras sobre el formato esperado, disponibles antes de que la persona cometa un error.
 
 - **Qué está mal:** el formato esperado solo vive en el placeholder, que desaparece al escribir.
 - **Solución:** instrucción visible y permanente, siempre en `aria-describedby`.
@@ -594,7 +597,7 @@ Cuando se detecta un error, debe sugerirse cómo corregirlo. Un mensaje genéric
 
 **Prevención de errores: legal, financiero, datos (3.3.4, AA)**
 
-En acciones significativas o irreversibles, debe ofrecerse la posibilidad de revisar, corregir o cancelar antes de confirmar. Mostrar comparación: una eliminación ejecutada al primer clic frente a la misma acción mediada por un diálogo de confirmación explícito.
+En acciones significativas o irreversibles, debe ofrecerse la posibilidad de revisar, corregir o cancelar antes de confirmar.
 
 - **Qué está mal:** un solo click borra la factura, sin confirmación.
 - **Solución:** diálogo de confirmación antes de ejecutar el borrado.
@@ -633,7 +636,7 @@ El contenido debe ser compatible con una amplia variedad de navegadores y tecnol
 
 **Nombre, rol, valor (4.1.2, A)**
 
-Todo componente de interfaz personalizado debe exponer su nombre, rol y estado a las tecnologías de asistencia. Mostrar comparación: un control estilizado como interruptor pero construido sobre un `<div>` sin rol ni estado accesible, frente al mismo control implementado como `<button role="switch" aria-checked>`.
+Todo componente de interfaz personalizado debe exponer su nombre, rol y estado a las tecnologías de asistencia.
 
 - **Qué está mal:** el switch es un `<div>` sin `role` ni `aria-checked` — no es focuseable.
 - **Solución:** `<button role="switch" aria-checked>` nativo y focuseable.
