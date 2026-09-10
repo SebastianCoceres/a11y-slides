@@ -62,6 +62,10 @@ export default function PresenterNotes() {
   const [activeTopicId, setActiveTopicId] = useState(null);
   const [connected, setConnected] = useState(false);
   const sectionRefs = useRef({});
+  const scrollContainerRef = useRef(null);
+  const userScrollingRef = useRef(false);
+  const autoScrollingRef = useRef(false);
+  const scrollIdleTimeoutRef = useRef(null);
 
   useEffect(() => {
     const channel = new BroadcastChannel(NOTES_CHANNEL);
@@ -75,12 +79,38 @@ export default function PresenterNotes() {
   }, []);
 
   useEffect(() => {
-    if (!activeTopicId) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      if (autoScrollingRef.current) return;
+      userScrollingRef.current = true;
+      clearTimeout(scrollIdleTimeoutRef.current);
+      scrollIdleTimeoutRef.current = setTimeout(() => {
+        userScrollingRef.current = false;
+      }, 1000);
+    };
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollIdleTimeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!activeTopicId || userScrollingRef.current) return;
+    autoScrollingRef.current = true;
     sectionRefs.current[activeTopicId]?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    const settle = setTimeout(() => {
+      autoScrollingRef.current = false;
+    }, 700);
+    return () => clearTimeout(settle);
   }, [activeTopicId]);
 
   return (
-    <div className="min-h-screen bg-[#0c0e14] px-6 py-10 text-gray-300">
+    <div
+      ref={scrollContainerRef}
+      className="h-screen overflow-y-auto bg-[#0c0e14] px-6 py-10 text-gray-300"
+    >
       <div className="mx-auto max-w-2xl">
         <div className="mb-8 flex items-center gap-2 text-xs">
           <span className={`h-2 w-2 rounded-full ${connected ? 'bg-emerald-400' : 'bg-gray-600'}`} />
