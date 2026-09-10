@@ -751,10 +751,10 @@ Quien usa un producto no está ahí para aprender cómo funciona: está ahí par
 
 La implementación no requiere herramientas nuevas: DevTools del navegador para inspección de contraste y árbol de accesibilidad, Lighthouse para auditoría automatizada, axe-core como motor de reglas WCAG sobre el DOM, y Playwright para validar accesibilidad como parte del pipeline de integración continua. Priorizar componentes reutilizables sobre implementaciones ad hoc por página evita corregir el mismo defecto múltiples veces.
 
-> Y con las herramientas ya sobre la mesa, la única pregunta que queda es la que abre el cierre de la charla.
+> Y con las herramientas ya sobre la mesa, el único tema que queda es lo que abre el cierre de la charla.
 
 <!-- id:closing -->
 
 **Cierre**
 
-La pregunta no es si la accesibilidad implica una inversión de tiempo. La pregunta es si esa inversión se realiza durante el diseño o se paga más tarde, en forma de soporte, corrección de errores y deuda técnica.
+Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano — más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare — y esos agentes leen exactamente la misma estructura semántica, el mismo árbol de accesibilidad, que un lector de pantalla. Mientras tanto, el 95.9% de los sitios más visitados sigue fallando al menos un criterio de WCAG, según WebAIM. Esto no es teórico: OpenAI probó navegar así, leyendo ese árbol de accesibilidad, en su navegador Atlas — y aunque Atlas como producto ya no existe, esa forma de navegar se mudó directo a ChatGPT, que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales. La misma inversión que hacemos por una persona ciega o con baja visión, hoy también la aprovecha una máquina que opera el sitio a esa escala.
