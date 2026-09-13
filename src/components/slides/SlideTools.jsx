@@ -110,19 +110,3 @@ export function SlideToolsTesting() {
     </Slide>
   );
 }
-
-export function SlideToolsRecommendation() {
-  return (
-    <Slide id="toolsRecommendation">
-      <div className="mx-auto max-w-4xl text-left">
-        <p className="mb-6 text-3xl leading-[1.2] text-white sm:text-4xl">
-          Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado se arregla doce
-          veces, o aparece en el módulo equivocado, en el peor momento del sprint.
-        </p>
-        <p className="text-2xl font-bold leading-relaxed text-brand-light">
-          Un solo componente bien hecho se corrige una vez y el arreglo se replica solo.
-        </p>
-      </div>
-    </Slide>
-  );
-}

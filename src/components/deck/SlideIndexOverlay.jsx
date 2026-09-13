@@ -15,7 +15,7 @@ export function SlideIndexOverlay({ open, slides, currentIndex, onSelect, onClos
   const [highlighted, setHighlighted] = useState(0);
   const inputRef = useRef(null);
   const entriesRef = useRef(null);
-  const currentRowRef = useRef(null);
+  const highlightedRowRef = useRef(null);
 
   if (open && !entriesRef.current) {
     entriesRef.current = slides.map((element, i) => extractSlideEntry(element, i)).filter(Boolean);
@@ -28,10 +28,12 @@ export function SlideIndexOverlay({ open, slides, currentIndex, onSelect, onClos
     const currentRow = entries.findIndex((entry) => entry.index === currentIndex);
     setHighlighted(currentRow === -1 ? 0 : currentRow);
     inputRef.current?.focus();
-    requestAnimationFrame(() => {
-      currentRowRef.current?.scrollIntoView({ block: 'center' });
-    });
   }, [open, currentIndex]);
+
+  useEffect(() => {
+    if (!open) return;
+    highlightedRowRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [open, highlighted]);
 
   const entries = entriesRef.current || [];
   const q = query.trim().toLowerCase();
@@ -89,7 +91,7 @@ export function SlideIndexOverlay({ open, slides, currentIndex, onSelect, onClos
           {filtered.map((entry, row) => (
             <button
               key={entry.index}
-              ref={entry.index === currentIndex ? currentRowRef : null}
+              ref={row === highlighted ? highlightedRowRef : null}
               type="button"
               onClick={() => onSelect(entry.index)}
               onMouseEnter={() => setHighlighted(row)}

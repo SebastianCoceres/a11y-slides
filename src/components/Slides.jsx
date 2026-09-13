@@ -23,7 +23,6 @@ import {
   SlideToolsLighthouse,
   SlideToolsA11yEngines,
   SlideToolsTesting,
-  SlideToolsRecommendation,
 } from "./slides/SlideTools";
 import {
   SlideSecondAudience,
@@ -54,7 +53,6 @@ export default function Slides() {
         <SlideToolsLighthouse topicId="toolsLighthouse" />
         <SlideToolsA11yEngines topicId="toolsA11yEngines" />
         <SlideToolsTesting topicId="toolsTesting" />
-        <SlideToolsRecommendation topicId="toolsRecommendation" />
 
         <SlideSecondAudience topicId="secondAudience" />
         <SlideSecondAudienceMechanism topicId="secondAudienceMechanism" />

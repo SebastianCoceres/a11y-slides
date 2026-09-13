@@ -142,8 +142,8 @@ export function SlideSecondAudienceCodeProximity() {
           </div>
         </div>
         <p className="mt-8 max-w-2xl text-base italic text-gray-500">
-          La misma idea de "componentes antes que páginas" de la sección anterior, ahora con alguien que
-          efectivamente puede ver el componente.
+          Arreglar en la fuente, una sola vez, en vez de parchear página por página — solo que ahora hay
+          alguien que efectivamente puede ver el componente.
         </p>
       </div>
     </Slide>

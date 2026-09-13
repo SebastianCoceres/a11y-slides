@@ -8,81 +8,81 @@
 
 **Título — A11Y**
 
-Esta charla trata sobre accesibilidad web: qué es, por qué afecta directamente el trabajo de un equipo de producto, y cómo aplicarla sin agregar procesos nuevos.
+Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de producto, y cómo meterla en el flujo de trabajo sin agregar un proceso nuevo.
 
-> Antes de seguir, conviene aclarar qué significa realmente esa sigla que acabamos de nombrar.
+> Antes de seguir, aclaremos qué es esa sigla que acabo de tirar arriba del slide.
 
 <!-- id:premise -->
 
 **Premisa — ¿Qué es A11Y?**
 
-A11Y es la abreviatura numérica de "Accessibility" (A + 11 letras + Y). Accesibilidad significa diseñar un producto que funcione para cualquier persona, en cualquier condición. No es una categoría de usuarios aparte: es una propiedad de calidad del software, en la misma familia que el rendimiento o la seguridad.
+A11Y es un numerónimo: A, once letras en el medio, Y — "Accessibility". Y accesibilidad, en criollo, es que el producto funcione para cualquier persona, en cualquier condición. No es un público aparte al que hay que atender: es una propiedad de calidad del software, como la performance o la seguridad.
 
-> Si es una propiedad de calidad, tiene que poder verificarse con un estándar — y ese estándar existe hace más de treinta años.
+> Y si es una propiedad de calidad, tiene que haber una forma de medirla. Y la hay, hace más de treinta años.
 
 <!-- id:wcagStandard -->
 
 **Estándar global — WCAG 2.2**
 
-El W3C define las Web Content Accessibility Guidelines (WCAG) desde 1994. La versión vigente es la 2.2 (2023), con criterios verificables organizados en tres niveles de conformidad: A (mínimo), AA (el exigido por normativas como la directiva UE 2019/882) y AAA (óptimo, no siempre aplicable). Esta charla se apoya en los 55 criterios de nivel A y AA.
+El W3C viene publicando las WCAG — las Web Content Accessibility Guidelines — desde 1994. Hoy estamos en la versión 2.2, de 2023, con criterios que se pueden verificar uno por uno, agrupados en tres niveles: A, el mínimo; AA, el que exigen normativas como la directiva de la Unión Europea; y AAA, el ideal, que no siempre es realista. Esta charla se apoya en los 55 criterios de A y AA.
 
-> Antes de entrar en cómo se agrupan esos criterios, vale la pena mostrar por qué conviene invertir en esto.
+> Antes de meternos en cómo se agrupan esos criterios, veamos por qué vale la pena invertir en esto.
 
 <!-- id:accessBenefits -->
 
 **Beneficios — El efecto rampa de acceso**
 
-La rampa en la vereda se construyó para sillas de ruedas. Hoy la usan carritos de bebé, repartidores y ciclistas. Ese es el efecto rampa de acceso: una mejora diseñada para un caso específico termina beneficiando a la base de usuarios completa.
+La rampa en la vereda se construyó pensando en sillas de ruedas. Hoy la usan carritos de bebé, repartidores, ciclistas — todo el mundo. Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina beneficiando a la base de usuarios completa.
 
-> Ese efecto rampa no es abstracto: pasa todos los días, en situaciones bien concretas que cualquiera del equipo puede atravesar.
+> Y ese efecto no es abstracto ni lejano: pasa todos los días, en situaciones bien concretas que cualquiera del equipo puede atravesar.
 
 <!-- id:situations -->
 
 **Situaciones — ¿Por qué nos interesa aplicarla?**
 
-La lista de situaciones que se muestra en esta diapositiva no describe casos excepcionales: describe circunstancias que cualquier persona del equipo puede atravesar en un día de trabajo normal (luz solar sobre la pantalla, una conexión lenta, una lesión temporal, cansancio visual). Accesibilidad es diseñar considerando esa variabilidad como la norma, no como la excepción.
+Lo que ven en esta lista no son casos raros: son cosas que le pasan a cualquiera de nosotros en un día normal de trabajo — el sol pegándole a la pantalla, una conexión que anda lenta, una lesión temporal, cansancio visual a la tarde. Accesibilidad es diseñar asumiendo que esa variedad es la norma, no la excepción.
 
-> Y si esas situaciones son la norma, ignorarlas también tiene un costo que se puede medir en números concretos para el negocio.
+> Y si esto es la norma y no la excepción, ignorarlo tiene un costo — uno que se puede medir en números concretos para el negocio.
 
 <!-- id:businessImpact -->
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Los beneficios de aplicar accesibilidad se distribuyen en toda la organización: menor costo de desarrollo al aplicar el criterio desde el diseño en lugar de corregirlo después, onboarding más rápido sobre un código consistente, ampliación del mercado direccionable , reducción de riesgo legal y normativo y menos tickets de soporte por problemas "simples".
+Esto no le sirve solo a quien usa el producto — le sirve a todo el equipo. Aplicarlo desde el diseño sale más barato que parchearlo después. El onboarding es más rápido sobre un código consistente. El mercado que podés atender se agranda. El riesgo legal y normativo baja. Y hay menos tickets de soporte por problemas que, en teoría, eran "simples".
 
-> Ya vimos por qué conviene invertir. Ahora entendamos en qué se apoya esa inversión: los cuatro principios que agrupan los criterios de WCAG.
+> Ya vimos por qué conviene invertir. Ahora veamos en qué se apoya esa inversión: los cuatro principios en los que se agrupan los criterios de WCAG.
 
 <!-- id:principlePerceptible -->
 
 **Perceptible**
 
-La información y los componentes de la interfaz tienen que poder percibirse, sea cual sea el sentido disponible en ese momento. No es "que se vea bien": es que el dato llegue por al menos una vía — vista, oído, o tacto a través de un lector de pantalla — sin depender de una sola. Un estado que solo existe en un color, un aviso que solo suena, un texto que solo vive dentro de una imagen: los tres rompen este principio antes de que entre en juego cualquier discapacidad permanente. Alcanza con estar al sol, tener el sonido apagado, o una conexión que no cargó la imagen.
+La información y los componentes de la interfaz tienen que poder percibirse — no importa qué sentido tengas disponible en ese momento. Y esto no es "que se vea lindo": es que el dato te llegue por al menos una vía — vista, oído, o tacto a través de un lector de pantalla — sin depender de una sola. Un estado que existe solo en un color. Un aviso que solo suena. Un texto que vive solo adentro de una imagen. Los tres rompen este principio, y ni siquiera hace falta una discapacidad permanente para que te afecte: alcanza con estar al sol, tener el sonido apagado, o que la imagen no haya cargado.
 
-> El segundo principio no es sobre qué se percibe, sino sobre qué se puede hacer con eso.
+> El segundo principio ya no es sobre qué percibís, sino sobre qué podés hacer con eso.
 
 <!-- id:principleOperable -->
 
 **Operable**
 
-Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier otro dispositivo de entrada — no solo con mouse o con un gesto de precisión. Un botón que solo reacciona al hover, un límite de tiempo que no se puede extender, un gesto que exige una trayectoria exacta: son barreras operativas. No dependen de cómo se ve la pantalla, sino de con qué se puede interactuar con ella.
+Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier otro dispositivo de entrada — no solo con mouse o con un gesto de precisión. Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo que no se puede extender. Un gesto que exige una trayectoria exacta. Todo eso son barreras operativas, y no tienen nada que ver con cómo se ve la pantalla, sino con qué podés usar para interactuar con ella.
 
-> Una vez que algo se puede percibir y operar, falta que se pueda entender.
+> Bien: ya lo percibís, ya lo podés operar. Falta que lo puedas entender.
 
 <!-- id:principleComprehensible -->
 
 **Comprensible**
 
-La información y el comportamiento de la interfaz tienen que ser predecibles. Que algo "se entienda" no es un detalle de UX: es una condición de accesibilidad. Un error sin explicación, un menú que cambia de lugar entre pantallas, un cambio de contexto que la persona no pidió — todo eso rompe el modelo mental que ya se había hecho del producto, y obliga a reaprenderlo cada vez.
+La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle de UX, como capaz se piensa muchas veces — es una condición de accesibilidad. Un error sin explicación. Un menú que cambia de lugar entre una pantalla y otra. Un cambio de contexto que la persona no pidió. Todo eso rompe el modelo mental que ya se había armado del producto, y la obliga a reaprenderlo cada vez.
 
-> El último principio no depende de la persona que usa el producto, sino de con qué lo está usando.
+> El último principio ya no depende de la persona, sino de con qué está usando el producto.
 
 <!-- id:principleRobust -->
 
 **Robusto**
 
-El contenido tiene que funcionar con una amplia variedad de navegadores y tecnologías asistivas. Un componente puede verse perfecto y no existir para la única API que importa acá: el árbol de accesibilidad. Robusto significa que cada control expone su nombre, su rol y su valor ahí, sin importar qué lo termine leyendo: un lector de pantalla, un control por voz, o cada vez más, un agente de software.
+El contenido tiene que funcionar en una variedad amplia de navegadores y tecnologías asistivas. Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el árbol de accesibilidad. Robusto es que cada control exponga ahí su nombre, su rol y su valor — no importa quién termine leyéndolo: un lector de pantalla, un control por voz, o cada vez más, un agente de software.
 
-> Con los cuatro principios ya claros, toca la pregunta práctica: con qué se implementa todo esto en el día a día.
+> Bien, ya tenemos los cuatro principios claros. Ahora la pregunta del millón: ¿con qué se implementa todo esto en el día a día?
 
 ---
 
@@ -92,39 +92,31 @@ El contenido tiene que funcionar con una amplia variedad de navegadores y tecnol
 
 **DevTools del navegador**
 
-Lo más básico ya viene instalado: el panel Accessibility de DevTools muestra nombre, rol y valor de cualquier nodo, el color picker calcula el contraste al vuelo, y el toggle del árbol de accesibilidad muestra de un vistazo qué quedó afuera — todo lo que ya vimos en el árbol de accesibilidad.
+Lo más básico ya lo tenés instalado. El panel Accessibility de DevTools te muestra nombre, rol y valor de cualquier nodo. El selector de color te calcula el contraste al toque. Y el toggle del árbol de accesibilidad te muestra, de un vistazo, qué quedó afuera — el mismo árbol del que veníamos hablando.
 
-> Con eso alcanza para inspeccionar a mano. El siguiente paso es automatizar esa inspección.
+> Con eso ya podés inspeccionar a mano. El paso que sigue es automatizar esa inspección.
 
 <!-- id:toolsLighthouse -->
 
 **Lighthouse y PageSpeed Insights**
 
-Lighthouse audita accesibilidad, performance, buenas prácticas y SEO en un solo reporte con puntaje 0-100 — integrado en DevTools y disponible como CLI. PageSpeed Insights es su hermano: corre el mismo motor pero como servicio web de Google, sin necesidad de tener el proyecto local, y suma datos reales de usuarios a los datos de laboratorio.
+Lighthouse te audita accesibilidad, performance, buenas prácticas y SEO en un solo reporte, con un puntaje de 0 a 100. Ya viene integrado en DevTools, y también existe como CLI. PageSpeed Insights es el hermano: corre el mismo motor, pero como servicio web de Google — no necesitás tener el proyecto abierto localmente, y encima te suma datos reales de usuarios, no solo de laboratorio.
 
-> Lighthouse da un puntaje general. Para accesibilidad específicamente, hay motores dedicados.
+> Lighthouse te da un puntaje general. Pero para accesibilidad específicamente, hay motores dedicados.
 
 <!-- id:toolsA11yEngines -->
 
 **Accessibility Insights y axe-core**
 
-Accessibility Insights for Web (Microsoft) es una extensión con dos modos: FastPass corre un chequeo automatizado en segundos, y Assessment guía paso a paso los criterios que solo se verifican a mano, como el orden del foco. axe-core (Deque) no tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de esta misma extensión, y de las herramientas de testing que siguen.
+Accessibility Insights for Web, de Microsoft, es una extensión con dos modos. FastPass te corre un chequeo automático en segundos. Assessment te guía paso a paso por los criterios que solo se pueden verificar a mano, como el orden del foco. axe-core, de Deque, ni siquiera tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de esta misma extensión, y de las herramientas de testing que vienen ahora.
 
-> El motor es el mismo en todos lados; lo que cambia es dónde se lo hace correr. Metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar.
+> El motor es siempre el mismo; lo que cambia es dónde lo hacés correr. Y metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar.
 
 <!-- id:toolsTesting -->
 
 **Playwright, Cypress y Vitest**
 
-Playwright y Cypress son runners end-to-end — con @axe-core/playwright o cypress-axe, cada test que ya valida funcionalidad corre además las reglas de axe sobre la página completa. Vitest opera a otro nivel: con vitest-axe audita un componente aislado antes de que llegue a integrarse en ninguna página.
-
-> Ninguna de estas herramientas reemplaza una decisión de arquitectura de más alto nivel.
-
-<!-- id:toolsRecommendation -->
-
-**Componentes antes que páginas**
-
-Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado se arregla doce veces, o aparece en el módulo equivocado, en el peor momento del sprint. Un solo componente bien hecho se corrige una vez y el arreglo se replica solo.
+Playwright y Cypress son runners end-to-end. Con @axe-core/playwright o cypress-axe, cada test que ya estás corriendo para validar funcionalidad, de yapa corre las reglas de axe sobre toda la página. Vitest juega en otra liga: con vitest-axe audita un componente aislado, antes de que ni siquiera llegue a integrarse en una página.
 
 > Con las herramientas ya elegidas, hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
 
@@ -132,37 +124,37 @@ Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado 
 
 **Una segunda audiencia**
 
-Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano — más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare — y esos agentes leen exactamente la misma estructura semántica, el mismo árbol de accesibilidad, que un lector de pantalla. Mientras tanto, el 95.9% de los sitios más visitados sigue fallando al menos un criterio de WCAG, según WebAIM. Esto no es teórico: OpenAI probó navegar así, leyendo ese árbol de accesibilidad, en su navegador Atlas — y aunque Atlas como producto ya no existe, esa forma de navegar se mudó directo a ChatGPT, que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales. La misma inversión que hacemos por una persona ciega o con baja visión, hoy también la aprovecha una máquina que opera el sitio a esa escala.
+Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano. Más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare. Y esos agentes leen exactamente la misma estructura semántica — el mismo árbol de accesibilidad — que un lector de pantalla. Mientras tanto, el 95.9% de los sitios más visitados todavía falla al menos un criterio de WCAG, según WebAIM. Y esto no es teórico: OpenAI probó navegar así, leyendo ese árbol de accesibilidad, en su navegador Atlas. Atlas como producto ya no existe, pero esa forma de navegar se mudó directo a ChatGPT — que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales. La misma inversión que hacemos por una persona ciega o con baja visión, hoy también la aprovecha una máquina que opera el sitio a esa escala.
 
-> Vale la pena entender por qué pasa esto exactamente — no es magia, es el mismo mecanismo técnico que ya usamos toda la charla.
+> Vale la pena entender por qué pasa esto exactamente — no es magia, es el mismo mecanismo técnico del que veníamos hablando toda la charla.
 
 <!-- id:secondAudienceMechanism -->
 
 **La misma API, un cliente más**
 
-Estos agentes no leen píxeles ni el HTML entero de la página: leen el mismo árbol de accesibilidad que definimos al principio de la charla — nombre, rol y valor de cada nodo. Es la misma API paralela al DOM que usa un lector de pantalla, con un cliente más del otro lado.
+Estos agentes no leen píxeles ni el HTML entero de la página. Leen el mismo árbol de accesibilidad del que hablamos al principio — nombre, rol y valor de cada nodo. Es la misma API paralela al DOM que usa un lector de pantalla, solo que ahora hay un cliente más del otro lado.
 
-Playwright MCP, el servidor oficial de Microsoft para controlar un navegador desde un agente, devuelve ese árbol en vez de la página completa — y no es un detalle menor de implementación: un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que interpretar el HTML crudo de una página real. La misma estructura que le permite a un lector de pantalla no tener que procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
+Playwright MCP, el servidor oficial de Microsoft para controlar un navegador desde un agente, devuelve justamente eso: ese árbol, en vez de la página completa. Y esto no es un detalle menor de implementación — un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que masticar el HTML crudo de una página real. La misma estructura que le evita a un lector de pantalla procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
 
-> Esto ya no es teoría de arquitectura: hoy existen herramientas concretas que un equipo puede usar ya mismo.
+> Y esto ya dejó de ser teoría de arquitectura: hoy existen herramientas concretas que cualquier equipo puede usar ya mismo.
 
 <!-- id:secondAudienceTools -->
 
 **Ya existen las herramientas**
 
-Claude Code, el agente con el que armé esta misma charla, ya viene con una skill llamada "accessibility": instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría o "hacer accesible" algo, sin instalar nada aparte. Pero no es la única pieza del rompecabezas.
+Claude Code, el mismo agente con el que armé esta charla, ya viene con una skill que se llama "accessibility": instrucciones especializadas en WCAG 2.2 que se activan apenas le pedís una auditoría o que "haga accesible" algo — sin instalar nada aparte. Pero esta es solo una pieza del rompecabezas.
 
-Deque — la misma empresa detrás de axe-core, que ya vimos en la sección de herramientas — empaquetó ese motor como MCP oficial: analiza una página y devuelve el fix de código listo para revisar, aplicar o rechazar, sin salir del editor. Funciona con Claude Code, GitHub Copilot, Cursor y Windsurf. Sumale Chrome DevTools MCP o Playwright MCP, que le dan al agente una sesión de navegador real para leer el árbol de accesibilidad en vivo y detectar fallas de teclado que un análisis estático no ve — y MCPs de documentación, que le traen al agente la versión vigente de un criterio WCAG o de una librería en el momento en que la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.
+Deque, la misma empresa detrás de axe-core que vimos en la sección de herramientas, empaquetó ese motor como MCP oficial: analiza una página y te devuelve el fix de código, listo para revisar, aplicar o rechazar, sin salir del editor. Funciona con Claude Code, GitHub Copilot, Cursor y Windsurf. Sumale Chrome DevTools MCP o Playwright MCP, que le dan al agente una sesión de navegador de verdad para leer el árbol de accesibilidad en vivo y agarrar fallas de teclado que un análisis estático se pierde. Y también están los MCP de documentación, que le acercan al agente la versión vigente de un criterio WCAG o de una librería justo cuando la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.
 
-> Ninguna de estas herramientas es la ventaja real. La ventaja real es otra cosa.
+> Pero ojo: ninguna de estas herramientas es la ventaja real. La ventaja real es otra cosa.
 
 <!-- id:secondAudienceCodeProximity -->
 
 **La ventaja de estar cerca del código**
 
-Lighthouse, axe-core o Accessibility Insights reportan el síntoma en la página ya renderizada: "este botón no tiene nombre accesible". No saben si ese botón vive en un componente que se repite cuarenta veces o si es un caso único — porque no tienen forma de ver el código, solo el resultado.
+Lighthouse, axe-core o Accessibility Insights te reportan el síntoma en la página ya renderizada: "este botón no tiene nombre accesible". Pero no saben si ese botón vive en un componente que se repite cuarenta veces, o si es un caso único — porque no tienen forma de ver el código, solo el resultado final.
 
-Un agente con el repositorio ve el mismo síntoma, pero también el componente fuente, cuántas páginas lo importan, y si el mismo problema ya se arregló en otro lado del código. Puede proponer el fix una sola vez, en la fuente — no una vez por página. Es la misma idea de "componentes antes que páginas" de la sección de herramientas, con alguien que esta vez sí puede ver el componente.
+Un agente con acceso al repositorio ve el mismo síntoma, pero además ve el componente fuente, cuántas páginas lo importan, y si ese mismo problema ya se arregló en otro lugar del código. Puede proponer el fix una sola vez, en la fuente — no una vez por página, ni una vez por componente repetido.
 
 ---
 
@@ -172,39 +164,39 @@ Un agente con el repositorio ve el mismo síntoma, pero también el componente f
 
 **Más allá de lo básico**
 
-Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por qué una interfaz técnicamente conforme puede seguir generando fricción operativa.
+Estos conceptos no corresponden a ningún criterio WCAG numerado, pero explican por qué una interfaz que aprueba todo en el papel puede seguir siendo un dolor de cabeza en la práctica.
 
-> Con los principios, las herramientas y esa segunda audiencia ya sobre la mesa, vale la pena mostrar qué pasa incluso cuando una interfaz cumple todo lo anterior — empezando por cuánto tiene que recordar la persona.
+> Con los principios, las herramientas y esa segunda audiencia ya sobre la mesa, veamos qué pasa incluso cuando una interfaz cumple con todo eso — empezando por cuánto tiene que recordar la persona que la usa.
 
 <!-- id:cognitiveLoad -->
 
 **Carga cognitiva**
 
-Es la cantidad de información que una persona debe recordar y procesar para completar una tarea. Un formulario extenso en una sola pantalla exige sostener en la memoria qué falta completar, qué es obligatorio y qué errores hay que corregir — toda esa carga recae en quien lo completa, no en la interfaz.
+Es la cantidad de información que alguien tiene que recordar y procesar para completar una tarea. Un formulario largo en una sola pantalla te obliga a tener en la cabeza qué falta completar, qué es obligatorio, qué errores hay que corregir — toda esa carga cae sobre quien lo completa, no sobre la interfaz.
 
-Dividir un proceso largo en pasos no le saca ningún campo al formulario: solo cambia cuánto hay que sostener en la cabeza en un momento dado. Es la misma información, mejor repartida en el tiempo.
+Dividir un proceso largo en pasos no le saca ni un campo al formulario: lo único que cambia es cuánto tenés que sostener en la cabeza en cada momento. Es la misma información, mejor repartida en el tiempo.
 
-> Reducir lo que hay que recordar en un momento dado es una forma de carga; otra es cuánto cuesta repetir la misma tarea muchas veces.
+> Reducir lo que hay que recordar en un momento dado es una forma de carga. Otra es cuánto cuesta repetir la misma tarea muchas veces.
 
 <!-- id:interactionFatigue -->
 
 **Fatiga por interacción**
 
-Cada interacción tiene un costo. Una tarea que exige varios pasos repetitivos es tolerable la primera vez, pero se vuelve carga operativa real cuando alguien la repite decenas de veces por día — el costo no está en la dificultad de cada paso, sino en el desplazamiento acumulado.
+Cada interacción tiene un costo. Una tarea con varios pasos repetitivos se banca perfecto la primera vez, pero se convierte en carga operativa real cuando alguien la repite decenas de veces por día — el problema no es que cada paso sea difícil, es el desgaste acumulado.
 
-Ese costo es invisible en una demo, porque nadie hace clic cien veces seguidas frente a un cliente. Aparece recién cuando se mide el trabajo real de quien usa el producto todos los días, no la primera vez que alguien lo prueba.
+Ese costo es invisible en una demo, porque nadie hace clic cien veces seguidas frente a un cliente. Aparece recién cuando medís el trabajo real de quien usa el producto todos los días, no la primera vez que alguien lo prueba.
 
-> Todo esto — carga cognitiva, fatiga por interacción — apunta a la misma idea de fondo, que cierra este bloque.
+> Carga cognitiva, fatiga por interacción — las dos apuntan a la misma idea de fondo, que cierra este bloque.
 
 <!-- id:inclusiveDesign -->
 
 **Diseño inclusivo**
 
-Quien usa un producto no está ahí para aprender cómo funciona: está ahí para completar una tarea. Diseñar para condiciones reales — interrupciones, presión de tiempo, cansancio — evita trasladarle a esa persona una complejidad que el software debería absorber.
+Nadie usa un producto para aprender cómo funciona: lo usa para completar una tarea. Diseñar pensando en condiciones reales — interrupciones, presión de tiempo, cansancio — evita trasladarle a esa persona una complejidad que el software debería absorber.
 
-Es la misma idea que atraviesa toda la charla, solo que acá no hay un criterio WCAG que la mida: un producto puede aprobar cualquier auditoría automática y seguir haciendo trabajar de más a quien lo usa todos los días.
+Es la misma idea que atraviesa toda la charla, solo que acá no hay ningún criterio WCAG que la mida: un producto puede aprobar cualquier auditoría automática y, aun así, seguir haciendo trabajar de más a quien lo usa todos los días.
 
-> Con esto llegamos al final del recorrido. Queda cerrar la charla.
+> Y con esto llegamos al final del recorrido. Ya solo queda cerrar.
 
 ---
 
