@@ -26,22 +26,7 @@ A11Y es la abreviatura numérica de "Accessibility" (A + 11 letras + Y). Accesib
 
 El W3C define las Web Content Accessibility Guidelines (WCAG) desde 1994. La versión vigente es la 2.2 (2023), con criterios verificables organizados en tres niveles de conformidad: A (mínimo), AA (el exigido por normativas como la directiva UE 2019/882) y AAA (óptimo, no siempre aplicable). Esta charla se apoya en los 55 criterios de nivel A y AA.
 
-> Esos 55 criterios no están sueltos: se agrupan en cuatro principios, y ese agrupamiento es el que va a ordenar el resto de la charla.
-
-<!-- id:pourPrinciples -->
-
-**Principios básicos — POUR**
-
-Los criterios de WCAG se agrupan en cuatro principios:
-
-- **Perceptible** (Perceivable): la información debe poder percibirse, sea cual sea el sentido disponible.
-- **Operable** (Operable): los controles deben poder manejarse con teclado, mouse, voz u otros dispositivos.
-- **Comprensible** (Understandable): la información y el comportamiento de la interfaz deben ser predecibles.
-- **Robusto** (Robust): el contenido debe funcionar con distintos navegadores y tecnologías asistivas.
-
-El resto de la charla sigue este mismo orden.
-
-> Con ese orden ya establecido, antes de entrar en los criterios uno por uno vale la pena mostrar por qué conviene invertir en esto.
+> Antes de entrar en cómo se agrupan esos criterios, vale la pena mostrar por qué conviene invertir en esto.
 
 <!-- id:accessBenefits -->
 
@@ -65,453 +50,57 @@ La lista de situaciones que se muestra en esta diapositiva no describe casos exc
 
 Los beneficios de aplicar accesibilidad se distribuyen en toda la organización: menos tickets de soporte por problemas ya conocidos, menor costo de desarrollo al aplicar el criterio desde el diseño en lugar de corregirlo después, onboarding más rápido sobre un código consistente, ampliación del mercado direccionable y reducción de riesgo legal y normativo.
 
----
+> Ya vimos por qué conviene invertir. Ahora entendamos en qué se apoya esa inversión: los cuatro principios que agrupan los criterios de WCAG.
 
-## Bloque 1 — Perceptible
+<!-- id:principlePerceptible -->
 
-La información y los componentes de la interfaz deben poder percibirse, independientemente del sentido con el que se acceda a ellos.
+**Perceptible**
 
-> Arrancamos entonces por el principio de percepción, con el ejemplo más conocido de todos: el texto alternativo.
+La información y los componentes de la interfaz tienen que poder percibirse, sea cual sea el sentido disponible en ese momento. No es "que se vea bien": es que el dato llegue por al menos una vía — vista, oído, o tacto a través de un lector de pantalla — sin depender de una sola. Un estado que solo existe en un color, un aviso que solo suena, un texto que solo vive dentro de una imagen: los tres rompen este principio antes de que entre en juego cualquier discapacidad permanente. Alcanza con estar al sol, tener el sonido apagado, o una conexión que no cargó la imagen.
 
-<!-- id:altText -->
+> El segundo principio no es sobre qué se percibe, sino sobre qué se puede hacer con eso.
 
-**Texto alternativo (1.1.1, A)**
+<!-- id:principleOperable -->
 
-Todo contenido no textual (imágenes, íconos, gráficos) requiere una alternativa textual equivalente.
+**Operable**
 
-> Eso cubre imágenes fijas. El mismo principio de alternativa textual aplica a contenido que se mueve en el tiempo: audio y video.
+Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier otro dispositivo de entrada — no solo con mouse o con un gesto de precisión. Un botón que solo reacciona al hover, un límite de tiempo que no se puede extender, un gesto que exige una trayectoria exacta: son barreras operativas. No dependen de cómo se ve la pantalla, sino de con qué se puede interactuar con ella.
 
-<!-- id:mediaAlternatives -->
+> Una vez que algo se puede percibir y operar, falta que se pueda entender.
 
-**Medios basados en tiempo (1.2.1–1.2.5, A/AA)**
+<!-- id:principleComprehensible -->
 
-Contenido de audio o video grabado requiere alternativas equivalentes: transcripción para audio, subtítulos sincronizados y audiodescripción para video. Sin esas alternativas, el contenido queda inaccesible para quien no puede percibir el canal original.
+**Comprensible**
 
-> Ya cubrimos contenido no textual; ahora el problema aparece incluso con texto real, cuando la estructura que lo organiza no existe en el marcado.
+La información y el comportamiento de la interfaz tienen que ser predecibles. Que algo "se entienda" no es un detalle de UX: es una condición de accesibilidad. Un error sin explicación, un menú que cambia de lugar entre pantallas, un cambio de contexto que la persona no pidió — todo eso rompe el modelo mental que ya se había hecho del producto, y obliga a reaprenderlo cada vez.
 
-<!-- id:semanticStructure -->
+> El último principio no depende de la persona que usa el producto, sino de con qué lo está usando.
 
-**Información y relaciones (1.3.1, A)**
+<!-- id:principleRobust -->
 
-La estructura de una interfaz (encabezados, listas, relaciones entre campo y etiqueta) debe existir en el marcado semántico, no solamente en el estilo visual. Si la jerarquía se logra únicamente con CSS, una tecnología asistiva no puede reconstruirla.
+**Robusto**
 
-> Esa estructura real en el DOM se rompe de otra forma cuando el orden visual y el orden del marcado quedan desincronizados.
+El contenido tiene que funcionar con una amplia variedad de navegadores y tecnologías asistivas. Un componente puede verse perfecto y no existir para la única API que importa acá: el árbol de accesibilidad. Robusto significa que cada control expone su nombre, su rol y su valor ahí, sin importar qué lo termine leyendo: un lector de pantalla, un control por voz, o cada vez más, un agente de software.
 
-<!-- id:meaningfulSequence -->
-
-**Secuencia significativa (1.3.2, A)**
-
-El orden en el que el contenido se presenta a un lector de pantalla debe conservar el significado, incluso cuando no coincide con el orden visual logrado por CSS.
-
-> El orden es una forma de depender de lo visual; la siguiente es más directa todavía: instrucciones que dependen de forma, color o posición.
-
-<!-- id:sensoryCharacteristics -->
-
-**Características sensoriales (1.3.3, A)**
-
-Las instrucciones no pueden depender exclusivamente de forma, color, tamaño o posición ("el botón redondo verde"). Deben incluir un identificador textual que no dependa de la percepción visual.
-
-> Si las instrucciones no pueden depender solo de lo visual, tampoco puede depender la funcionalidad de una única orientación de pantalla.
-
-<!-- id:orientation -->
-
-**Orientación (1.3.4, AA)**
-
-El contenido debe funcionar tanto en orientación vertical como horizontal, salvo que una orientación sea esencial para la función (por ejemplo, una aplicación de piano). Bloquear la orientación sin justificación excluye a quien usa el dispositivo en un soporte fijo.
-
-> De la orientación pasamos a otro tipo de asistencia automática: que el navegador entienda qué dato pide cada campo.
-
-<!-- id:inputPurpose -->
-
-**Identificar el propósito de la entrada (1.3.5, AA)**
-
-Los campos de datos personales comunes (nombre, teléfono, dirección) deben identificarse programáticamente mediante `autocomplete`. Sin ese atributo, cada formulario se completa manualmente, sin aprovechar el autocompletado del navegador o de un gestor de contraseñas.
-
-> Dejamos el autocompletado y volvemos a lo visual con el criterio más citado de todos: el uso del color.
-
-<!-- id:colorUsage -->
-
-**Uso de color adecuado (1.4.1, A)**
-
-El color no puede ser el único medio para transmitir información o distinguir un estado. Uno de cada doce hombres presenta algún tipo de daltonismo; la diapositiva siguiente muestra cómo se percibe el mismo contenido bajo protanopia, deuteranopia, tritanopia y monocromacia.
-
-> Del color pasamos a otro canal sensorial: el audio, y qué pasa cuando arranca solo sin ningún control.
-
-<!-- id:audioControl -->
-
-**Control de audio (1.4.2, A)**
-
-Todo audio que se reproduce automáticamente por más de tres segundos debe poder pausarse, detenerse o silenciarse. Un audio que arranca solo y no ofrece control interfiere con cualquier lector de pantalla activo en la página.
-
-> Dejando el audio de lado, volvemos a lo visual con algo que aparece en casi cualquier auditoría: el contraste de la tipografía.
-
-<!-- id:typography -->
-
-**Tipografía legible — Contraste mínimo (1.4.3, AA)**
-
-El texto debe mantener una relación de contraste de al menos 4.5:1 con su fondo (3:1 para texto grande). Un contraste insuficiente exige un esfuerzo visual adicional a cualquier persona, tenga o no una condición de visión diagnosticada.
-
-> El contraste resuelve legibilidad a tamaño fijo; el siguiente criterio pregunta qué pasa cuando ese texto se agranda.
-
-<!-- id:textResize -->
-
-**Cambio de tamaño del texto (1.4.4, AA)**
-
-El texto debe poder ampliarse hasta el 200% sin pérdida de contenido ni de funcionalidad. Si el texto se corta o superpone al agrandarlo, la interfaz queda inutilizable para baja visión.
-
-> Si el texto tiene que poder agrandarse, meter ese texto adentro de una imagen queda directamente descartado.
-
-<!-- id:imagesOfText -->
-
-**Imágenes de texto (1.4.5, AA)**
-
-Debe usarse texto real en lugar de texto incrustado en una imagen, salvo casos esenciales como logotipos. Un texto renderizado como imagen no puede seleccionarse, traducirse, ni redimensionarse.
-
-> Texto real en vez de imagen resuelve un problema de escala; reflow es el mismo problema pero a nivel de todo el layout.
-
-<!-- id:reflow -->
-
-**Reflow (1.4.10, AA)**
-
-El contenido debe adaptarse a un ancho de 320px sin generar scroll horizontal ni pérdida de información. La aparición de scroll horizontal a ese ancho es el primer síntoma de un layout que no escala.
-
-> Ya vimos contraste de texto; ahora el mismo requisito pero aplicado a íconos y bordes, que también necesitan distinguirse del fondo.
-
-<!-- id:nonTextContrast -->
-
-**Contraste de elementos no textuales (1.4.11, AA)**
-
-Íconos, bordes y estados de controles deben mantener al menos 3:1 de contraste contra su fondo. La misma exigencia de legibilidad aplicada al texto corresponde a cualquier elemento gráfico funcional.
-
-> Del contraste pasamos a otra forma de personalizar la lectura: qué pasa cuando alguien necesita más espacio entre letras y líneas.
-
-<!-- id:textSpacing -->
-
-**Espaciado de texto (1.4.12, AA)**
-
-El contenido debe seguir siendo legible cuando una persona aumenta el interlineado o el espaciado entre letras y párrafos desde su navegador o su tecnología asistiva. Un contenedor de altura fija impide ese ajuste.
-
-> Cerramos el bloque de percepción con un patrón muy común de interfaz: contenido que aparece solo con hover o con foco.
-
-<!-- id:hoverContent -->
-
-**Contenido al pasar el cursor o enfocar (1.4.13, AA)**
-
-El contenido adicional que aparece con hover o focus (tooltips, menús) debe poder descartarse, debe ser persistente mientras el cursor permanece sobre él, y debe ser alcanzable con el puntero. Un tooltip que desaparece antes de poder leerse no cumple ninguna función.
+> Con los cuatro principios ya claros, toca la pregunta práctica: con qué se implementa todo esto en el día a día.
 
 ---
 
-## Bloque 2 — Operable
+## Herramientas
 
-Los componentes de navegación y los controles deben poder manejarse mediante teclado, voz u otros dispositivos, sin límites de tiempo ni gestos que excluyan a una parte de los usuarios.
+<!-- id:tools -->
 
-> Con esto cerramos todo lo que hace a que la información se perciba. El segundo principio es que los controles se puedan operar, y arrancamos por el canal más básico: el teclado.
+**Herramientas**
 
-<!-- id:keyboardNav -->
-
-**Navegación por teclado (2.1.1, A)**
-
-Toda la funcionalidad debe estar disponible desde el teclado. Afecta a cualquier persona que no pueda o no quiera depender del mouse: lesiones por esfuerzo repetitivo, uso prolongado de formularios, o simplemente preferencia de flujo de trabajo.
-
-> El foco tiene que llegar a todos lados en el orden correcto; el siguiente problema es qué pasa cuando el foco entra a un componente y no puede salir.
-
-<!-- id:focusTrap -->
-
-**Focus trap — Sin trampas de teclado (2.1.2, A)**
-
-El foco debe poder salir de cualquier componente usando exclusivamente el teclado.
-
-> Ya vimos foco atrapado sin salida; ahora el problema inverso: un atajo de teclado que se dispara donde no debería.
-
-<!-- id:singleCharShortcuts -->
-
-**Atajos de un carácter (2.1.4, A)**
-
-Un atajo compuesto por una sola tecla debe poder desactivarse, remapearse, o limitarse a cuando un control específico tiene el foco.
-
-> De atajos que interrumpen pasamos a otra forma de interrumpir: un límite de tiempo que corre sin que la persona pueda hacer nada.
-
-<!-- id:adjustableTimeout -->
-
-**Tiempo ajustable (2.2.1, A)**
-
-Cuando existe un límite de tiempo, debe poder extenderse — el mismo patrón que usan las plataformas de venta de entradas al reservar asientos.
-
-> El mismo problema de "algo que corre solo" aparece con contenido que se mueve o rota automáticamente, como un carrusel.
-
-<!-- id:pausableCarousel -->
-
-**Movimiento controlable — Pausar, detener, ocultar (2.2.2, A)**
-
-Contenido que se mueve, parpadea o se actualiza automáticamente debe poder pausarse.
-
-> Del movimiento automático pasamos a un caso límite del mismo tema, uno que no vamos a demostrar en vivo por una razón de seguridad.
-
-<!-- id:threeFlashes -->
-
-**Tres destellos o por debajo del umbral (2.3.1, A)**
-
-Ningún contenido puede destellar más de tres veces por segundo: puede inducir convulsiones en personas con epilepsia fotosensible. Este criterio se explica sin demostración en vivo, por razones de seguridad para la audiencia.
-
-> En la misma línea de movimiento que puede afectar físicamente a alguien, están las animaciones que provocan mareo sin llegar a ser un destello.
-
-<!-- id:reducedMotion -->
-
-**Movimiento reducido (2.3.3, AAA)**
-
-Rebotes, parallax y auto-scroll pueden provocar mareo en personas con trastornos vestibulares o migrañas. Respetar la preferencia del sistema operativo `prefers-reduced-motion` es la diferencia entre una interfaz utilizable y una que la persona debe abandonar.
-
-> Dejamos el movimiento y volvemos a la navegación por teclado, ahora con el costo de tener que pasar por el mismo menú en cada página.
-
-<!-- id:skipLinks -->
-
-**Evitar bloques repetidos (2.4.1, A)**
-
-Debe existir un mecanismo para saltear bloques de contenido que se repiten en cada página, como la navegación principal. Sin ese mecanismo, cada página cuesta lo mismo: tabular por todo el menú antes de llegar al contenido.
-
-> Saltar bloques repetidos ahorra tiempo dentro de una página; el título de la pestaña resuelve lo mismo pero entre páginas.
-
-<!-- id:pageTitle -->
-
-**Título de página (2.4.2, A)**
-
-Cada página debe tener un título que describa su tema o propósito. Un título genérico no permite distinguir pestañas del navegador ni orienta a un lector de pantalla al cambiar de contexto.
-
-> Del título de la página volvemos al foco, esta vez al orden en el que se recorre con Tab.
-
-<!-- id:focusOrder -->
-
-**Orden del foco (2.4.3, A)**
-
-El orden en el que se recibe el foco debe conservar el significado y la operabilidad de la interfaz. Un ajuste de CSS que reordena visualmente sin modificar el DOM produce un recorrido de teclado que no corresponde al orden visual.
-
-> El orden del foco importa tanto como lo que cada control dice de sí mismo — y ahí aparece el problema de los enlaces con el mismo texto.
-
-<!-- id:linkPurpose -->
-
-**Propósito del enlace, en contexto (2.4.4, A)**
-
-El propósito de un enlace debe poder entenderse por su texto o por el contexto inmediato. Repetir "Ver más" en una lista sin contexto adicional no permite distinguir un enlace de otro fuera de esa lista.
-
-> Ya resolvimos que cada enlace se identifique solo; ahora el problema es tener una sola forma de llegar hasta él.
-
-<!-- id:multipleWays -->
-
-**Múltiples vías (2.4.5, AA)**
-
-Debe existir más de un mecanismo para llegar a un contenido determinado: búsqueda, filtro o navegación estructurada. Depender exclusivamente del scroll en una lista extensa no constituye una vía razonable de acceso.
-
-> Encontrar el contenido es una parte del problema; que la etiqueta de cada campo diga algo útil es la otra.
-
-<!-- id:descriptiveLabels -->
-
-**Encabezados y etiquetas (2.4.6, AA)**
-
-Los encabezados y las etiquetas de formulario deben describir el tema o propósito del contenido que acompañan. Etiquetas genéricas ("Campo 1") son técnicamente válidas pero no comunican información utilizable.
-
-> Una etiqueta clara no sirve de nada si no se puede ver dónde está parado el foco en primer lugar.
-
-<!-- id:visibleFocus -->
-
-**Foco visible (2.4.7, AA)**
-
-Todo elemento que recibe foco de teclado debe mostrar un indicador visible. Eliminar el `outline` sin reemplazo dificulta que una persona que navega con teclado identifique su posición actual en la interfaz.
-
-> Que el foco sea visible es necesario pero no alcanza si después otro elemento de la pantalla lo tapa.
-
-<!-- id:focusNotObscured -->
-
-**Foco no ocultado, mínimo (2.4.11, AA)**
-
-El elemento con foco no puede quedar completamente tapado por otro contenido, como un encabezado fijo.
-
-> Dejamos el teclado por un momento para volver al puntero, empezando por gestos que necesitan una trayectoria completa.
-
-<!-- id:pointerGestures -->
-
-**Gestos del puntero (2.5.1, A)**
-
-Toda función activada mediante un gesto de trayectoria o multipunto (como deslizar) debe tener una alternativa de un solo punto. Una galería navegable únicamente por swipe excluye a quien no puede ejecutar ese gesto.
-
-> Resuelto el gesto en sí, queda otro problema del puntero: en qué momento exacto se confirma la acción.
-
-<!-- id:pointerCancellation -->
-
-**Cancelación del puntero (2.5.2, A)**
-
-Las acciones deben confirmarse al soltar el clic, no al presionar, y deben poder cancelarse arrastrando el puntero fuera del control antes de soltar. Disparar una acción destructiva en `pointerdown` elimina esa última oportunidad de cancelar.
-
-> Del momento en que se confirma un clic pasamos a otro desajuste sutil: cuando lo que se ve y lo que se anuncia no coinciden.
-
-<!-- id:labelInName -->
-
-**Etiqueta en el nombre (2.5.3, A)**
-
-El nombre accesible de un control debe incluir el texto visible que lo identifica. Si el texto visible y el nombre accesible no coinciden, el control por voz que repite el texto visible no logra activar el control.
-
-> Ese desajuste afecta control por voz; el siguiente criterio depende de un dispositivo físico, así que lo explicamos sin demo.
-
-<!-- id:motionActivation -->
-
-**Activación por movimiento (2.5.4, A)**
-
-Las funciones activadas por el movimiento del dispositivo (agitar, inclinar) deben tener un control equivalente en pantalla y poder desactivarse. Este criterio se explica sin demostración, dado que requiere un dispositivo físico móvil.
-
-> De mover el dispositivo entero pasamos a mover elementos dentro de la pantalla: arrastrar y soltar.
-
-<!-- id:dragMovements -->
-
-**Movimientos de arrastre (2.5.7, AA)**
-
-Toda función de arrastrar y soltar debe tener una alternativa que no dependa del arrastre. Reordenar una lista únicamente por drag-and-drop excluye a quien no puede sostener ese gesto con precisión.
-
-> Cerramos el bloque de operabilidad con algo que combina precisión motriz y tamaño: qué tan grande tiene que ser un objetivo táctil.
-
-<!-- id:motorComplexity -->
-
-**Tamaño del objetivo, mínimo (2.5.8, AA)**
-
-Los objetivos táctiles deben medir al menos 24×24px, o contar con espacio suficiente entre controles adyacentes.
+La implementación no requiere herramientas nuevas: DevTools del navegador para inspección de contraste y árbol de accesibilidad, Lighthouse para auditoría automatizada, axe-core como motor de reglas WCAG sobre el DOM, y Playwright para validar accesibilidad como parte del pipeline de integración continua. Priorizar componentes reutilizables sobre implementaciones ad hoc por página evita corregir el mismo defecto múltiples veces.
 
 ---
 
-## Bloque 3 — Comprensible
-
-La información y el funcionamiento de la interfaz deben ser predecibles y fáciles de interpretar.
-
-> Con esto cerramos operable. El tercer principio es que todo sea comprensible, y el primer requisito para entender algo es saber en qué idioma está escrito.
-
-<!-- id:pageLanguage -->
-
-**Idioma de la página (3.1.1, A)**
-
-El idioma principal del documento debe declararse mediante el atributo `lang`. Sin esa declaración, un lector de pantalla puede aplicar reglas fonéticas de otro idioma a todo el contenido. Este criterio se explica a nivel de documento, sin demostración interactiva.
-
-> Eso cubre el idioma general del documento; el mismo problema aparece en miniatura cuando un fragmento puntual cambia de idioma.
-
-<!-- id:partsLanguage -->
-
-**Idioma de las partes (3.1.2, AA)**
-
-Un fragmento de texto en un idioma distinto al principal del documento debe marcarse con su propio atributo `lang`.
-
-> Del idioma pasamos a otra forma de sorprender a quien usa la interfaz: un cambio de contexto que no pidió.
-
-<!-- id:onFocusChange -->
-
-**Al recibir el foco (3.2.1, A)**
-
-Ningún control puede disparar un cambio de contexto por el solo hecho de recibir el foco.
-
-> Ese cambio de contexto se disparaba solo con el foco; el mismo problema existe al modificar el valor de un campo.
-
-<!-- id:onInputChange -->
-
-**Al recibir entrada de datos (3.2.2, A)**
-
-Ningún control puede disparar un cambio de contexto automático por el solo hecho de modificar su valor. Un filtro que navega o descarta datos no guardados apenas cambia de valor debe reemplazarse por un paso de confirmación explícito.
-
-> Evitar sorpresas dentro de una pantalla es una parte; mantener la misma navegación entre pantallas es la otra.
-
-<!-- id:consistentNavigation -->
-
-**Navegación consistente (3.2.3, AA)**
-
-Los mecanismos de navegación que se repiten deben aparecer en el mismo orden en todas las páginas. Un menú que cambia de orden entre pantallas obliga a reinterpretar la navegación en cada una.
-
-> Si la navegación tiene que ser consistente, lo mismo aplica a cualquier control que cumpla la misma función en toda la app.
-
-<!-- id:consistency -->
-
-**Identificación consistente (3.2.4, AA)**
-
-Los componentes con la misma función deben identificarse de forma consistente en toda la aplicación. Si la acción "Guardar" ocupa una posición distinta en cada módulo, cada persona debe reinterpretar la interfaz cada vez.
-
-> Esa misma consistencia aplica a algo tan simple como dónde vive el botón de ayuda.
-
-<!-- id:consistentHelp -->
-
-**Ayuda consistente (3.2.6, A)**
-
-Cuando existe un mecanismo de ayuda, debe aparecer en la misma posición relativa en todas las páginas. Un botón de ayuda que cambia de esquina entre pantallas obliga a buscarlo de nuevo cada vez.
-
-> De la consistencia pasamos a otro pilar de comprensibilidad: cómo se identifican los errores cuando algo sale mal.
-
-<!-- id:errorPrevention -->
-
-**Identificación de errores (3.3.1, A)**
-
-Los errores de un formulario deben identificarse y describirse en texto, asociados al campo correspondiente mediante `aria-invalid` y `aria-describedby`, y anunciados en tiempo real.
-
-> Identificar el error después de que ocurre es necesario, pero lo ideal es evitarlo con instrucciones claras desde antes.
-
-<!-- id:anticipatoryHelp -->
-
-**Etiquetas o instrucciones (3.3.2, A)**
-
-Los campos de un formulario deben contar con etiquetas o instrucciones claras sobre el formato esperado, disponibles antes de que la persona cometa un error.
-
-> Aun con buena instrucción previa, el error puede pasar igual — ahí importa qué tan específico es el mensaje que lo explica.
-
-<!-- id:errorSuggestion -->
-
-**Sugerencia ante errores (3.3.3, AA)**
-
-Cuando se detecta un error, debe sugerirse cómo corregirlo. Un mensaje genérico ("dato inválido") obliga a adivinar; un mensaje específico indica exactamente qué falta corregir.
-
-> Un buen mensaje de error ayuda a corregir; hay acciones donde directamente conviene frenar antes de que se ejecuten.
-
-<!-- id:confirmDestructive -->
-
-**Prevención de errores: legal, financiero, datos (3.3.4, AA)**
-
-En acciones significativas o irreversibles, debe ofrecerse la posibilidad de revisar, corregir o cancelar antes de confirmar.
-
-> De frenar una acción destructiva pasamos a otro tipo de fricción evitable: pedir un dato que la persona ya cargó.
-
-<!-- id:redundantEntry -->
-
-**Entrada redundante (3.3.7, A)**
-
-No debe solicitarse a la persona que vuelva a ingresar información ya provista en el mismo proceso. Pedir dos veces la misma dirección en un mismo formulario es trabajo evitable.
-
-> Cerramos comprensible con un caso particular de esto mismo, en el momento más sensible de cualquier flujo: el login.
-
-<!-- id:accessibleAuth -->
-
-**Autenticación accesible, mínimo (3.3.8, AA)**
-
-El proceso de autenticación no debe depender exclusivamente de una prueba cognitiva, salvo que exista una alternativa. Bloquear el pegado en un campo de contraseña no aporta seguridad adicional: solo impide el uso de gestores de contraseñas y obliga a transcribir manualmente.
-
----
-
-## Bloque 4 — Robusto
-
-El contenido debe ser compatible con una amplia variedad de navegadores y tecnologías asistivas.
-
-> Con esto cerramos comprensible. El último principio de WCAG es que todo sea robusto, y ahí volvemos al concepto que abrió esta charla: nombre, rol y valor.
-
-<!-- id:nameRoleValue -->
-
-**Nombre, rol, valor (4.1.2, A)**
-
-Todo componente de interfaz personalizado debe exponer su nombre, rol y estado a las tecnologías de asistencia.
-
-> Ese mismo requisito de exponer estado aplica también a los mensajes que la interfaz genera sola, como una confirmación.
-
-<!-- id:errorRecovery -->
-
-**Mensajes de estado (4.1.3, AA)**
-
-Los mensajes de estado (confirmaciones, errores) deben anunciarse a lectores de pantalla sin robar el foco, mediante regiones `aria-live`. Un mensaje de confirmación que solo aparece visualmente no llega a quien no puede ver la pantalla en ese momento.
-
----
-
-## Bloque 5 — Más allá de lo básico
+## Más allá de lo básico
 
 Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por qué una interfaz técnicamente conforme puede seguir generando fricción operativa.
 
-> Con esto terminan los cuatro principios de WCAG. Lo que sigue no tiene un número de criterio, pero explica por qué una interfaz que aprueba todo lo anterior todavía puede resultar pesada de usar — empezando por cuánto tiene que recordar la persona.
+> Con los principios y las herramientas ya sobre la mesa, vale la pena mostrar qué pasa incluso cuando una interfaz cumple todo lo anterior — empezando por cuánto tiene que recordar la persona.
 
 <!-- id:cognitiveLoad -->
 
@@ -544,19 +133,11 @@ Quien usa un producto no está ahí para aprender cómo funciona: está ahí par
 - **Qué está mal:** las opciones del menú son `<div>` sin `onClick` ni rol — no son interactivas.
 - **Solución:** `<button>` reales con tamaño táctil mínimo y nombre accesible.
 
-> Con todos los ejemplos ya vistos, queda la pregunta práctica: con qué se implementa todo esto en el día a día.
+> Ya vimos principios, herramientas y estas fricciones que van más allá de lo básico. Queda una idea para cerrar la charla.
 
 ---
 
 ## Cierre
-
-<!-- id:tools -->
-
-**Herramientas**
-
-La implementación no requiere herramientas nuevas: DevTools del navegador para inspección de contraste y árbol de accesibilidad, Lighthouse para auditoría automatizada, axe-core como motor de reglas WCAG sobre el DOM, y Playwright para validar accesibilidad como parte del pipeline de integración continua. Priorizar componentes reutilizables sobre implementaciones ad hoc por página evita corregir el mismo defecto múltiples veces.
-
-> Y con las herramientas ya sobre la mesa, el único tema que queda es lo que abre el cierre de la charla.
 
 <!-- id:closing -->
 

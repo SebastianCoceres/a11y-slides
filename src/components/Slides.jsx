@@ -3,7 +3,12 @@ import { Deck } from "@/components/deck";
 import SlideTitle from "./slides/SlideTitle";
 import SlidePremise from "./slides/SlidePremise";
 import SlideWcagStandard from "./slides/SlideWcagStandard";
-import SlidePourPrinciples from "./slides/SlidePourPrinciples";
+import {
+  SlidePrinciplePerceptible,
+  SlidePrincipleOperable,
+  SlidePrincipleComprehensible,
+  SlidePrincipleRobust,
+} from "./slides/SlidePourPrinciples";
 import SlideAccessBenefits from "./slides/SlideAccessBenefits";
 import SlideSituations from "./slides/SlideSituations";
 import SlideBusinessImpact from "./slides/SlideBusinessImpact";
@@ -23,10 +28,17 @@ export default function Slides() {
         <SlideTitle topicId="title" />
         <SlidePremise topicId="premise" />
         <SlideWcagStandard topicId="wcagStandard" />
-        <SlidePourPrinciples topicId="pourPrinciples" />
         <SlideAccessBenefits topicId="accessBenefits" />
         <SlideSituations topicId="situations" />
         <SlideBusinessImpact topicId="businessImpact" />
+
+        {/* Principios POUR — los cuatro principios de la accesibilidad web */}
+        <SlidePrinciplePerceptible topicId="principlePerceptible" />
+        <SlidePrincipleOperable topicId="principleOperable" />
+        <SlidePrincipleComprehensible topicId="principleComprehensible" />
+        <SlidePrincipleRobust topicId="principleRobust" />
+
+        <SlideTools topicId="tools" />
 
         {/* Más allá de lo básico — los únicos conceptos que no son un criterio WCAG numerado */}
         <SlideAdvancedPrinciplesIntro topicId="advancedPrinciplesIntro" />
@@ -34,7 +46,6 @@ export default function Slides() {
         <SlideInteractionFatigue topicId="interactionFatigue" />
         <SlideInclusiveDesign topicId="inclusiveDesign" />
 
-        <SlideTools topicId="tools" />
         <SlideClosing topicId="closing" />
       </Deck>
     </div>
