@@ -12,7 +12,7 @@ export function SlideSecondAudience() {
           Hoy la mayoría del tráfico que llega a un sitio ya no es humano.
         </p>
         <div className="mb-8 flex flex-wrap items-baseline gap-5">
-          <span className="text-8xl font-black leading-none text-white">57%</span>
+          <span className="text-gradient-brand font-mono text-8xl font-black leading-none">57%</span>
           <p className="max-w-xs text-base text-gray-400">
             del tráfico HTTP a contenido web ya es de agentes automatizados, no personas
             <span className="mt-1 block text-xs text-gray-600">Cloudflare Radar, 2026</span>
@@ -20,13 +20,13 @@ export function SlideSecondAudience() {
         </div>
         <div className="flex flex-wrap gap-x-14 gap-y-5 border-t border-white/10 pt-6">
           <div>
-            <div className="text-2xl font-bold text-white">95.9%</div>
+            <div className="font-mono text-2xl font-bold tabular-nums text-white">95.9%</div>
             <p className="max-w-xs text-sm text-gray-500">
               de los sitios más visitados falla al menos un criterio WCAG — WebAIM Million, 2026
             </p>
           </div>
           <div>
-            <div className="text-2xl font-bold text-white">400M → 1.000M</div>
+            <div className="font-mono text-2xl font-bold tabular-nums text-white">400M → 1.000M</div>
             <p className="max-w-xs text-sm text-gray-500">
               usuarios semanales de ChatGPT, feb. 2025 - ago. 2026 — OpenAI / TechCrunch
             </p>
@@ -49,13 +49,13 @@ export function SlideSecondAudienceMechanism() {
         </p>
         <div className="mt-12 grid grid-cols-1 gap-10 border-t border-white/10 pt-8 sm:grid-cols-2">
           <div>
-            <div className="text-4xl font-bold text-gray-500">Cientos de miles</div>
+            <div className="font-mono text-4xl font-bold text-gray-500">Cientos de miles</div>
             <p className="mt-2 text-sm text-gray-600">
               de tokens para interpretar el HTML crudo de una página
             </p>
           </div>
           <div>
-            <div className="text-6xl font-black text-white">~200-400</div>
+            <div className="font-mono text-6xl font-black tabular-nums text-white">~200-400</div>
             <p className="mt-2 text-sm text-gray-400">
               tokens por snapshot del árbol de accesibilidad — Playwright MCP
             </p>
@@ -99,7 +99,7 @@ export function SlideSecondAudienceTools() {
           {tools.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="border-t border-white/10 pt-5">
               <div className="mb-1.5 flex items-center gap-2 text-lg font-bold text-white">
-                <Icon className="h-5 w-5 shrink-0 text-cyan-300" />
+                <Icon className="h-5 w-5 shrink-0 text-indigo-300" />
                 {title}
               </div>
               <p className="text-sm text-gray-400">{desc}</p>

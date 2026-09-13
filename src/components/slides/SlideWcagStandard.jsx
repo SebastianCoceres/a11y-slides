@@ -23,7 +23,7 @@ export default function SlideWcagStandard() {
         <div className="grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
           {facts.map(({ value, label }) => (
             <div key={value}>
-              <div className="text-4xl font-bold text-white">{value}</div>
+              <div className="font-mono text-4xl font-bold tabular-nums text-white">{value}</div>
               <p className="mt-2 text-sm text-gray-500">{label}</p>
             </div>
           ))}

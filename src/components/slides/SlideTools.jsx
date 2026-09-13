@@ -25,7 +25,7 @@ export function SlideToolsLighthouse() {
       <div className="mx-auto max-w-4xl text-left">
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <div className="mb-6 flex items-start gap-4">
-          <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-teal-300" />
+          <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-indigo-300" />
           <p className="text-2xl leading-relaxed text-gray-200">
             <strong className="text-white">Lighthouse</strong> audita accesibilidad, performance,
             buenas prácticas y SEO en un solo reporte con puntaje 0-100 — integrado en DevTools y
@@ -54,7 +54,7 @@ export function SlideToolsA11yEngines() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div>
             <div className="mb-2 flex items-center gap-2 text-xl font-bold text-white">
-              <ScanSearch className="h-5 w-5 text-cyan-300" />
+              <ScanSearch className="h-5 w-5 text-indigo-300" />
               Accessibility Insights for Web
             </div>
             <p className="text-base text-gray-400">
@@ -64,7 +64,7 @@ export function SlideToolsA11yEngines() {
           </div>
           <div className="sm:border-l sm:border-white/10 sm:pl-10">
             <div className="mb-2 flex items-center gap-2 text-xl font-bold text-white">
-              <ShieldCheck className="h-5 w-5 text-cyan-300" />
+              <ShieldCheck className="h-5 w-5 text-indigo-300" />
               axe-core (Deque)
             </div>
             <p className="text-base text-gray-400">
@@ -88,11 +88,11 @@ export function SlideToolsTesting() {
           <p>
             <strong className="text-white">Playwright</strong> y{" "}
             <strong className="text-white">Cypress</strong> son runners end-to-end — con{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-teal-300">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
               @axe-core/playwright
             </code>{" "}
             o{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-teal-300">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
               cypress-axe
             </code>
             , cada test que ya valida funcionalidad corre además las reglas de axe sobre la página
@@ -100,7 +100,7 @@ export function SlideToolsTesting() {
           </p>
           <p>
             <strong className="text-white">Vitest</strong> opera a otro nivel: con{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-teal-300">
+            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
               vitest-axe
             </code>{" "}
             audita un componente aislado antes de que llegue a integrarse en ninguna página.

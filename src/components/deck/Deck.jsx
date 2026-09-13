@@ -53,7 +53,7 @@ export function Deck({ children, basePath = '/presentacion', syncNotes = true })
     <DeckContext.Provider value={contextValue}>
       <div className="fixed inset-0 h-screen w-screen overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <LightRays raysColor="#2aa198" raysOrigin="top-center" rayLength={1.5} mouseInfluence={0.08} />
+          <LightRays raysColor="#6366f1" raysOrigin="top-center" rayLength={1.5} mouseInfluence={0.08} />
         </div>
         <AnimatePresence initial={false} mode="wait">
           <motion.div
