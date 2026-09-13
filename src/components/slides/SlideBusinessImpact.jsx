@@ -6,11 +6,6 @@ import slideCatalog from "@/data/slideCatalog.json";
 
 const impacts = [
   {
-    icon: Headset,
-    role: "Soporte",
-    text: 'Menos llamadas a soporte por problemas "simples"',
-  },
-  {
     icon: Code2,
     role: "Desarrollo",
     text: "Aplicarlo desde el diseño es más rápido que parchearlo después",
@@ -35,15 +30,18 @@ const impacts = [
     role: "Legal y Riesgo",
     text: "Previene multas y bloqueos normativos",
   },
+  {
+    icon: Headset,
+    role: "Soporte",
+    text: 'Menos llamadas a soporte por problemas "simples"',
+  },
 ];
 
 export default function SlideBusinessImpact() {
   const info = slideCatalog.businessImpact;
   return (
     <Slide id="businessImpact">
-      <h2 className="text-4xl text-brand-light mb-2">
-        {info.title}
-      </h2>
+      <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
       <p className="text-lg text-gray-400 mb-6 italic">
         Encuentren la suya en esta lista.
       </p>
