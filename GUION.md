@@ -92,7 +92,19 @@ El contenido tiene que funcionar en una variedad amplia de navegadores y tecnolo
 
 **DevTools del navegador**
 
-Lo más básico ya lo tenés instalado. El panel Accessibility de DevTools te muestra nombre, rol y valor de cualquier nodo. El selector de color te calcula el contraste al toque. Y el toggle del árbol de accesibilidad te muestra, de un vistazo, qué quedó afuera — el mismo árbol del que veníamos hablando.
+Lo más básico ya lo tenés instalado, sin agregar nada. Vamos a recorrerlo en vivo.
+
+Primero, el panel Accessibility: lo encontrás al lado de Styles y Computed, dentro del inspector de Elements. Seleccioná cualquier nodo y ahí abajo aparece exactamente lo que expone al árbol de accesibilidad — nombre computado, rol, descripción, y las propiedades ARIA que tenga. Es lo mismo que ve un lector de pantalla, sin tener que instalar uno.
+
+Al lado del árbol de Elements hay un ícono para togglear "Show accessibility tree" — con un clic, el DOM entero desaparece y en su lugar ves el árbol de accesibilidad completo de la página. Sirve para responder de un vistazo la pregunta que veníamos haciendo toda la charla: ¿qué quedó afuera?
+
+En el panel Styles, cualquier valor de color que toques abre el selector — y ese selector ya te calcula el ratio de contraste en tiempo real, con el visto verde si pasa AA o AAA, y una línea de muestra con el texto real encima del color.
+
+Ahora lo menos conocido: `Ctrl+Shift+P`, buscá "Rendering" y abrí ese panel. Ahí está "Emulate vision deficiencies" — un dropdown para simular en vivo, sobre la página real, cómo la ve alguien con protanopia, deuteranopia, tritanopia, achromatopsia o visión borrosa. La misma lista de daltonismos que mencionamos antes, pero ahora la pueden ver ustedes mismos, no solo escucharla.
+
+En ese mismo panel de Rendering está "Emulate CSS media feature prefers-reduced-motion" — le decís al navegador que simule que el sistema operativo pidió movimiento reducido, sin tener que cambiar la configuración real de tu computadora, y ves si tus animaciones efectivamente lo respetan.
+
+Y último: si necesitás revisar cómo se ve el estado de foco de un botón sin tabular hasta ahí veinte veces, click derecho sobre el elemento → "Force state" → `:focus-visible`. Queda fijado ese estado en el inspector mientras lo stylean.
 
 > Con eso ya podés inspeccionar a mano. El paso que sigue es automatizar esa inspección.
 

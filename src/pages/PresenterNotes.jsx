@@ -133,7 +133,12 @@ function parseAnexoSections(markdown) {
     const heading = line.match(H2_TITLE);
     if (heading) {
       if (current) sections.push(current);
-      current = { title: heading[1].trim(), lines: [] };
+      current = { title: heading[1].trim(), id: null, lines: [] };
+      continue;
+    }
+    const marker = line.match(ID_MARKER);
+    if (marker && current) {
+      current.id = marker[1];
       continue;
     }
     if (H1.test(line)) continue;
@@ -157,6 +162,12 @@ export default function PresenterNotes() {
   const userScrollingRef = useRef(false);
   const autoScrollingRef = useRef(false);
   const scrollIdleTimeoutRef = useRef(null);
+
+  const anexoSectionRefs = useRef({});
+  const anexoScrollContainerRef = useRef(null);
+  const anexoUserScrollingRef = useRef(false);
+  const anexoAutoScrollingRef = useRef(false);
+  const anexoScrollIdleTimeoutRef = useRef(null);
 
   useEffect(() => {
     const channel = new BroadcastChannel(NOTES_CHANNEL);
@@ -194,6 +205,36 @@ export default function PresenterNotes() {
     sectionRefs.current[activeTopicId]?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     const settle = setTimeout(() => {
       autoScrollingRef.current = false;
+    }, 700);
+    return () => clearTimeout(settle);
+  }, [activeTopicId]);
+
+  useEffect(() => {
+    const container = anexoScrollContainerRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      if (anexoAutoScrollingRef.current) return;
+      anexoUserScrollingRef.current = true;
+      clearTimeout(anexoScrollIdleTimeoutRef.current);
+      anexoScrollIdleTimeoutRef.current = setTimeout(() => {
+        anexoUserScrollingRef.current = false;
+      }, 1000);
+    };
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      clearTimeout(anexoScrollIdleTimeoutRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!activeTopicId || anexoUserScrollingRef.current) return;
+    const el = anexoSectionRefs.current[activeTopicId];
+    if (!el) return;
+    anexoAutoScrollingRef.current = true;
+    el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    const settle = setTimeout(() => {
+      anexoAutoScrollingRef.current = false;
     }, 700);
     return () => clearTimeout(settle);
   }, [activeTopicId]);
@@ -245,13 +286,27 @@ export default function PresenterNotes() {
             />
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto p-4">
+          <div ref={anexoScrollContainerRef} className="min-h-0 flex-1 overflow-y-auto p-4">
             <div className="mb-3 px-0.5 text-[10px] font-semibold uppercase tracking-wide text-gray-600">
               Anexos
             </div>
             <div className="space-y-4">
               {anexoSections.map((section, i) => (
-                <div key={i} className="rounded-lg border border-white/5 bg-white/[0.02] p-4">
+                <div
+                  key={i}
+                  ref={
+                    section.id
+                      ? (el) => {
+                          anexoSectionRefs.current[section.id] = el;
+                        }
+                      : undefined
+                  }
+                  className={`rounded-lg border p-4 transition-colors ${
+                    section.id && section.id === activeTopicId
+                      ? 'border-brand bg-brand/10'
+                      : 'border-white/5 bg-white/[0.02]'
+                  }`}
+                >
                   <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand">
                     {section.title}
                   </h3>
