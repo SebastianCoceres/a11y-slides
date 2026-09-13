@@ -48,7 +48,7 @@ La lista de situaciones que se muestra en esta diapositiva no describe casos exc
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Los beneficios de aplicar accesibilidad se distribuyen en toda la organización: menos tickets de soporte por problemas ya conocidos, menor costo de desarrollo al aplicar el criterio desde el diseño en lugar de corregirlo después, onboarding más rápido sobre un código consistente, ampliación del mercado direccionable y reducción de riesgo legal y normativo.
+Los beneficios de aplicar accesibilidad se distribuyen en toda la organización: menor costo de desarrollo al aplicar el criterio desde el diseño en lugar de corregirlo después, onboarding más rápido sobre un código consistente, ampliación del mercado direccionable , reducción de riesgo legal y normativo y menos tickets de soporte por problemas "simples".
 
 > Ya vimos por qué conviene invertir. Ahora entendamos en qué se apoya esa inversión: los cuatro principios que agrupan los criterios de WCAG.
 
