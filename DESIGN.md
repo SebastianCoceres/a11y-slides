@@ -105,6 +105,9 @@ Two shape languages only: hairline dividers (`border-t border-white/10`) between
 ### Pill Badge
 - `rounded-full`, small `text-[10px]`–`text-xs` uppercase-tracked label, used only for the slide-index's WCAG-code chip and the "Actual"/current-slide indicator.
 
+### Concept Diagram (authored SVG)
+- Hand-authored node-and-edge tree diagrams (circles + thin connecting lines, `stroke="currentColor"`/`fill="currentColor"` so they inherit a text-color utility), used only where a real technical structure needs showing — e.g. the DOM-tree-vs-accessibility-tree comparison in `SlideSecondAudienceMechanism`. Geometry only, never a pictorial illustration; the "busy" tree is muted gray, the "lean" tree uses `text-brand-light`.
+
 ## Do's and Don'ts
 
 ### Do:

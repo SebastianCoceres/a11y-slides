@@ -37,26 +37,114 @@ export function SlideSecondAudience() {
   );
 }
 
+const DOM_NODES = [
+  { x: 120, y: 14, label: "html" },
+  { x: 50, y: 54, label: "div" },
+  { x: 120, y: 54, label: "div" },
+  { x: 190, y: 54, label: "div" },
+  { x: 25, y: 96, label: "div" },
+  { x: 65, y: 96, label: "span" },
+  { x: 120, y: 96, label: "div" },
+  { x: 100, y: 138, label: "div" },
+  { x: 140, y: 138, label: "p" },
+  { x: 190, y: 96, label: "div" },
+];
+
+const DOM_EDGES = [
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [1, 4],
+  [1, 5],
+  [2, 6],
+  [6, 7],
+  [6, 8],
+  [3, 9],
+];
+
+function DomTreeDiagram({ className }) {
+  return (
+    <svg
+      viewBox="0 0 240 150"
+      className={className}
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+    >
+      {DOM_EDGES.map(([from, to]) => (
+        <line
+          key={`${from}-${to}`}
+          x1={DOM_NODES[from].x}
+          y1={DOM_NODES[from].y}
+          x2={DOM_NODES[to].x}
+          y2={DOM_NODES[to].y}
+          strokeWidth="1.25"
+          opacity="0.6"
+        />
+      ))}
+      {DOM_NODES.map(({ x, y, label }, i) => (
+        <g key={i}>
+          <circle cx={x} cy={y} r="4" fill="currentColor" stroke="none" />
+          <text x={x} y={y - 9} fontSize="7" fontFamily="monospace" fill="currentColor" textAnchor="middle">
+            {label}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
+const A11Y_NODES = [
+  { x: 120, y: 22, label: "document" },
+  { x: 55, y: 112, label: "heading" },
+  { x: 185, y: 112, label: "botón: Enviar" },
+];
+
+function AccessibilityTreeDiagram({ className }) {
+  return (
+    <svg
+      viewBox="0 0 240 150"
+      className={className}
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+    >
+      <line x1="120" y1="22" x2="55" y2="112" strokeWidth="1.5" opacity="0.7" />
+      <line x1="120" y1="22" x2="185" y2="112" strokeWidth="1.5" opacity="0.7" />
+      {A11Y_NODES.map(({ x, y, label }, i) => (
+        <g key={i}>
+          <circle cx={x} cy={y} r="5" fill="currentColor" stroke="none" />
+          <text x={x} y={y + 20} fontSize="10" fontFamily="monospace" fill="currentColor" textAnchor="middle">
+            {label}
+          </text>
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 export function SlideSecondAudienceMechanism() {
   const info = slideCatalog.secondAudienceMechanism;
   return (
     <Slide id="secondAudienceMechanism">
-      <div className="mx-auto max-w-3xl text-left">
+      <div className="mx-auto max-w-4xl text-left">
         <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
         <p className="max-w-xl text-2xl leading-relaxed text-gray-200">
           Un agente no lee píxeles ni HTML: lee el mismo árbol de accesibilidad que ya usa un lector de
           pantalla.
         </p>
-        <div className="mt-12 grid grid-cols-1 gap-10 border-t border-white/10 pt-8 sm:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/10 pt-8 sm:grid-cols-2">
           <div>
-            <div className="font-mono text-4xl font-bold text-gray-500">Cientos de miles</div>
-            <p className="mt-2 text-sm text-gray-600">
+            <DomTreeDiagram className="h-36 w-full text-gray-600" />
+            <div className="mt-2 font-mono text-3xl font-bold text-gray-500">Cientos de miles</div>
+            <p className="mt-1 text-sm text-gray-600">
               de tokens para interpretar el HTML crudo de una página
             </p>
           </div>
           <div>
-            <div className="font-mono text-6xl font-black tabular-nums text-white">~200-400</div>
-            <p className="mt-2 text-sm text-gray-400">
+            <AccessibilityTreeDiagram className="h-36 w-full text-brand-light" />
+            <div className="mt-2 font-mono text-5xl font-black tabular-nums text-white">~200-400</div>
+            <p className="mt-1 text-sm text-gray-400">
               tokens por snapshot del árbol de accesibilidad — Playwright MCP
             </p>
           </div>
