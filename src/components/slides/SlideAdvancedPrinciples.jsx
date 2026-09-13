@@ -6,38 +6,38 @@ function formatWcag(wcag) {
   return `WCAG ${wcag.code} — ${wcag.name} (${wcag.level})`;
 }
 
-function Kicker() {
+function StatementSlide({ id, title, statement }) {
   return (
-    <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-orange-300/70">
-      Más allá de lo básico
-    </p>
+    <Slide id={id}>
+      <div className="mx-auto max-w-4xl text-left">
+        <p className="text-3xl leading-[1.15] text-white sm:text-4xl">{statement}</p>
+        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
+          {title}
+        </p>
+      </div>
+    </Slide>
   );
 }
 
 export function SlideAdvancedPrinciplesIntro() {
   const info = slideCatalog.advancedPrinciplesIntro;
   return (
-    <Slide id="advancedPrinciplesIntro">
-      <h2 className="text-4xl text-brand-light mb-6">{info.title}</h2>
-      <p className="max-w-3xl mx-auto text-lg text-gray-300 mb-4">
-        Formas de mirar una interfaz que casi nunca aparecen en un checklist de
-        accesibilidad.
-      </p>
-    </Slide>
+    <StatementSlide
+      id="advancedPrinciplesIntro"
+      title={info.title}
+      statement="Formas de mirar una interfaz que casi nunca aparecen en un checklist de accesibilidad."
+    />
   );
 }
 
 export function SlideCognitiveLoad() {
   const info = slideCatalog.cognitiveLoad;
   return (
-    <Slide id="cognitiveLoad">
-      <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
-        Cuánto tiene que recordar y procesar una persona para completar una
-        tarea.
-      </p>
-    </Slide>
+    <StatementSlide
+      id="cognitiveLoad"
+      title={info.title}
+      statement="Cuánto tiene que recordar y procesar una persona para completar una tarea."
+    />
   );
 }
 
@@ -58,14 +58,11 @@ export function SlideMotorComplexity() {
 export function SlideInteractionFatigue() {
   const info = slideCatalog.interactionFatigue;
   return (
-    <Slide id="interactionFatigue">
-      <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
-        Cada interacción tiene un costo, y ese costo se multiplica cuando se
-        repite cien veces por día.
-      </p>
-    </Slide>
+    <StatementSlide
+      id="interactionFatigue"
+      title={info.title}
+      statement="Cada interacción tiene un costo, y ese costo se multiplica cuando se repite cien veces por día."
+    />
   );
 }
 
@@ -277,13 +274,10 @@ export function SlideErrorRecovery() {
 export function SlideInclusiveDesign() {
   const info = slideCatalog.inclusiveDesign;
   return (
-    <Slide id="inclusiveDesign">
-      <Kicker />
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
-        Quien usa nuestro software no está ahí para aprender cómo funciona. Está
-        ahí para hacer su trabajo.
-      </p>
-    </Slide>
+    <StatementSlide
+      id="inclusiveDesign"
+      title={info.title}
+      statement="Quien usa nuestro software no está ahí para aprender cómo funciona. Está ahí para hacer su trabajo."
+    />
   );
 }

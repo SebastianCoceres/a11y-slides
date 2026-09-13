@@ -1,14 +1,12 @@
 import { Slide } from "@/components/deck";
-import { Card, CardContent } from "@/components/ui/card";
-import { Users } from "lucide-react";
-import { Headset, Code2, UserPlus } from "lucide-react";
+import { Users, Headset, Code2, UserPlus } from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
 
 const impacts = [
   {
     icon: Code2,
     role: "Desarrollo",
-    text: "Aplicarlo desde el diseño es más rápido que parchearlo después",
+    text: "Aplicarlo desde el diseño es más rápido que parchearlo después.",
   },
   {
     icon: Users,
@@ -18,22 +16,22 @@ const impacts = [
   {
     icon: UserPlus,
     role: "Onboarding",
-    text: "Un código con estos principios ya incorporados previamente validados es más fácil de replicar.",
+    text: "Un código con estos principios ya incorporados es más fácil de replicar.",
   },
   {
     icon: Code2,
-    role: "Negocio y Alcance",
-    text: "Amplía el mercado total direccionable y abre puertas a clientes que exigen cumplimiento legal (corporativos o gubernamentales)",
+    role: "Negocio y alcance",
+    text: "Amplía el mercado direccionable y abre puertas a clientes que exigen cumplimiento legal.",
   },
   {
     icon: Code2,
-    role: "Legal y Riesgo",
-    text: "Previene multas y bloqueos normativos",
+    role: "Legal y riesgo",
+    text: "Previene multas y bloqueos normativos.",
   },
   {
     icon: Headset,
     role: "Soporte",
-    text: 'Menos llamadas a soporte por problemas "simples"',
+    text: 'Menos llamadas a soporte por problemas "simples".',
   },
 ];
 
@@ -41,21 +39,22 @@ export default function SlideBusinessImpact() {
   const info = slideCatalog.businessImpact;
   return (
     <Slide id="businessImpact">
-      <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-lg text-gray-400 mb-6 italic">
-        Encuentren la suya en esta lista.
-      </p>
-      <div className="grid grid-cols-3 gap-4 max-w-5xl mx-auto mb-8">
-        {impacts.map(({ icon: Icon, role, text }) => (
-          <Card key={role} className="bg-gray-800 border-gray-700 shadow-none">
-            <CardContent className="p-4 flex items-start gap-3 text-left">
-              <Icon className="w-5 h-5 text-red-300 shrink-0 mt-0.5" />
-              <span className="text-gray-300 text-sm">
-                <strong className="text-white">{role}:</strong> {text}
-              </span>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-3">{info.title}</h2>
+        <p className="text-lg italic text-gray-400 mb-10">
+          Encuentren la suya en esta lista.
+        </p>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
+          {impacts.map(({ icon: Icon, role, text }) => (
+            <div key={role} className="flex gap-3 border-t border-white/10 pt-4">
+              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-red-300" />
+              <p className="text-base text-gray-300">
+                <strong className="mb-0.5 block text-white">{role}</strong>
+                {text}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </Slide>
   );

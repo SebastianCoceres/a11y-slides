@@ -2,21 +2,24 @@ import { Slide } from '@/components/deck';
 import { Eye, Keyboard, MessageSquareText, ShieldCheck } from 'lucide-react';
 import slideCatalog from '@/data/slideCatalog.json';
 
-function PrincipleSlide({ id, icon: Icon, eyebrow, children }) {
+function PrincipleSlide({ id, letter, icon: Icon, children }) {
   const info = slideCatalog[id];
   return (
     <Slide id={id}>
-      <div className="mx-auto max-w-3xl text-left">
-        <div className="mb-6 flex items-center gap-4">
-          <span className="flex size-14 items-center justify-center rounded-2xl bg-brand/15 text-brand-light">
-            <Icon className="size-7" strokeWidth={2} />
-          </span>
-          <div>
-            <p className="text-sm uppercase tracking-wide text-gray-500">{eyebrow}</p>
-            <h2 className="text-4xl text-brand-light">{info.title}</h2>
+      <div className="relative mx-auto max-w-4xl text-left">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-6 -top-24 select-none text-[18rem] font-black leading-none text-white/[0.05] sm:text-[22rem]"
+        >
+          {letter}
+        </span>
+        <div className="relative">
+          <div className="mb-6 flex items-center gap-4">
+            <Icon className="size-9 text-brand-light" strokeWidth={2} />
+            <h2 className="text-5xl text-brand-light">{info.title}</h2>
           </div>
+          <div className="max-w-2xl space-y-4 text-lg leading-relaxed text-gray-300">{children}</div>
         </div>
-        <div className="space-y-4 text-lg leading-relaxed text-gray-300">{children}</div>
       </div>
     </Slide>
   );
@@ -24,7 +27,7 @@ function PrincipleSlide({ id, icon: Icon, eyebrow, children }) {
 
 export function SlidePrinciplePerceptible() {
   return (
-    <PrincipleSlide id="principlePerceptible" icon={Eye} eyebrow="Principio 1 de 4">
+    <PrincipleSlide id="principlePerceptible" letter="P" icon={Eye}>
       <p>
         La información y los componentes de la interfaz tienen que poder percibirse, sea cual sea el
         sentido disponible en ese momento. No es "que se vea bien": es que el dato llegue por al menos
@@ -42,7 +45,7 @@ export function SlidePrinciplePerceptible() {
 
 export function SlidePrincipleOperable() {
   return (
-    <PrincipleSlide id="principleOperable" icon={Keyboard} eyebrow="Principio 2 de 4">
+    <PrincipleSlide id="principleOperable" letter="O" icon={Keyboard}>
       <p>
         Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier
         otro dispositivo de entrada — no solo con mouse o con un gesto de precisión.
@@ -58,7 +61,7 @@ export function SlidePrincipleOperable() {
 
 export function SlidePrincipleComprehensible() {
   return (
-    <PrincipleSlide id="principleComprehensible" icon={MessageSquareText} eyebrow="Principio 3 de 4">
+    <PrincipleSlide id="principleComprehensible" letter="U" icon={MessageSquareText}>
       <p>
         La información y el comportamiento de la interfaz tienen que ser predecibles. Que algo "se
         entienda" no es un detalle de UX: es una condición de accesibilidad.
@@ -74,7 +77,7 @@ export function SlidePrincipleComprehensible() {
 
 export function SlidePrincipleRobust() {
   return (
-    <PrincipleSlide id="principleRobust" icon={ShieldCheck} eyebrow="Principio 4 de 4">
+    <PrincipleSlide id="principleRobust" letter="R" icon={ShieldCheck}>
       <p>
         El contenido tiene que funcionar con una amplia variedad de navegadores y tecnologías asistivas.
         Un componente puede verse perfecto y no existir para la única API que importa acá: el árbol de

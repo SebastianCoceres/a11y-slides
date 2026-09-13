@@ -14,41 +14,53 @@ const situations = [
   {
     icon: Sun,
     situation: "Sentir el reflejo del sol y no ver bien la pantalla",
+    size: "text-2xl",
   },
-  { icon: Wifi, situation: "Tener una conexión lenta" },
-  { icon: Snowflake, situation: "Llevar guantes (invierno o trabajo)" },
+  { icon: Wifi, situation: "Tener una conexión lenta", size: "text-lg" },
+  {
+    icon: Snowflake,
+    situation: "Llevar guantes (invierno o trabajo)",
+    size: "text-lg",
+  },
   {
     icon: Glasses,
-    situation: "Perderse o Romperse las gafas",
+    situation: "Perderse o romperse las gafas",
+    size: "text-xl",
   },
   {
     icon: PersonStanding,
     situation: "Envejecer viene con pérdida de visión y destreza",
+    size: "text-2xl",
   },
-  { icon: Baby, situation: "Sostener un bebé con una sola mano" },
-  { icon: Bandage, situation: "Tener una lesión temporal (dedo vendado)" },
+  {
+    icon: Baby,
+    situation: "Sostener un bebé con una sola mano",
+    size: "text-lg",
+  },
+  {
+    icon: Bandage,
+    situation: "Tener una lesión temporal (dedo vendado)",
+    size: "text-xl",
+  },
 ];
 
 export default function SlideSituations() {
   const info = slideCatalog.situations;
   return (
     <Slide id="situations">
-      <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-lg text-gray-400 mb-8 italic">
-        Es para todo el mundo, en algún momento...
-      </p>
-      <div className="grid grid-cols-4 gap-4 max-w-5xl mx-auto">
-        {situations.map(({ icon: Icon, situation }) => (
-          <div
-            key={situation}
-            className="flex flex-col items-center gap-3 bg-gray-800 border border-gray-700 rounded-lg p-5 text-center"
-          >
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-300">
-              <Icon className="w-5 h-5" />
-            </span>
-            <span className="text-gray-200 text-sm">{situation}</span>
-          </div>
-        ))}
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-3">{info.title}</h2>
+        <p className="text-lg italic text-gray-400 mb-12">
+          Es para todo el mundo, en algún momento.
+        </p>
+        <div className="flex flex-wrap gap-x-10 gap-y-7">
+          {situations.map(({ icon: Icon, situation, size }) => (
+            <div key={situation} className={`flex items-center gap-3 ${size} text-gray-200`}>
+              <Icon className="h-[1em] w-[1em] shrink-0 text-purple-300" strokeWidth={1.75} />
+              <span>{situation}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </Slide>
   );
