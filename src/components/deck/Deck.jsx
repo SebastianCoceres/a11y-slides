@@ -10,7 +10,7 @@ import { SlideIndexOverlay } from './SlideIndexOverlay';
 import { useDeckRouter } from './useDeckRouter';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
-export function Deck({ children, basePath = '/presentacion' }) {
+export function Deck({ children, basePath = '/presentacion', syncNotes = true }) {
   const slides = useMemo(() => Children.toArray(children), [children]);
   const { index, next, prev, goTo, total } = useDeckRouter(slides.length, basePath);
   const [indexOpen, setIndexOpen] = useState(false);
@@ -24,6 +24,7 @@ export function Deck({ children, basePath = '/presentacion' }) {
   }, [index, topicIds]);
 
   useEffect(() => {
+    if (!syncNotes) return undefined;
     const channel = new BroadcastChannel(NOTES_CHANNEL);
     const post = () => channel.postMessage({ type: 'slide', index, topicId });
     channel.onmessage = (event) => {
@@ -31,7 +32,7 @@ export function Deck({ children, basePath = '/presentacion' }) {
     };
     post();
     return () => channel.close();
-  }, [index, topicId]);
+  }, [index, topicId, syncNotes]);
 
   useKeyboardNavigation({
     next,

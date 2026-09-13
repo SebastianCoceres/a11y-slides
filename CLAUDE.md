@@ -33,16 +33,16 @@ The deck is a generic, content-agnostic engine:
 
 ### Slide content vs. demo pages
 
-Two distinct kinds of "slide" content, both ultimately rendered inside `Deck`:
+Two distinct kinds of "slide" content, each assembled into its own `Deck`:
 
-- `src/components/slides/*` — the actual talk slides (text, explanations, diagrams).
-- `src/pages/examples/*` — live before/after accessibility demos. Each file typically exports a `*Bad` and `*Good` pair (e.g. `ColorContrastBad`/`ColorContrastGood`) that render the same fake app screen through the shared `AppShell` (`src/pages/examples/AppShell.jsx`), one with an accessibility flaw and one fixed. `AppShell` fakes a real product's sidebar/header/nav chrome so the contrast is realistic, not toy markup.
+- `src/components/slides/*` — the actual talk slides (text, explanations, diagrams), assembled by `src/components/Slides.jsx` and rendered at `/presentacion/:slide`.
+- `src/pages/examples/*` — live before/after accessibility demos. Each file typically exports a `*Bad` and `*Good` pair (e.g. `ColorContrastBad`/`ColorContrastGood`) that render the same fake app screen through the shared `AppShell` (`src/pages/examples/AppShell.jsx`), one with an accessibility flaw and one fixed. `AppShell` fakes a real product's sidebar/header/nav chrome so the contrast is realistic, not toy markup. These are assembled separately by `src/components/Examples.jsx` and rendered at `/ejemplos/:slide` — they are reference material, not part of the main talk flow, and are not synced to `/notas` (`Deck`'s `syncNotes={false}`).
 
-`src/components/Slides.jsx` is the single ordered list assembling both kinds into the deck — **slide order in the presentation is entirely determined by the JSX order in this file**. Adding/reordering a slide means editing this array-like list, nothing else.
+`src/components/Slides.jsx` and `src/components/Examples.jsx` are each a single ordered list — **slide order within a deck is entirely determined by the JSX order in its file**. Adding/reordering a slide means editing the relevant list, nothing else.
 
 ### Routing
 
-`App.jsx` has exactly one real route: `/presentacion/:slide`. `/` redirects there. There's no other page/view in the app.
+`App.jsx` has two slide-deck routes — `/presentacion/:slide` (the talk) and `/ejemplos/:slide` (the Bad/Good reference demos) — plus `/notas` (presenter notes). `/` redirects to `/presentacion/1`, `/ejemplos` redirects to `/ejemplos/1`.
 
 ### UI kit
 

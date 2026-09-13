@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Slides from './components/Slides';
+import Examples from './components/Examples';
 import PresenterNotes from './pages/PresenterNotes';
 
 function App() {
@@ -12,6 +13,14 @@ function App() {
           element={
             <div className="w-screen h-screen">
               <Slides />
+            </div>
+          } />
+        <Route path="/ejemplos" element={<Navigate to="/ejemplos/1" replace />} />
+        <Route
+          path="/ejemplos/:slide"
+          element={
+            <div className="w-screen h-screen">
+              <Examples />
             </div>
           } />
         <Route path="/notas" element={<PresenterNotes />} />
