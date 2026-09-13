@@ -126,6 +126,44 @@ Playwright y Cypress son runners end-to-end — con @axe-core/playwright o cypre
 
 Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado se arregla doce veces, o aparece en el módulo equivocado, en el peor momento del sprint. Un solo componente bien hecho se corrige una vez y el arreglo se replica solo.
 
+> Con las herramientas ya elegidas, hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
+
+<!-- id:secondAudience -->
+
+**Una segunda audiencia**
+
+Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano — más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare — y esos agentes leen exactamente la misma estructura semántica, el mismo árbol de accesibilidad, que un lector de pantalla. Mientras tanto, el 95.9% de los sitios más visitados sigue fallando al menos un criterio de WCAG, según WebAIM. Esto no es teórico: OpenAI probó navegar así, leyendo ese árbol de accesibilidad, en su navegador Atlas — y aunque Atlas como producto ya no existe, esa forma de navegar se mudó directo a ChatGPT, que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales. La misma inversión que hacemos por una persona ciega o con baja visión, hoy también la aprovecha una máquina que opera el sitio a esa escala.
+
+> Vale la pena entender por qué pasa esto exactamente — no es magia, es el mismo mecanismo técnico que ya usamos toda la charla.
+
+<!-- id:secondAudienceMechanism -->
+
+**La misma API, un cliente más**
+
+Estos agentes no leen píxeles ni el HTML entero de la página: leen el mismo árbol de accesibilidad que definimos al principio de la charla — nombre, rol y valor de cada nodo. Es la misma API paralela al DOM que usa un lector de pantalla, con un cliente más del otro lado.
+
+Playwright MCP, el servidor oficial de Microsoft para controlar un navegador desde un agente, devuelve ese árbol en vez de la página completa — y no es un detalle menor de implementación: un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que interpretar el HTML crudo de una página real. La misma estructura que le permite a un lector de pantalla no tener que procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
+
+> Esto ya no es teoría de arquitectura: hoy existen herramientas concretas que un equipo puede usar ya mismo.
+
+<!-- id:secondAudienceTools -->
+
+**Ya existen las herramientas**
+
+Claude Code, el agente con el que armé esta misma charla, ya viene con una skill llamada "accessibility": instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría o "hacer accesible" algo, sin instalar nada aparte. Pero no es la única pieza del rompecabezas.
+
+Deque — la misma empresa detrás de axe-core, que ya vimos en la sección de herramientas — empaquetó ese motor como MCP oficial: analiza una página y devuelve el fix de código listo para revisar, aplicar o rechazar, sin salir del editor. Funciona con Claude Code, GitHub Copilot, Cursor y Windsurf. Sumale Chrome DevTools MCP o Playwright MCP, que le dan al agente una sesión de navegador real para leer el árbol de accesibilidad en vivo y detectar fallas de teclado que un análisis estático no ve — y MCPs de documentación, que le traen al agente la versión vigente de un criterio WCAG o de una librería en el momento en que la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.
+
+> Ninguna de estas herramientas es la ventaja real. La ventaja real es otra cosa.
+
+<!-- id:secondAudienceCodeProximity -->
+
+**La ventaja de estar cerca del código**
+
+Lighthouse, axe-core o Accessibility Insights reportan el síntoma en la página ya renderizada: "este botón no tiene nombre accesible". No saben si ese botón vive en un componente que se repite cuarenta veces o si es un caso único — porque no tienen forma de ver el código, solo el resultado.
+
+Un agente con el repositorio ve el mismo síntoma, pero también el componente fuente, cuántas páginas lo importan, y si el mismo problema ya se arregló en otro lado del código. Puede proponer el fix una sola vez, en la fuente — no una vez por página. Es la misma idea de "componentes antes que páginas" de la sección de herramientas, con alguien que esta vez sí puede ver el componente.
+
 ---
 
 ## Más allá de lo básico
@@ -136,7 +174,7 @@ Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado 
 
 Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por qué una interfaz técnicamente conforme puede seguir generando fricción operativa.
 
-> Con los principios y las herramientas ya sobre la mesa, vale la pena mostrar qué pasa incluso cuando una interfaz cumple todo lo anterior — empezando por cuánto tiene que recordar la persona.
+> Con los principios, las herramientas y esa segunda audiencia ya sobre la mesa, vale la pena mostrar qué pasa incluso cuando una interfaz cumple todo lo anterior — empezando por cuánto tiene que recordar la persona.
 
 <!-- id:cognitiveLoad -->
 
@@ -166,7 +204,7 @@ Quien usa un producto no está ahí para aprender cómo funciona: está ahí par
 
 Es la misma idea que atraviesa toda la charla, solo que acá no hay un criterio WCAG que la mida: un producto puede aprobar cualquier auditoría automática y seguir haciendo trabajar de más a quien lo usa todos los días.
 
-> Ya vimos principios, herramientas y estas fricciones que van más allá de lo básico. Queda una idea para cerrar la charla.
+> Con esto llegamos al final del recorrido. Queda cerrar la charla.
 
 ---
 
@@ -175,5 +213,3 @@ Es la misma idea que atraviesa toda la charla, solo que acá no hay un criterio 
 <!-- id:closing -->
 
 **Cierre**
-
-Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano — más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare — y esos agentes leen exactamente la misma estructura semántica, el mismo árbol de accesibilidad, que un lector de pantalla. Mientras tanto, el 95.9% de los sitios más visitados sigue fallando al menos un criterio de WCAG, según WebAIM. Esto no es teórico: OpenAI probó navegar así, leyendo ese árbol de accesibilidad, en su navegador Atlas — y aunque Atlas como producto ya no existe, esa forma de navegar se mudó directo a ChatGPT, que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales. La misma inversión que hacemos por una persona ciega o con baja visión, hoy también la aprovecha una máquina que opera el sitio a esa escala.

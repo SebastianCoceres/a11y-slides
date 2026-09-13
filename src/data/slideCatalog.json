@@ -70,5 +70,9 @@
   "toolsA11yEngines": { "title": "Accessibility Insights y axe-core" },
   "toolsTesting": { "title": "Playwright, Cypress y Vitest" },
   "toolsRecommendation": { "title": "Componentes antes que páginas" },
+  "secondAudience": { "title": "Una segunda audiencia" },
+  "secondAudienceMechanism": { "title": "La misma API, un cliente más" },
+  "secondAudienceTools": { "title": "Ya existen las herramientas" },
+  "secondAudienceCodeProximity": { "title": "La ventaja de estar cerca del código" },
   "closing": { "title": "Cierre" }
 }

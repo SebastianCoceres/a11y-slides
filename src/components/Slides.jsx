@@ -25,6 +25,12 @@ import {
   SlideToolsTesting,
   SlideToolsRecommendation,
 } from "./slides/SlideTools";
+import {
+  SlideSecondAudience,
+  SlideSecondAudienceMechanism,
+  SlideSecondAudienceTools,
+  SlideSecondAudienceCodeProximity,
+} from "./slides/SlideSecondAudience";
 import SlideClosing from "./slides/SlideClosing";
 
 export default function Slides() {
@@ -49,6 +55,11 @@ export default function Slides() {
         <SlideToolsA11yEngines topicId="toolsA11yEngines" />
         <SlideToolsTesting topicId="toolsTesting" />
         <SlideToolsRecommendation topicId="toolsRecommendation" />
+
+        <SlideSecondAudience topicId="secondAudience" />
+        <SlideSecondAudienceMechanism topicId="secondAudienceMechanism" />
+        <SlideSecondAudienceTools topicId="secondAudienceTools" />
+        <SlideSecondAudienceCodeProximity topicId="secondAudienceCodeProximity" />
 
         {/* Más allá de lo básico — los únicos conceptos que no son un criterio WCAG numerado */}
         <SlideAdvancedPrinciplesIntro topicId="advancedPrinciplesIntro" />
