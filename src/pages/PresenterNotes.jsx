@@ -79,9 +79,20 @@ function parseSections(markdown) {
   const lines = markdown.split('\n');
   const sections = [];
   let current = { id: null, lines: [] };
+  // Text with no id yet (a "## Heading" plus its intro paragraph/transition) has no slide
+  // of its own to sync to — it gets carried forward and prepended into the next id-tagged
+  // section instead of ever rendering as an unboxed, unsynced block on its own.
+  let pendingPrefix = [];
+
+  const hasContent = (arr) => arr.some((line) => line.trim() !== '');
 
   const flush = () => {
-    if (current.lines.some((line) => line.trim() !== '')) sections.push(current);
+    if (!hasContent(current.lines)) return;
+    if (current.id) {
+      sections.push(current);
+    } else {
+      pendingPrefix = pendingPrefix.concat(current.lines);
+    }
   };
 
   for (const line of lines) {
@@ -93,7 +104,8 @@ function parseSections(markdown) {
     const marker = line.match(ID_MARKER);
     if (marker) {
       flush();
-      current = { id: marker[1], lines: [] };
+      current = { id: marker[1], lines: [...pendingPrefix] };
+      pendingPrefix = [];
       continue;
     }
     if (HEADING.test(line)) {
@@ -104,6 +116,9 @@ function parseSections(markdown) {
     current.lines.push(line);
   }
   flush();
+  // Defensive fallback: if the document ended with orphan text and no id ever followed it,
+  // still show it rather than silently dropping content.
+  if (hasContent(pendingPrefix)) sections.push({ id: null, lines: pendingPrefix });
 
   return sections.map((section) => ({ ...section, content: section.lines.join('\n').trim() }));
 }

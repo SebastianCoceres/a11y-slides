@@ -18,7 +18,13 @@ import {
   SlideInteractionFatigue,
   SlideInclusiveDesign,
 } from "./slides/SlideAdvancedPrinciples";
-import SlideTools from "./slides/SlideTools";
+import {
+  SlideToolsDevTools,
+  SlideToolsLighthouse,
+  SlideToolsA11yEngines,
+  SlideToolsTesting,
+  SlideToolsRecommendation,
+} from "./slides/SlideTools";
 import SlideClosing from "./slides/SlideClosing";
 
 export default function Slides() {
@@ -38,7 +44,11 @@ export default function Slides() {
         <SlidePrincipleComprehensible topicId="principleComprehensible" />
         <SlidePrincipleRobust topicId="principleRobust" />
 
-        <SlideTools topicId="tools" />
+        <SlideToolsDevTools topicId="toolsDevTools" />
+        <SlideToolsLighthouse topicId="toolsLighthouse" />
+        <SlideToolsA11yEngines topicId="toolsA11yEngines" />
+        <SlideToolsTesting topicId="toolsTesting" />
+        <SlideToolsRecommendation topicId="toolsRecommendation" />
 
         {/* Más allá de lo básico — los únicos conceptos que no son un criterio WCAG numerado */}
         <SlideAdvancedPrinciplesIntro topicId="advancedPrinciplesIntro" />

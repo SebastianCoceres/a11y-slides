@@ -88,15 +88,51 @@ El contenido tiene que funcionar con una amplia variedad de navegadores y tecnol
 
 ## Herramientas
 
-<!-- id:tools -->
+<!-- id:toolsDevTools -->
 
-**Herramientas**
+**DevTools del navegador**
 
-La implementación no requiere herramientas nuevas: DevTools del navegador para inspección de contraste y árbol de accesibilidad, Lighthouse para auditoría automatizada, axe-core como motor de reglas WCAG sobre el DOM, y Playwright para validar accesibilidad como parte del pipeline de integración continua. Priorizar componentes reutilizables sobre implementaciones ad hoc por página evita corregir el mismo defecto múltiples veces.
+Lo más básico ya viene instalado: el panel Accessibility de DevTools muestra nombre, rol y valor de cualquier nodo, el color picker calcula el contraste al vuelo, y el toggle del árbol de accesibilidad muestra de un vistazo qué quedó afuera — todo lo que ya vimos en el árbol de accesibilidad.
+
+> Con eso alcanza para inspeccionar a mano. El siguiente paso es automatizar esa inspección.
+
+<!-- id:toolsLighthouse -->
+
+**Lighthouse y PageSpeed Insights**
+
+Lighthouse audita accesibilidad, performance, buenas prácticas y SEO en un solo reporte con puntaje 0-100 — integrado en DevTools y disponible como CLI. PageSpeed Insights es su hermano: corre el mismo motor pero como servicio web de Google, sin necesidad de tener el proyecto local, y suma datos reales de usuarios a los datos de laboratorio.
+
+> Lighthouse da un puntaje general. Para accesibilidad específicamente, hay motores dedicados.
+
+<!-- id:toolsA11yEngines -->
+
+**Accessibility Insights y axe-core**
+
+Accessibility Insights for Web (Microsoft) es una extensión con dos modos: FastPass corre un chequeo automatizado en segundos, y Assessment guía paso a paso los criterios que solo se verifican a mano, como el orden del foco. axe-core (Deque) no tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de esta misma extensión, y de las herramientas de testing que siguen.
+
+> El motor es el mismo en todos lados; lo que cambia es dónde se lo hace correr. Metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar.
+
+<!-- id:toolsTesting -->
+
+**Playwright, Cypress y Vitest**
+
+Playwright y Cypress son runners end-to-end — con @axe-core/playwright o cypress-axe, cada test que ya valida funcionalidad corre además las reglas de axe sobre la página completa. Vitest opera a otro nivel: con vitest-axe audita un componente aislado antes de que llegue a integrarse en ninguna página.
+
+> Ninguna de estas herramientas reemplaza una decisión de arquitectura de más alto nivel.
+
+<!-- id:toolsRecommendation -->
+
+**Componentes antes que páginas**
+
+Doce modales distintos porque cada equipo construyó el suyo: un bug de teclado se arregla doce veces, o aparece en el módulo equivocado, en el peor momento del sprint. Un solo componente bien hecho se corrige una vez y el arreglo se replica solo.
 
 ---
 
 ## Más allá de lo básico
+
+<!-- id:advancedPrinciplesIntro -->
+
+**Más allá de lo básico**
 
 Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por qué una interfaz técnicamente conforme puede seguir generando fricción operativa.
 
@@ -106,10 +142,9 @@ Estos conceptos no corresponden a un criterio WCAG numerado, pero explican por q
 
 **Carga cognitiva**
 
-Es la cantidad de información que una persona debe recordar y procesar para completar una tarea. Un formulario extenso en una sola pantalla exige sostener en la memoria qué falta completar, qué es obligatorio y qué errores hay que corregir. Dividir el proceso en pasos reduce esa carga.
+Es la cantidad de información que una persona debe recordar y procesar para completar una tarea. Un formulario extenso en una sola pantalla exige sostener en la memoria qué falta completar, qué es obligatorio y qué errores hay que corregir — toda esa carga recae en quien lo completa, no en la interfaz.
 
-- **Qué está mal:** 14 campos sueltos en un mismo grid, sin agrupar.
-- **Solución:** los mismos 14 campos en 3 pasos con indicador de progreso.
+Dividir un proceso largo en pasos no le saca ningún campo al formulario: solo cambia cuánto hay que sostener en la cabeza en un momento dado. Es la misma información, mejor repartida en el tiempo.
 
 > Reducir lo que hay que recordar en un momento dado es una forma de carga; otra es cuánto cuesta repetir la misma tarea muchas veces.
 
@@ -117,10 +152,9 @@ Es la cantidad de información que una persona debe recordar y procesar para com
 
 **Fatiga por interacción**
 
-Cada interacción tiene un costo. Una tarea que exige múltiples pasos repetitivos es tolerable una vez, pero se convierte en carga operativa cuando se repite decenas de veces por día.
+Cada interacción tiene un costo. Una tarea que exige varios pasos repetitivos es tolerable la primera vez, pero se vuelve carga operativa real cuando alguien la repite decenas de veces por día — el costo no está en la dificultad de cada paso, sino en el desplazamiento acumulado.
 
-- **Qué está mal:** 7 secciones apiladas en scroll continuo — el historial queda al final.
-- **Solución:** pestañas por teclado con la pestaña activa en la URL.
+Ese costo es invisible en una demo, porque nadie hace clic cien veces seguidas frente a un cliente. Aparece recién cuando se mide el trabajo real de quien usa el producto todos los días, no la primera vez que alguien lo prueba.
 
 > Todo esto — carga cognitiva, fatiga por interacción — apunta a la misma idea de fondo, que cierra este bloque.
 
@@ -128,10 +162,9 @@ Cada interacción tiene un costo. Una tarea que exige múltiples pasos repetitiv
 
 **Diseño inclusivo**
 
-Quien usa un producto no está ahí para aprender cómo funciona: está ahí para completar una tarea. Diseñar para condiciones reales (interrupciones, presión de tiempo, cansancio) evita trasladar la complejidad del software a la persona que lo usa.
+Quien usa un producto no está ahí para aprender cómo funciona: está ahí para completar una tarea. Diseñar para condiciones reales — interrupciones, presión de tiempo, cansancio — evita trasladarle a esa persona una complejidad que el software debería absorber.
 
-- **Qué está mal:** las opciones del menú son `<div>` sin `onClick` ni rol — no son interactivas.
-- **Solución:** `<button>` reales con tamaño táctil mínimo y nombre accesible.
+Es la misma idea que atraviesa toda la charla, solo que acá no hay un criterio WCAG que la mida: un producto puede aprobar cualquier auditoría automática y seguir haciendo trabajar de más a quien lo usa todos los días.
 
 > Ya vimos principios, herramientas y estas fricciones que van más allá de lo básico. Queda una idea para cerrar la charla.
 

@@ -65,6 +65,10 @@
   "cognitiveLoad": { "title": "Carga cognitiva" },
   "interactionFatigue": { "title": "Fatiga por interacción" },
   "inclusiveDesign": { "title": "Diseño inclusivo" },
-  "tools": { "title": "¿Qué herramientas podemos usar?" },
+  "toolsDevTools": { "title": "DevTools del navegador" },
+  "toolsLighthouse": { "title": "Lighthouse y PageSpeed Insights" },
+  "toolsA11yEngines": { "title": "Accessibility Insights y axe-core" },
+  "toolsTesting": { "title": "Playwright, Cypress y Vitest" },
+  "toolsRecommendation": { "title": "Componentes antes que páginas" },
   "closing": { "title": "Cierre" }
 }
