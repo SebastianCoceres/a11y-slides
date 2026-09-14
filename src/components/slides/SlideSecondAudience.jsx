@@ -1,5 +1,11 @@
 import { Slide } from "@/components/deck";
-import { Puzzle, ShieldAlert, ScanSearch, BookOpen, FolderGit2 } from "lucide-react";
+import {
+  Puzzle,
+  ShieldAlert,
+  ScanSearch,
+  BookOpen,
+  FolderGit2,
+} from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
 
 export function SlideSecondAudience() {
@@ -12,23 +18,34 @@ export function SlideSecondAudience() {
           Hoy la mayoría del tráfico que llega a un sitio ya no es humano.
         </p>
         <div className="mb-8 flex flex-wrap items-baseline gap-5">
-          <span className="text-gradient-brand font-mono text-8xl font-black leading-none">57%</span>
+          <span className="text-gradient-brand font-mono text-8xl font-black leading-none">
+            57%
+          </span>
           <p className="max-w-xs text-base text-gray-400">
-            del tráfico HTTP a contenido web ya es de agentes automatizados, no personas
-            <span className="mt-1 block text-xs text-gray-400">Cloudflare Radar, 2026</span>
+            del tráfico HTTP a contenido web ya es de agentes automatizados, no
+            personas
+            <span className="mt-1 block text-xs text-gray-400">
+              Cloudflare Radar, 2026
+            </span>
           </p>
         </div>
         <div className="flex flex-wrap gap-x-14 gap-y-5 border-t border-white/10 pt-6">
           <div>
-            <div className="font-mono text-2xl font-bold tabular-nums text-white">95.9%</div>
+            <div className="font-mono text-2xl font-bold tabular-nums text-white">
+              95.9%
+            </div>
             <p className="max-w-xs text-sm text-gray-400">
-              de los sitios más visitados falla al menos un criterio WCAG — WebAIM Million, 2026
+              de los sitios más visitados falla al menos un criterio WCAG —
+              WebAIM Million, 2026
             </p>
           </div>
           <div>
-            <div className="font-mono text-2xl font-bold tabular-nums text-white">400M → 1.000M</div>
+            <div className="font-mono text-2xl font-bold tabular-nums text-white">
+              400M → 1.000M
+            </div>
             <p className="max-w-xs text-sm text-gray-400">
-              usuarios semanales de ChatGPT, feb. 2025 - ago. 2026 — OpenAI / TechCrunch
+              usuarios semanales de ChatGPT, feb. 2025 - ago. 2026 — OpenAI /
+              TechCrunch
             </p>
           </div>
         </div>
@@ -85,7 +102,14 @@ function DomTreeDiagram({ className }) {
       {DOM_NODES.map(({ x, y, label }, i) => (
         <g key={i}>
           <circle cx={x} cy={y} r="4" fill="currentColor" stroke="none" />
-          <text x={x} y={y - 9} fontSize="7" fontFamily="monospace" fill="currentColor" textAnchor="middle">
+          <text
+            x={x}
+            y={y - 9}
+            fontSize="7"
+            fontFamily="monospace"
+            fill="currentColor"
+            textAnchor="middle"
+          >
             {label}
           </text>
         </g>
@@ -110,11 +134,25 @@ function AccessibilityTreeDiagram({ className }) {
       stroke="currentColor"
     >
       <line x1="120" y1="22" x2="55" y2="112" strokeWidth="1.5" opacity="0.7" />
-      <line x1="120" y1="22" x2="185" y2="112" strokeWidth="1.5" opacity="0.7" />
+      <line
+        x1="120"
+        y1="22"
+        x2="185"
+        y2="112"
+        strokeWidth="1.5"
+        opacity="0.7"
+      />
       {A11Y_NODES.map(({ x, y, label }, i) => (
         <g key={i}>
           <circle cx={x} cy={y} r="5" fill="currentColor" stroke="none" />
-          <text x={x} y={y + 20} fontSize="10" fontFamily="monospace" fill="currentColor" textAnchor="middle">
+          <text
+            x={x}
+            y={y + 20}
+            fontSize="10"
+            fontFamily="monospace"
+            fill="currentColor"
+            textAnchor="middle"
+          >
             {label}
           </text>
         </g>
@@ -130,20 +168,24 @@ export function SlideSecondAudienceMechanism() {
       <div className="mx-auto max-w-4xl text-left">
         <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
         <p className="max-w-xl text-2xl leading-relaxed text-gray-200">
-          Un agente no lee píxeles ni HTML: lee el mismo árbol de accesibilidad que ya usa un lector de
-          pantalla.
+          Un agente no lee píxeles ni HTML: lee el mismo árbol de accesibilidad
+          que ya usa un lector de pantalla.
         </p>
         <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/10 pt-8 sm:grid-cols-2">
           <div>
             <DomTreeDiagram className="h-36 w-full text-gray-400" />
-            <div className="mt-2 font-mono text-3xl font-bold text-gray-500">Cientos de miles</div>
+            <div className="mt-2 font-mono text-3xl font-bold text-gray-500">
+              Cientos de miles
+            </div>
             <p className="mt-1 text-sm text-gray-400">
               de tokens para interpretar el HTML crudo de una página
             </p>
           </div>
           <div>
             <AccessibilityTreeDiagram className="h-36 w-full text-brand-light" />
-            <div className="mt-2 font-mono text-5xl font-black tabular-nums text-white">~200-400</div>
+            <div className="mt-2 font-mono text-5xl font-black tabular-nums text-white">
+              ~200-400
+            </div>
             <p className="mt-1 text-sm text-gray-400">
               tokens por snapshot del árbol de accesibilidad — Playwright MCP
             </p>
@@ -157,8 +199,8 @@ export function SlideSecondAudienceMechanism() {
 const tools = [
   {
     icon: Puzzle,
-    title: '"accessibility", la skill de Claude Code',
-    desc: 'Instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría o "hacer accesible" algo — ya vienen con el agente, sin instalar nada aparte.',
+    title: '"accessibility", una skill de agente',
+    desc: 'Instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría — disponible en Claude Code, no exclusiva de una sola plataforma.',
   },
   {
     icon: ShieldAlert,
@@ -212,9 +254,10 @@ export function SlideSecondAudienceCodeProximity() {
               Una herramienta de auditoría
             </div>
             <p className="text-base text-gray-400">
-              Lighthouse, axe-core o Accessibility Insights reportan el síntoma en la página ya
-              renderizada: "este botón no tiene nombre accesible". No saben si vive en un componente que
-              se repite cuarenta veces o si es un caso único.
+              Lighthouse, axe-core o Accessibility Insights reportan el síntoma
+              en la página ya renderizada: "este botón no tiene nombre
+              accesible". No saben si vive en un componente que se repite
+              cuarenta veces o si es un caso único.
             </p>
           </div>
           <div>
@@ -223,15 +266,17 @@ export function SlideSecondAudienceCodeProximity() {
               Un agente con el repositorio
             </div>
             <p className="text-xl leading-relaxed text-gray-200">
-              Ve el mismo síntoma, pero también el componente fuente, cuántas páginas lo importan, y si
-              el mismo problema ya se arregló en otro lado del código. Puede proponer el fix una sola
-              vez, en la fuente — no una vez por página.
+              Ve el mismo síntoma, pero también el componente fuente, cuántas
+              páginas lo importan, y si el mismo problema ya se arregló en otro
+              lado del código. Puede proponer el fix una sola vez, en la fuente
+              — no una vez por página.
             </p>
           </div>
         </div>
         <p className="mt-8 max-w-2xl text-base italic text-gray-400">
-          Arreglar en la fuente, una sola vez, en vez de parchear página por página — solo que ahora hay
-          alguien que efectivamente puede ver el componente.
+          Arreglar en la fuente, una sola vez, en vez de parchear página por
+          página — solo que ahora hay alguien que efectivamente puede ver el
+          componente.
         </p>
       </div>
     </Slide>
@@ -253,7 +298,10 @@ export function SlideSecondAudienceWebmcp() {
       <div className="mx-auto max-w-4xl text-left">
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <div className="relative">
-          <div aria-hidden="true" className="absolute left-0 right-0 top-[7px] h-px bg-white/15" />
+          <div
+            aria-hidden="true"
+            className="absolute left-0 right-0 top-1.75 h-px bg-white/15"
+          />
           <div className="relative grid grid-cols-5 gap-3">
             {WEBMCP_TIMELINE.map(({ date, label }, i) => {
               const isLast = i === WEBMCP_TIMELINE.length - 1;
@@ -262,7 +310,9 @@ export function SlideSecondAudienceWebmcp() {
                   <span
                     aria-hidden="true"
                     className={`h-3.5 w-3.5 rounded-full border-2 ${
-                      isLast ? "border-brand-light bg-brand-light" : "border-white/40 bg-[#191919]"
+                      isLast
+                        ? "border-brand-light bg-brand-light"
+                        : "border-white/40 bg-[#191919]"
                     }`}
                   />
                   <div
@@ -270,7 +320,9 @@ export function SlideSecondAudienceWebmcp() {
                   >
                     {date}
                   </div>
-                  <p className="mt-1 text-xs leading-snug text-gray-400">{label}</p>
+                  <p className="mt-1 text-xs leading-snug text-gray-400">
+                    {label}
+                  </p>
                 </div>
               );
             })}
@@ -278,7 +330,9 @@ export function SlideSecondAudienceWebmcp() {
         </div>
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div>
-            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">Imperativa</p>
+            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">
+              Imperativa
+            </p>
             <pre className="overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-xs leading-relaxed text-indigo-300">
               {`await document.modelContext
   .registerTool({
@@ -291,12 +345,15 @@ export function SlideSecondAudienceWebmcp() {
             </pre>
           </div>
           <div>
-            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">Declarativa</p>
+            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">
+              Declarativa
+            </p>
             <pre className="overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-xs leading-relaxed text-indigo-300">
               {`<form toolname="search-cars"
   tooldescription="Buscar por
     marca/modelo">
-  <input name="make" required>
+  <input name="make" required
+    toolparamdescription="...">
   <button type=submit>Search</button>
 </form>`}
             </pre>
@@ -314,10 +371,15 @@ export function SlideSecondAudienceWebmcpFallback() {
       <div className="mx-auto max-w-3xl text-left">
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <p className="text-3xl font-medium leading-snug text-white">
-          "...it can fall back to <strong className="font-black">general-purpose browser automation</strong>."
+          "...it can fall back to{" "}
+          <strong className="font-black">
+            general-purpose browser automation
+          </strong>
+          ."
         </p>
         <p className="mt-10 max-w-xl border-t border-white/10 pt-6 text-base italic text-gray-400">
-          "...not designed to interact directly with a page's accessibility tree."
+          "...not designed to interact directly with a page's accessibility
+          tree."
         </p>
         <p className="mt-4 text-xs uppercase tracking-wide text-gray-400">
           — WebMCP spec, webmachinelearning/webmcp

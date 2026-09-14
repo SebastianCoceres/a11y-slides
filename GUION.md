@@ -154,7 +154,7 @@ Playwright MCP, el servidor oficial de Microsoft para controlar un navegador des
 
 **Ya existen las herramientas**
 
-Claude Code, el mismo agente con el que armé esta charla, ya viene con una skill que se llama "accessibility": instrucciones especializadas en WCAG 2.2 que se activan apenas le pedís una auditoría o que "haga accesible" algo — sin instalar nada aparte. Pero esta es solo una pieza del rompecabezas.
+Claude Code, el agente con el que armé esta charla, tiene acceso a una skill que se llama "accessibility": instrucciones especializadas en WCAG 2.2 que se activan apenas le pedís una auditoría o que "haga accesible" algo. Y esto no es exclusivo de Claude — empaquetar instrucciones especializadas que un agente activa según el contexto es una idea que ya está en varias plataformas de IA, no un truco de una sola marca. Pero esta es solo una pieza del rompecabezas.
 
 Deque, la misma empresa detrás de axe-core que vimos en la sección de herramientas, empaquetó ese motor como MCP oficial: analiza una página y te devuelve el fix de código, listo para revisar, aplicar o rechazar, sin salir del editor. Funciona con Claude Code, GitHub Copilot, Cursor y Windsurf. Sumale Chrome DevTools MCP o Playwright MCP, que le dan al agente una sesión de navegador de verdad para leer el árbol de accesibilidad en vivo y agarrar fallas de teclado que un análisis estático se pierde. Y también están los MCP de documentación, que le acercan al agente la versión vigente de un criterio WCAG o de una librería justo cuando la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.
 
@@ -186,9 +186,9 @@ También hay una forma declarativa, sin JavaScript: agregarle a un `<form>` los 
 
 **Ni lo más nuevo se anima a dejarlo**
 
-El propio documento del spec lo aclara sin vueltas: WebMCP no está pensado para interactuar con el árbol de accesibilidad. Cito textual: "WebMCP itself is not designed for ingestion by accessibility technology, nor is it designed to interact directly with a page's accessibility tree."
+El propio documento del spec lo aclara sin vueltas: WebMCP no está pensado para interactuar con el árbol de accesibilidad. Como dice el spec, traducido: "WebMCP en sí no está pensado para que lo consuma tecnología asistiva, ni para interactuar directamente con el árbol de accesibilidad de una página."
 
-Pero después agrega la frase que realmente importa para esta charla: cuando un agente no encuentra un tool declarado para lo que necesita hacer, "it can fall back to general-purpose browser automation" — vuelve exactamente al mismo mecanismo que ya vimos, el que lee el árbol de accesibilidad. Ni el estándar diseñado específicamente para agentes de IA se anima a dejarlo de lado.
+Pero después agrega la frase que realmente importa para esta charla: cuando un agente no encuentra un tool declarado para lo que necesita hacer, "puede caer de vuelta a la automatización de navegador de propósito general" — vuelve exactamente al mismo mecanismo que ya vimos, el que lee el árbol de accesibilidad. Ni el estándar diseñado específicamente para agentes de IA se anima a dejarlo de lado.
 
 ---
 
