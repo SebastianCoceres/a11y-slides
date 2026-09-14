@@ -29,6 +29,8 @@ import {
   SlideSecondAudienceMechanism,
   SlideSecondAudienceTools,
   SlideSecondAudienceCodeProximity,
+  SlideSecondAudienceWebmcp,
+  SlideSecondAudienceWebmcpFallback,
 } from "./slides/SlideSecondAudience";
 import SlideClosing from "./slides/SlideClosing";
 
@@ -58,6 +60,8 @@ export default function Slides() {
         <SlideSecondAudienceMechanism topicId="secondAudienceMechanism" />
         <SlideSecondAudienceTools topicId="secondAudienceTools" />
         <SlideSecondAudienceCodeProximity topicId="secondAudienceCodeProximity" />
+        <SlideSecondAudienceWebmcp topicId="secondAudienceWebmcp" />
+        <SlideSecondAudienceWebmcpFallback topicId="secondAudienceWebmcpFallback" />
 
         {/* Más allá de lo básico — los únicos conceptos que no son un criterio WCAG numerado */}
         <SlideAdvancedPrinciplesIntro topicId="advancedPrinciplesIntro" />

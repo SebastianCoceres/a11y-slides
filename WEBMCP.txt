@@ -1,0 +1,86 @@
+WebMCP — investigación (no incorporado al guion todavía)
+===========================================================
+
+QUE ES
+------
+API del navegador (document.modelContext / navigator.modelContext) que le
+permite a una pagina web declarar funciones ("tools") que un agente de IA
+puede invocar directamente, en vez de que el agente tenga que inferir la
+accion navegando la interfaz.
+
+Dos formas de declararlo:
+
+1) Imperativa (JS):
+
+  await document.modelContext.registerTool({
+    name: "add-todo",
+    description: "Add a new item to the user's active todo list",
+    inputSchema: { /* JSON Schema */ },
+    async execute({ text }) { /* ... */ }
+  });
+
+2) Declarativa (HTML, sobre un <form> real):
+
+  <form toolname="search-cars" tooldescription="Perform a car make/model search">
+    <input type=text name="make" toolparamdescription="..." required>
+    <button type=submit>Search</button>
+  </form>
+
+  La version declarativa reutiliza atributos HTML estandar (name, required)
+  y suma unos pocos nuevos (toolname, tooldescription, toolparamdescription,
+  toolautosubmit). Un <form> ya bien hecho (labels, name, required) esta a
+  mitad de camino de ser "WebMCP-ready".
+
+ESTADO ACTUAL (muy temprano, no es un standard estable)
+--------------------------------------------------------
+- MCP-B: enero 2025 (origen del concepto)
+- Google + Microsoft publican propuesta unificada: agosto 2025
+- W3C Community Group la acepta: septiembre 2025
+- Spec publicada como W3C Draft Community Group Report: 10 feb 2026
+- Chrome 146: Early Preview (flag chrome://flags "WebMCP" / "model-context")
+- Chrome 149+ / Edge 150+: Origin Trial activo (acceso limitado, registro
+  de desarrollador; flag local about:flags#enable-webmcp-testing)
+- Brave: soporte experimental en el asistente Leo
+- ChatGPT Desktop: unico con soporte "de produccion" hoy
+- Firefox y Safari: en evaluacion via sus procesos de standards-positions,
+  SIN implementacion todavia
+
+EL DATO CLAVE PARA LA CHARLA
+-----------------------------
+WebMCP NO reemplaza ni interactua con el arbol de accesibilidad. Cita
+textual del propio repo del spec (webmachinelearning/webmcp):
+
+  "WebMCP itself is not designed for ingestion by accessibility technology,
+  nor is it designed to interact directly with a page's accessibility tree;
+  rather, it enables agents to act as highly capable intermediaries."
+
+Y cuando un agente no encuentra un "tool" declarado para lo que necesita
+hacer, cae de vuelta a la automatizacion de navegador de siempre — la que
+si lee el arbol de accesibilidad (Playwright MCP, el mecanismo que ya
+explica la charla):
+
+  "If an agent [...] finds that the task [...] is not achievable through
+  the WebMCP tools that the page provides, then it can fall back to
+  general-purpose browser automation."
+
+CONCLUSION / POR QUE IMPORTA PARA ESTA CHARLA
+-----------------------------------------------
+No contradice el argumento central (que el arbol de accesibilidad es la
+API real que ya usan tanto lectores de pantalla como agentes de IA), lo
+refuerza: incluso el estandar mas nuevo pensado explicitamente para
+agentes sigue tratando al arbol de accesibilidad como la red de
+contencion cuando el sitio no declaro tools explicitos. Es un buen cierre
+de arco para la seccion de "segunda audiencia" con algo de 2026, pero por
+lo experimental que esta (ni Firefox ni Safari lo implementan todavia) es
+mas una mencion de una frase que un bloque nuevo del guion.
+
+FUENTES
+-------
+- WebMCP: How Websites Will Expose Tools to AI Agents (Zuplo)
+  https://zuplo.com/blog/what-is-webmcp
+- webmachinelearning/webmcp — README
+  https://github.com/webmachinelearning/webmcp/blob/main/README.md
+- webmachinelearning/webmcp — implementation-status.md
+  https://github.com/webmachinelearning/webmcp/blob/main/implementation-status.md
+- webmachinelearning/webmcp — declarative-api-explainer.md
+  https://github.com/webmachinelearning/webmcp/blob/main/declarative-api-explainer.md

@@ -66,7 +66,7 @@ function FloatingVisual() {
           <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/2 text-brand-light">
             <Icon className="h-7 w-7" strokeWidth={1.5} />
           </span>
-          <span className="text-xs text-gray-500">{label}</span>
+          <span className="text-xs text-gray-400">{label}</span>
         </motion.div>
       ))}
     </div>

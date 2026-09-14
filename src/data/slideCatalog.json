@@ -73,5 +73,7 @@
   "secondAudienceMechanism": { "title": "La misma API, un cliente más" },
   "secondAudienceTools": { "title": "Ya existen las herramientas" },
   "secondAudienceCodeProximity": { "title": "La ventaja de estar cerca del código" },
+  "secondAudienceWebmcp": { "title": "WebMCP — lo que viene" },
+  "secondAudienceWebmcpFallback": { "title": "Ni lo más nuevo se anima a dejarlo" },
   "closing": { "title": "Cierre" }
 }

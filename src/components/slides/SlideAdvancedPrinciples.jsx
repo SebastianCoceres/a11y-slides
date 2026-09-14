@@ -11,7 +11,7 @@ function StatementSlide({ id, title, statement }) {
     <Slide id={id}>
       <div className="mx-auto max-w-4xl text-left">
         <p className="text-3xl leading-[1.15] text-white sm:text-4xl">{statement}</p>
-        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-gray-500">
+        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
           {title}
         </p>
       </div>

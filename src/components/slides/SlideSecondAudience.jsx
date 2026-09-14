@@ -15,19 +15,19 @@ export function SlideSecondAudience() {
           <span className="text-gradient-brand font-mono text-8xl font-black leading-none">57%</span>
           <p className="max-w-xs text-base text-gray-400">
             del tráfico HTTP a contenido web ya es de agentes automatizados, no personas
-            <span className="mt-1 block text-xs text-gray-600">Cloudflare Radar, 2026</span>
+            <span className="mt-1 block text-xs text-gray-400">Cloudflare Radar, 2026</span>
           </p>
         </div>
         <div className="flex flex-wrap gap-x-14 gap-y-5 border-t border-white/10 pt-6">
           <div>
             <div className="font-mono text-2xl font-bold tabular-nums text-white">95.9%</div>
-            <p className="max-w-xs text-sm text-gray-500">
+            <p className="max-w-xs text-sm text-gray-400">
               de los sitios más visitados falla al menos un criterio WCAG — WebAIM Million, 2026
             </p>
           </div>
           <div>
             <div className="font-mono text-2xl font-bold tabular-nums text-white">400M → 1.000M</div>
-            <p className="max-w-xs text-sm text-gray-500">
+            <p className="max-w-xs text-sm text-gray-400">
               usuarios semanales de ChatGPT, feb. 2025 - ago. 2026 — OpenAI / TechCrunch
             </p>
           </div>
@@ -135,9 +135,9 @@ export function SlideSecondAudienceMechanism() {
         </p>
         <div className="mt-10 grid grid-cols-1 gap-10 border-t border-white/10 pt-8 sm:grid-cols-2">
           <div>
-            <DomTreeDiagram className="h-36 w-full text-gray-600" />
+            <DomTreeDiagram className="h-36 w-full text-gray-400" />
             <div className="mt-2 font-mono text-3xl font-bold text-gray-500">Cientos de miles</div>
-            <p className="mt-1 text-sm text-gray-600">
+            <p className="mt-1 text-sm text-gray-400">
               de tokens para interpretar el HTML crudo de una página
             </p>
           </div>
@@ -207,11 +207,11 @@ export function SlideSecondAudienceCodeProximity() {
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-[1fr_1.3fr] sm:items-start">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-lg font-semibold text-gray-500">
+            <div className="mb-2 flex items-center gap-2 text-lg font-semibold text-gray-400">
               <ScanSearch className="h-5 w-5" />
               Una herramienta de auditoría
             </div>
-            <p className="text-base text-gray-500">
+            <p className="text-base text-gray-400">
               Lighthouse, axe-core o Accessibility Insights reportan el síntoma en la página ya
               renderizada: "este botón no tiene nombre accesible". No saben si vive en un componente que
               se repite cuarenta veces o si es un caso único.
@@ -229,9 +229,98 @@ export function SlideSecondAudienceCodeProximity() {
             </p>
           </div>
         </div>
-        <p className="mt-8 max-w-2xl text-base italic text-gray-500">
+        <p className="mt-8 max-w-2xl text-base italic text-gray-400">
           Arreglar en la fuente, una sola vez, en vez de parchear página por página — solo que ahora hay
           alguien que efectivamente puede ver el componente.
+        </p>
+      </div>
+    </Slide>
+  );
+}
+
+const WEBMCP_TIMELINE = [
+  { date: "ene 2025", label: "Nace MCP-B" },
+  { date: "ago 2025", label: "Google + Microsoft unifican la propuesta" },
+  { date: "sept 2025", label: "El W3C la acepta" },
+  { date: "feb 2026", label: "Se publica el spec" },
+  { date: "hoy", label: "Origin trial en Chrome y Edge" },
+];
+
+export function SlideSecondAudienceWebmcp() {
+  const info = slideCatalog.secondAudienceWebmcp;
+  return (
+    <Slide id="secondAudienceWebmcp">
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <div className="relative">
+          <div aria-hidden="true" className="absolute left-0 right-0 top-[7px] h-px bg-white/15" />
+          <div className="relative grid grid-cols-5 gap-3">
+            {WEBMCP_TIMELINE.map(({ date, label }, i) => {
+              const isLast = i === WEBMCP_TIMELINE.length - 1;
+              return (
+                <div key={date} className="flex flex-col items-start">
+                  <span
+                    aria-hidden="true"
+                    className={`h-3.5 w-3.5 rounded-full border-2 ${
+                      isLast ? "border-brand-light bg-brand-light" : "border-white/40 bg-[#191919]"
+                    }`}
+                  />
+                  <div
+                    className={`mt-3 font-mono text-base font-bold ${isLast ? "text-brand-light" : "text-white"}`}
+                  >
+                    {date}
+                  </div>
+                  <p className="mt-1 text-xs leading-snug text-gray-400">{label}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div>
+            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">Imperativa</p>
+            <pre className="overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-xs leading-relaxed text-indigo-300">
+              {`await document.modelContext
+  .registerTool({
+    name: "add-todo",
+    description: "Add an item",
+    async execute({ text }) {
+      /* ... */
+    }
+  });`}
+            </pre>
+          </div>
+          <div>
+            <p className="mb-2 text-xs uppercase tracking-wide text-gray-400">Declarativa</p>
+            <pre className="overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-xs leading-relaxed text-indigo-300">
+              {`<form toolname="search-cars"
+  tooldescription="Buscar por
+    marca/modelo">
+  <input name="make" required>
+  <button type=submit>Search</button>
+</form>`}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </Slide>
+  );
+}
+
+export function SlideSecondAudienceWebmcpFallback() {
+  const info = slideCatalog.secondAudienceWebmcpFallback;
+  return (
+    <Slide id="secondAudienceWebmcpFallback">
+      <div className="mx-auto max-w-3xl text-left">
+        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <p className="text-3xl font-medium leading-snug text-white">
+          "...it can fall back to <strong className="font-black">general-purpose browser automation</strong>."
+        </p>
+        <p className="mt-10 max-w-xl border-t border-white/10 pt-6 text-base italic text-gray-400">
+          "...not designed to interact directly with a page's accessibility tree."
+        </p>
+        <p className="mt-4 text-xs uppercase tracking-wide text-gray-400">
+          — WebMCP spec, webmachinelearning/webmcp
         </p>
       </div>
     </Slide>

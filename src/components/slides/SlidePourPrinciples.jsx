@@ -18,7 +18,7 @@ function PrincipleSlide({ id, letter, english, icon: Icon, children }) {
             <Icon className="size-9 text-brand-light" strokeWidth={2} />
             <h2 className="text-5xl text-brand-light">{info.title}</h2>
           </div>
-          <p className="mb-6 text-sm text-gray-500">{english}</p>
+          <p className="mb-6 text-sm text-gray-400">{english}</p>
           <div className="max-w-xl text-2xl leading-snug text-gray-200 sm:text-3xl">{children}</div>
         </div>
       </div>

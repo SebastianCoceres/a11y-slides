@@ -168,6 +168,28 @@ Lighthouse, axe-core o Accessibility Insights te reportan el síntoma en la pág
 
 Un agente con acceso al repositorio ve el mismo síntoma, pero además ve el componente fuente, cuántas páginas lo importan, y si ese mismo problema ya se arregló en otro lugar del código. Puede proponer el fix una sola vez, en la fuente — no una vez por página, ni una vez por componente repetido.
 
+> Todo esto ya es real, hoy. Pero vale la pena mirar un paso más allá: hacia dónde va este mecanismo.
+
+<!-- id:secondAudienceWebmcp -->
+
+**WebMCP — lo que viene**
+
+Enero de 2025: nace MCP-B. Agosto: Google y Microsoft publican una propuesta unificada. Septiembre: el W3C la acepta como Community Group. Febrero de 2026: se publica el spec formal. Hoy corre en origin trial en Chrome y Edge — ni Firefox ni Safari la implementan todavía. Es nuevo de verdad, no una curiosidad de hace años.
+
+La idea es que un sitio declare funciones que un agente puede invocar directamente, con una API imperativa bastante simple: `document.modelContext.registerTool()`, con un nombre, una descripción, y una función que se ejecuta del lado del cliente. En vez de que el agente adivine cómo completar un formulario haciendo clicks, el sitio le dice exactamente qué puede hacer.
+
+También hay una forma declarativa, sin JavaScript: agregarle a un `<form>` los atributos `toolname` y `tooldescription`, y a cada input un `toolparamdescription`. Y acá está el chiste: reutiliza atributos que un formulario accesible ya debería tener — `name`, `required` — no son atributos nuevos para IA, son los mismos que ya le hacen falta a un lector de pantalla. Un formulario bien hecho ya está a mitad de camino de ser WebMCP-ready.
+
+> Y acá está el dato que realmente importa: qué dice el propio estándar sobre el árbol de accesibilidad.
+
+<!-- id:secondAudienceWebmcpFallback -->
+
+**Ni lo más nuevo se anima a dejarlo**
+
+El propio documento del spec lo aclara sin vueltas: WebMCP no está pensado para interactuar con el árbol de accesibilidad. Cito textual: "WebMCP itself is not designed for ingestion by accessibility technology, nor is it designed to interact directly with a page's accessibility tree."
+
+Pero después agrega la frase que realmente importa para esta charla: cuando un agente no encuentra un tool declarado para lo que necesita hacer, "it can fall back to general-purpose browser automation" — vuelve exactamente al mismo mecanismo que ya vimos, el que lee el árbol de accesibilidad. Ni el estándar diseñado específicamente para agentes de IA se anima a dejarlo de lado.
+
 ---
 
 ## Más allá de lo básico

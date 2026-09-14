@@ -47,7 +47,7 @@ export default function SlideBusinessImpact() {
         <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
           {impacts.map(({ icon: Icon, role, text }) => (
             <div key={role} className="flex gap-3 border-t border-white/10 pt-4">
-              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-red-300" />
+              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" />
               <p className="text-base text-gray-300">
                 <strong className="mb-0.5 block text-white">{role}</strong>
                 {text}
