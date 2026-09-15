@@ -37,7 +37,7 @@ Esto no es un defecto de Lighthouse en particular — es una característica del
 
 Ninguno de estos "trucos" suele ser deliberado — el patrón típico es un equipo bajo presión de sprint que agrega el atributo mínimo que hace callar al linter, sin resolver el problema de fondo. Es la ley de Goodhart aplicada a accesibilidad: en cuanto una medida se vuelve el objetivo, deja de ser una buena medida.
 
-Fuentes: [dev.to — Your accessibility score is lying to you](https://dev.to/chris_devto/your-accessibility-score-is-lying-to-you-5fh2) · [David Mello — Playwright Accessibility Testing: What axe and Lighthouse Miss](https://www.davidmello.com/software-testing/test-automation/playwright-accessibility-testing-axe-lighthouse-limitations)
+Fuentes: [dev.to — Your accessibility score is lying to you](https://dev.to/chris_devto/your-accessibility-score-is-lying-to-you-5fh2) · [David Mello — Playwright Accessibility Testing: What axe and Lighthouse Miss](https://www.davidmello.com/software-testing/test-automation/playwright-accessibility-testing-axe-lighthouse-limitations) · [Accessibility Insights for Web — Microsoft](https://accessibilityinsights.io/docs/web/overview/)
 
 ---
 

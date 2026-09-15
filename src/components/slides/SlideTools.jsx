@@ -1,5 +1,15 @@
 import { Slide } from "@/components/deck";
-import { Lightbulb, Gauge, ScanSearch, ShieldCheck, Palette, Workflow, ChevronDown } from "lucide-react";
+import {
+  Lightbulb,
+  Gauge,
+  ScanSearch,
+  ShieldCheck,
+  Palette,
+  Workflow,
+  ChevronDown,
+  Search,
+  ExternalLink,
+} from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
 
 const DEVTOOLS_HIGHLIGHTS = [
@@ -43,36 +53,56 @@ function DevToolsPanelMock() {
 
       <div className="border-b border-slate-100 bg-[#0c0e14] px-3 py-2 font-mono text-[11px] leading-relaxed text-slate-400">
         <div>
-          <span className="text-sky-400">&lt;button</span> <span className="text-orange-300">class</span>=
-          <span className="text-emerald-300">"btn-primary"</span>
-          <span className="text-sky-400">&gt;</span>
+          <span className="rounded bg-blue-600/40 px-0.5 text-white">
+            &lt;button <span className="text-orange-300">aria-label</span>=<span className="text-emerald-300">"Buscar"</span>&gt;
+          </span>
         </div>
-        <div className="pl-3">
-          <span className="rounded bg-blue-600/50 px-0.5 text-white">Enviar</span>
-        </div>
+        <div className="pl-3 text-slate-600">&lt;svg aria-hidden="true"&gt;…&lt;/svg&gt;</div>
         <div>
           <span className="text-sky-400">&lt;/button&gt;</span>
         </div>
       </div>
 
-      <div className="space-y-1.5 px-3 py-3 text-[12px]">
-        <p className="flex items-center gap-1 font-semibold text-slate-600">
-          <ChevronDown className="h-3 w-3" /> Computed Properties
-        </p>
-        <dl className="space-y-1 pl-4 font-mono">
-          <div className="flex justify-between">
-            <dt className="text-slate-400">Name</dt>
-            <dd className="text-slate-800">"Enviar"</dd>
+      <div className="space-y-3 px-3 py-3 text-[12px]">
+        <div>
+          <p className="mb-1 flex items-center gap-1 font-semibold text-slate-600">
+            <ChevronDown className="h-3 w-3" /> ARIA Attributes
+          </p>
+          <div className="flex justify-between pl-4 font-mono">
+            <dt className="text-slate-400">aria-label</dt>
+            <dd className="text-slate-800">"Buscar"</dd>
           </div>
-          <div className="flex justify-between">
-            <dt className="text-slate-400">Role</dt>
-            <dd className="text-slate-800">button</dd>
-          </div>
-          <div className="flex justify-between">
-            <dt className="text-slate-400">Focusable</dt>
-            <dd className="text-emerald-600">true</dd>
-          </div>
-        </dl>
+        </div>
+
+        <div>
+          <p className="mb-1 flex items-center gap-1 font-semibold text-slate-600">
+            <ChevronDown className="h-3 w-3" /> Computed Properties
+          </p>
+          <dl className="space-y-1 pl-4 font-mono">
+            <div className="flex items-center justify-between">
+              <dt className="font-semibold text-slate-500">Name</dt>
+              <dd className="text-slate-800">"Buscar"</dd>
+            </div>
+            <div className="space-y-1 border-l border-slate-200 pl-3">
+              <div className="flex justify-between text-slate-400">
+                <dt>aria-label</dt>
+                <dd className="text-slate-700">"Buscar"</dd>
+              </div>
+              <div className="flex justify-between text-slate-400">
+                <dt>Contents</dt>
+                <dd className="italic">Not specified</dd>
+              </div>
+            </div>
+            <div className="flex justify-between pt-1">
+              <dt className="text-slate-400">Role</dt>
+              <dd className="text-slate-800">button</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="text-slate-400">Focusable</dt>
+              <dd className="text-emerald-600">true</dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </div>
   );
@@ -86,7 +116,7 @@ export function SlideToolsDevTools() {
         <div>
           <h2 className="text-5xl text-brand-light mb-4">{info.title}</h2>
           <p className="mb-8 text-lg text-gray-400">Ya viene instalado. Lo recorremos en vivo.</p>
-          <ul className="space-y-5">
+          <ul className="mb-8 space-y-5">
             {DEVTOOLS_HIGHLIGHTS.map(({ Icon, title, detail }) => (
               <li key={title} className="flex items-start gap-3">
                 <Icon className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" />
@@ -96,6 +126,35 @@ export function SlideToolsDevTools() {
               </li>
             ))}
           </ul>
+
+          {/* Elemento real, no decorativo — para seleccionar e inspeccionar en
+              vivo con las DevTools reales durante la demo. El botón de lupa no
+              tiene texto visible: su nombre accesible sale entero de
+              aria-label, el ejemplo clásico de por qué ARIA importa.
+              form + role="search" (en vez de un <div>) también saca este
+              grupo del "Ignored": pasa a ser un landmark real, no genérico. */}
+          <form
+            role="search"
+            onSubmit={(event) => event.preventDefault()}
+            className="flex items-center gap-2"
+          >
+            <label htmlFor="tools-devtools-search" className="sr-only">
+              Buscar
+            </label>
+            <input
+              id="tools-devtools-search"
+              type="search"
+              placeholder="Buscar…"
+              className="rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-base text-gray-200 placeholder:text-gray-500 focus:border-brand/60 focus:outline-none"
+            />
+            <button
+              type="submit"
+              aria-label="Buscar"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand/50 bg-brand/10 text-brand-light transition-colors hover:bg-brand/20"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+          </form>
         </div>
         <DevToolsPanelMock />
       </div>
@@ -138,20 +197,32 @@ export function SlideToolsA11yEngines() {
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-xl font-bold text-white">
-              <ScanSearch className="h-5 w-5 text-indigo-300" />
+            <a
+              href="https://github.com/microsoft/accessibility-insights-web"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-2 flex items-center gap-2 text-xl font-bold text-white transition-colors hover:text-indigo-300"
+            >
+              <ScanSearch className="h-5 w-5 shrink-0 text-indigo-300" />
               Accessibility Insights for Web
-            </div>
+              <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
+            </a>
             <p className="text-base text-gray-400">
               Extensión de Microsoft: FastPass corre un chequeo automatizado en segundos, y Assessment
               guía paso a paso los criterios que solo se verifican a mano, como el orden del foco.
             </p>
           </div>
           <div className="sm:border-l sm:border-white/10 sm:pl-10">
-            <div className="mb-2 flex items-center gap-2 text-xl font-bold text-white">
-              <ShieldCheck className="h-5 w-5 text-indigo-300" />
+            <a
+              href="https://github.com/dequelabs/axe-core"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-2 flex items-center gap-2 text-xl font-bold text-white transition-colors hover:text-indigo-300"
+            >
+              <ShieldCheck className="h-5 w-5 shrink-0 text-indigo-300" />
               axe-core (Deque)
-            </div>
+              <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
+            </a>
             <p className="text-base text-gray-400">
               No tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de
               esta misma extensión, y de las herramientas de testing que siguen.
