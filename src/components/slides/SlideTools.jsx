@@ -1,18 +1,103 @@
 import { Slide } from "@/components/deck";
-import { Lightbulb, Gauge, ScanSearch, ShieldCheck } from "lucide-react";
+import { Lightbulb, Gauge, ScanSearch, ShieldCheck, Palette, Workflow, ChevronDown } from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
+
+const DEVTOOLS_HIGHLIGHTS = [
+  {
+    Icon: ScanSearch,
+    title: "Panel Accessibility",
+    detail: "nombre, rol y valor de cualquier nodo",
+  },
+  {
+    Icon: Palette,
+    title: "Color picker",
+    detail: "ratio de contraste en tiempo real",
+  },
+  {
+    Icon: Workflow,
+    title: "Árbol de accesibilidad",
+    detail: "un toggle, y ves qué quedó afuera",
+  },
+];
+
+// Stylized recreation of the DevTools Elements + Accessibility pane — not a
+// screenshot, since capturing the browser's own chrome is out of reach for
+// page-automation tools. Purely decorative: the real information lives in
+// DEVTOOLS_HIGHLIGHTS next to it.
+function DevToolsPanelMock() {
+  return (
+    <div
+      aria-hidden="true"
+      className="relative mx-auto w-full max-w-md rotate-1 rounded-lg border border-black/10 bg-white text-slate-800 shadow-[0_40px_90px_-25px_rgba(0,0,0,0.7)]"
+    >
+      <span className="absolute -right-4 -top-4 flex items-center gap-1 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+        4.6:1 AA ✓
+      </span>
+
+      <div className="flex items-center gap-4 rounded-t-lg border-b border-slate-200 bg-slate-50 px-3 pt-2 text-[11px] font-medium text-slate-400">
+        <span className="pb-2">Elements</span>
+        <span className="pb-2">Console</span>
+        <span className="pb-2">Sources</span>
+        <span className="border-b-2 border-blue-600 pb-2 text-blue-600">Accessibility</span>
+      </div>
+
+      <div className="border-b border-slate-100 bg-[#0c0e14] px-3 py-2 font-mono text-[11px] leading-relaxed text-slate-400">
+        <div>
+          <span className="text-sky-400">&lt;button</span> <span className="text-orange-300">class</span>=
+          <span className="text-emerald-300">"btn-primary"</span>
+          <span className="text-sky-400">&gt;</span>
+        </div>
+        <div className="pl-3">
+          <span className="rounded bg-blue-600/50 px-0.5 text-white">Enviar</span>
+        </div>
+        <div>
+          <span className="text-sky-400">&lt;/button&gt;</span>
+        </div>
+      </div>
+
+      <div className="space-y-1.5 px-3 py-3 text-[12px]">
+        <p className="flex items-center gap-1 font-semibold text-slate-600">
+          <ChevronDown className="h-3 w-3" /> Computed Properties
+        </p>
+        <dl className="space-y-1 pl-4 font-mono">
+          <div className="flex justify-between">
+            <dt className="text-slate-400">Name</dt>
+            <dd className="text-slate-800">"Enviar"</dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-slate-400">Role</dt>
+            <dd className="text-slate-800">button</dd>
+          </div>
+          <div className="flex justify-between">
+            <dt className="text-slate-400">Focusable</dt>
+            <dd className="text-emerald-600">true</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  );
+}
 
 export function SlideToolsDevTools() {
   const info = slideCatalog.toolsDevTools;
   return (
     <Slide id="toolsDevTools">
-      <div className="mx-auto max-w-3xl text-left">
-        <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
-        <p className="text-2xl leading-relaxed text-gray-200">
-          Ya viene instalado. El panel <strong className="text-white">Accessibility</strong> muestra
-          nombre, rol y valor de cualquier nodo, el color picker calcula el contraste al vuelo, y el
-          toggle del árbol de accesibilidad muestra de un vistazo qué quedó afuera.
-        </p>
+      <div className="mx-auto grid max-w-5xl items-center gap-16 text-left md:grid-cols-2">
+        <div>
+          <h2 className="text-5xl text-brand-light mb-4">{info.title}</h2>
+          <p className="mb-8 text-lg text-gray-400">Ya viene instalado. Lo recorremos en vivo.</p>
+          <ul className="space-y-5">
+            {DEVTOOLS_HIGHLIGHTS.map(({ Icon, title, detail }) => (
+              <li key={title} className="flex items-start gap-3">
+                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" />
+                <p className="text-xl text-gray-200">
+                  <strong className="text-white">{title}</strong> — {detail}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <DevToolsPanelMock />
       </div>
     </Slide>
   );
