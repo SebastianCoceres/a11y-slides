@@ -86,24 +86,12 @@ export function SlideToolsTesting() {
         <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
         <div className="space-y-5 text-2xl leading-relaxed text-gray-200">
           <p>
-            <strong className="text-white">Playwright</strong> y{" "}
-            <strong className="text-white">Cypress</strong> son runners end-to-end — con{" "}
+            <strong className="text-white">Playwright</strong> es un runner end-to-end — con{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
               @axe-core/playwright
-            </code>{" "}
-            o{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
-              cypress-axe
             </code>
             , cada test que ya valida funcionalidad corre además las reglas de axe sobre la página
             completa.
-          </p>
-          <p>
-            <strong className="text-white">Vitest</strong> opera a otro nivel: con{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
-              vitest-axe
-            </code>{" "}
-            audita un componente aislado antes de que llegue a integrarse en ninguna página.
           </p>
         </div>
       </div>
