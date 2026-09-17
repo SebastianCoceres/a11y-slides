@@ -11,7 +11,7 @@ import {
 } from "./slides/SlidePourPrinciples";
 import SlideAccessBenefits from "./slides/SlideAccessBenefits";
 import SlideSituations from "./slides/SlideSituations";
-import SlideBusinessImpact from "./slides/SlideBusinessImpact";
+import { SlideBusinessImpact, SlideEarlyVsLegacy } from "./slides/SlideBusinessImpact";
 import {
   SlideAdvancedPrinciplesIntro,
   SlideCognitiveLoad,
@@ -27,6 +27,7 @@ import {
 import {
   SlideSecondAudience,
   SlideSecondAudienceMechanism,
+  SlideSecondAudienceLlmEval,
   SlideSecondAudienceTools,
   SlideSecondAudienceCodeProximity,
   SlideSecondAudienceWebmcp,
@@ -44,6 +45,7 @@ export default function Slides() {
         <SlideAccessBenefits topicId="accessBenefits" />
         <SlideSituations topicId="situations" />
         <SlideBusinessImpact topicId="businessImpact" />
+        <SlideEarlyVsLegacy topicId="earlyVsLegacy" />
 
         {/* Principios POUR — los cuatro principios de la accesibilidad web */}
         <SlidePrinciplePerceptible topicId="principlePerceptible" />
@@ -58,6 +60,7 @@ export default function Slides() {
 
         <SlideSecondAudience topicId="secondAudience" />
         <SlideSecondAudienceMechanism topicId="secondAudienceMechanism" />
+        <SlideSecondAudienceLlmEval topicId="secondAudienceLlmEval" />
         <SlideSecondAudienceTools topicId="secondAudienceTools" />
         <SlideSecondAudienceCodeProximity topicId="secondAudienceCodeProximity" />
         <SlideSecondAudienceWebmcp topicId="secondAudienceWebmcp" />

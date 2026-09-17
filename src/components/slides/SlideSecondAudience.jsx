@@ -196,6 +196,50 @@ export function SlideSecondAudienceMechanism() {
   );
 }
 
+const LLM_EVAL_STATS = [
+  {
+    stat: "12%",
+    label: "de aprobación sin ninguna instrucción de accesibilidad — mejor modelo: 25%",
+  },
+  {
+    stat: "0%",
+    label: "en el peor caso: e-commerce en React, tema oscuro — 15.55 fallas WCAG en promedio",
+  },
+  {
+    stat: "60%",
+    label: "con solo agregar un recordatorio de accesibilidad al prompt",
+  },
+  {
+    stat: "86%",
+    label: "cuando el agente corre sus propios tests y corrige antes de responder",
+  },
+];
+
+export function SlideSecondAudienceLlmEval() {
+  const info = slideCatalog.secondAudienceLlmEval;
+  return (
+    <Slide id="secondAudienceLlmEval">
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
+        <p className="max-w-xl text-xl leading-relaxed text-gray-300">
+          8 modelos, 32 casos de prueba, código renderizado y auditado con axe-core sobre WCAG 2.2.
+        </p>
+        <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-2">
+          {LLM_EVAL_STATS.map(({ stat, label }) => (
+            <div key={label}>
+              <div className="font-mono text-4xl font-black tabular-nums text-white">{stat}</div>
+              <p className="mt-1 max-w-xs text-sm text-gray-400">{label}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-xs uppercase tracking-wide text-gray-500">
+          Microsoft, a11y-llm-eval-report, 2026
+        </p>
+      </div>
+    </Slide>
+  );
+}
+
 const tools = [
   {
     icon: Puzzle,

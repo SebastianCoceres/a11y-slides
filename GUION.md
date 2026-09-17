@@ -18,9 +18,11 @@ No vengo a convertirlos en expertos en accesibilidad en los próximos minutos �
 
 **Premisa — ¿Qué es A11Y?**
 
-A11Y es un numerónimo: A, once letras en el medio, Y — "Accessibility". Y accesibilidad, en criollo, es que el producto funcione para cualquier persona, en cualquier condición.
+A11Y es un numerónimo: A, once letras en el medio, Y — abreviatura de "Accessibility" que ya es una convención en el mundo.
 
-No es un público aparte al que hay que atender: es una propiedad de calidad del software, como la performance o la seguridad.
+Es pensar e implementar nuestro software más allá de las formas básicas de interacción
+
+es una propiedad de calidad del software, medible y testeable, igual que la performance o la seguridad
 
 > Y si es una propiedad de calidad, tiene que haber una forma de medirla. Y la hay, hace más de treinta años.
 
@@ -28,9 +30,9 @@ No es un público aparte al que hay que atender: es una propiedad de calidad del
 
 **Estándar global — WCAG 2.2**
 
-El W3C publica las WCAG — las Web Content Accessibility Guidelines — desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal — que casi nunca es realista alcanzar.
+El W3C publica las WCAG — las Web Content Accessibility Guidelines — desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal — que casi nunca es realista alcanzar. Por dar un ejemplo de AAA: interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a cada feature que shippean sería frenar el producto.
 
-Esta charla se queda con los 55 criterios de A y AA.
+Esta charla se queda con los criterios de A y AA, que son los que de verdad entran en la conversación del día a día.
 
 > Antes de meternos en cómo se agrupan esos criterios, veamos por qué vale la pena invertir en esto.
 
@@ -40,6 +42,8 @@ Esta charla se queda con los 55 criterios de A y AA.
 
 La rampa en la vereda se construyó pensando en sillas de ruedas. Hoy la usan carritos de bebé, repartidores, ciclistas — todo el mundo.
 
+No es el único caso. Los subtítulos se pensaron para sordera, y hoy los prende cualquiera que mira un video sin volumen en el colectivo, o que no es hablante nativo del idioma. El control por voz se pensó para baja movilidad, y hoy lo usa cualquiera que tiene las manos ocupadas cocinando o manejando.
+
 Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina beneficiando a la base de usuarios completa.
 
 > Y ese efecto no es abstracto ni lejano: pasa todos los días, en situaciones bien concretas que cualquiera del equipo puede atravesar.
@@ -48,7 +52,9 @@ Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina bene
 
 **Situaciones — ¿Por qué nos interesa aplicarla?**
 
-Lo que ven en esta lista no son casos raros: son cosas que le pasan a cualquiera de nosotros en un día normal de trabajo — el sol pegándole a la pantalla, una conexión que anda lenta, una lesión temporal, cansancio visual a la tarde. Accesibilidad es diseñar asumiendo que esa variedad es la norma, no la excepción.
+Lo que ven en esta lista no son casos raros: son cosas que le pasan a cualquiera de nosotros en un día normal de trabajo. Repasen la lista completa con esto en la cabeza: el sol pegándole a la pantalla en la parada del colectivo, una conexión que anda lenta y no carga las imágenes, guantes de invierno que no registran en una pantalla táctil, unas gafas que se rompen justo antes de una reunión importante, sostener a upa a un bebé con el único brazo que les queda libre para tocar el celular, una lesión temporal — un dedo vendado, una muñeca inmovilizada —, y envejecer, que no es una excepción: es lo que le pasa a todo el mundo que llega a viejo, con visión y motricidad que cambian con los años.
+
+Ninguna de estas siete situaciones requiere una discapacidad permanente. Les puede pasar a ustedes, hoy, en el trayecto de acá a la oficina. Accesibilidad es diseñar asumiendo que esa variedad es la norma, no la excepción.
 
 > Y si esto es la norma y no la excepción, ignorarlo tiene un costo — uno que se puede medir en números concretos para el negocio.
 
@@ -56,11 +62,25 @@ Lo que ven en esta lista no son casos raros: son cosas que le pasan a cualquiera
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Esto no es solo para quien usa el producto — le sirve a todo el equipo.
+Esto no es solo para quien usa el producto — le sirve a todo el equipo, en direcciones que a veces no son obvias.
 
-Resolverlo desde el diseño sale mucho más barato que parchearlo después. Un código consistente hace que alguien nuevo se sume más rápido. El mercado al que le podés vender se agranda. Baja el riesgo legal y normativo. Y bajan los tickets de soporte por problemas que, en el papel, eran "simples".
+Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo después — ya vamos a entrar en detalle sobre por qué. Para quien se suma al equipo, un código con roles y nombres semánticos correctos se lee casi solo: no hay que adivinar qué hace un `<div>` con siete manejadores de eventos encima, cuando un botón real ya lo dice con su propio elemento. Para el negocio, el mercado direccionable se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus. Para legal, baja el riesgo de demandas y bloqueos normativos. Y para soporte, bajan los tickets por problemas que en el papel figuran como "el usuario no entendía cómo usarlo", pero que en el fondo eran una interfaz que directamente no se podía usar.
 
-> Ya vimos por qué conviene invertir. Ahora veamos en qué se apoya esa inversión: los cuatro principios en los que se agrupan los criterios de WCAG.
+> Ya vimos por qué conviene invertir como equipo. Pero, ¿conviene lo mismo invertir ahora que invertir dentro de dos años, sobre código que ya está en producción? Ahí la respuesta cambia bastante.
+
+<!-- id:earlyVsLegacy -->
+
+**Momento de implementación — Temprano vs. legacy**
+
+Todo lo que dijimos hasta acá es cierto en cualquier momento del proyecto. Pero el costo y la dificultad de aplicarlo no son los mismos si arrancan en el primer commit o si lo meten en un sistema que ya tiene usuarios reales.
+
+Arrancar temprano es, en el fondo, barato. Si el componente base de botón ya nace con foco visible, rol correcto y contraste que pasa AA, cada pantalla que lo use hereda ese comportamiento gratis, sin que nadie tenga que acordarse de nada caso por caso. El costo se diluye en el sprint normal — no es un proyecto aparte, es simplemente cómo ya se construye. Y el equipo aprende el patrón accesible con el primer componente que escribe, no seis meses después en una capacitación separada.
+
+En un proyecto legacy la ecuación cambia. Años de `<div onClick>` en vez de `<button>` no se arreglan con una regla de lint: hay que auditar uno por uno, y cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran. Un color de marca que no pasa contraste ya no es una decisión de código, es una decisión de diseño y de negocio, porque tocarlo afecta cada pantalla donde aparece ese azul. Y el backlog de un proyecto legacy ya está lleno de bugs visibles: lo invisible, como accesibilidad, casi siempre pierde esa pelea por prioridad, salvo que alguien lo empuje a propósito.
+
+Ojo con la conclusión que no quiero que saquen: esto no es "en legacy es imposible". Es más lento, y no se resuelve de una — se resuelve auditando, priorizando por impacto real, y metiendo el criterio en cada componente que tocan de ahí en adelante, no con una migración de todo junto de un día para el otro.
+
+> Ya vimos cuándo conviene meterlo. Ahora sí, veamos en qué se apoya esa inversión, sin importar en qué momento arranquen: los cuatro principios en los que se agrupan los criterios de WCAG.
 
 <!-- id:principlePerceptible -->
 
@@ -68,7 +88,7 @@ Resolverlo desde el diseño sale mucho más barato que parchearlo después. Un c
 
 La información y los componentes de la interfaz tienen que poder percibirse — no importa qué sentido tengas disponible en ese momento. Y esto no es "que se vea lindo": es que el dato te llegue por al menos una vía — vista, oído, o tacto a través de un lector de pantalla — sin depender de una sola.
 
-Un estado que existe solo en un color. Un aviso que solo suena. Un texto que vive solo adentro de una imagen. Los tres rompen este principio, y ni siquiera hace falta una discapacidad permanente para que te afecte: alcanza con estar al sol, tener el sonido apagado, o que la imagen no haya cargado.
+Un estado que existe solo en un color. Un aviso que solo suena. Un texto que vive solo adentro de una imagen. Y hay un cuarto caso que se nos escapa seguido: un spinner de carga sin ningún aviso para quien no lo está mirando en ese instante preciso — para un lector de pantalla esos segundos de espera no existen, así que no hay forma de saber si la página se colgó o simplemente está cargando. Los cuatro rompen este principio, y ni siquiera hace falta una discapacidad permanente para que te afecte: alcanza con estar al sol, tener el sonido apagado, o que la imagen no haya cargado.
 
 > El segundo principio ya no es sobre qué percibís, sino sobre qué podés hacer con eso.
 
@@ -78,7 +98,7 @@ Un estado que existe solo en un color. Un aviso que solo suena. Un texto que viv
 
 Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier otro dispositivo de entrada — no solo con mouse o con un gesto de precisión.
 
-Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo que no se puede extender. Un gesto que exige una trayectoria exacta. Todo eso son barreras operativas, y no tienen nada que ver con cómo se ve la pantalla, sino con qué podés usar para interactuar con ella.
+Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo que no se puede extender. Un scroll infinito que solo avanza con la rueda del mouse o un gesto táctil, sin ningún botón "cargar más" alcanzable con Tab. Todo eso son barreras operativas, y no tienen nada que ver con cómo se ve la pantalla, sino con qué podés usar para interactuar con ella.
 
 > Bien: ya lo percibís, ya lo podés operar. Falta que lo puedas entender.
 
@@ -88,7 +108,7 @@ Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo 
 
 La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle de UX, como capaz se piensa muchas veces — es una condición de accesibilidad.
 
-Pensá en un error que no explica qué pasó, un menú que se mueve de lugar entre una pantalla y otra, un cambio de contexto que vos no pediste: en los tres casos rompés el modelo mental que la persona ya se había armado del producto, y la obligás a reaprenderlo de cero.
+Pensá en un error que no explica qué pasó, un menú que se mueve de lugar entre una pantalla y otra, o un ícono de tacho de basura que en una pantalla borra y en otra archiva: rompés exactamente el modelo mental que la persona ya se había armado del producto, y la obligás a reaprenderlo de cero cada vez.
 
 > El último principio ya no depende de la persona, sino de con qué está usando el producto.
 
@@ -98,7 +118,7 @@ Pensá en un error que no explica qué pasó, un menú que se mueve de lugar ent
 
 El contenido tiene que funcionar en una variedad amplia de navegadores y tecnologías asistivas. Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el árbol de accesibilidad.
 
-Robusto es que cada control exponga ahí su nombre, su rol y su valor — no importa quién termine leyéndolo: un lector de pantalla, un control por voz, o cada vez más, un agente de software.
+Un `<div>` armado a mano para comportarse como un `<select>` puede funcionar perfecto con mouse, y aun así no existir en ese árbol. Ahí no solo pierde un lector de pantalla: como vamos a ver más adelante, pierde también cualquier agente de software que dependa de esa misma estructura para operar la página. Robusto es que cada control exponga ahí su nombre, su rol y su valor — no importa quién termine leyéndolo.
 
 > Bien, ya tenemos los cuatro principios claros. Ahora la pregunta del millón: ¿con qué se implementa todo esto en el día a día?
 
@@ -180,11 +200,27 @@ Estos agentes no leen píxeles ni el HTML entero de la página. Leen el mismo á
 
 Playwright MCP, el servidor oficial de Microsoft para controlar un navegador desde un agente, devuelve justamente eso: ese árbol, en vez de la página completa. Y esto no es un detalle menor de implementación — un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que masticar el HTML crudo de una página real. La misma estructura que le evita a un lector de pantalla procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
 
-> Y esto ya dejó de ser teoría de arquitectura: hoy existen herramientas concretas que cualquier equipo puede usar ya mismo.
+> Y esa misma arquitectura corre en las dos direcciones. Si un agente puede leer tu sitio por este árbol, hoy buena parte del código de ese sitio también lo está escribiendo un agente. Y la pregunta que sigue es incómoda: ¿qué tan accesible es lo que escribe, si nadie se lo pide explícitamente?
+
+<!-- id:secondAudienceLlmEval -->
+
+**Evidencia — La IA no genera accesibilidad por defecto**
+
+Microsoft midió exactamente esa pregunta, y lo hizo en serio: ocho modelos — de OpenAI, Anthropic y Google — generando interfaces reales para treinta y dos casos de prueba distintos, cinco muestras por caso. El código resultante se renderizó en un navegador de verdad y se auditó con axe-core más una batería de chequeos propios sobre WCAG 2.2.
+
+El resultado, sin ninguna instrucción sobre accesibilidad en el prompt: 12% de aprobación general. El mejor modelo individual llegó a 25%. En el peor caso puntual — una home de e-commerce en React, con tema oscuro — ningún modelo aprobó ni un solo chequeo: 0%, con un promedio de más de quince fallas de WCAG por muestra.
+
+Ahora la buena noticia. Alcanzó con agregar una instrucción básica al prompt — un simple recordatorio de que el resultado tiene que ser accesible — para que ese 12% saltara a 60%. Y cuando el agente, además de generar, corría sus propios tests de accesibilidad y se corregía antes de responder, el promedio subió a 86%, con el mejor caso individual rozando el 100%.
+
+La lectura es directa: generar código no es lo mismo que generar código accesible, y esa diferencia no la cierra el modelo solo. La cierra la instrucción explícita y, sobre todo, el testeo automatizado antes de dar la tarea por terminada.
+
+> La brecha entre generar y generar accesible no se cierra sola — se cierra con el mismo tipo de herramientas que ya existen para cualquier otro testing. Y la buena noticia es que ya están armadas.
 
 <!-- id:secondAudienceTools -->
 
 **Ya existen las herramientas**
+
+Esto es, literalmente, lo que mide el estudio que acabamos de ver: la variante con mejores resultados era una skill que corría tests de accesibilidad y corregía antes de responder — la misma categoría de herramienta que ya está disponible hoy, no un experimento de laboratorio.
 
 Claude Code, el agente con el que armé esta charla, tiene acceso a una skill que se llama "accessibility": instrucciones especializadas en WCAG 2.2 que se activan apenas le pedís una auditoría o que "haga accesible" algo. Y esto no es exclusivo de Claude — empaquetar instrucciones especializadas que un agente activa según el contexto es una idea que ya está en varias plataformas de IA, no un truco de una sola marca.
 
@@ -250,7 +286,7 @@ Estos conceptos no corresponden a ningún criterio WCAG numerado, pero explican 
 
 Es la cantidad de información que alguien tiene que recordar y procesar para completar una tarea. Un formulario largo en una sola pantalla te obliga a tener en la cabeza qué falta completar, qué es obligatorio, qué errores hay que corregir — toda esa carga cae sobre quien lo completa, no sobre la interfaz.
 
-Dividir un proceso largo en pasos no le saca ni un campo al formulario: lo único que cambia es cuánto tenés que sostener en la cabeza en cada momento. Es la misma información, mejor repartida en el tiempo.
+Piensen en un checkout de e-commerce con quince campos en una sola pantalla, contra ese mismo checkout partido en "envío", "pago" y "confirmación": el total de datos pedidos es idéntico, pero en el segundo caso nunca tenés que sostener en la cabeza más de lo que estás viendo ahora mismo. Dividir un proceso largo en pasos no le saca ni un campo al formulario: lo único que cambia es cuánto tenés que sostener en la cabeza en cada momento.
 
 > Reducir lo que hay que recordar en un momento dado es una forma de carga. Otra es cuánto cuesta repetir la misma tarea muchas veces.
 
@@ -260,7 +296,7 @@ Dividir un proceso largo en pasos no le saca ni un campo al formulario: lo únic
 
 Cada interacción tiene un costo. Una tarea con varios pasos repetitivos se banca perfecto la primera vez, pero se convierte en carga operativa real cuando alguien la repite decenas de veces por día — el problema no es que cada paso sea difícil, es el desgaste acumulado.
 
-Ese costo es invisible en una demo, porque nadie hace clic cien veces seguidas frente a un cliente. Aparece recién cuando medís el trabajo real de quien usa el producto todos los días, no la primera vez que alguien lo prueba.
+Confirmar una acción con dos clicks en vez de uno no se nota la primera vez que la hacés. Se nota cuando alguien la repite cuarenta veces en un turno de soporte. Ese costo es invisible en una demo, porque nadie hace clic cien veces seguidas frente a un cliente. Aparece recién cuando medís el trabajo real de quien usa el producto todos los días, no la primera vez que alguien lo prueba.
 
 > Carga cognitiva, fatiga por interacción — las dos apuntan a la misma idea de fondo, que cierra este bloque.
 
@@ -281,3 +317,11 @@ Es la misma idea que atraviesa toda la charla, solo que acá no hay ningún crit
 <!-- id:closing -->
 
 **Cierre**
+
+Volvamos al principio. A11Y no es un público aparte ni una casilla más para tildar antes de un release: es una propiedad de calidad, como la performance o la seguridad — y como toda propiedad de calidad, se nota más por su ausencia que por su presencia.
+
+El efecto rampa de acceso sigue siendo la mejor razón para arrancar: lo que hoy construyen pensando en un caso puntual, mañana lo va a usar toda su base de usuarios — humana, y cada vez más, también de software. Arrancar temprano sale más barato que parchear un legacy después, pero ninguna de las dos cosas es una excusa para no arrancar.
+
+No se vayan de acá con la obligación de saberse todos los criterios de memoria. Váyanse con una sola acción concreta: la próxima vez que toquen una pantalla, abran las DevTools, prendan el panel de Accessibility, y miren qué queda afuera del árbol. Esa costumbre, sola, ya los pone adelante de la mayoría.
+
+Gracias.

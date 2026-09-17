@@ -97,8 +97,8 @@ export default function SlidePremise() {
             A11Y es el numerónimo de "Accessibility" (A + 11 letras + Y).
           </p>
           <p className="text-lg italic text-gray-400">
-            Es diseñar un producto que funcione para cualquiera, en cualquier
-            condición.
+            Que la interfaz no dependa de un solo sentido, un solo
+            dispositivo, o una sola forma de pensar.
           </p>
         </div>
         <FloatingVisual />
