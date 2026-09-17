@@ -8,7 +8,9 @@
 
 **Título — A11Y**
 
-Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de desarrollo, y cómo agregarlo al flujo de trabajo.
+Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de desarrollo, y cómo agregarlo a un flujo de trabajo.
+
+Mucha de las cosas que voy a hablar por ahi ya lo aplican sin darse cuenta por que asi lo aprendieron, costumbre o sentido común.
 
 No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un tema enorme. Lo que sí quiero es que se vayan con algo claro: que esto existe, por qué les tiene que importar, y con qué herramientas concretas lo pueden arrancar a aplicar mañana mismo.
 
@@ -18,7 +20,7 @@ No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un
 
 **Premisa — ¿Qué es A11Y?**
 
-A11Y es un numerónimo: A, once letras en el medio, Y — abreviatura de "Accessibility" que ya es una convención en el mundo.
+A11Y es un numerónimo — abreviatura de "Accessibility" que ya es una convención en el mundo.
 
 Es pensar e implementar nuestro software más allá de las formas básicas de interacción
 
@@ -30,7 +32,7 @@ es una propiedad de calidad del software, medible y testeable, igual que la perf
 
 **Estándar global — WCAG 2.2**
 
-El W3C publica las WCAG — las Web Content Accessibility Guidelines — desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal — que casi nunca es realista alcanzar. Por dar un ejemplo de AAA: interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a cada feature que shippean sería frenar el producto.
+El W3C publica las Web Content Accessibility Guidelines(WACG) desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal — que casi nunca es realista alcanzar. Por dar un ejemplo de AAA: interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a cada feature que shippean sería frenar el producto.
 
 Esta charla se queda con los criterios de A y AA, que son los que de verdad entran en la conversación del día a día.
 
@@ -42,7 +44,7 @@ Esta charla se queda con los criterios de A y AA, que son los que de verdad entr
 
 La rampa en la vereda se construyó pensando en sillas de ruedas. Hoy la usan carritos de bebé, repartidores, ciclistas — todo el mundo.
 
-No es el único caso. Los subtítulos se pensaron para sordera, y hoy los prende cualquiera que mira un video sin volumen en el colectivo, o que no es hablante nativo del idioma. El control por voz se pensó para baja movilidad, y hoy lo usa cualquiera que tiene las manos ocupadas cocinando o manejando.
+No es el único caso. Los subtítulos se pensaron para sordera, y hoy los prende cualquiera que mira un video y no es hablante nativo del idioma. El control por voz se pensó para baja movilidad, y hoy su teconología lo usa cualquiera dando instrucciones a dispositivos inteligentes.
 
 Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina beneficiando a la base de usuarios completa.
 
@@ -52,43 +54,63 @@ Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina bene
 
 **Situaciones — ¿Por qué nos interesa aplicarla?**
 
-Lo que ven en esta lista no son casos raros. Son cosas que le pasan a cualquiera en un día normal de trabajo: el sol pegándole a la pantalla en la parada del colectivo. Una conexión lenta que no carga las imágenes. Guantes de invierno que no registran en una pantalla táctil. Unas gafas rotas justo antes de una reunión importante. Sostener en brazos a un bebé con el único brazo libre. Un dedo vendado, una muñeca inmovilizada. Y envejecer — que no es una excepción, es lo que le pasa a todo el mundo que llega a viejo.
+Lo que ven en esta lista no son casos raros. Son cosas que le pasan a cualquiera en un día normal: el sol pegando en la pantalla. Guantes de invierno que dificultan una pantalla táctil. Unas gafas rotas. Sostener en brazos a un bebé aunque los compañeros no estén presentes. Una lesión temporal, envejecer...
 
-Ninguna de estas siete situaciones necesita una discapacidad permanente. Les puede pasar a ustedes, hoy, en el trayecto a la oficina. Es la norma, no la excepción.
+Ninguna de estas situaciones es una discapacidad permanente. Les puede pasar a ustedes tranquilamente
 
-> Y si esto es la norma y no la excepción, ignorarlo tiene un costo — uno que se puede medir en números concretos para el negocio.
+> ignorarlo tiene un costo
 
 <!-- id:businessImpact -->
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Esto no es solo para quien usa el producto — le sirve a todo el equipo.
+Esto literalmente nos sirve a todos.
 
-Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo después — ya vamos a entrar en detalle sobre por qué. Para quien se suma al equipo, un código con roles y nombres semánticos correctos se lee casi solo: no hay que adivinar qué hace un `<div>` con siete manejadores de eventos encima, cuando un botón real ya lo dice con su propio elemento. Para el negocio, el mercado direccionable se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus. Para legal, baja el riesgo de demandas y bloqueos normativos. Y para soporte, bajan los tickets por problemas que en el papel figuran como "el usuario no entendía cómo usarlo", pero que en el fondo eran una interfaz que directamente no se podía usar.
+Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo luego — ya vamos a entrar en detalle por qué.
+
+Para quien se suma al equipo, un código con roles y nombres semánticos correctos se lee casi solo
+
+Para el negocio, el mercado se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus.
+
+Baja el riesgo de demandas y bloqueos normativos.
+
+Para soporte, significan menos problemas.
+
+Para el usuario final, significa menos frustración y más confianza en el producto.
 
 > Ya vimos por qué conviene invertir como equipo. Pero, ¿conviene lo mismo invertir ahora que invertir dentro de dos años, sobre código que ya está en producción? Ahí la respuesta cambia bastante.
 
 <!-- id:earlyVsLegacy -->
 
-**Momento de implementación — Temprano vs. legacy**
+**Momento de implementación — Temprano vs. último momento**
 
-Todo lo que dijimos hasta acá es cierto en cualquier momento del proyecto. Pero el costo y la dificultad de aplicarlo no son los mismos si arrancan en el primer commit o si lo meten en un sistema que ya tiene usuarios reales.
+Todo lo que dijimos hasta acá es cierto en cualquier momento del proyecto. Pero el costo y la dificultad de aplicarlo no son los mismos si arrancan desde el inicio del proyecto o si lo meten en un sistema que ya tiene usuarios reales.
 
-Arrancar temprano es barato. El componente base de botón nace con foco visible, rol correcto y contraste AA — cada pantalla que lo usa lo hereda gratis. El costo se diluye en el sprint normal: no es un proyecto aparte, es cómo ya se construye. Y el equipo aprende el patrón accesible con el primer componente que escribe, no seis meses después en una capacitación aparte.
+Arrancar temprano es barato. El costo se diluye entre sprints. Y se normaliza el patrón accesible desde el primer componente.
 
-En un proyecto legacy la ecuación cambia. Años de `<div onClick>` en vez de `<button>` no se arreglan con una regla de lint: hay que auditar uno por uno, y cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran. Un color de marca que no pasa contraste ya no es una decisión de código, es una decisión de diseño y de negocio, porque tocarlo afecta cada pantalla donde aparece ese azul. Y el backlog de un proyecto legacy ya está lleno de bugs visibles: lo invisible, como accesibilidad, casi siempre pierde esa pelea por prioridad, salvo que alguien lo empuje a propósito.
+Dejarlo para último momento cambia la ecuación. Los cambios hay que auditarlos con más cuidado, cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran.
 
-Ojo con la conclusión que no quiero que saquen: esto no es "en legacy es imposible". Es más lento, y no se resuelve de una — se resuelve auditando, priorizando por impacto real, y metiendo el criterio en cada componente que tocan de ahí en adelante, no con una migración de todo junto de un día para el otro.
+Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos activos ya no se puede". Es más lento, y no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiere dedicar.
 
-> Ya vimos cuándo conviene meterlo. Ahora sí, veamos en qué se apoya esa inversión, sin importar en qué momento arranquen: los cuatro principios en los que se agrupan los criterios de WCAG.
+> Ahora sí, veamos en qué se apoya todo esto que estoy hablando.
+
+<!-- id:principlesIntro -->
+
+**Los cuatro principios — POUR**
+
+Las WCAG se agrupan en cuatro principios, conocidos por su acrónimo en inglés, POUR — Perceptible, Operable, Comprensible y Robusto. Cada criterio que ya vimos, y cada uno que sigue, entra en una de estas cuatro categorías. Vamos uno por uno.
+
+> Empecemos por el primero: qué significa que algo sea perceptible.
 
 <!-- id:principlePerceptible -->
 
 **Perceptible**
 
-La información y los componentes de la interfaz tienen que poder percibirse — no importa qué sentido tengas disponible en ese momento. Y esto no es "que se vea lindo": es que el dato te llegue por al menos una vía — vista, oído, o tacto a través de un lector de pantalla — sin depender de una sola.
+La información tiene que llegar al usuario de alguna manera, aunque no pueda verla, escucharla o distinguirla bien.
 
-Un estado que existe solo en un color. Un aviso que solo suena. Un texto que vive solo adentro de una imagen. Y hay un cuarto caso que se nos escapa seguido: un spinner de carga sin ningún aviso para quien no lo está mirando en ese instante preciso — para un lector de pantalla esos segundos de espera no existen, así que no hay forma de saber si la página se colgó o simplemente está cargando. Los cuatro rompen este principio, y ni siquiera hace falta una discapacidad permanente para que te afecte: alcanza con estar al sol, tener el sonido apagado, o que la imagen no haya cargado.
+Por ejemplo, imaginense un formulario que marca los campos con error poniéndolos únicamente en rojo. Si estás mirando la pantalla, lo entendés. Pero si usás un lector de pantalla, tenés daltonismo o simplemente hay poco contraste, ese error puede pasar completamente desapercibido.
+
+La idea es simple: si algo es importante para entender qué está pasando en la interfaz, no debería depender de un único sentido.
 
 > El segundo principio ya no es sobre qué percibís, sino sobre qué podés hacer con eso.
 
@@ -96,9 +118,11 @@ Un estado que existe solo en un color. Un aviso que solo suena. Un texto que viv
 
 **Operable**
 
-Los controles de la interfaz tienen que poder manejarse con teclado, con voz, o con cualquier otro dispositivo de entrada — no solo con mouse o con un gesto de precisión.
+Los controles tienen que poder usarse sin depender de una única forma de interacción.
 
-Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo que no se puede extender. Un scroll infinito que solo avanza con la rueda del mouse o un gesto táctil, sin ningún botón "cargar más" alcanzable con Tab. Todo eso son barreras operativas, y no tienen nada que ver con cómo se ve la pantalla, sino con qué podés usar para interactuar con ella.
+Por ejemplo, imaginá una tienda online donde para abrir el menú tenés que pasar el mouse por encima de una categoría. Con mouse funciona perfecto, pero si navegás con el teclado usando Tab, nunca podés abrir ese menú. Lo mismo si un botón solo responde a un gesto de deslizar o si una acción desaparece antes de que tengas tiempo de ejecutarla.
+
+La idea es simple: no alcanza con que un control exista; también tiene que ser posible llegar a él y usarlo con distintos medios de entrada, como mouse, teclado, táctil o tecnologías de asistencia.
 
 > Bien: ya lo percibís, ya lo podés operar. Falta que lo puedas entender.
 
@@ -106,9 +130,13 @@ Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo 
 
 **Comprensible**
 
-La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle de UX — es una condición de accesibilidad.
+La interfaz tiene que ser fácil de entender y, sobre todo, comportarse como el usuario espera.
 
-Un error que no explica qué pasó. Un menú que cambia de lugar entre pantallas. Un ícono de tacho de basura que en una pantalla borra y en otra archiva. Los tres rompen el modelo mental que la persona ya se había armado del producto, y la obligan a reaprenderlo de cero.
+- Un formulario que no explica qué falló.
+- Una acción que cambia de lugar entre pantallas.
+- Un ícono que en una pantalla hace una cosa y en otra hace otra.
+
+Los tres rompen el modelo mental que la persona ya se había armado del producto, y la obligan a reaprenderlo.
 
 > El último principio ya no depende de la persona, sino de con qué está usando el producto.
 
@@ -116,11 +144,16 @@ Un error que no explica qué pasó. Un menú que cambia de lugar entre pantallas
 
 **Robusto**
 
-El contenido tiene que funcionar en una variedad amplia de navegadores y tecnologías asistivas. Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el árbol de accesibilidad.
+Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el árbol de accesibilidad.
 
-Un `<div>` armado a mano para comportarse como un `<select>` puede funcionar perfecto con mouse, y aun así no existir en ese árbol. Ahí no solo pierde un lector de pantalla: como vamos a ver más adelante, pierde también cualquier agente de software que dependa de esa misma estructura para operar la página. Robusto es que cada control exponga ahí su nombre, su rol y su valor — no importa quién termine leyéndolo.
+Un `<div>` armado a mano para comportarse como un `<select>` puede funcionar perfecto y aun así no existir en ese árbol.
 
-> Bien, ya tenemos los cuatro principios claros. Ahora la pregunta del millón: ¿con qué se implementa todo esto en el día a día?
+Ahí pierde cualquier medio que dependa de esa misma estructura para operar la página.
+
+El contenido debe ser lo suficientemente fiable como para ser interpretado de forma correcta por una amplia variedad de dispositivos y tecnologías de asistencia.
+
+> Bien, ya conocemos los cuatro principios.
+> ¿Como se implementa todo esto en el día a día?
 
 ---
 
@@ -130,19 +163,24 @@ Un `<div>` armado a mano para comportarse como un `<select>` puede funcionar per
 
 **DevTools del navegador**
 
-Lo más básico ya lo tenés instalado, sin agregar nada. Vamos a recorrerlo en vivo.
+Lo más básico ya lo tenés instalado, sin agregar nada. y como se hacia historicamente. Las devtools del navegador.
 
-Primero, el panel Accessibility: lo encontrás al lado de Styles y Computed, dentro del inspector de Elements. Seleccioná cualquier nodo y ahí abajo aparece exactamente lo que expone al árbol de accesibilidad — nombre computado, rol, descripción, y las propiedades ARIA que tenga. Es lo mismo que ve un lector de pantalla, sin tener que instalar uno.
+Si a cualquier elemento de una pagina le damos click derecho → "Inspeccionar", se abre el inspector de Elements. Ahí podemos ver el DOM, los estilos aplicados, y demás.
 
-Al lado del árbol de Elements hay un ícono para togglear "Show accessibility tree" — con un clic, el DOM entero desaparece y en su lugar ves el árbol de accesibilidad completo de la página. Sirve para responder de un vistazo la pregunta que veníamos haciendo toda la charla: ¿qué quedó afuera?
+Veamos primero el panel accesibilidad: se encuentra en el panel de estilos (si no figura fijense en las flechitas). Seleccionen cualquier nodo y ahí abajo aparece exactamente lo que expone al árbol de accesibilidad — nombre computado, rol, descripción, y resto de propiedades que tenga.
 
-En el panel Styles, cualquier valor de color que toques abre el selector — y ese selector ya te calcula el ratio de contraste en tiempo real, con el visto verde si pasa AA o AAA, y una línea de muestra con el texto real encima del color.
+Esto es lo mismo que ve un lector de pantalla.
 
-Ahora lo menos conocido: `Ctrl+Shift+P`, buscá "Rendering" y abrí ese panel. Ahí vive de todo — desde debug de repintado y layout shifts hasta emulación de media features como `prefers-color-scheme` o `forced-colors` — pero hoy nos interesan dos toggles puntuales. El primero: "Emulate vision deficiencies", un dropdown para simular en vivo, sobre la página real, cómo la ve alguien con protanopia, deuteranopia, tritanopia, achromatopsia o visión borrosa.
+Al lado del árbol de Elements hay un ícono para togglear "Show accessibility tree". veremos que el DOM entero desaparece y en su lugar aparece el árbol de accesibilidad completo de la página. (Mas adelante les voy a mostrar por qué esto es importante.)
 
-En ese mismo panel de Rendering está "Emulate CSS media feature prefers-reduced-motion" — le decís al navegador que simule que el sistema operativo pidió movimiento reducido, sin tener que cambiar la configuración real de tu computadora, y ves si tus animaciones efectivamente lo respetan.
+En el panel Styles, cualquier valor de color que toques abre el selector — y ese selector ya te calcula el ratio de contraste en tiempo real.
 
-Y último: si necesitás revisar cómo se ve el estado de foco de un botón sin tabular hasta ahí veinte veces, click derecho sobre el elemento → "Force state" → `:focus-visible`. Queda fijado ese estado en el inspector mientras lo stylean.
+Ahora uno menos conocido: `Ctrl+Shift+P`, buscá "Rendering". Este panel nos ofrece una serie de herramientas de emulación.
+Veamos por ejemplo "emualdor de vision", un dropdown para simularcómo la ve alguien con distintos tipos de deficiencia visual.
+
+Tambien está "prefers-reduced-motion" — simulamos que el sistema operativo pidió movimiento reducido y ves si tus animaciones efectivamente lo respetan.
+
+Y último: si necesitás revisar cómo se ve el estado de foco de un elemento, click derecho sobre el elemento → "Force state" → `:focus-visible`. si no se marca visualmente no detectamos que el foco está ahí.
 
 > Con eso ya podés inspeccionar a mano. El paso que sigue es automatizar esa inspección.
 
@@ -150,9 +188,9 @@ Y último: si necesitás revisar cómo se ve el estado de foco de un botón sin 
 
 **Lighthouse y PageSpeed Insights**
 
-Lighthouse te audita accesibilidad, performance, buenas prácticas y SEO en un solo reporte, con un puntaje de 0 a 100. Ya viene integrado en DevTools, y también existe como CLI.
+Lighthouse te audita accesibilidad y otras cosas con un puntaje de 0 a 100
 
-PageSpeed Insights es el hermano: corre el mismo motor, pero como servicio web de Google — no necesitás tener el proyecto abierto localmente, y encima te suma datos reales de usuarios, no solo de laboratorio.
+PageSpeed Insights es el hermano: internamente corre el mismo motor, pero como servicio web de Google.
 
 > Lighthouse te da un puntaje general. Pero para accesibilidad específicamente, hay motores dedicados.
 

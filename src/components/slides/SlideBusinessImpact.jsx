@@ -46,7 +46,10 @@ export function SlideBusinessImpact() {
         </p>
         <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
           {impacts.map(({ icon: Icon, role, text }) => (
-            <div key={role} className="flex gap-3 border-t border-white/10 pt-4">
+            <div
+              key={role}
+              className="flex gap-3 border-t border-white/10 pt-4"
+            >
               <Icon className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" />
               <p className="text-base text-gray-300">
                 <strong className="mb-0.5 block text-white">{role}</strong>
@@ -61,15 +64,15 @@ export function SlideBusinessImpact() {
 }
 
 const earlyBenefits = [
-  "El componente base ya nace con foco visible, rol correcto y contraste AA — cada pantalla que lo usa lo hereda gratis.",
-  "El costo se diluye en el sprint normal: no es un proyecto aparte, es cómo ya se construye.",
-  "El equipo aprende el patrón accesible con el primer componente que escribe, no en una capacitación separada.",
+  "Arrancar temprano es barato.",
+  "El costo se diluye entre sprints.",
+  "El patrón accesible se normaliza desde el primer componente.",
 ];
 
 const legacyDifficulties = [
-  "Años de <div onClick> en vez de <button> no se arreglan con una regla de lint: hay que auditar uno por uno.",
-  "Cambiar un color de marca que no pasa contraste es una decisión de diseño y de negocio, no solo de código.",
-  "Lo invisible compite contra un backlog lleno de bugs visibles, y casi siempre pierde esa pelea por prioridad.",
+  "Los cambios hay que auditarlos con más cuidado.",
+  "Cada cambio es candidato a romper algo.",
+  "Cuestión de tiempo y recursos.",
 ];
 
 export function SlideEarlyVsLegacy() {
@@ -86,7 +89,10 @@ export function SlideEarlyVsLegacy() {
             </div>
             <ul className="space-y-4">
               {earlyBenefits.map((text) => (
-                <li key={text} className="border-t border-white/10 pt-3 text-base text-gray-300">
+                <li
+                  key={text}
+                  className="border-t border-white/10 pt-3 text-base text-gray-300"
+                >
                   {text}
                 </li>
               ))}
@@ -94,22 +100,21 @@ export function SlideEarlyVsLegacy() {
           </div>
           <div className="sm:border-l sm:border-white/10 sm:pl-10">
             <div className="mb-4 flex items-center gap-2 text-xl font-bold text-white">
-              <History className="h-5 w-5 shrink-0 text-gray-400" />
-              En un proyecto legacy
+              <History className="h-5 w-5 shrink-0 text-gray-400" />A último
+              momento
             </div>
             <ul className="space-y-4">
               {legacyDifficulties.map((text) => (
-                <li key={text} className="border-t border-white/10 pt-3 text-base text-gray-400">
+                <li
+                  key={text}
+                  className="border-t border-white/10 pt-3 text-base text-gray-400"
+                >
                   {text}
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <p className="mt-8 max-w-2xl text-base italic text-gray-400">
-          No es "en legacy es imposible" — es más lento, y se resuelve auditando y priorizando por
-          impacto, no con una migración de todo junto.
-        </p>
       </div>
     </Slide>
   );

@@ -48,16 +48,21 @@ function DevToolsPanelMock() {
         <span className="pb-2">Elements</span>
         <span className="pb-2">Console</span>
         <span className="pb-2">Sources</span>
-        <span className="border-b-2 border-blue-600 pb-2 text-blue-600">Accessibility</span>
+        <span className="border-b-2 border-blue-600 pb-2 text-blue-600">
+          Accessibility
+        </span>
       </div>
 
       <div className="border-b border-slate-100 bg-[#0c0e14] px-3 py-2 font-mono text-[11px] leading-relaxed text-slate-400">
         <div>
           <span className="rounded bg-blue-600/40 px-0.5 text-white">
-            &lt;button <span className="text-orange-300">aria-label</span>=<span className="text-emerald-300">"Buscar"</span>&gt;
+            &lt;button <span className="text-orange-300">aria-label</span>=
+            <span className="text-emerald-300">"Buscar"</span>&gt;
           </span>
         </div>
-        <div className="pl-3 text-slate-600">&lt;svg aria-hidden="true"&gt;…&lt;/svg&gt;</div>
+        <div className="pl-3 text-slate-600">
+          &lt;svg aria-hidden="true"&gt;…&lt;/svg&gt;
+        </div>
         <div>
           <span className="text-sky-400">&lt;/button&gt;</span>
         </div>
@@ -115,7 +120,6 @@ export function SlideToolsDevTools() {
       <div className="mx-auto grid max-w-5xl items-center gap-16 text-left md:grid-cols-2">
         <div>
           <h2 className="text-5xl text-brand-light mb-4">{info.title}</h2>
-          <p className="mb-8 text-lg text-gray-400">Ya viene instalado. Lo recorremos en vivo.</p>
           <ul className="mb-8 space-y-5">
             {DEVTOOLS_HIGHLIGHTS.map(({ Icon, title, detail }) => (
               <li key={title} className="flex items-start gap-3">
@@ -171,17 +175,16 @@ export function SlideToolsLighthouse() {
         <div className="mb-6 flex items-start gap-4">
           <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-indigo-300" />
           <p className="text-2xl leading-relaxed text-gray-200">
-            <strong className="text-white">Lighthouse</strong> audita accesibilidad, performance,
-            buenas prácticas y SEO en un solo reporte con puntaje 0-100 — integrado en DevTools y
-            disponible como CLI.
+            <strong className="text-white">Lighthouse</strong> audita
+            accesibilidad, performance, buenas prácticas y SEO con puntaje de
+            0-100.
           </p>
         </div>
         <div className="ml-11 flex items-start gap-3 border-l border-white/10 pl-6">
           <Gauge className="mt-0.5 h-5 w-5 shrink-0 text-gray-500" />
           <p className="text-base text-gray-400">
-            <strong className="text-gray-300">PageSpeed Insights</strong> es su hermano: corre el mismo
-            motor pero como servicio web de Google, sin necesidad de tener el proyecto local, y suma
-            datos reales de usuarios a los datos de laboratorio.
+            <strong className="text-gray-300">PageSpeed Insights</strong> lo
+            mismo pero como servicio web de Google.
           </p>
         </div>
       </div>
@@ -208,8 +211,9 @@ export function SlideToolsA11yEngines() {
               <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
             </a>
             <p className="text-base text-gray-400">
-              Extensión de Microsoft: FastPass corre un chequeo automatizado en segundos, y Assessment
-              guía paso a paso los criterios que solo se verifican a mano, como el orden del foco.
+              Extensión de Microsoft: FastPass corre un chequeo automatizado en
+              segundos, y Assessment guía paso a paso los criterios que solo se
+              verifican a mano, como el orden del foco.
             </p>
           </div>
           <div className="sm:border-l sm:border-white/10 sm:pl-10">
@@ -224,8 +228,9 @@ export function SlideToolsA11yEngines() {
               <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
             </a>
             <p className="text-base text-gray-400">
-              No tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de
-              esta misma extensión, y de las herramientas de testing que siguen.
+              No tiene interfaz propia: es el motor de reglas WCAG que corre por
+              debajo de Lighthouse, de esta misma extensión, y de las
+              herramientas de testing que siguen.
             </p>
           </div>
         </div>
@@ -242,12 +247,13 @@ export function SlideToolsTesting() {
         <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
         <div className="space-y-5 text-2xl leading-relaxed text-gray-200">
           <p>
-            <strong className="text-white">Playwright</strong> es un runner end-to-end — con{" "}
+            <strong className="text-white">Playwright</strong> es un runner
+            end-to-end — con{" "}
             <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
               @axe-core/playwright
             </code>
-            , cada test que ya valida funcionalidad corre además las reglas de axe sobre la página
-            completa.
+            , cada test que ya valida funcionalidad corre además las reglas de
+            axe sobre la página completa.
           </p>
         </div>
       </div>

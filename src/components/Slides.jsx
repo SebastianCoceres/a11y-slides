@@ -4,6 +4,7 @@ import SlideTitle from "./slides/SlideTitle";
 import SlidePremise from "./slides/SlidePremise";
 import SlideWcagStandard from "./slides/SlideWcagStandard";
 import {
+  SlidePrinciplesIntro,
   SlidePrinciplePerceptible,
   SlidePrincipleOperable,
   SlidePrincipleComprehensible,
@@ -48,6 +49,7 @@ export default function Slides() {
         <SlideEarlyVsLegacy topicId="earlyVsLegacy" />
 
         {/* Principios POUR — los cuatro principios de la accesibilidad web */}
+        <SlidePrinciplesIntro topicId="principlesIntro" />
         <SlidePrinciplePerceptible topicId="principlePerceptible" />
         <SlidePrincipleOperable topicId="principleOperable" />
         <SlidePrincipleComprehensible topicId="principleComprehensible" />

@@ -1,6 +1,49 @@
-import { Slide } from '@/components/deck';
-import { Eye, Keyboard, MessageSquareText, ShieldCheck } from 'lucide-react';
-import slideCatalog from '@/data/slideCatalog.json';
+import { Slide } from "@/components/deck";
+import { Eye, Keyboard, MessageSquareText, ShieldCheck } from "lucide-react";
+import slideCatalog from "@/data/slideCatalog.json";
+
+const PRINCIPLES_PREVIEW = [
+  { letter: "P", icon: Eye, es: "Perceptible", en: "Perceivable" },
+  { letter: "O", icon: Keyboard, es: "Operable", en: "Operable" },
+  {
+    letter: "U",
+    icon: MessageSquareText,
+    es: "Comprensible",
+    en: "Understandable",
+  },
+  { letter: "R", icon: ShieldCheck, es: "Robusto", en: "Robust" },
+];
+
+export function SlidePrinciplesIntro() {
+  const info = slideCatalog.principlesIntro;
+  return (
+    <Slide id="principlesIntro">
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-3">{info.title}</h2>
+        <p className="mb-10 text-lg text-gray-400">
+          Los criterios de A y AA se agrupan en estas cuatro categorías.
+        </p>
+        <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
+          {PRINCIPLES_PREVIEW.map(({ letter, icon: Icon, es, en }) => (
+            <div key={letter} className="border-t border-white/10 pt-5">
+              <div className="mb-3 flex items-center gap-2">
+                <Icon
+                  className="h-5 w-5 shrink-0 text-brand-light"
+                  strokeWidth={2}
+                />
+                <span className="font-mono text-3xl font-black text-brand-light">
+                  {letter}
+                </span>
+              </div>
+              <div className="text-lg font-bold text-white">{es}</div>
+              <div className="text-sm text-gray-500">{en}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Slide>
+  );
+}
 
 function PrincipleSlide({ id, letter, english, icon: Icon, children }) {
   const info = slideCatalog[id];
@@ -19,7 +62,9 @@ function PrincipleSlide({ id, letter, english, icon: Icon, children }) {
             <h2 className="text-5xl text-brand-light">{info.title}</h2>
           </div>
           <p className="mb-6 text-sm text-gray-400">{english}</p>
-          <div className="max-w-xl text-2xl leading-snug text-gray-200 sm:text-3xl">{children}</div>
+          <div className="max-w-xl text-2xl leading-snug text-gray-200 sm:text-3xl">
+            {children}
+          </div>
         </div>
       </div>
     </Slide>
@@ -28,21 +73,28 @@ function PrincipleSlide({ id, letter, english, icon: Icon, children }) {
 
 export function SlidePrinciplePerceptible() {
   return (
-    <PrincipleSlide id="principlePerceptible" letter="P" english="Perceivable" icon={Eye}>
-      <p>
-        La información tiene que llegar por más de una vía — vista, oído o tacto — sin depender de una
-        sola.
-      </p>
+    <PrincipleSlide
+      id="principlePerceptible"
+      letter="P"
+      english="Perceivable"
+      icon={Eye}
+    >
+      <p>La información no debería depender de un único sentido</p>
     </PrincipleSlide>
   );
 }
 
 export function SlidePrincipleOperable() {
   return (
-    <PrincipleSlide id="principleOperable" letter="O" english="Operable" icon={Keyboard}>
+    <PrincipleSlide
+      id="principleOperable"
+      letter="O"
+      english="Operable"
+      icon={Keyboard}
+    >
       <p>
-        Todo control tiene que poder manejarse con teclado, con voz, o con cualquier entrada — no solo
-        con mouse o con un gesto de precisión.
+        Los controles tienen que poder usarse sin depender de una única forma de
+        interacción.
       </p>
     </PrincipleSlide>
   );
@@ -50,10 +102,15 @@ export function SlidePrincipleOperable() {
 
 export function SlidePrincipleComprehensible() {
   return (
-    <PrincipleSlide id="principleComprehensible" letter="U" english="Understandable" icon={MessageSquareText}>
+    <PrincipleSlide
+      id="principleComprehensible"
+      letter="U"
+      english="Understandable"
+      icon={MessageSquareText}
+    >
       <p>
-        La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle
-        de UX: es una condición de accesibilidad.
+        La interfaz tiene que ser fácil de entender y, sobre todo, comportarse
+        como el usuario espera.
       </p>
     </PrincipleSlide>
   );
@@ -61,10 +118,15 @@ export function SlidePrincipleComprehensible() {
 
 export function SlidePrincipleRobust() {
   return (
-    <PrincipleSlide id="principleRobust" letter="R" english="Robust" icon={ShieldCheck}>
+    <PrincipleSlide
+      id="principleRobust"
+      letter="R"
+      english="Robust"
+      icon={ShieldCheck}
+    >
       <p>
-        Cada control tiene que exponer su nombre, su rol y su valor al árbol de accesibilidad — sin
-        importar qué lo termine leyendo.
+        El contenido debe ser lo suficientemente fiable como para ser
+        interpretado de forma correcta.
       </p>
     </PrincipleSlide>
   );
