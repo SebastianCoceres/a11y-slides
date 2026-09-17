@@ -8,9 +8,9 @@
 
 **Título — A11Y**
 
-Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de producto, y cómo meterla en el flujo de trabajo sin agregar un proceso nuevo.
+Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de desarrollo, y cómo meterla en el flujo de trabajo — que no es lo mismo arrancar de cero que integrarla en un proyecto que ya lleva años.
 
-No vengo a convertirlos en expertos en accesibilidad en los próximos minutos — sería mentirles, el tema es una banda. Lo que sí quiero es que se vayan con la posta de que esto existe, por qué les tiene que importar, y con qué herramientas concretas lo pueden arrancar a aplicar mañana mismo.
+No vengo a convertirlos en expertos en accesibilidad en los próximos minutos — sería mentirles, es un tema enorme. Lo que sí quiero es que se vayan con algo claro: que esto existe, por qué les tiene que importar, y con qué herramientas concretas lo pueden arrancar a aplicar mañana mismo.
 
 > Antes de seguir, aclaremos qué es esa sigla que acabo de tirar arriba del slide.
 
@@ -52,9 +52,9 @@ Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina bene
 
 **Situaciones — ¿Por qué nos interesa aplicarla?**
 
-Lo que ven en esta lista no son casos raros: son cosas que le pasan a cualquiera de nosotros en un día normal de trabajo. Repasen la lista completa con esto en la cabeza: el sol pegándole a la pantalla en la parada del colectivo, una conexión que anda lenta y no carga las imágenes, guantes de invierno que no registran en una pantalla táctil, unas gafas que se rompen justo antes de una reunión importante, sostener a upa a un bebé con el único brazo que les queda libre para tocar el celular, una lesión temporal — un dedo vendado, una muñeca inmovilizada —, y envejecer, que no es una excepción: es lo que le pasa a todo el mundo que llega a viejo, con visión y motricidad que cambian con los años.
+Lo que ven en esta lista no son casos raros. Son cosas que le pasan a cualquiera en un día normal de trabajo: el sol pegándole a la pantalla en la parada del colectivo. Una conexión lenta que no carga las imágenes. Guantes de invierno que no registran en una pantalla táctil. Unas gafas rotas justo antes de una reunión importante. Sostener en brazos a un bebé con el único brazo libre. Un dedo vendado, una muñeca inmovilizada. Y envejecer — que no es una excepción, es lo que le pasa a todo el mundo que llega a viejo.
 
-Ninguna de estas siete situaciones requiere una discapacidad permanente. Les puede pasar a ustedes, hoy, en el trayecto de acá a la oficina. Accesibilidad es diseñar asumiendo que esa variedad es la norma, no la excepción.
+Ninguna de estas siete situaciones necesita una discapacidad permanente. Les puede pasar a ustedes, hoy, en el trayecto a la oficina. Es la norma, no la excepción.
 
 > Y si esto es la norma y no la excepción, ignorarlo tiene un costo — uno que se puede medir en números concretos para el negocio.
 
@@ -62,7 +62,7 @@ Ninguna de estas siete situaciones requiere una discapacidad permanente. Les pue
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Esto no es solo para quien usa el producto — le sirve a todo el equipo, en direcciones que a veces no son obvias.
+Esto no es solo para quien usa el producto — le sirve a todo el equipo.
 
 Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo después — ya vamos a entrar en detalle sobre por qué. Para quien se suma al equipo, un código con roles y nombres semánticos correctos se lee casi solo: no hay que adivinar qué hace un `<div>` con siete manejadores de eventos encima, cuando un botón real ya lo dice con su propio elemento. Para el negocio, el mercado direccionable se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus. Para legal, baja el riesgo de demandas y bloqueos normativos. Y para soporte, bajan los tickets por problemas que en el papel figuran como "el usuario no entendía cómo usarlo", pero que en el fondo eran una interfaz que directamente no se podía usar.
 
@@ -74,7 +74,7 @@ Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchear
 
 Todo lo que dijimos hasta acá es cierto en cualquier momento del proyecto. Pero el costo y la dificultad de aplicarlo no son los mismos si arrancan en el primer commit o si lo meten en un sistema que ya tiene usuarios reales.
 
-Arrancar temprano es, en el fondo, barato. Si el componente base de botón ya nace con foco visible, rol correcto y contraste que pasa AA, cada pantalla que lo use hereda ese comportamiento gratis, sin que nadie tenga que acordarse de nada caso por caso. El costo se diluye en el sprint normal — no es un proyecto aparte, es simplemente cómo ya se construye. Y el equipo aprende el patrón accesible con el primer componente que escribe, no seis meses después en una capacitación separada.
+Arrancar temprano es barato. El componente base de botón nace con foco visible, rol correcto y contraste AA — cada pantalla que lo usa lo hereda gratis. El costo se diluye en el sprint normal: no es un proyecto aparte, es cómo ya se construye. Y el equipo aprende el patrón accesible con el primer componente que escribe, no seis meses después en una capacitación aparte.
 
 En un proyecto legacy la ecuación cambia. Años de `<div onClick>` en vez de `<button>` no se arreglan con una regla de lint: hay que auditar uno por uno, y cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran. Un color de marca que no pasa contraste ya no es una decisión de código, es una decisión de diseño y de negocio, porque tocarlo afecta cada pantalla donde aparece ese azul. Y el backlog de un proyecto legacy ya está lleno de bugs visibles: lo invisible, como accesibilidad, casi siempre pierde esa pelea por prioridad, salvo que alguien lo empuje a propósito.
 
@@ -106,9 +106,9 @@ Un botón que solo reacciona al pasar el mouse por encima. Un límite de tiempo 
 
 **Comprensible**
 
-La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle de UX, como capaz se piensa muchas veces — es una condición de accesibilidad.
+La interfaz tiene que comportarse de manera predecible. Que algo "se entienda" no es un detalle de UX — es una condición de accesibilidad.
 
-Pensá en un error que no explica qué pasó, un menú que se mueve de lugar entre una pantalla y otra, o un ícono de tacho de basura que en una pantalla borra y en otra archiva: rompés exactamente el modelo mental que la persona ya se había armado del producto, y la obligás a reaprenderlo de cero cada vez.
+Un error que no explica qué pasó. Un menú que cambia de lugar entre pantallas. Un ícono de tacho de basura que en una pantalla borra y en otra archiva. Los tres rompen el modelo mental que la persona ya se había armado del producto, y la obligan a reaprenderlo de cero.
 
 > El último principio ya no depende de la persona, sino de con qué está usando el producto.
 
