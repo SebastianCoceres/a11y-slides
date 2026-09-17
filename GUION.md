@@ -10,7 +10,7 @@
 
 Esta charla es sobre accesibilidad web: qué es, por qué le importa directamente a un equipo de desarrollo, y cómo agregarlo al flujo de trabajo.
 
-No vengo a convertirlos en expertos en accesibilidad en los próximos minutos — sería mentirles, es un tema enorme. Lo que sí quiero es que se vayan con algo claro: que esto existe, por qué les tiene que importar, y con qué herramientas concretas lo pueden arrancar a aplicar mañana mismo.
+No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un tema enorme. Lo que sí quiero es que se vayan con algo claro: que esto existe, por qué les tiene que importar, y con qué herramientas concretas lo pueden arrancar a aplicar mañana mismo.
 
 > Antes de seguir, aclaremos qué es esa sigla que acabo de tirar arriba del slide.
 
