@@ -154,7 +154,7 @@ Los tres rompen el modelo mental que la persona ya se había armado del producto
 
 **Robusto**
 
-Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el árbol de accesibilidad.
+Un componente puede verse perfecto en pantalla y, aun así, no existir para la única API que realmente importa acá: el _árbol de accesibilidad_.
 
 Un `<div>` armado a mano para comportarse como un `<select>` puede funcionar perfecto y aun así no existir en ese árbol.
 

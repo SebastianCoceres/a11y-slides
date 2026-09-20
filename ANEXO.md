@@ -9,12 +9,20 @@ Material de apoyo para `GUION.md`: profundidad técnica que no cabe en el guion 
 Esta charla asume nociones de frontend pero no de accesibilidad, así que estos términos van a aparecer todo el tiempo. Quedan definidos acá una sola vez para no interrumpir cada ejemplo con la misma explicación.
 
 - **DOM**: el árbol real de nodos que el navegador termina construyendo, más allá de cómo se ve. El CSS (`order`, `position`, `flex-direction`) solo cambia la proyección visual, nunca reordena el DOM — es la misma diferencia que hay entre el orden de un `SELECT` con `ORDER BY` y el orden físico de las filas en disco: cambiar uno no cambia el otro.
-- **Árbol de accesibilidad (accessibility tree)**: una proyección paralela del DOM que el navegador expone a los lectores de pantalla y otras tecnologías asistivas. Funciona como una API separada de la visual: cada nodo tiene nombre, rol y valor. Si un control no expone esos tres datos ahí, para esa "API" directamente no existe, aunque se vea perfecto en pantalla.
+- **Árbol de accesibilidad (accessibility tree)**: ver definición propia más abajo.
 - **Nombre accesible (accessible name)**: el string que una tecnología asistiva lee para identificar un control. Se calcula con un orden de precedencia fijo (`aria-label` > `aria-labelledby` > texto visible > `title`), parecido a cómo se resuelve la precedencia de configuración en cualquier sistema (variable de entorno > archivo de config > default).
 - **Foco (focus)**: el puntero de "dónde estoy parado" cuando se navega sin mouse. En todo momento hay exactamente un elemento con foco; las interfaces rotas son las que lo pierden, lo atrapan sin salida, o lo mueven sin que la persona lo haya pedido.
 - **ARIA / `role` / `aria-*`**: un vocabulario de atributos HTML que describe comportamiento y estado para tecnología asistiva ("esto es un botón", "esto está expandido", "esto cambió"). No modifica el comportamiento real del elemento — es metadata para el consumidor, en el mismo sentido que un `Content-Type` o un código de estado HTTP no cambian el payload, solo le dicen al cliente cómo interpretarlo.
 - **Lector de pantalla (screen reader)**: NVDA, VoiceOver, JAWS. El cliente que consume el árbol de accesibilidad y lo traduce a voz o braille — el "consumidor de la API" mencionada arriba.
 - **`chrome://accessibility/`**: página interna de Chrome que lista todas las pestañas abiertas y permite volcar el árbol de accesibilidad completo de cualquiera en texto plano, con más detalle que el panel Accessibility de DevTools. No hace falta para la demo en vivo, pero sirve como respuesta si alguien de la audiencia pregunta "¿y si quiero ver *todo*?".
+
+---
+
+## Árbol de accesibilidad
+
+<!-- id:principleRobust -->
+
+Una proyección paralela del DOM que el navegador expone a los lectores de pantalla y otras tecnologías asistivas. Funciona como una API separada de la visual: cada nodo tiene nombre, rol y valor. Si un control no expone esos tres datos ahí, para esa "API" directamente no existe, aunque se vea perfecto en pantalla.
 
 ---
 
