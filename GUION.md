@@ -44,13 +44,13 @@ Esta charla se queda con los criterios de A y AA, que son los que de verdad entr
 
 **Beneficios — El efecto rampa de acceso**
 
-La rampa en la vereda se construyó pensando en sillas de ruedas. Hoy la usan carritos de bebé, repartidores, ciclistas — todo el mundo.
-
-No es el único caso. Los subtítulos se pensaron para sordera, y hoy los prende cualquiera que mira un video y no es hablante nativo del idioma. El control por voz se pensó para baja movilidad, y hoy su teconología lo usa cualquiera dando instrucciones a dispositivos inteligentes.
+- La rampa en la vereda se construyó pensando en sillas de ruedas. Hoy la usan carritos de bebé, repartidores, ciclistas — todo el mundo.
+- Los subtítulos se pensaron para sordera, hoy los pone cualquiera que mira un video y no es hablante nativo del idioma.
+- El control por voz se pensó para baja movilidad, y hoy su teconología lo usa cualquiera dando instrucciones a dispositivos inteligentes.
 
 Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina beneficiando a la base de usuarios completa.
 
-> Y ese efecto no es abstracto ni lejano: pasa todos los días, en situaciones bien concretas que cualquiera de nosotros puede atravesar.
+> Y ahí está lo interesante: Pueden aparecer situaciones concretas que cualquiera de nosotros puede atravesar.
 
 <!-- id:situations -->
 
@@ -58,28 +58,25 @@ Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina bene
 
 Lo que ven en esta lista no son casos raros. Son cosas que le pueden pasar a cualquiera
 
-- El sol pegando en la pantalla.
-- Guantes de trabajo que dificultan interactuar con una pantalla táctil.
-- Unas gafas rotas.
-- Sostener en brazos a un bebé (aunque los compañeros no estén presentes).
-- Una lesión temporal
-- Envejecer...
+- El sol pegando en la pantalla -> buen contraste de colores
+- Guantes de trabajo que dificultan interactuar con una pantalla táctil -> secciones grandes y espaciadas
+- Unas gafas rotas -> Texto grande y adaptable
+- Sostener en brazos a un bebé (aunque los compañeros no estén presentes) -> control por voz, navegación por teclado
+- Envejecer -> todo lo anterior sigue sirviendo
 
-si se dan cuenta ninguna de estas situaciones es una discapacidad permanente.
+si se dan cuenta ninguna de estas situaciones es una discapacidad permanente. Los criterios son para cualquier situación que dificulte el uso de un producto
 
-> los criterios son para cualquier situación que dificulte el uso de un producto, esta se vuelve una ventaja operativa para todos.
+> si tenemos eso en cuenta se vuelve una ventaja operativa para todos.
 
 <!-- id:businessImpact -->
 
 **Impacto en el negocio — Lo que nos ahorramos como equipo**
 
-Esto literalmente nos sirve a todos.
-
 Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo luego.
 
 Para quien se suma al equipo, muchos principios de accesibilidad coinciden con principios de buen diseño de software
 
-Para el negocio, el mercado se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus.
+Para el negocio, el mercado se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato
 
 Baja el riesgo de demandas y bloqueos normativos.
 
@@ -97,11 +94,11 @@ Para el usuario final, significa menos frustración y más confianza en el produ
 
 La dificultad de aplicarlo no son los mismos si arrancan desde el inicio del proyecto o si lo meten en un sistema que ya tiene usuarios reales.
 
-Arrancar temprano es barato. El costo se diluye entre tareas y se normaliza el patrón accesible desde el primer componente.
+Arrancar temprano es barato. El costo se diluye entre tareas y se normaliza el patrón accesible desde el inicio.
 
 Dejarlo para último momento cambia la ecuación. Los cambios hay que auditarlos con más cuidado, cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran.
 
-Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos activos ya no se puede". Es más lento, y no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiera dedicar.
+Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos activos ya no se puede". Solo que será más lento y no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiera dedicar.
 
 > Ahora sí, veamos en qué se apoya todo esto que estoy hablando.
 
@@ -109,7 +106,9 @@ Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos act
 
 **Los cuatro principios — POUR**
 
-Las WCAG se agrupan en cuatro principios, conocidos por su acrónimo en inglés, POUR — Perceptible, Operable, Comprensible y Robusto. Cada criterio que ya vimos, y cada uno que sigue, entra en una de estas cuatro categorías. Vamos uno por uno.
+Las WCAG se agrupan en cuatro principios, conocidos por su acrónimo en inglés, POUR — Perceptible, Operable, Comprensible y Robusto.
+
+Lo ejemplos que he mencionado antes entran en una de estas cuatro categorías.
 
 > Empecemos por el primero: qué significa que algo sea perceptible.
 
@@ -133,7 +132,7 @@ Los controles tienen que poder usarse sin depender de una única forma de intera
 
 Por ejemplo, imaginá una tienda online donde para abrir el menú tenés que pasar el mouse por encima de una categoría. Con mouse funciona perfecto, pero si navegás con el teclado usando Tab, nunca podés abrir ese menú. Lo mismo si un botón solo responde a un gesto de deslizar o si una acción desaparece antes de que tengas tiempo de ejecutarla.
 
-La idea es simple: no alcanza con que un control exista; también tiene que ser posible llegar a él y usarlo con distintos medios de entrada, como mouse, teclado, táctil o tecnologías de asistencia.
+no alcanza con que un control exista; también tiene que ser posible llegar a él y usarlo con distintos medios de entrada, como mouse, teclado, táctil o tecnologías de asistencia.
 
 > Bien: ya lo percibís, ya lo podés operar. Falta que lo puedas entender.
 
