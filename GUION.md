@@ -305,6 +305,8 @@ Pero después agrega la frase que realmente importa para esta charla: cuando un 
 
 Ni el estándar diseñado específicamente para agentes de IA se anima a dejarlo de lado.
 
+> Bien, dejemos ahí a los agentes de IA. Volvamos a las personas — porque cumplir con WCAG al pie de la letra tampoco garantiza que la experiencia sea buena.
+
 ---
 
 ## Más allá de lo básico
@@ -358,7 +360,3 @@ Es la misma idea que atraviesa toda la charla, solo que acá no hay ningún crit
 Volvamos al principio. A11Y no es un público aparte ni una casilla más para tildar antes de un release: es una propiedad de calidad, como la performance o la seguridad — y como toda propiedad de calidad, se nota más por su ausencia que por su presencia.
 
 El efecto rampa de acceso sigue siendo la mejor razón para arrancar: lo que hoy construyen pensando en un caso puntual, mañana lo va a usar toda su base de usuarios — humana, y cada vez más, también de software. Arrancar temprano sale más barato que parchear un legacy después, pero ninguna de las dos cosas es una excusa para no arrancar.
-
-No se vayan de acá con la obligación de saberse todos los criterios de memoria. Váyanse con una sola acción concreta: la próxima vez que toquen una pantalla, abran las DevTools, prendan el panel de Accessibility, y miren qué queda afuera del árbol. Esa costumbre, sola, ya los pone adelante de la mayoría.
-
-Gracias.
