@@ -215,15 +215,13 @@ Playwright es un runner end-to-end. con el podemos automatizar la ejecución de 
 
 si no tenemos tests o no lo tenemos integrado a la pipeline, podemos correrlo manualmente con un comando y ver el reporte en la consola. hasta podriamos usar un hook de git para que ejecute los tests en local antes de pushear.
 
-> Explicandoles las herramientas ya podria cerrar el tema central de la charla: pero hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
+> Explicandoles las herramientas ya podria cerrar el tema central de la charla: pero hay un motivo más para tomarse en serio todo esto — y es que la mayoría del tráfico que llega a un sitio ya no es humano.
 
 <!-- id:secondAudience -->
 
 **Una segunda audiencia**
 
-Todo lo que vimos hasta acá ya justificaba invertir en accesibilidad por las personas. Pero hoy hay un argumento más: la mayoría del tráfico que llega a un sitio ya no es humano.
-
-Más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare. Y esos agentes leen exactamente la misma estructura semántica — el mismo árbol de accesibilidad — que un lector de pantalla.
+Más del 57% de los requests a contenido HTML en 2026 son de agentes automatizados, según Cloudflare. Y esos agentes leen exactamente la misma estructura semántica — el mismo árbol de accesibilidad.
 
 Mientras tanto, el 95.9% de los sitios más visitados todavía falla al menos un criterio de WCAG, según WebAIM.
 
@@ -237,19 +235,21 @@ La misma inversión que hacemos por una persona ciega o con baja visión, hoy ta
 
 **La misma API, un cliente más**
 
-Estos agentes no leen píxeles ni el HTML entero de la página. Leen el mismo árbol de accesibilidad del que hablamos al principio — nombre, rol y valor de cada nodo. Es la misma API paralela al DOM que usa un lector de pantalla, solo que ahora hay un cliente más del otro lado.
+Estos agentes no leen píxeles ni el HTML entero de la página. Leen el mismo árbol de accesibilidad del que hablamos al principio — nombre, rol y valor de cada nodo. Es la misma API paralela al DOM que usa un lector de pantalla.
 
-Playwright MCP, el servidor oficial de Microsoft para controlar un navegador desde un agente, devuelve justamente eso: ese árbol, en vez de la página completa. Y esto no es un detalle menor de implementación — un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que masticar el HTML crudo de una página real. La misma estructura que le evita a un lector de pantalla procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
+porque usan esto? un snapshot de accesibilidad pesa entre 200 y 400 tokens, contra cientos de miles si el agente tuviera que masticar el HTML crudo de una página real. La misma estructura que le evita a un lector de pantalla procesar la página entera es, ahora, también la razón por la que un agente la procesa más rápido y más barato.
 
-> Y esa misma arquitectura corre en las dos direcciones. Si un agente puede leer tu sitio por este árbol, hoy buena parte del código de ese sitio también lo está escribiendo un agente. Y la pregunta que sigue es incómoda: ¿qué tan accesible es lo que escribe, si nadie se lo pide explícitamente?
+> Y esa misma arquitectura corre en las dos direcciones. Si un agente puede leer tu sitio por este árbol, hoy buena parte del código de ese sitio también lo está escribiendo un agente. Y la pregunta que sigue es incómoda: ¿qué tan accesible es lo que escribe?
 
 <!-- id:secondAudienceLlmEval -->
 
 **Evidencia — La IA no genera accesibilidad por defecto**
 
-Microsoft midió exactamente esa pregunta, y lo hizo en serio: ocho modelos — de OpenAI, Anthropic y Google — generando interfaces reales para treinta y dos casos de prueba distintos, cinco muestras por caso. El código resultante se renderizó en un navegador de verdad y se auditó con axe-core más una batería de chequeos propios sobre WCAG 2.2.
+Microsoft midió exactamente esa pregunta, y lo hizo en serio: varios modelos generando interfaces reales. El código resultante se renderizó en un navegador de verdad y se auditó.
 
-El resultado, sin ninguna instrucción sobre accesibilidad en el prompt: 12% de aprobación general. El mejor modelo individual llegó a 25%. En el peor caso puntual — una home de e-commerce en React, con tema oscuro — ningún modelo aprobó ni un solo chequeo: 0%, con un promedio de más de quince fallas de WCAG por muestra.
+El resultado, sin ninguna instrucción sobre accesibilidad en el prompt: 12% de aprobación general. El mejor modelo individual llegó a 25%.
+
+En el peor caso puntual, una home de un e-commerce, ningún modelo aprobó ni un solo chequeo: 0%, con un promedio de más de quince fallas de WCAG por muestra.
 
 Ahora la buena noticia. Alcanzó con agregar una instrucción básica al prompt — un simple recordatorio de que el resultado tiene que ser accesible — para que ese 12% saltara a 60%. Y cuando el agente, además de generar, corría sus propios tests de accesibilidad y se corregía antes de responder, el promedio subió a 86%, con el mejor caso individual rozando el 100%.
 
@@ -261,17 +261,11 @@ La lectura es directa: generar código no es lo mismo que generar código accesi
 
 **Ya existen las herramientas**
 
-Esto es, literalmente, lo que mide el estudio que acabamos de ver: la variante con mejores resultados era una skill que corría tests de accesibilidad y corregía antes de responder — la misma categoría de herramienta que ya está disponible hoy, no un experimento de laboratorio.
+Esto es, literalmente, lo que mide el estudio que acabamos de ver: la variante con mejores resultados utilizaba una skill que ejecutaba tests de accesibilidad y corregía los problemas antes de responder. Y este tipo de herramientas ya existe hoy.
 
-Claude Code, el agente con el que armé esta charla, tiene acceso a una skill que se llama "accessibility": instrucciones especializadas en WCAG 2.2 que se activan apenas le pedís una auditoría o que "haga accesible" algo. Y esto no es exclusivo de Claude — empaquetar instrucciones especializadas que un agente activa según el contexto es una idea que ya está en varias plataformas de IA, no un truco de una sola marca.
+Deque, la empresa detrás de axe-core, ofrece un MCP oficial que analiza una página y propone el fix directamente en el editor. Chrome DevTools MCP y Playwright MCP permiten al agente inspeccionar un navegador real y detectar problemas que un análisis estático puede pasar por alto. Y los MCP de documentación permiten consultar criterios WCAG y documentación actualizada cuando se necesitan.
 
-Pero esta es solo una pieza del rompecabezas.
-
-Deque, la misma empresa detrás de axe-core que vimos en la sección de herramientas, empaquetó ese motor como MCP oficial: analiza una página y te devuelve el fix de código, listo para revisar, aplicar o rechazar, sin salir del editor. Funciona con Claude Code, GitHub Copilot, Cursor y Windsurf.
-
-Sumale Chrome DevTools MCP o Playwright MCP, que le dan al agente una sesión de navegador de verdad para leer el árbol de accesibilidad en vivo y agarrar fallas de teclado que un análisis estático se pierde.
-
-Y también están los MCP de documentación, que le acercan al agente la versión vigente de un criterio WCAG o de una librería justo cuando la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.
+En otras palabras: las piezas necesarias ya están disponibles. El desafío está en combinarlas correctamente.
 
 > Pero ojo: ninguna de estas herramientas es la ventaja real. La ventaja real es otra cosa.
 
@@ -291,11 +285,13 @@ Un agente con acceso al repositorio ve el mismo síntoma, pero además ve el com
 
 Enero de 2025: nace MCP-B. Agosto: Google y Microsoft publican una propuesta unificada. Septiembre: el W3C la acepta como Community Group. Febrero de 2026: se publica el spec formal.
 
-Hoy corre en origin trial en Chrome y Edge — ni Firefox ni Safari la implementan todavía. Es nuevo de verdad, no una curiosidad de hace años.
+Hoy corre en origin trial en Chrome y Edge. Es nuevo de verdad, no una curiosidad de hace años.
 
-La idea es que un sitio declare funciones que un agente puede invocar directamente, con una API imperativa bastante simple: `document.modelContext.registerTool()`, con un nombre, una descripción, y una función que se ejecuta del lado del cliente. En vez de que el agente adivine cómo completar un formulario haciendo clicks, el sitio le dice exactamente qué puede hacer.
+La idea es que un sitio declare funciones que un agente puede invocar directamente.
 
-También hay una forma declarativa, sin JavaScript: agregarle a un `<form>` los atributos `toolname` y `tooldescription`, y a cada input un `toolparamdescription`. Y acá está el chiste: reutiliza atributos que un formulario accesible ya debería tener — `name`, `required` — no son atributos nuevos para IA, son los mismos que ya le hacen falta a un lector de pantalla. Un formulario bien hecho ya está a mitad de camino de ser WebMCP-ready.
+con una API imperativa bastante simple: `document.modelContext.registerTool()`, con un nombre, una descripción, y una función que se ejecuta del lado del cliente. En vez de que el agente adivine cómo completar un formulario haciendo clicks, el sitio le dice exactamente qué puede hacer.
+
+También hay una forma declarativa, sin JavaScript: agregarle a un `<form>` los atributos `toolname` y `tooldescription`, y a cada input un `toolparamdescription`. Y acá está el chiste: reutiliza atributos que un formulario accesible ya debería tener — `name`, `required` — no son atributos nuevos para IA, son los mismos que ya le hacen falta a un lector de pantalla. Un formulario bien hecho ya está a mitad de camino de ser usado por WebMCP.
 
 > Y acá está el dato que realmente importa: qué dice el propio estándar sobre el árbol de accesibilidad.
 

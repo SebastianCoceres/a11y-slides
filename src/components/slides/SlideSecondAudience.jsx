@@ -233,7 +233,16 @@ export function SlideSecondAudienceLlmEval() {
           ))}
         </div>
         <p className="mt-8 text-xs uppercase tracking-wide text-gray-500">
-          Microsoft, a11y-llm-eval-report, 2026
+          Microsoft,{" "}
+          <a
+            href="https://microsoft.github.io/a11y-llm-eval-report/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-gray-600 underline-offset-2 hover:text-gray-300"
+          >
+            a11y-llm-eval-report
+          </a>
+          , 2026
         </p>
       </div>
     </Slide>
@@ -328,7 +337,7 @@ export function SlideSecondAudienceCodeProximity() {
 }
 
 const WEBMCP_TIMELINE = [
-  { date: "ene 2025", label: "Nace MCP-B" },
+  { date: "ene 2025", label: "Nace MCP-B", href: "https://github.com/WebMCP-org" },
   { date: "ago 2025", label: "Google + Microsoft unifican la propuesta" },
   { date: "sept 2025", label: "El W3C la acepta" },
   { date: "feb 2026", label: "Se publica el spec" },
@@ -347,7 +356,7 @@ export function SlideSecondAudienceWebmcp() {
             className="absolute left-0 right-0 top-1.75 h-px bg-white/15"
           />
           <div className="relative grid grid-cols-5 gap-3">
-            {WEBMCP_TIMELINE.map(({ date, label }, i) => {
+            {WEBMCP_TIMELINE.map(({ date, label, href }, i) => {
               const isLast = i === WEBMCP_TIMELINE.length - 1;
               return (
                 <div key={date} className="flex flex-col items-start">
@@ -365,7 +374,18 @@ export function SlideSecondAudienceWebmcp() {
                     {date}
                   </div>
                   <p className="mt-1 text-xs leading-snug text-gray-400">
-                    {label}
+                    {href ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-gray-600 underline-offset-2 hover:text-gray-300"
+                      >
+                        {label}
+                      </a>
+                    ) : (
+                      label
+                    )}
                   </p>
                 </div>
               );
