@@ -173,24 +173,11 @@ El contenido debe ser lo suficientemente fiable como para ser interpretado de fo
 
 **DevTools del navegador**
 
-Lo más básico ya lo tenés instalado, sin agregar nada. y como se hacia historicamente. Las devtools del navegador.
+Lo más básico ya lo tenés instalado: las devtools del navegador.
 
-Si a cualquier elemento de una pagina le damos click derecho → "Inspeccionar", se abre el inspector de Elements. Ahí podemos ver el DOM, los estilos aplicados, y demás.
+Ahí mismo, al lado del inspector de Elements, hay un panel de Accessibility que muestra exactamente lo que expone cada nodo — nombre, rol, descripción. Es lo mismo que termina viendo un lector de pantalla. Y se puede togglear para ver directamente el árbol de accesibilidad completo en vez del DOM.
 
-Veamos primero el panel accesibilidad: se encuentra en el panel de estilos (si no figura fijense en las flechitas). Seleccionen cualquier nodo y ahí abajo aparece exactamente lo que expone al árbol de accesibilidad — nombre computado, rol, descripción, y resto de propiedades que tenga.
-
-Esto es lo mismo que ve un lector de pantalla.
-
-Al lado del árbol de Elements hay un ícono para togglear "Show accessibility tree". veremos que el DOM entero desaparece y en su lugar aparece el árbol de accesibilidad completo de la página. (Mas adelante les voy a mostrar por qué esto es importante.)
-
-En el panel Styles, cualquier valor de color que toques abre el selector — y ese selector ya te calcula el ratio de contraste en tiempo real.
-
-Ahora uno menos conocido: `Ctrl+Shift+P`, buscá "Rendering". Este panel nos ofrece una serie de herramientas de emulación.
-Veamos por ejemplo "emualdor de vision", un dropdown para simularcómo la ve alguien con distintos tipos de deficiencia visual.
-
-Tambien está "prefers-reduced-motion" — simulamos que el sistema operativo pidió movimiento reducido y ves si tus animaciones efectivamente lo respetan.
-
-Y último: si necesitás revisar cómo se ve el estado de foco de un elemento, click derecho sobre el elemento → "Force state" → `:focus-visible`. si no se marca visualmente no detectamos que el foco está ahí.
+El selector de color ya te calcula el contraste en tiempo real. Y el panel de Rendering trae emuladores útiles: cómo ve la pantalla alguien con baja visión, o si tus animaciones realmente respetan "reduced motion". También se puede forzar el estado de foco para chequear que se vea.
 
 > Con eso ya podés inspeccionar a mano. El paso que sigue es automatizar esa inspección.
 
@@ -198,31 +185,37 @@ Y último: si necesitás revisar cómo se ve el estado de foco de un elemento, c
 
 **Lighthouse y PageSpeed Insights**
 
-Lighthouse te audita accesibilidad y otras cosas con un puntaje de 0 a 100
+El famoso Lighthouse te audita accesibilidad y otras cosas con un puntaje de 0 a 100
 
 PageSpeed Insights es el hermano: internamente corre el mismo motor, pero como servicio web de Google.
 
-> Lighthouse te da un puntaje general. Pero para accesibilidad específicamente, hay motores dedicados.
+> La auditoría se ejecuta de forma manual y sobre una página concreta. Pero para accesibilidad específicamente, hay herramientas dedicadas.
 
-<!-- id:toolsA11yEngines -->
+<!-- id:toolsAccessibilityInsights -->
 
-**Accessibility Insights y axe-core**
+**Accessibility Insights**
 
 Accessibility Insights for Web, de Microsoft, es una extensión con dos modos. FastPass te corre un chequeo automático en segundos. Assessment te guía paso a paso por los criterios que solo se pueden verificar a mano, como el orden del foco.
 
-axe-core, de Deque, ni siquiera tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de esta misma extensión, y de las herramientas de testing que vienen ahora.
+> Si queremos que la accesibilidad forme parte del desarrollo y no dependa de acordarnos de abrir Lighthouse, necesitamos llevar estas comprobaciones a nuestro flujo de trabajo y ejecutarlas automáticamente.
 
-> El motor es siempre el mismo; lo que cambia es dónde lo hacés correr. Y metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar.
+<!-- id:toolsAxeCore -->
+
+**axe-core**
+
+axe-core, de Deque, ni siquiera tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de Accessibility Insights, y de las herramientas de testing que vienen ahora.
+
+> El motor es siempre el mismo; lo que cambia es dónde lo hacés correr. Metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar — y ahí es donde entra Playwright.
 
 <!-- id:toolsTesting -->
 
 **Playwright**
 
-Playwright es un runner end-to-end. Con @axe-core/playwright, cada test que ya estás corriendo para validar funcionalidad, de yapa corre las reglas de axe sobre toda la página.
+Playwright es un runner end-to-end. Podemos automatizar la ejecución de las reglas de axe sobre toda la aplicación, en cada build, y recibir un reporte de fallas de accesibilidad junto con los tests funcionales.
 
-<!-- nota: si preguntan por Cypress, existe el mismo enfoque con cypress-axe — no forma parte del guion principal -->
+si no tenemos tests o no lo tenemos integrado al pipeline, podemos correrlo manualmente con un comando y ver el reporte en la consola. hasta podriamos usar un hook de git para que ejecute los tests en local antes de pushear.
 
-> Con las herramientas ya elegidas, hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
+> Explicandoles las herramientas ya podria cerrar el tema central de la charla: pero hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
 
 <!-- id:secondAudience -->
 

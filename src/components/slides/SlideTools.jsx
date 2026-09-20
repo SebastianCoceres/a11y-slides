@@ -192,52 +192,70 @@ export function SlideToolsLighthouse() {
   );
 }
 
-export function SlideToolsA11yEngines() {
-  const info = slideCatalog.toolsA11yEngines;
+export function SlideToolsAccessibilityInsights() {
+  const info = slideCatalog.toolsAccessibilityInsights;
   return (
-    <Slide id="toolsA11yEngines">
+    <Slide id="toolsAccessibilityInsights">
       <div className="mx-auto max-w-4xl text-left">
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
-          <div>
-            <a
-              href="https://github.com/microsoft/accessibility-insights-web"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mb-2 flex items-center gap-2 text-xl font-bold text-white transition-colors hover:text-indigo-300"
-            >
-              <ScanSearch className="h-5 w-5 shrink-0 text-indigo-300" />
-              Accessibility Insights for Web
-              <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
-            </a>
-            <p className="text-base text-gray-400">
-              Extensión de Microsoft: FastPass corre un chequeo automatizado en
-              segundos, y Assessment guía paso a paso los criterios que solo se
-              verifican a mano, como el orden del foco.
-            </p>
-          </div>
-          <div className="sm:border-l sm:border-white/10 sm:pl-10">
-            <a
-              href="https://github.com/dequelabs/axe-core"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mb-2 flex items-center gap-2 text-xl font-bold text-white transition-colors hover:text-indigo-300"
-            >
-              <ShieldCheck className="h-5 w-5 shrink-0 text-indigo-300" />
-              axe-core (Deque)
-              <ExternalLink className="h-4 w-4 shrink-0 text-gray-500" />
-            </a>
-            <p className="text-base text-gray-400">
-              No tiene interfaz propia: es el motor de reglas WCAG que corre por
-              debajo de Lighthouse, de esta misma extensión, y de las
-              herramientas de testing que siguen.
-            </p>
-          </div>
-        </div>
+        <a
+          href="https://github.com/microsoft/accessibility-insights-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-3 flex items-center gap-2 text-2xl font-bold text-white transition-colors hover:text-indigo-300"
+        >
+          <ScanSearch className="h-6 w-6 shrink-0 text-indigo-300" />
+          Accessibility Insights for Web
+          <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
+        </a>
+        <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
+          Extensión de Microsoft con dos modos:{" "}
+          <strong className="text-white">FastPass</strong> corre un chequeo
+          automatizado en segundos, y{" "}
+          <strong className="text-white">Assessment</strong> guía paso a paso
+          los criterios que solo se verifican a mano, como el orden del foco.
+        </p>
       </div>
     </Slide>
   );
 }
+
+export function SlideToolsAxeCore() {
+  const info = slideCatalog.toolsAxeCore;
+  return (
+    <Slide id="toolsAxeCore">
+      <div className="mx-auto max-w-4xl text-left">
+        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <a
+          href="https://github.com/dequelabs/axe-core"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-3 flex items-center gap-2 text-2xl font-bold text-white transition-colors hover:text-indigo-300"
+        >
+          <ShieldCheck className="h-6 w-6 shrink-0 text-indigo-300" />
+          axe-core (Deque)
+          <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
+        </a>
+        <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
+          No tiene interfaz propia: es el motor de reglas WCAG que corre por
+          debajo de Lighthouse, de Accessibility Insights, y de las herramientas
+          de testing que vienen ahora.
+        </p>
+      </div>
+    </Slide>
+  );
+}
+
+const PLAYWRIGHT_A11Y_TEST = `import { test, expect } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+
+test("la home no tiene violaciones de a11y", async ({ page }) => {
+  await page.goto("/");
+
+  const results = await new AxeBuilder({ page }).analyze();
+
+  expect(results.violations).toEqual([]);
+});`;
 
 export function SlideToolsTesting() {
   const info = slideCatalog.toolsTesting;
@@ -245,17 +263,16 @@ export function SlideToolsTesting() {
     <Slide id="toolsTesting">
       <div className="mx-auto max-w-3xl text-left">
         <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
-        <div className="space-y-5 text-2xl leading-relaxed text-gray-200">
+        <div className="space-y-4 text-2xl leading-relaxed text-gray-200">
           <p>
             <strong className="text-white">Playwright</strong> es un runner
-            end-to-end — con{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-lg text-indigo-300">
-              @axe-core/playwright
-            </code>
-            , cada test que ya valida funcionalidad corre además las reglas de
-            axe sobre la página completa.
+            end-to-end que nos permitirá automatizar las reglas de axe sobre la
+            app.
           </p>
         </div>
+        <pre className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-sm leading-relaxed text-indigo-300">
+          {PLAYWRIGHT_A11Y_TEST}
+        </pre>
       </div>
     </Slide>
   );

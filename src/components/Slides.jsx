@@ -22,7 +22,8 @@ import {
 import {
   SlideToolsDevTools,
   SlideToolsLighthouse,
-  SlideToolsA11yEngines,
+  SlideToolsAccessibilityInsights,
+  SlideToolsAxeCore,
   SlideToolsTesting,
 } from "./slides/SlideTools";
 import {
@@ -57,7 +58,8 @@ export default function Slides() {
 
         <SlideToolsDevTools topicId="toolsDevTools" />
         <SlideToolsLighthouse topicId="toolsLighthouse" />
-        <SlideToolsA11yEngines topicId="toolsA11yEngines" />
+        <SlideToolsAccessibilityInsights topicId="toolsAccessibilityInsights" />
+        <SlideToolsAxeCore topicId="toolsAxeCore" />
         <SlideToolsTesting topicId="toolsTesting" />
 
         <SlideSecondAudience topicId="secondAudience" />
