@@ -32,7 +32,9 @@ es una propiedad de calidad del software, medible y testeable, igual que la perf
 
 **Estándar global — WCAG 2.2**
 
-El W3C publica las Web Content Accessibility Guidelines(WACG) desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal — que casi nunca es realista alcanzar. Por dar un ejemplo de AAA: interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a cada feature que shippean sería frenar el producto.
+El W3C publica las Web Content Accessibility Guidelines(WACG) desde 1994, y ya vamos por la versión 2.2, del 2023. Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal, que casi nunca es realista alcanzar.
+
+Por dar un ejemplo: la interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a una empresa que ni siquiera tiene recursos o obligacion legal no es realista.
 
 Esta charla se queda con los criterios de A y AA, que son los que de verdad entran en la conversación del día a día.
 
@@ -48,17 +50,24 @@ No es el único caso. Los subtítulos se pensaron para sordera, y hoy los prende
 
 Ese es el efecto rampa de acceso: algo pensado para un caso puntual termina beneficiando a la base de usuarios completa.
 
-> Y ese efecto no es abstracto ni lejano: pasa todos los días, en situaciones bien concretas que cualquiera del equipo puede atravesar.
+> Y ese efecto no es abstracto ni lejano: pasa todos los días, en situaciones bien concretas que cualquiera de nosotros puede atravesar.
 
 <!-- id:situations -->
 
 **Situaciones — ¿Por qué nos interesa aplicarla?**
 
-Lo que ven en esta lista no son casos raros. Son cosas que le pasan a cualquiera en un día normal: el sol pegando en la pantalla. Guantes de invierno que dificultan una pantalla táctil. Unas gafas rotas. Sostener en brazos a un bebé aunque los compañeros no estén presentes. Una lesión temporal, envejecer...
+Lo que ven en esta lista no son casos raros. Son cosas que le pueden pasar a cualquiera
 
-Ninguna de estas situaciones es una discapacidad permanente. Les puede pasar a ustedes tranquilamente
+- El sol pegando en la pantalla.
+- Guantes de trabajo que dificultan interactuar con una pantalla táctil.
+- Unas gafas rotas.
+- Sostener en brazos a un bebé (aunque los compañeros no estén presentes).
+- Una lesión temporal
+- Envejecer...
 
-> ignorarlo tiene un costo
+si se dan cuenta ninguna de estas situaciones es una discapacidad permanente.
+
+> los criterios son para cualquier situación que dificulte el uso de un producto, esta se vuelve una ventaja operativa para todos.
 
 <!-- id:businessImpact -->
 
@@ -66,9 +75,9 @@ Ninguna de estas situaciones es una discapacidad permanente. Les puede pasar a u
 
 Esto literalmente nos sirve a todos.
 
-Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo luego — ya vamos a entrar en detalle por qué.
+Para desarrollo, resolverlo desde el diseño sale mucho más barato que parchearlo luego.
 
-Para quien se suma al equipo, un código con roles y nombres semánticos correctos se lee casi solo
+Para quien se suma al equipo, muchos principios de accesibilidad coinciden con principios de buen diseño de software
 
 Para el negocio, el mercado se agranda — hay organismos públicos y clientes grandes que ya piden cumplimiento como cláusula de contrato, no como plus.
 
@@ -78,19 +87,21 @@ Para soporte, significan menos problemas.
 
 Para el usuario final, significa menos frustración y más confianza en el producto.
 
-> Ya vimos por qué conviene invertir como equipo. Pero, ¿conviene lo mismo invertir ahora que invertir dentro de dos años, sobre código que ya está en producción? Ahí la respuesta cambia bastante.
+> ojo implementarlo nos da beneficios, ignorarlo tiene un costo
 
 <!-- id:earlyVsLegacy -->
 
 **Momento de implementación — Temprano vs. último momento**
 
-Todo lo que dijimos hasta acá es cierto en cualquier momento del proyecto. Pero el costo y la dificultad de aplicarlo no son los mismos si arrancan desde el inicio del proyecto o si lo meten en un sistema que ya tiene usuarios reales.
+> y el costo va aumentando cuanto más tarde se implemente
 
-Arrancar temprano es barato. El costo se diluye entre sprints. Y se normaliza el patrón accesible desde el primer componente.
+La dificultad de aplicarlo no son los mismos si arrancan desde el inicio del proyecto o si lo meten en un sistema que ya tiene usuarios reales.
+
+Arrancar temprano es barato. El costo se diluye entre tareas y se normaliza el patrón accesible desde el primer componente.
 
 Dejarlo para último momento cambia la ecuación. Los cambios hay que auditarlos con más cuidado, cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran.
 
-Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos activos ya no se puede". Es más lento, y no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiere dedicar.
+Ojo con la conclusión que no quiero que saquen: esto no es un "en proyectos activos ya no se puede". Es más lento, y no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiera dedicar.
 
 > Ahora sí, veamos en qué se apoya todo esto que estoy hablando.
 
