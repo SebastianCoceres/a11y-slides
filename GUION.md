@@ -205,15 +205,15 @@ Accessibility Insights for Web, de Microsoft, es una extensión con dos modos. F
 
 axe-core, de Deque, ni siquiera tiene interfaz propia: es el motor de reglas WCAG que corre por debajo de Lighthouse, de Accessibility Insights, y de las herramientas de testing que vienen ahora.
 
-> El motor es siempre el mismo; lo que cambia es dónde lo hacés correr. Metido en el pipeline de tests es donde deja de depender de que alguien se acuerde de auditar — y ahí es donde entra Playwright.
+> El motor es siempre el mismo; lo que cambia es dónde lo hacés correr. Metido en la pipeline es donde deja de depender de que alguien se acuerde de auditar — y ahí es donde entra Playwright.
 
 <!-- id:toolsTesting -->
 
 **Playwright**
 
-Playwright es un runner end-to-end. Podemos automatizar la ejecución de las reglas de axe sobre toda la aplicación, en cada build, y recibir un reporte de fallas de accesibilidad junto con los tests funcionales.
+Playwright es un runner end-to-end. con el podemos automatizar la ejecución de las reglas de axe sobre toda la aplicación, en cada build, y recibir un reporte de fallas de accesibilidad junto con los tests funcionales.
 
-si no tenemos tests o no lo tenemos integrado al pipeline, podemos correrlo manualmente con un comando y ver el reporte en la consola. hasta podriamos usar un hook de git para que ejecute los tests en local antes de pushear.
+si no tenemos tests o no lo tenemos integrado a la pipeline, podemos correrlo manualmente con un comando y ver el reporte en la consola. hasta podriamos usar un hook de git para que ejecute los tests en local antes de pushear.
 
 > Explicandoles las herramientas ya podria cerrar el tema central de la charla: pero hay un motivo más para tomarse en serio todo esto — uno que no tiene que ver con las personas que usan el producto.
 
