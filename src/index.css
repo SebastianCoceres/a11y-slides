@@ -73,6 +73,20 @@ body,
   --color-brand: var(--brand);
   --color-brand-light: var(--brand-light);
   --color-brand-violet: var(--brand-violet);
+  --color-example-bad: var(--example-bad);
+  --color-example-good: var(--example-good);
+
+  /* Animates `translate` (not `transform`) so it composes with rotate-* utilities. */
+  --animate-float: float 6s ease-in-out infinite;
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -12px;
+    }
+  }
 }
 
 :root {
@@ -81,6 +95,8 @@ body,
   --brand-violet: #7c3aed;
   --brand-gradient-from: #60a5fa;
   --brand-gradient-to: #a78bfa;
+  --example-bad: #f87171;
+  --example-good: #34d399;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

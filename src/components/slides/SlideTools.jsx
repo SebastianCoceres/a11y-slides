@@ -38,7 +38,7 @@ function DevToolsPanelMock() {
   return (
     <div
       aria-hidden="true"
-      className="relative mx-auto w-full max-w-md rotate-1 rounded-lg border border-black/10 bg-white text-slate-800 shadow-[0_40px_90px_-25px_rgba(0,0,0,0.7)]"
+      className="relative mx-auto w-full max-w-md rotate-1 motion-safe:animate-float rounded-lg border border-black/10 bg-white text-slate-800 shadow-[0_40px_90px_-25px_rgba(0,0,0,0.7)]"
     >
       <span className="absolute -right-4 -top-4 flex items-center gap-1 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
         4.6:1 AA ✓

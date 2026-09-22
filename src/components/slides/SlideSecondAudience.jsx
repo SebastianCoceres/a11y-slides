@@ -253,7 +253,7 @@ const tools = [
   {
     icon: Puzzle,
     title: '"accessibility", una skill de agente',
-    desc: 'Instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría — disponible en Claude Code, no exclusiva de una sola plataforma.',
+    desc: 'Instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría.',
   },
   {
     icon: ShieldAlert,
@@ -307,10 +307,8 @@ export function SlideSecondAudienceCodeProximity() {
               Una herramienta de auditoría
             </div>
             <p className="text-base text-gray-400">
-              Lighthouse, axe-core o Accessibility Insights reportan el síntoma
-              en la página ya renderizada: "este botón no tiene nombre
-              accesible". No saben si vive en un componente que se repite
-              cuarenta veces o si es un caso único.
+              Ve el síntoma en la página renderizada, pero no el código que lo
+              causa.
             </p>
           </div>
           <div>
@@ -319,18 +317,11 @@ export function SlideSecondAudienceCodeProximity() {
               Un agente con el repositorio
             </div>
             <p className="text-xl leading-relaxed text-gray-200">
-              Ve el mismo síntoma, pero también el componente fuente, cuántas
-              páginas lo importan, y si el mismo problema ya se arregló en otro
-              lado del código. Puede proponer el fix una sola vez, en la fuente
-              — no una vez por página.
+              Ve el síntoma y el código, puede arreglarlo directamente en la
+              fuente.
             </p>
           </div>
         </div>
-        <p className="mt-8 max-w-2xl text-base italic text-gray-400">
-          Arreglar en la fuente, una sola vez, en vez de parchear página por
-          página — solo que ahora hay alguien que efectivamente puede ver el
-          componente.
-        </p>
       </div>
     </Slide>
   );

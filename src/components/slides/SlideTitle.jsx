@@ -197,6 +197,7 @@ export default function SlideTitle() {
       <h1 className="text-8xl text-brand-light">
         A<span className="text-gradient-brand font-mono">11</span>Y
       </h1>
+      <p className="mt-6 text-3xl">Interfaces para humanos y máquinas</p>
     </Slide>
   );
 }
