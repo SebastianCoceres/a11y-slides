@@ -30,10 +30,7 @@ export function SlidePrinciplesIntro() {
   return (
     <Slide id="principlesIntro">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-3">{info.title}</h2>
-        <p className="mb-10 text-lg text-gray-400">
-          Los criterios de A y AA se agrupan en estas cuatro categorías.
-        </p>
+        <h2 className="text-5xl text-brand-light mb-12">{info.title}</h2>
         <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
           {PRINCIPLES_PREVIEW.map(({ letter, icon: Icon, es, en }) => (
             <div key={letter} className="border-t border-white/10 pt-5">
@@ -248,7 +245,7 @@ export function SlidePrinciplePerceptible() {
       english="Perceivable"
       icon={Eye}
     >
-      <p>La información no debería depender de un único sentido</p>
+      <p>La información no debería depender de un único sentido.</p>
     </PrincipleSlide>
   );
 }
@@ -297,8 +294,8 @@ export function SlidePrincipleRobust() {
       icon={ShieldCheck}
     >
       <p>
-        El contenido debe ser lo suficientemente fiable como para ser
-        interpretado de forma correcta.
+        Verse bien no alcanza: cualquier tecnología tiene que poder
+        interpretarlo.
       </p>
     </PrincipleSlide>
   );

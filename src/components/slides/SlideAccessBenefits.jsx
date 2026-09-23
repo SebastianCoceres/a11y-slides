@@ -5,7 +5,7 @@ import slideCatalog from "@/data/slideCatalog.json";
 
 const BENEFICIARIES = [
   { Icon: Baby, label: "Cochecitos", position: "top-0 left-0", delay: 0 },
-  { Icon: Luggage, label: "Valijas", position: "top-0 right-0", delay: 0.5 },
+  { Icon: Luggage, label: "Maletas", position: "top-0 right-0", delay: 0.5 },
   { Icon: Bike, label: "Ciclistas", position: "bottom-0 left-0", delay: 1 },
   {
     Icon: ShoppingCart,
@@ -13,6 +13,12 @@ const BENEFICIARIES = [
     position: "bottom-0 right-0",
     delay: 1.5,
   },
+];
+
+const ORIGINS = [
+  { name: "Rampas", origin: "para sillas de ruedas" },
+  { name: "Subtítulos", origin: "para personas sordas" },
+  { name: "Control por voz", origin: "para baja movilidad" },
 ];
 
 function RampVisual() {
@@ -53,18 +59,20 @@ export default function SlideAccessBenefits() {
     <Slide id="accessBenefits">
       <div className="grid items-center gap-16 text-left md:grid-cols-2">
         <div>
-          <h2 className="text-4xl text-brand-light mb-2">{info.title}</h2>
-          <p className="mb-4 text-lg italic text-gray-400">
-            Diseñado para uno, terminan usándolo todos.
+          <h2 className="text-4xl text-brand-light mb-3">{info.title}</h2>
+          <p className="mb-8 text-2xl text-gray-200">
+            Pensado para uno, lo usan todos.
           </p>
-          <p className="mb-4 text-gray-400">
-            La rampa en la vereda se construyó para sillas de ruedas. Hoy la
-            usan cochecitos, repartidores, ciclistas y más.
-          </p>
-          <p className="text-gray-400">
-            Eso es el efecto rampa de acceso: la accesibilidad beneficia a todos
-            los usuarios, no solo a quienes tienen una discapacidad.
-          </p>
+          <ul className="space-y-3">
+            {ORIGINS.map(({ name, origin }) => (
+              <li
+                key={name}
+                className="border-t border-white/10 pt-3 text-lg text-gray-400"
+              >
+                <strong className="text-white">{name}</strong> — {origin}
+              </li>
+            ))}
+          </ul>
         </div>
         <RampVisual />
       </div>

@@ -9,6 +9,7 @@ import {
   ChevronDown,
   Search,
   ExternalLink,
+  Eye,
 } from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
 
@@ -16,17 +17,22 @@ const DEVTOOLS_HIGHLIGHTS = [
   {
     Icon: ScanSearch,
     title: "Panel Accessibility",
-    detail: "nombre, rol y valor de cualquier nodo",
-  },
-  {
-    Icon: Palette,
-    title: "Color picker",
-    detail: "ratio de contraste en tiempo real",
+    detail: "nombre, rol y valor",
   },
   {
     Icon: Workflow,
     title: "Árbol de accesibilidad",
-    detail: "un toggle, y ves qué quedó afuera",
+    detail: "lo que lee un lector de pantalla",
+  },
+  {
+    Icon: Palette,
+    title: "Color picker",
+    detail: "contraste en tiempo real",
+  },
+  {
+    Icon: Eye,
+    title: "Rendering",
+    detail: "emula visión y movimiento reducido",
   },
 ];
 
@@ -174,17 +180,16 @@ export function SlideToolsLighthouse() {
         <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
         <div className="mb-6 flex items-start gap-4">
           <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-indigo-300" />
-          <p className="text-2xl leading-relaxed text-gray-200">
-            <strong className="text-white">Lighthouse</strong> audita
-            accesibilidad, performance, buenas prácticas y SEO con puntaje de
-            0-100.
+          <p className="text-3xl leading-snug text-gray-200">
+            <strong className="text-white">Lighthouse</strong>: auditoría
+            dentro de DevTools, de 0 a 100.
           </p>
         </div>
         <div className="ml-11 flex items-start gap-3 border-l border-white/10 pl-6">
-          <Gauge className="mt-0.5 h-5 w-5 shrink-0 text-gray-500" />
-          <p className="text-base text-gray-400">
-            <strong className="text-gray-300">PageSpeed Insights</strong> lo
-            mismo pero como servicio web de Google.
+          <Gauge className="mt-1 h-5 w-5 shrink-0 text-gray-500" />
+          <p className="text-xl text-gray-400">
+            <strong className="text-gray-300">PageSpeed Insights</strong>: lo
+            mismo, sin depender de tu máquina.
           </p>
         </div>
       </div>
@@ -208,13 +213,19 @@ export function SlideToolsAccessibilityInsights() {
           Accessibility Insights for Web
           <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
         </a>
-        <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
-          Extensión de Microsoft con dos modos:{" "}
-          <strong className="text-white">FastPass</strong> corre un chequeo
-          automatizado en segundos, y{" "}
-          <strong className="text-white">Assessment</strong> guía paso a paso
-          los criterios que solo se verifican a mano, como el orden del foco.
-        </p>
+        <dl className="mt-8 max-w-2xl space-y-4 text-2xl">
+          <div className="border-t border-white/10 pt-4">
+            <dt className="inline font-bold text-white">FastPass</dt>
+            <dd className="inline text-gray-300"> — chequeo automático</dd>
+          </div>
+          <div className="border-t border-white/10 pt-4">
+            <dt className="inline font-bold text-white">Assessment</dt>
+            <dd className="inline text-gray-300">
+              {" "}
+              — guía los chequeos manuales
+            </dd>
+          </div>
+        </dl>
       </div>
     </Slide>
   );
@@ -236,10 +247,11 @@ export function SlideToolsAxeCore() {
           axe-core (Deque)
           <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
         </a>
-        <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
-          No tiene interfaz propia: es el motor de reglas WCAG que corre por
-          debajo de Lighthouse, de Accessibility Insights, y de las herramientas
-          de testing que vienen ahora.
+        <p className="max-w-2xl text-3xl leading-snug text-gray-200">
+          El motor detrás de Lighthouse y Accessibility Insights.
+        </p>
+        <p className="mt-3 text-xl text-gray-400">
+          Open source, para usar desde código.
         </p>
       </div>
     </Slide>
@@ -279,13 +291,12 @@ export function SlideToolsTesting() {
           <PlaywrightLogo className="h-9 w-9 shrink-0 text-indigo-300" />
           <h2 className="text-5xl text-brand-light">{info.title}</h2>
         </div>
-        <div className="space-y-4 text-2xl leading-relaxed text-gray-200">
-          <p>
-            <strong className="text-white">Playwright</strong> es un runner
-            end-to-end que nos permitirá automatizar las reglas de axe sobre la
-            app.
-          </p>
-        </div>
+        <p className="text-3xl leading-snug text-gray-200">
+          axe sobre toda la app, en cada build.
+        </p>
+        <p className="mt-2 text-xl text-gray-400">
+          En la pipeline, con un comando o en un hook de git.
+        </p>
         <pre className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-sm leading-relaxed text-indigo-300">
           {PLAYWRIGHT_A11Y_TEST}
         </pre>

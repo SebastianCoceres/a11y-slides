@@ -25,7 +25,7 @@ export function SlideAdvancedPrinciplesIntro() {
     <StatementSlide
       id="advancedPrinciplesIntro"
       title={info.title}
-      statement="Formas de mirar una interfaz que casi nunca aparecen en un checklist de accesibilidad."
+      statement="Aprobar todos los criterios no la hace fácil de usar."
     />
   );
 }
@@ -61,7 +61,7 @@ export function SlideInteractionFatigue() {
     <StatementSlide
       id="interactionFatigue"
       title={info.title}
-      statement="Cada interacción tiene un costo, y ese costo se multiplica cuando se repite cien veces por día."
+      statement="Cada interacción tiene un costo, y se multiplica cuando se repite decenas de veces al día."
     />
   );
 }
@@ -277,7 +277,7 @@ export function SlideInclusiveDesign() {
     <StatementSlide
       id="inclusiveDesign"
       title={info.title}
-      statement="Quien usa nuestro software no está ahí para aprender cómo funciona. Está ahí para hacer su trabajo."
+      statement="Nadie usa un producto para aprender cómo funciona: lo usa para completar una tarea."
     />
   );
 }

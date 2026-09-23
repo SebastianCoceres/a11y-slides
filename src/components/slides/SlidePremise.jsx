@@ -93,12 +93,8 @@ export default function SlidePremise() {
             {info.title}
           </h2>
           <NumeronymBreakdown />
-          <p className="mb-4 text-lg italic text-gray-400">
-            A11Y es el numerónimo de "Accessibility" (A + 11 letras + Y).
-          </p>
-          <p className="text-lg italic text-gray-400">
-            Que la interfaz no dependa de un solo sentido, un solo
-            dispositivo, o una sola forma de pensar.
+          <p className="text-2xl leading-snug text-gray-200">
+            Una propiedad de calidad, como la performance o la seguridad.
           </p>
         </div>
         <FloatingVisual />

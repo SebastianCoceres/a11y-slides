@@ -6,17 +6,15 @@
 
 <!-- id:title -->
 
-_Bases para construir interfaces más interpretables, robustas y predecibles._
-
 Esta charla es sobre accesibilidad web: qué es, por qué nos debería de interesar y cómo podemos sumarla a nuestro trabajo.
 
-El título lo elegí a propósito: "humanos y máquinas". Se suele pensar en la accesibilidad únicamente para personas con discapacidades, pero va bastante más allá. Una interfaz accesible no solo la usa una persona con un lector de pantalla o navegando con teclado; también la entiende mejor cualquier cosa que la tenga que leer — un test automatizado, un buscador, un agente de IA. Lo que vamos a ver son bases para que nuestras interfaces sean más interpretables, más robustas y más predecibles, para todos los que las usan.
+Se suele pensar en la accesibilidad únicamente para personas con discapacidades, pero va bastante más allá. Una interfaz accesible también la entiende mejor cualquier cosa que la tenga que leer, herramientas de asistencia, buscadores, agentes de IA. Lo que vamos a ver son las bases para que nuestras interfaces sean más interpretables, más robustas y más predecibles.
 
-Muchas de las cosas que voy a contar seguramente ya las aplican sin darse cuenta, porque así lo aprendieron, por costumbre o por sentido común.
+Muchas de las cosas que voy a contar seguramente ya las aplican sin darse cuenta, porque así se aprenden o simplemente por sentido común.
 
-Y es curioso, porque la accesibilidad como principio suele ser algo que uno descubre recién cuando profundiza en el desarrollo de interfaces. Desde mi punto de vista es algo que deberia enseñarse desde el principio. Puede sonar aburrido, o hasta abrumador, pero son las bases que sostienen interfaces mejores, independientemente de las tecnologías que usemos.
+Y es curioso, porque la accesibilidad como principio suele ser algo que uno descubre recién cuando profundiza en el desarrollo de interfaces. Desde mi punto de vista es algo que deberia enseñarse desde el principio. Puede sonar aburrido, pero son las bases que sostienen interfaces mejores, independientemente de las tecnologías que usemos.
 
-No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un tema enorme y es algo que se aprende profundizando mucho en el mundo del frontend. Lo que sí espero es que se lleven algo interesante: que esto existe, por qué nos tiene que importar, y alguna herramienta concreta para poder empezar a aplicarlo.
+No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un tema enorme y de hecho no voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
 
 > Antes de seguir, quiero aclarar porque esa término que ven en pantalla
 

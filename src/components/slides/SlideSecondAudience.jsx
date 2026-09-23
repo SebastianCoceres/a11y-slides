@@ -13,17 +13,13 @@ export function SlideSecondAudience() {
   return (
     <Slide id="secondAudience">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
-        <p className="text-2xl text-gray-300 mb-10">
-          Hoy la mayoría del tráfico que llega a un sitio ya no es humano.
-        </p>
-        <div className="mb-8 flex flex-wrap items-baseline gap-5">
+        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <div className="mb-10 flex flex-wrap items-baseline gap-5">
           <span className="text-gradient-brand font-mono text-8xl font-black leading-none">
             57%
           </span>
-          <p className="max-w-xs text-base text-gray-400">
-            del tráfico HTTP a contenido web ya es de agentes automatizados, no
-            personas
+          <p className="max-w-xs text-xl text-gray-300">
+            del tráfico web ya no es humano
             <span className="mt-1 block text-xs text-gray-400">
               Cloudflare Radar, 2026
             </span>
@@ -34,18 +30,20 @@ export function SlideSecondAudience() {
             <div className="font-mono text-2xl font-bold tabular-nums text-white">
               95.9%
             </div>
-            <p className="max-w-xs text-sm text-gray-400">
-              de los sitios más visitados falla al menos un criterio WCAG —
-              WebAIM Million, 2026
+            <p className="max-w-xs text-base text-gray-400">
+              de los sitios top falla WCAG
+              <span className="mt-1 block text-xs">WebAIM Million, 2026</span>
             </p>
           </div>
           <div>
             <div className="font-mono text-2xl font-bold tabular-nums text-white">
               400M → 1.000M
             </div>
-            <p className="max-w-xs text-sm text-gray-400">
-              usuarios semanales de ChatGPT, feb. 2025 - ago. 2026 — OpenAI /
-              TechCrunch
+            <p className="max-w-xs text-base text-gray-400">
+              usuarios semanales de ChatGPT
+              <span className="mt-1 block text-xs">
+                OpenAI, feb. 2025 → ago. 2026
+              </span>
             </p>
           </div>
         </div>
@@ -178,7 +176,7 @@ export function SlideSecondAudienceMechanism() {
               Cientos de miles
             </div>
             <p className="mt-1 text-sm text-gray-400">
-              de tokens para interpretar el HTML crudo de una página
+              tokens de HTML crudo
             </p>
           </div>
           <div>
@@ -187,7 +185,7 @@ export function SlideSecondAudienceMechanism() {
               ~200-400
             </div>
             <p className="mt-1 text-sm text-gray-400">
-              tokens por snapshot del árbol de accesibilidad — Playwright MCP
+              tokens por snapshot del árbol — Playwright MCP
             </p>
           </div>
         </div>
@@ -197,22 +195,10 @@ export function SlideSecondAudienceMechanism() {
 }
 
 const LLM_EVAL_STATS = [
-  {
-    stat: "12%",
-    label: "de aprobación sin ninguna instrucción de accesibilidad — mejor modelo: 25%",
-  },
-  {
-    stat: "0%",
-    label: "en el peor caso: e-commerce en React, tema oscuro — 15.55 fallas WCAG en promedio",
-  },
-  {
-    stat: "60%",
-    label: "con solo agregar un recordatorio de accesibilidad al prompt",
-  },
-  {
-    stat: "86%",
-    label: "cuando el agente corre sus propios tests y corrige antes de responder",
-  },
+  { stat: "12%", label: "sin pedir accesibilidad" },
+  { stat: "0%", label: "peor caso: home de e-commerce" },
+  { stat: "60%", label: "con un recordatorio en el prompt" },
+  { stat: "86%", label: "corriendo sus propios tests" },
 ];
 
 export function SlideSecondAudienceLlmEval() {
@@ -220,20 +206,17 @@ export function SlideSecondAudienceLlmEval() {
   return (
     <Slide id="secondAudienceLlmEval">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-8">{info.title}</h2>
-        <p className="max-w-xl text-xl leading-relaxed text-gray-300">
-          8 modelos, 32 casos de prueba, código renderizado y auditado con axe-core sobre WCAG 2.2.
-        </p>
-        <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-6 border-t border-white/10 pt-8 sm:grid-cols-2">
+        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-8 border-t border-white/10 pt-8 sm:grid-cols-2">
           {LLM_EVAL_STATS.map(({ stat, label }) => (
             <div key={label}>
-              <div className="font-mono text-4xl font-black tabular-nums text-white">{stat}</div>
-              <p className="mt-1 max-w-xs text-sm text-gray-400">{label}</p>
+              <div className="font-mono text-5xl font-black tabular-nums text-white">{stat}</div>
+              <p className="mt-1 max-w-xs text-lg text-gray-400">{label}</p>
             </div>
           ))}
         </div>
-        <p className="mt-8 text-xs uppercase tracking-wide text-gray-500">
-          Microsoft,{" "}
+        <p className="mt-10 text-xs uppercase tracking-wide text-gray-500">
+          8 modelos · 32 casos · Microsoft,{" "}
           <a
             href="https://microsoft.github.io/a11y-llm-eval-report/index.html"
             target="_blank"
@@ -252,23 +235,23 @@ export function SlideSecondAudienceLlmEval() {
 const tools = [
   {
     icon: Puzzle,
-    title: '"accessibility", una skill de agente',
-    desc: 'Instrucciones especializadas en WCAG 2.2 que se activan al pedir una auditoría.',
+    title: 'Skill "accessibility"',
+    desc: "El conocimiento de WCAG, para el agente",
   },
   {
     icon: ShieldAlert,
     title: "Axe MCP Server (Deque)",
-    desc: "El mismo axe-core de la sección anterior, empaquetado como MCP oficial: analiza una página y devuelve el fix de código listo para revisar, aplicar o rechazar. Funciona con Claude Code, Copilot, Cursor y Windsurf.",
+    desc: "axe-core, con el fix listo para aplicar",
   },
   {
     icon: ScanSearch,
     title: "Chrome DevTools MCP / Playwright MCP",
-    desc: "Le dan al agente una sesión de navegador real: puede navegar la página, leer su árbol de accesibilidad en vivo, y detectar fallas de navegación por teclado que un análisis estático no ve.",
+    desc: "Un navegador real para el agente",
   },
   {
     icon: BookOpen,
     title: "MCPs de documentación",
-    desc: "Un agente puede traer la documentación vigente de una librería o de un criterio WCAG en el momento en que la necesita, en vez de confiar en lo que memorizó durante el entrenamiento.",
+    desc: "Docs vigentes, no memorizadas",
   },
 ];
 
@@ -281,11 +264,11 @@ export function SlideSecondAudienceTools() {
         <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
           {tools.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="border-t border-white/10 pt-5">
-              <div className="mb-1.5 flex items-center gap-2 text-lg font-bold text-white">
+              <div className="mb-1.5 flex items-center gap-2 text-xl font-bold text-white">
                 <Icon className="h-5 w-5 shrink-0 text-indigo-300" />
                 {title}
               </div>
-              <p className="text-sm text-gray-400">{desc}</p>
+              <p className="text-lg text-gray-400">{desc}</p>
             </div>
           ))}
         </div>
@@ -306,9 +289,8 @@ export function SlideSecondAudienceCodeProximity() {
               <ScanSearch className="h-5 w-5" />
               Una herramienta de auditoría
             </div>
-            <p className="text-base text-gray-400">
-              Ve el síntoma en la página renderizada, pero no el código que lo
-              causa.
+            <p className="text-xl text-gray-400">
+              Ve el síntoma, no el código.
             </p>
           </div>
           <div>
@@ -316,9 +298,8 @@ export function SlideSecondAudienceCodeProximity() {
               <FolderGit2 className="h-6 w-6 text-brand-light" />
               Un agente con el repositorio
             </div>
-            <p className="text-xl leading-relaxed text-gray-200">
-              Ve el síntoma y el código, puede arreglarlo directamente en la
-              fuente.
+            <p className="text-2xl leading-snug text-gray-200">
+              Ve el síntoma y el código: un solo fix, en la fuente.
             </p>
           </div>
         </div>
@@ -340,7 +321,10 @@ export function SlideSecondAudienceWebmcp() {
   return (
     <Slide id="secondAudienceWebmcp">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-brand-light mb-3">{info.title}</h2>
+        <p className="mb-10 text-xl text-gray-300">
+          El sitio declara funciones que un agente puede invocar.
+        </p>
         <div className="relative">
           <div
             aria-hidden="true"
@@ -404,10 +388,20 @@ export function SlideSecondAudienceWebmcp() {
               Declarativa
             </p>
             <pre className="overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-xs leading-relaxed text-indigo-300">
+              {/* name and required already exist on any accessible form —
+                  WebMCP reuses them instead of inventing AI-only attributes. */}
               {`<form toolname="search-cars"
   tooldescription="Buscar por
     marca/modelo">
-  <input name="make" required
+  <input `}
+              <mark className="rounded bg-brand/30 px-0.5 font-bold text-white">
+                name
+              </mark>
+              {`="make" `}
+              <mark className="rounded bg-brand/30 px-0.5 font-bold text-white">
+                required
+              </mark>
+              {`
     toolparamdescription="...">
   <button type=submit>Search</button>
 </form>`}

@@ -1,14 +1,14 @@
 {
   "title": { "title": "A11Y" },
   "premise": { "title": "¿Qué es A11Y?" },
-  "wcagStandard": { "title": "Estándar global" },
+  "wcagStandard": { "title": "WCAG: el estándar" },
   "principlePerceptible": { "title": "Perceptible" },
   "principleOperable": { "title": "Operable" },
   "principleComprehensible": { "title": "Comprensible" },
   "principleRobust": { "title": "Robusto" },
-  "accessBenefits": { "title": "Beneficios: el efecto rampa de acceso" },
-  "situations": { "title": "¿Por qué nos interesa aplicarla?" },
-  "businessImpact": { "title": "Lo que nos ahorramos como equipo" },
+  "accessBenefits": { "title": "El efecto rampa de acceso" },
+  "situations": { "title": "Le puede pasar a cualquiera" },
+  "businessImpact": { "title": "Una ventaja operativa" },
   "earlyVsLegacy": { "title": "Temprano vs. último momento" },
   "principlesIntro": { "title": "POUR: los cuatro principios" },
   "altText": { "title": "Texto alternativo", "wcag": { "code": "1.1.1", "name": "Contenido no textual", "level": "A" } },
@@ -79,5 +79,5 @@
   "secondAudienceCodeProximity": { "title": "La ventaja de estar cerca del código" },
   "secondAudienceWebmcp": { "title": "WebMCP — lo que viene" },
   "secondAudienceWebmcpFallback": { "title": "Ni lo más nuevo se anima a dejarlo" },
-  "closing": { "title": "Cierre" }
+  "closing": { "title": "Gracias" }
 }
