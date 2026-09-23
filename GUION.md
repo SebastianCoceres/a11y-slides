@@ -256,13 +256,13 @@ Una skill que le brinda el conocimiento necesario sobre accesibilidad.
 
 contamos con un conjunto de MCPs que permiten a un agente inspeccionar un navegador real y detectar problemas que un análisis estático puede pasar por alto.
 
-> Pero ojo: ninguna de estas herramientas es la ventaja real
+> A diferencia de las herramientas que vimos anteriormente creo que la ventaja real pasa por estar cerca del código.
 
 <!-- id:secondAudienceCodeProximity -->
 
-Las herramientas que hemos visto reportan el síntoma en la página ya renderizada: "este botón no tiene nombre accesible". Pero no saben si ese botón vive en un componente que se repite cuarenta veces, o si es un caso único, no tienen forma de ver el código, solo el resultado final.
+Reportan el síntoma en la página ya renderizada
 
-Un agente con acceso al repositorio ve el mismo síntoma pero tambien el código detrás. Puede proponer el fix una sola vez, en la fuente.
+Un agente con acceso al repositorio ve el mismo síntoma pero tambien el código detrás. Puede retroalimentar el codigo corrigiendo automaticamente.
 
 > y eso esta genial pero vale la pena mirar un paso más allá: hacia dónde va este mecanismo.
 
@@ -292,7 +292,7 @@ implementando el patron accesible ya estamos preparados para integrar WebMCP.
 
 <!-- id:secondAudienceWebmcpFallback -->
 
-WebMCP no está pensado para interactuar con el. como dice el spec: "no está pensado para que lo consuma tecnología asistiva, ni para interactuar directamente con el árbol de accesibilidad de una página."
+WebMCP "no está pensado para que lo consuma tecnología asistiva, ni para interactuar directamente con el árbol de accesibilidad de una página."
 
 Pero después agrega la frase que realmente importa para esta charla: cuando un agente no encuentra un tool declarado para lo que necesita hacer, "puede caer de vuelta a la automatización de navegador de propósito general" — vuelve exactamente al mismo mecanismo que lee el árbol de accesibilidad.
 
@@ -309,7 +309,7 @@ Ni el estándar diseñado específicamente para agentes de IA se anima a dejarlo
 
 Estos conceptos no corresponden a ningún criterio numerado, pero explican por qué una interfaz que aprueba todo en el papel puede seguir siendo un dolor de cabeza en la práctica.
 
-> qué pasa incluso cuando una interfaz cumple con todo lo que vimos hasta acá — empezando por cuánto tiene que recordar la persona que la usa.
+> empezando por cuánto tiene que recordar la persona que la usa.
 
 <!-- id:cognitiveLoad -->
 
@@ -336,8 +336,6 @@ Imaginense si encima es usado por alguien que se tenga que someter a mayor esfue
 Nadie usa un producto para aprender cómo funciona: lo usa para completar una tarea.
 
 Hay que diseñar pensando en condiciones reales — interrupciones, presión de tiempo, cansancio. Hay que evitar trasladarle a esa persona una complejidad que el software debería absorber.
-
-En resumen un producto puede aprobar cualquier auditoría automática y, aun así, seguir haciendo trabajar de más a quien lo usa todos los días.
 
 ---
 
