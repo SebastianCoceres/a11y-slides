@@ -1,11 +1,5 @@
 import { Slide } from "@/components/deck";
-import {
-  Puzzle,
-  ShieldAlert,
-  ScanSearch,
-  BookOpen,
-  FolderGit2,
-} from "lucide-react";
+import { Puzzle, Plug, ScanSearch, FolderGit2 } from "lucide-react";
 import slideCatalog from "@/data/slideCatalog.json";
 
 export function SlideSecondAudience() {
@@ -235,23 +229,13 @@ export function SlideSecondAudienceLlmEval() {
 const tools = [
   {
     icon: Puzzle,
-    title: 'Skill "accessibility"',
-    desc: "El conocimiento de WCAG, para el agente",
+    title: "Skills",
+    desc: "El conocimiento de accesibilidad, para el agente",
   },
   {
-    icon: ShieldAlert,
-    title: "Axe MCP Server (Deque)",
-    desc: "axe-core, con el fix listo para aplicar",
-  },
-  {
-    icon: ScanSearch,
-    title: "Chrome DevTools MCP / Playwright MCP",
-    desc: "Un navegador real para el agente",
-  },
-  {
-    icon: BookOpen,
-    title: "MCPs de documentación",
-    desc: "Docs vigentes, no memorizadas",
+    icon: Plug,
+    title: "MCPs",
+    desc: "Un navegador real, para ver lo que el análisis estático no ve",
   },
 ];
 
@@ -263,12 +247,12 @@ export function SlideSecondAudienceTools() {
         <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <div className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2">
           {tools.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="border-t border-deck-ink/10 pt-5">
-              <div className="mb-1.5 flex items-center gap-2 text-xl font-bold text-deck-ink">
-                <Icon className="h-5 w-5 shrink-0 text-deck-accent" />
+            <div key={title} className="border-t border-deck-ink/10 pt-6">
+              <div className="mb-3 flex items-center gap-3 text-4xl font-bold text-deck-ink">
+                <Icon className="h-8 w-8 shrink-0 text-deck-accent" />
                 {title}
               </div>
-              <p className="text-lg text-deck-muted">{desc}</p>
+              <p className="text-2xl leading-snug text-deck-muted">{desc}</p>
             </div>
           ))}
         </div>
