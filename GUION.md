@@ -14,7 +14,7 @@ Muchas de las cosas que voy a contar seguramente ya las aplican sin darse cuenta
 
 Y es curioso, porque la accesibilidad como principio suele ser algo que uno descubre recién cuando profundiza en el desarrollo de interfaces. Desde mi punto de vista es algo que deberia enseñarse desde el principio. Puede sonar aburrido, pero son las bases que sostienen interfaces mejores, independientemente de las tecnologías que usemos.
 
-No vengo a convertirlos en expertos en accesibilidad — sería mentirles, es un tema enorme y de hecho no voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
+No voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. No vengo a convertirlos en expertos en accesibilidad es un tema enorme que no me da la vida para contarselos. Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
 
 > Antes de seguir, quiero aclarar porque esa término que ven en pantalla
 
