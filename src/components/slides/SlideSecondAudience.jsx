@@ -38,6 +38,26 @@ export function SlideSecondAudience() {
               <span className="mt-1 block text-xs">
                 OpenAI, feb. 2025 → ago. 2026
               </span>
+              <span className="mt-1 block text-xs">
+                ChatGPT Atlas y ARIA:{" "}
+                <a
+                  href="https://help.openai.com/en/articles/12627856-publishers-and-developers-faq#what-can-i-do-to-improve-my-website-performance-with-chatgpt-agent-in-atlas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-deck-ghost underline-offset-2 hover:text-deck-soft"
+                >
+                  OpenAI
+                </a>
+                {" · "}
+                <a
+                  href="https://kickpoint.ca/chatgpt-atlas-browser-aria-tags-guide/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline decoration-deck-ghost underline-offset-2 hover:text-deck-soft"
+                >
+                  Kick Point
+                </a>
+              </span>
             </p>
           </div>
         </div>

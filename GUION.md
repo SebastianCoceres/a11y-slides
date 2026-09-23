@@ -12,9 +12,13 @@ Se suele pensar en la accesibilidad únicamente para personas con discapacidades
 
 Muchas de las cosas que voy a contar seguramente ya las aplican sin darse cuenta, porque así se aprenden o simplemente por sentido común.
 
-Y es curioso, porque la accesibilidad como principio suele ser algo que uno descubre recién cuando profundiza en el desarrollo de interfaces. Desde mi punto de vista es algo que deberia enseñarse desde el principio. Puede sonar aburrido, pero son las bases que sostienen interfaces mejores, independientemente de las tecnologías que usemos.
+Y es curioso, porque la accesibilidad como principio suele ser algo que uno descubre recién cuando profundiza en el desarrollo de interfaces.
 
-No voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. No vengo a convertirlos en expertos en accesibilidad es un tema enorme que no me da la vida para contarselos. Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
+Desde mi punto de vista es algo que deberia enseñarse desde el principio porque son las bases que sostienen interfaces mejores, independientemente de las tecnologías que usemos.
+
+No voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. No vengo a convertirlos en expertos en accesibilidad es un tema enorme que no me da la vida para contarselos.
+
+Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
 
 > Antes de seguir, quiero aclarar porque esa término que ven en pantalla
 
@@ -24,19 +28,23 @@ A11Y es un numerónimo, es la abreviatura de "Accessibility". El once es el núm
 
 Quiero que la conozcan porque es el término que se usa en la industria y porque si queremos averiguar algo más sobre el tema, se suele encontrar de esta manera.
 
-Podriamos dar como definicion el pensar e implementar nuestro software más allá de las formas básicas de interacción
+Podriamos dar como definicion que es la forma de pensar e implementar nuestro software más allá de las formas básicas de interacción
 
 es medible , es testeable y al igual que la performance o la seguridad es una propiedad de calidad del software
 
-> Y como es de esperarse tiene que haber una forma de medirla. Y la hay, hace más de treinta años.
+> hace más de treinta años que contamos con un estándar que nos dice qué es accesible y qué no lo es
 
 <!-- id:wcagStandard -->
 
-El W3C publica las Web Content Accessibility Guidelines (WCAG) desde 1994, y ya vamos por la versión 2.2, desde el 2023.
+El W3C publica las Web Content Accessibility Guidelines (WCAG) el cual es el estándar desde 1994 y ya vamos por la versión 2.2 el cual se publicó en 2023.
 
-Son criterios puntuales, verificables uno por uno, agrupados en tres niveles: A es el mínimo, AA es lo que te exigen normativas como la de la Unión Europea, y AAA es el ideal, que casi nunca es realista alcanzar.
+Son criterios puntuales y verificables, agrupados en tres niveles:
 
-Por dar un ejemplo: la interpretación en lengua de señas para todo contenido de video. Está buenísimo, pero pedirle eso a una empresa que no tienel los recursos y no tiene la obligacion legal no es realista.
+- A es el mínimo, las imágenes tienen texto alternativo y los formularios tienen etiquetas.
+- AA , contraste y foco en la navegación y contenido, es lo que te exigen normativas como la de la Unión Europea
+- AAA es el ideal pero que casi nunca es realista alcanzar.
+
+Por dar un ejemplo: la interpretación en lengua de señas para todo contenido de video. Está buenísima la idea, pero pedirle eso a una empresa que no tiene los recursos para llevarlo a cabo no es realista.
 
 Lo que voy a contar son los criterios de A y AA que son el minimo que deberíamos cumplir
 
@@ -90,9 +98,9 @@ La dificultad de aplicarlo no es la misma si arrancamos desde el inicio del proy
 
 Arrancar temprano es barato. El costo se diluye entre tareas y se normaliza el patrón accesible desde el inicio.
 
-Dejarlo para último momento cambia la ecuación. Los cambios hay que auditarlos con más cuidado, cada cambio es candidato a romper algo — sobre todo si no hay tests que lo cubran.
+Dejarlo para último momento significa que los cambios hay que auditarlos con más cuidado, cada cambio es candidato a romper algo.
 
-No quiero que saquen la conclusión de que esto no es un impedimento para implementarlo en proyectos antiguos. Solo que va a ser más lento y esto no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiera dedicar.
+No quiero que saquen la conclusión de que esto es un impedimento. Solo que va a ser más lento y esto no se resuelve de una. Termina siendo una cuestión de tiempo y recursos que se le quiera dedicar.
 
 > Ahora sí, veamos en qué se apoya todo esto que estoy hablando.
 
@@ -114,7 +122,7 @@ Imaginemos un formulario que marca los campos de error poniéndolos únicamente 
 
 La idea es simple: si algo es importante para entender qué está pasando en la interfaz, no debería depender de un único sentido.
 
-> El segundo principio ya no es sobre qué percibís, sino sobre qué podés hacer con eso.
+> El segundo principio ya es sobre qué podés hacer con eso.
 
 <!-- id:principleOperable -->
 
@@ -148,7 +156,7 @@ puede funcionar perfecto y aun así no existir semánticamente.
 
 Que algo sea robusto significa que el contenido debe poder ser interpretado de forma correcta por una amplia variedad de dispositivos y tecnologías de asistencia y este es un punto clave en esta charla ya van a ver por qué
 
-> Ahora se preguntarán: ¿Cómo se implementa esto en el día a día?
+> Antes de continuar con ese tema veamos cómo se implementa esto
 
 ---
 
@@ -156,17 +164,15 @@ Que algo sea robusto significa que el contenido debe poder ser interpretado de f
 
 <!-- id:toolsDevTools -->
 
-Lo más básico son las devtools del navegador.
+Lo más básico, lo mas artesano, son las devtools del navegador.
 
 De entrada vemos lo que todos conocemos: el propio inspector de Elementos, el panel de estilos y la consola.
 
 Ahí mismo, al lado del panel de estilos, hay una opción "Accessibility" que muestra exactamente lo que expone cada nodo — nombre, rol, descripción.
 
-Y se puede togglear para ver directamente el árbol de accesibilidad completo en vez del DOM. Es lo mismo que termina viendo un lector de pantalla.
+En esta seccion tenemos un swith que nos da acceso al árbol de accesibilidad. Este es una proyección paralela del DOM que el navegador expone a los programas y funciona como una API separada de la visual. Es lo mismo que termina viendo por ejemplo un lector de pantalla.
 
-Por si no lo sabían, si seleccionamos nodos de tipo texto, podemos ver que el selector de color ya te calcula el contraste en tiempo real.
-
-Y el panel de Rendering trae emuladores útiles: cómo ve la pantalla alguien con distintas condiciones de visión, o si tus animaciones realmente respetan la preferencia de movimiento reducido.
+Las devtools tambien nos ofrecen informacion util, si seleccionamos nodos de tipo texto, podemos ver en informacion el contraste que tiene este texto con su fondo. AA no solicita un contraste minimo del 4.5. Para saber porque este valor tiene importancia podemos usar el panel de Rendering el cual nos brinda una serie de herramietas y emuladores útiles para saber cómo ve la pantalla alguien con distintas condiciones de visión, o si tus animaciones realmente respetan la preferencia de movimiento reducido.
 
 > Con esta herramienta podemos inspeccionar a mano. Pero la idea para nosotros siempre es automatizar, para eso existen herramientas como lighthouse.
 
@@ -186,7 +192,9 @@ PageSpeed Insights es lo mismo pero como servicio web de Google. Este ofrece un 
 Accessibility Insights de Microsoft, es una extensión con dos modos. FastPass que sería basicamente lo mismo que lighthouse pero
 el sigueinte es "Assessment" el cual te guía paso a paso por los criterios que solo se pueden verificar a mano, como el orden del foco.
 
-> Si queremos que la accesibilidad forme parte del desarrollo y no dependa de acordarnos de hacerlo, necesitamos llevar estas comprobaciones a nuestro flujo de trabajo y ejecutarlas automáticamente para eso podemos aprovecharnos del motor detras de estas herramientas.
+> Si queremos que la accesibilidad forme parte del desarrollo y no dependa de acordarnos de hacerlo, necesitamos llevar estas comprobaciones a nuestro flujo de trabajo y ejecutarlas automáticamente
+>
+> para eso podemos aprovecharnos del motor detras de estas herramientas.
 
 <!-- id:toolsAxeCore -->
 
@@ -200,18 +208,19 @@ axe-core, de Deque labs, es una herramienta opensource que nos permite integrar 
 
 Un runner end-to-end. con el podemos automatizar la ejecución de axe sobre toda la aplicación, en cada build.
 
-si no es nuestro caso y no tenemos un sistema de integración, podemos correrlo manualmente con un comando y ver el reporte en la consola. hasta podriamos usar un hook de git para que se ejecuten obligatoriamente los tests en local antes de pushear.
+En mi caos por ejmplo hasta podriamos usar un hook de git para que se ejecuten obligatoriamente los tests en local antes de pushear codigo, asi si algo falla y a lo arreglamos antes de que salga de nuestra maquina.
 
-> Podriamos pensar que con las herramientas ya es suficiente pero el titulo de la charla decia que tambien ibamos a hablar de maquinas.
+> Hasta acá ya podemos integrar a nuestro trabajo el patron accesible, pero tambien dije que ibamos a hablar de las "máquinas".
+>
 > y esto es interesante, por si no lo sabian, la mayoría del tráfico que llega a un sitio ya no es humano.
 
 <!-- id:secondAudience -->
 
 según Cloudflare Radar más del 57% de las request http a contenido web en 2026 son de agentes automatizados. Y esos agentes leen exactamente la misma estructura semántica de la que vengo hablando, el árbol de accesibilidad.
 
-Esto significa que implementar accesibilidad en nuestras aplicaciones nos daria una ventaja competitiva. El 95.9% de los sitios más visitados todavía falla al menos un criterio, según la organización "Web accessibility in mind" en su reporte anual Million
+Que yo mencione esto no es casualidad. OpenAI documentó esto en su navegador Atlas. si bien Atlas como producto ya no existe, este se integró directamente a ChatGPT y si tenemos en cuenta que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales.
 
-Que yo mencione el arbol de accesibilidad no es casualidad. OpenAI probó navegar así, leyendo ese árbol, en su navegador Atlas. si bien Atlas como producto ya no existe, este se integró directamente a ChatGPT y si tenemos en cuenta que en poco más de un año pasó de 400 a 1.000 millones de usuarios semanales.
+Esto significa que implementar accesibilidad en nuestras aplicaciones nos daria una ventaja competitiva. El 95.9% de los sitios más visitados todavía falla al menos un criterio, según la organización "Web accessibility in mind" en su reporte anual Million
 
 La misma inversión que hacemos por una persona, hoy también la aprovecha una máquina que opera el sitio a esa escala.
 
