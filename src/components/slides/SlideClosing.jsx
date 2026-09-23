@@ -16,13 +16,13 @@ export default function SlideClosing() {
           {TAKEAWAYS.map((text) => (
             <li
               key={text}
-              className="border-t border-white/10 pt-4 text-4xl text-white"
+              className="border-t border-deck-ink/10 pt-4 text-4xl text-deck-ink"
             >
               {text}
             </li>
           ))}
         </ul>
-        <h2 className="mt-14 text-5xl text-brand-light">{info.title}</h2>
+        <h2 className="mt-14 text-5xl text-deck-title">{info.title}</h2>
       </div>
     </Slide>
   );

@@ -12,12 +12,12 @@ export default function SlideWcagStandard() {
   return (
     <Slide id="wcagStandard">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-12">{info.title}</h2>
-        <div className="grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-3">
+        <h2 className="text-5xl text-deck-title mb-12">{info.title}</h2>
+        <div className="grid grid-cols-1 gap-8 border-t border-deck-ink/10 pt-8 sm:grid-cols-3">
           {facts.map(({ value, label }) => (
             <div key={value}>
-              <div className="font-mono text-4xl font-bold tabular-nums text-white">{value}</div>
-              <p className="mt-2 text-base text-gray-400">{label}</p>
+              <div className="font-mono text-4xl font-bold tabular-nums text-deck-ink">{value}</div>
+              <p className="mt-2 text-base text-deck-muted">{label}</p>
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-import { Children, useEffect, useMemo, useState } from 'react';
+import { Children, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import LightRays from '../LightRays';
 import { DeckControls } from './DeckControls';
@@ -8,12 +8,23 @@ import { ProgressBar } from './ProgressBar';
 import { getSlideId } from './slideId';
 import { SlideIndexOverlay } from './SlideIndexOverlay';
 import { useDeckRouter } from './useDeckRouter';
+import { useDeckTheme } from './useDeckTheme';
 import { useKeyboardNavigation } from './useKeyboardNavigation';
 
-export function Deck({ children, basePath = '/presentacion', syncNotes = true }) {
+export function Deck({ children, basePath = '/presentacion', syncNotes = true, theme: forcedTheme }) {
   const slides = useMemo(() => Children.toArray(children), [children]);
   const { index, next, prev, goTo, total } = useDeckRouter(slides.length, basePath);
   const [indexOpen, setIndexOpen] = useState(false);
+  const { theme, toggleTheme } = useDeckTheme(forcedTheme);
+
+  // LightRays is WebGL and needs a hex string, so read it from the theme's
+  // CSS token instead of duplicating the color here. A theme without rays
+  // sets the token to `none`.
+  const rootRef = useRef(null);
+  const [raysColor, setRaysColor] = useState(null);
+  useLayoutEffect(() => {
+    setRaysColor(getComputedStyle(rootRef.current).getPropertyValue('--deck-rays').trim());
+  }, [theme]);
 
   const topicIds = useMemo(() => slides.map((slide) => getSlideId(slide)), [slides]);
   const topicId = useMemo(() => {
@@ -42,6 +53,7 @@ export function Deck({ children, basePath = '/presentacion', syncNotes = true })
     indexOpen,
     onToggleIndex: () => setIndexOpen((open) => !open),
     onCloseIndex: () => setIndexOpen(false),
+    onToggleTheme: toggleTheme,
   });
 
   const contextValue = useMemo(
@@ -51,9 +63,16 @@ export function Deck({ children, basePath = '/presentacion', syncNotes = true })
 
   return (
     <DeckContext.Provider value={contextValue}>
-      <div className="fixed inset-0 h-screen w-screen overflow-hidden">
+      <div
+        ref={rootRef}
+        className={`deck-surface fixed inset-0 h-screen w-screen overflow-hidden ${
+          theme === 'dark' ? 'deck-dark' : ''
+        }`}
+      >
         <div className="absolute inset-0 z-0">
-          <LightRays raysColor="#6366f1" raysOrigin="top-center" rayLength={1.5} mouseInfluence={0.08} />
+          {raysColor?.startsWith('#') && (
+            <LightRays raysColor={raysColor} raysOrigin="top-center" rayLength={1.5} mouseInfluence={0.08} />
+          )}
         </div>
         <AnimatePresence initial={false} mode="wait">
           <motion.div
@@ -67,7 +86,14 @@ export function Deck({ children, basePath = '/presentacion', syncNotes = true })
             {slides[index]}
           </motion.div>
         </AnimatePresence>
-        <DeckControls prev={prev} next={next} index={index} total={total} />
+        <DeckControls
+          prev={prev}
+          next={next}
+          index={index}
+          total={total}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+        />
         <ProgressBar index={index} total={total} />
         <SlideIndexOverlay
           open={indexOpen}

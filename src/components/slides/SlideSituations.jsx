@@ -15,11 +15,11 @@ export default function SlideSituations() {
   return (
     <Slide id="situations">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-12">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-12">{info.title}</h2>
         <div className="flex flex-wrap items-center gap-x-12 gap-y-8">
           {situations.map(({ icon: Icon, situation, size }) => (
-            <div key={situation} className={`flex items-center gap-3 ${size} text-gray-200`}>
-              <Icon className="h-[1em] w-[1em] shrink-0 text-purple-300" strokeWidth={1.75} />
+            <div key={situation} className={`flex items-center gap-3 ${size} text-deck-body`}>
+              <Icon className="h-[1em] w-[1em] shrink-0 text-deck-accent" strokeWidth={1.75} />
               <span>{situation}</span>
             </div>
           ))}

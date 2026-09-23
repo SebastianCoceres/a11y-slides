@@ -14,7 +14,7 @@ function DotGrid({ className }) {
       className={`pointer-events-none fixed inset-0 opacity-10 ${className}`}
       style={{
         backgroundImage:
-          "radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px)",
+          "radial-gradient(color-mix(in oklch, var(--deck-ink) 18%, transparent) 1px, transparent 1px)",
         backgroundSize: "14px 14px",
       }}
     />
@@ -40,7 +40,7 @@ function Cell({ className = "", children }) {
 function Card({ className, children }) {
   return (
     <div
-      className={`rounded-[3cqmin] border border-white/10 bg-white/2 ${className}`}
+      className={`rounded-[3cqmin] border border-deck-ink/10 bg-deck-ink/2 ${className}`}
     >
       {children}
     </div>
@@ -50,10 +50,10 @@ function Card({ className, children }) {
 function TypographyCard() {
   return (
     <Card className="w-[90cqmin] p-[12cqmin]">
-      <p className="text-[26cqmin] leading-none text-gray-500">Aa</p>
+      <p className="text-[26cqmin] leading-none text-deck-faint">Aa</p>
       <div className="mt-[7cqmin] space-y-[4cqmin]">
-        <div className="h-[3cqmin] w-full rounded-full bg-white/15" />
-        <div className="h-[3cqmin] w-2/3 rounded-full bg-white/10" />
+        <div className="h-[3cqmin] w-full rounded-full bg-deck-ink/15" />
+        <div className="h-[3cqmin] w-2/3 rounded-full bg-deck-ink/10" />
       </div>
     </Card>
   );
@@ -62,25 +62,25 @@ function TypographyCard() {
 function ColorSwatches() {
   return (
     <div aria-hidden="true" className="flex items-center gap-[7cqmin]">
-      <span className="h-[19cqmin] w-[19cqmin] rounded-full border border-white/25" />
+      <span className="h-[19cqmin] w-[19cqmin] rounded-full border border-deck-ink/25" />
       <span className="flex h-[19cqmin] w-[19cqmin] items-center justify-center rounded-full bg-brand">
         <Check
           className="h-[9.5cqmin] w-[9.5cqmin] text-white"
           strokeWidth={3}
         />
       </span>
-      <span className="h-[19cqmin] w-[19cqmin] rounded-full bg-teal-600/70" />
-      <span className="h-[19cqmin] w-[19cqmin] rounded-full bg-gray-600/70" />
+      <span className="h-[19cqmin] w-[19cqmin] rounded-full bg-deck-teal/70" />
+      <span className="h-[19cqmin] w-[19cqmin] rounded-full bg-deck-ghost/70" />
     </div>
   );
 }
 
 function TabFocusCard() {
   return (
-    <div className="relative rounded-[5cqmin] border-2 border-dashed border-white/20 p-[9cqmin]">
+    <div className="relative rounded-[5cqmin] border-2 border-dashed border-deck-ink/20 p-[9cqmin]">
       <span className="absolute right-[-2cqmin] top-[-2cqmin] h-[4.5cqmin] w-[4.5cqmin] rounded-xs bg-brand" />
       <span className="absolute bottom-[-2cqmin] right-[-2cqmin] h-[4.5cqmin] w-[4.5cqmin] rounded-xs bg-brand" />
-      <span className="flex items-center gap-[3.5cqmin] rounded-full border border-white/20 px-[9.5cqmin] py-[5cqmin] text-[6.5cqmin] text-gray-300">
+      <span className="flex items-center gap-[3.5cqmin] rounded-full border border-deck-ink/20 px-[9.5cqmin] py-[5cqmin] text-[6.5cqmin] text-deck-soft">
         Tab <ArrowRight className="h-[8cqmin] w-[8cqmin]" />
       </span>
     </div>
@@ -91,10 +91,10 @@ function AltImageCard() {
   return (
     <Card className="relative flex h-[60cqmin] w-[85cqmin] items-center justify-center">
       <ImageIcon
-        className="h-[20cqmin] w-[20cqmin] text-gray-600"
+        className="h-[20cqmin] w-[20cqmin] text-deck-ghost"
         strokeWidth={1.5}
       />
-      <span className="absolute bottom-[-5cqmin] right-[-5cqmin] rounded-[2.5cqmin] border border-teal-500/40 bg-[#191919] px-[5cqmin] py-[2.5cqmin] font-mono text-[5cqmin] text-teal-400">
+      <span className="absolute bottom-[-5cqmin] right-[-5cqmin] rounded-[2.5cqmin] border border-deck-teal/40 bg-deck-bg px-[5cqmin] py-[2.5cqmin] font-mono text-[5cqmin] text-deck-teal">
         ALT
       </span>
     </Card>
@@ -104,10 +104,10 @@ function AltImageCard() {
 function SearchFormCard() {
   return (
     <div className="flex w-[90cqmin] flex-col gap-[6cqmin]">
-      <span className="rounded-[3.5cqmin] border border-white/15 px-[7cqmin] py-[4.5cqmin] text-left text-[6.5cqmin] text-gray-500">
+      <span className="rounded-[3.5cqmin] border border-deck-ink/15 px-[7cqmin] py-[4.5cqmin] text-left text-[6.5cqmin] text-deck-faint">
         Buscar
       </span>
-      <span className="flex items-center justify-between rounded-[3.5cqmin] border border-brand/50 px-[7cqmin] py-[4.5cqmin] text-[6.5cqmin] text-brand-light">
+      <span className="flex items-center justify-between rounded-[3.5cqmin] border border-brand/50 px-[7cqmin] py-[4.5cqmin] text-[6.5cqmin] text-deck-title">
         Enviar <ArrowRight className="h-[8cqmin] w-[8cqmin]" />
       </span>
     </div>
@@ -116,9 +116,9 @@ function SearchFormCard() {
 
 function AudioCard() {
   return (
-    <div className="flex items-center gap-[6cqmin] rounded-[5cqmin] border-2 border-dashed border-white/20 px-[9cqmin] py-[7cqmin]">
-      <Volume2 className="h-[11cqmin] w-[11cqmin] shrink-0 text-teal-400" />
-      <AudioLines className="h-[13cqmin] w-[38cqmin] text-teal-500/80" />
+    <div className="flex items-center gap-[6cqmin] rounded-[5cqmin] border-2 border-dashed border-deck-ink/20 px-[9cqmin] py-[7cqmin]">
+      <Volume2 className="h-[11cqmin] w-[11cqmin] shrink-0 text-deck-teal" />
+      <AudioLines className="h-[13cqmin] w-[38cqmin] text-deck-teal/80" />
     </div>
   );
 }
@@ -134,10 +134,10 @@ function ChecklistRow({ done, width = "w-[38cqmin]" }) {
           />
         </span>
       ) : (
-        <span className="h-[8cqmin] w-[8cqmin] shrink-0 rounded-full border border-white/25" />
+        <span className="h-[8cqmin] w-[8cqmin] shrink-0 rounded-full border border-deck-ink/25" />
       )}
       <span
-        className={`h-[2.5cqmin] rounded-full ${done ? "bg-white/25" : "bg-white/10"} ${width}`}
+        className={`h-[2.5cqmin] rounded-full ${done ? "bg-deck-ink/25" : "bg-deck-ink/10"} ${width}`}
       />
     </div>
   );
@@ -194,7 +194,7 @@ export default function SlideTitle() {
       <DotGrid className="bottom-[4%] right-[3%]" />
       <DecorativeGrid />
 
-      <h1 className="text-8xl text-brand-light">
+      <h1 className="text-8xl text-deck-title">
         A<span className="text-gradient-brand font-mono">11</span>Y
       </h1>
       <p className="mt-6 text-3xl">Interfaces para humanos y máquinas</p>

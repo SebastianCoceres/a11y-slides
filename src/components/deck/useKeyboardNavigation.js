@@ -2,7 +2,16 @@ import { useEffect, useRef } from 'react';
 
 const DOUBLE_ESCAPE_WINDOW_MS = 500;
 
-export function useKeyboardNavigation({ next, prev, goTo, total, indexOpen, onToggleIndex, onCloseIndex }) {
+export function useKeyboardNavigation({
+  next,
+  prev,
+  goTo,
+  total,
+  indexOpen,
+  onToggleIndex,
+  onCloseIndex,
+  onToggleTheme,
+}) {
   const lastEscapeAtRef = useRef(0);
 
   useEffect(() => {
@@ -54,6 +63,12 @@ export function useKeyboardNavigation({ next, prev, goTo, total, indexOpen, onTo
           event.preventDefault();
           goTo(total - 1);
           break;
+        case 't':
+        case 'T':
+          if (!onToggleTheme || event.ctrlKey || event.metaKey || event.altKey) break;
+          event.preventDefault();
+          onToggleTheme();
+          break;
         default:
           break;
       }
@@ -61,5 +76,5 @@ export function useKeyboardNavigation({ next, prev, goTo, total, indexOpen, onTo
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [next, prev, goTo, total, indexOpen, onToggleIndex, onCloseIndex]);
+  }, [next, prev, goTo, total, indexOpen, onToggleIndex, onCloseIndex, onToggleTheme]);
 }

@@ -125,13 +125,13 @@ export function SlideToolsDevTools() {
     <Slide id="toolsDevTools">
       <div className="mx-auto grid max-w-5xl items-center gap-16 text-left md:grid-cols-2">
         <div>
-          <h2 className="text-5xl text-brand-light mb-4">{info.title}</h2>
+          <h2 className="text-5xl text-deck-title mb-4">{info.title}</h2>
           <ul className="mb-8 space-y-5">
             {DEVTOOLS_HIGHLIGHTS.map(({ Icon, title, detail }) => (
               <li key={title} className="flex items-start gap-3">
-                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-indigo-300" />
-                <p className="text-xl text-gray-200">
-                  <strong className="text-white">{title}</strong> — {detail}
+                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-deck-accent" />
+                <p className="text-xl text-deck-body">
+                  <strong className="text-deck-ink">{title}</strong> — {detail}
                 </p>
               </li>
             ))}
@@ -155,12 +155,12 @@ export function SlideToolsDevTools() {
               id="tools-devtools-search"
               type="search"
               placeholder="Buscar…"
-              className="rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-base text-gray-200 placeholder:text-gray-500 focus:border-brand/60 focus:outline-none"
+              className="rounded-full border border-deck-ink/15 bg-deck-ink/5 px-4 py-2.5 text-base text-deck-body placeholder:text-deck-faint focus:border-brand/60 focus:outline-none"
             />
             <button
               type="submit"
               aria-label="Buscar"
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand/50 bg-brand/10 text-brand-light transition-colors hover:bg-brand/20"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-brand/50 bg-brand/10 text-deck-title transition-colors hover:bg-brand/20"
             >
               <Search className="h-5 w-5" />
             </button>
@@ -177,18 +177,18 @@ export function SlideToolsLighthouse() {
   return (
     <Slide id="toolsLighthouse">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <div className="mb-6 flex items-start gap-4">
-          <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-indigo-300" />
-          <p className="text-3xl leading-snug text-gray-200">
-            <strong className="text-white">Lighthouse</strong>: auditoría
+          <Lightbulb className="mt-1 h-7 w-7 shrink-0 text-deck-accent" />
+          <p className="text-3xl leading-snug text-deck-body">
+            <strong className="text-deck-ink">Lighthouse</strong>: auditoría
             dentro de DevTools, de 0 a 100.
           </p>
         </div>
-        <div className="ml-11 flex items-start gap-3 border-l border-white/10 pl-6">
-          <Gauge className="mt-1 h-5 w-5 shrink-0 text-gray-500" />
-          <p className="text-xl text-gray-400">
-            <strong className="text-gray-300">PageSpeed Insights</strong>: lo
+        <div className="ml-11 flex items-start gap-3 border-l border-deck-ink/10 pl-6">
+          <Gauge className="mt-1 h-5 w-5 shrink-0 text-deck-faint" />
+          <p className="text-xl text-deck-muted">
+            <strong className="text-deck-soft">PageSpeed Insights</strong>: lo
             mismo, sin depender de tu máquina.
           </p>
         </div>
@@ -202,25 +202,25 @@ export function SlideToolsAccessibilityInsights() {
   return (
     <Slide id="toolsAccessibilityInsights">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <a
           href="https://github.com/microsoft/accessibility-insights-web"
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-3 flex items-center gap-2 text-2xl font-bold text-white transition-colors hover:text-indigo-300"
+          className="mb-3 flex items-center gap-2 text-2xl font-bold text-deck-ink transition-colors hover:text-deck-accent"
         >
-          <ScanSearch className="h-6 w-6 shrink-0 text-indigo-300" />
+          <ScanSearch className="h-6 w-6 shrink-0 text-deck-accent" />
           Accessibility Insights for Web
-          <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
+          <ExternalLink className="h-5 w-5 shrink-0 text-deck-faint" />
         </a>
         <dl className="mt-8 max-w-2xl space-y-4 text-2xl">
-          <div className="border-t border-white/10 pt-4">
-            <dt className="inline font-bold text-white">FastPass</dt>
-            <dd className="inline text-gray-300"> — chequeo automático</dd>
+          <div className="border-t border-deck-ink/10 pt-4">
+            <dt className="inline font-bold text-deck-ink">FastPass</dt>
+            <dd className="inline text-deck-soft"> — chequeo automático</dd>
           </div>
-          <div className="border-t border-white/10 pt-4">
-            <dt className="inline font-bold text-white">Assessment</dt>
-            <dd className="inline text-gray-300">
+          <div className="border-t border-deck-ink/10 pt-4">
+            <dt className="inline font-bold text-deck-ink">Assessment</dt>
+            <dd className="inline text-deck-soft">
               {" "}
               — guía los chequeos manuales
             </dd>
@@ -236,21 +236,21 @@ export function SlideToolsAxeCore() {
   return (
     <Slide id="toolsAxeCore">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <a
           href="https://github.com/dequelabs/axe-core"
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-3 flex items-center gap-2 text-2xl font-bold text-white transition-colors hover:text-indigo-300"
+          className="mb-3 flex items-center gap-2 text-2xl font-bold text-deck-ink transition-colors hover:text-deck-accent"
         >
-          <ShieldCheck className="h-6 w-6 shrink-0 text-indigo-300" />
+          <ShieldCheck className="h-6 w-6 shrink-0 text-deck-accent" />
           axe-core (Deque)
-          <ExternalLink className="h-5 w-5 shrink-0 text-gray-500" />
+          <ExternalLink className="h-5 w-5 shrink-0 text-deck-faint" />
         </a>
-        <p className="max-w-2xl text-3xl leading-snug text-gray-200">
+        <p className="max-w-2xl text-3xl leading-snug text-deck-body">
           El motor detrás de Lighthouse y Accessibility Insights.
         </p>
-        <p className="mt-3 text-xl text-gray-400">
+        <p className="mt-3 text-xl text-deck-muted">
           Open source, para usar desde código.
         </p>
       </div>
@@ -288,16 +288,16 @@ export function SlideToolsTesting() {
     <Slide id="toolsTesting">
       <div className="mx-auto max-w-3xl text-left">
         <div className="mb-8 flex items-center gap-4">
-          <PlaywrightLogo className="h-9 w-9 shrink-0 text-indigo-300" />
-          <h2 className="text-5xl text-brand-light">{info.title}</h2>
+          <PlaywrightLogo className="h-9 w-9 shrink-0 text-deck-accent" />
+          <h2 className="text-5xl text-deck-title">{info.title}</h2>
         </div>
-        <p className="text-3xl leading-snug text-gray-200">
+        <p className="text-3xl leading-snug text-deck-body">
           axe sobre toda la app, en cada build.
         </p>
-        <p className="mt-2 text-xl text-gray-400">
+        <p className="mt-2 text-xl text-deck-muted">
           En la pipeline, con un comando o en un hook de git.
         </p>
-        <pre className="mt-6 overflow-x-auto rounded-lg border border-white/10 bg-white/5 p-4 font-mono text-sm leading-relaxed text-indigo-300">
+        <pre className="mt-6 overflow-x-auto rounded-lg border border-deck-ink/10 bg-deck-ink/5 p-4 font-mono text-sm leading-relaxed text-deck-accent">
           {PLAYWRIGHT_A11Y_TEST}
         </pre>
       </div>

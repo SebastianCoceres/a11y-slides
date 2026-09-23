@@ -56,7 +56,11 @@ Two distinct kinds of "slide" content, each assembled into its own `Deck`:
 
 Never hardcode arbitrary color values (`bg-[#1D4ED8]`, `text-blue-400`, etc.) directly in a component. Define a semantic token in `src/index.css`: add the raw value to `:root` (e.g. `--brand: #1d4ed8;`) and alias it in the `@theme inline` block (e.g. `--color-brand: var(--brand);`) — Tailwind then generates `bg-brand`/`text-brand`/`border-brand` utilities from it. Use those generated classes in components, never a one-off hex. This keeps colors defined in exactly one place instead of drifting per component/session.
 
-Note: this app never toggles the `.dark` class, so shadcn's own `--primary`/`--secondary`/etc. tokens always resolve to their `:root` (light) values — tuned for the light-background mockups in `src/pages/examples/*` (which use `Button`/`Badge`), not for the dark deck slides. Don't reuse `--primary` for deck-slide accents; add a separate token instead.
+Note: this app never toggles the `.dark` class, so shadcn's own `--primary`/`--secondary`/etc. tokens always resolve to their `:root` (light) values — tuned for the light-background mockups in `src/pages/examples/*` (which use `Button`/`Badge`), not for the deck slides. Don't reuse `--primary` for deck-slide accents; add a separate token instead.
+
+### Deck theme (light / dark)
+
+The deck has its own theme tokens, `--deck-*` (`deck-ink`, `deck-body`, `deck-muted`, `deck-title`, `deck-accent`, …). Light values live in `:root`; the `.deck-dark` class overrides them. `Deck` puts `.deck-dark` on its root through `useDeckTheme`, which defaults to light, remembers the choice in `localStorage` and toggles with the `T` key or the sun/moon button. `--deck-ink` is also the base for hairlines and surfaces through opacity (`border-deck-ink/10`, `bg-deck-ink/5`), so slides in `src/components/slides/*` must use deck tokens, never `text-white`/`text-gray-*`. The one exception is `text-white` on a fixed-color fill such as `bg-brand`. `LightRays` reads `--deck-rays` and is not rendered when that token is `none` (light). `/ejemplos` passes `theme="dark"` to `Deck` because its slides (`SlideAccessibility`, `SlidePerceptible`, …) still hardcode dark colors.
 
 ### Path alias
 

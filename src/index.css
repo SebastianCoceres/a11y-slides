@@ -75,6 +75,19 @@ body,
   --color-brand-violet: var(--brand-violet);
   --color-example-bad: var(--example-bad);
   --color-example-good: var(--example-good);
+  --color-deck-bg: var(--deck-bg);
+  --color-deck-ink: var(--deck-ink);
+  --color-deck-body: var(--deck-body);
+  --color-deck-soft: var(--deck-soft);
+  --color-deck-muted: var(--deck-muted);
+  --color-deck-faint: var(--deck-faint);
+  --color-deck-ghost: var(--deck-ghost);
+  --color-deck-inset: var(--deck-inset);
+  --color-deck-panel: var(--deck-panel);
+  --color-deck-title: var(--deck-title);
+  --color-deck-accent: var(--deck-accent);
+  --color-deck-teal: var(--deck-teal);
+  --color-deck-progress: var(--deck-progress);
 
   /* Animates `translate` (not `transform`) so it composes with rotate-* utilities. */
   --animate-float: float 6s ease-in-out infinite;
@@ -93,10 +106,32 @@ body,
   --brand: #1d4ed8;
   --brand-light: color-mix(in oklch, var(--brand) 55%, white);
   --brand-violet: #7c3aed;
-  --brand-gradient-from: #60a5fa;
-  --brand-gradient-to: #a78bfa;
-  --example-bad: #f87171;
-  --example-good: #34d399;
+
+  /* Deck theme. Light is the default; `.deck-dark` (set on the Deck root by
+     useDeckTheme) swaps in the dark values below. `--deck-ink` is the
+     strongest text color and also the base for hairlines/surfaces through
+     opacity modifiers (`border-deck-ink/10`, `bg-deck-ink/5`), so those flip
+     with the theme for free. */
+  --deck-bg: oklch(0.985 0.004 264);
+  --deck-glow: oklch(0.91 0.05 264);
+  --deck-rays: none; /* LightRays only reads well on a dark background */
+  --deck-ink: var(--color-gray-900);
+  --deck-body: var(--color-gray-800);
+  --deck-soft: var(--color-gray-700);
+  --deck-muted: var(--color-gray-600);
+  --deck-faint: var(--color-gray-500);
+  --deck-ghost: var(--color-gray-400);
+  --deck-inset: oklch(0.21 0.034 264.665 / 6%);
+  --deck-panel: oklch(1 0 0);
+  --deck-title: var(--brand);
+  --deck-accent: var(--color-indigo-600);
+  --deck-teal: var(--color-teal-700);
+  --deck-progress: #268bd2;
+  --brand-gradient-from: #2563eb;
+  --brand-gradient-to: #7c3aed;
+  --example-bad: var(--color-red-600);
+  --example-good: var(--color-emerald-700);
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -138,6 +173,27 @@ body,
   --warning-foreground: var(--color-yellow-900);
   --invert: var(--color-zinc-900);
   --invert-foreground: var(--color-zinc-50);
+}
+
+.deck-dark {
+  --deck-bg: #191919;
+  --deck-glow: #1e2c52;
+  --deck-rays: #6366f1;
+  --deck-ink: oklch(1 0 0);
+  --deck-body: var(--color-gray-200);
+  --deck-soft: var(--color-gray-300);
+  --deck-muted: var(--color-gray-400);
+  --deck-faint: var(--color-gray-500);
+  --deck-ghost: var(--color-gray-600);
+  --deck-inset: oklch(0 0 0 / 30%);
+  --deck-panel: #11141b;
+  --deck-title: var(--brand-light);
+  --deck-accent: var(--color-indigo-300);
+  --deck-teal: var(--color-teal-400);
+  --brand-gradient-from: #60a5fa;
+  --brand-gradient-to: #a78bfa;
+  --example-bad: #f87171;
+  --example-good: #34d399;
 }
 
 .dark {
@@ -193,6 +249,11 @@ body,
   html {
     @apply font-sans;
   }
+}
+
+.deck-surface {
+  background-color: var(--deck-bg);
+  background-image: radial-gradient(120% 90% at 50% -10%, var(--deck-glow) 0%, var(--deck-bg) 60%);
 }
 
 .deck-slide h1,

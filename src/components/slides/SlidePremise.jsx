@@ -21,7 +21,7 @@ function NumeronymBreakdown() {
       aria-hidden="true"
       className="mb-6 flex items-end justify-start gap-1.5"
     >
-      <span className="text-6xl font-bold text-brand-light">A</span>
+      <span className="text-6xl font-bold text-deck-title">A</span>
       <div className="relative px-1.5 pt-8">
         <span className="absolute -top-1 left-1/2 -translate-x-1/2 text-sm font-bold text-brand">
           11
@@ -39,11 +39,11 @@ function NumeronymBreakdown() {
             strokeLinecap="round"
           />
         </svg>
-        <span className="text-3xl tracking-wide text-gray-500">
+        <span className="text-3xl tracking-wide text-deck-faint">
           ccessibilit
         </span>
       </div>
-      <span className="text-6xl font-bold text-brand-light">Y</span>
+      <span className="text-6xl font-bold text-deck-title">Y</span>
     </div>
   );
 }
@@ -63,10 +63,10 @@ function FloatingVisual() {
             delay,
           }}
         >
-          <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/2 text-brand-light">
+          <span className="flex h-16 w-16 items-center justify-center rounded-2xl border border-deck-ink/10 bg-deck-ink/2 text-deck-title">
             <Icon className="h-7 w-7" strokeWidth={1.5} />
           </span>
-          <span className="text-xs text-gray-400">{label}</span>
+          <span className="text-xs text-deck-muted">{label}</span>
         </motion.div>
       ))}
     </div>
@@ -79,7 +79,7 @@ export default function SlidePremise() {
     <Slide id="premise">
       <div className="grid items-center gap-16 text-left md:grid-cols-2">
         <div>
-          <h2 className="inline-flex gap-4 mb-6 text-5xl text-brand-light">
+          <h2 className="inline-flex gap-4 mb-6 text-5xl text-deck-title">
             <motion.div
               className="m-auto flex size-16 items-center justify-center rounded-full bg-brand shadow-[0_0_80px_-10px_var(--brand)]"
               animate={{ y: [0, -8, 0] }}
@@ -93,7 +93,7 @@ export default function SlidePremise() {
             {info.title}
           </h2>
           <NumeronymBreakdown />
-          <p className="text-2xl leading-snug text-gray-200">
+          <p className="text-2xl leading-snug text-deck-body">
             Una propiedad de calidad, como la performance o la seguridad.
           </p>
         </div>

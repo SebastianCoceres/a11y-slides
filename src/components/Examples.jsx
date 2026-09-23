@@ -240,7 +240,7 @@ import {
 export default function Examples() {
   return (
     <div className="w-full h-full">
-      <Deck basePath="/ejemplos" syncNotes={false}>
+      <Deck basePath="/ejemplos" syncNotes={false} theme="dark">
         {/* 1. Perceptible */}
         <SlideAltText topicId="altText" />
         <AltTextBad />

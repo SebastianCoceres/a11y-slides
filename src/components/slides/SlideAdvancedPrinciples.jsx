@@ -10,8 +10,8 @@ function StatementSlide({ id, title, statement }) {
   return (
     <Slide id={id}>
       <div className="mx-auto max-w-4xl text-left">
-        <p className="text-3xl leading-[1.15] text-white sm:text-4xl">{statement}</p>
-        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
+        <p className="text-3xl leading-[1.15] text-deck-ink sm:text-4xl">{statement}</p>
+        <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-deck-muted">
           {title}
         </p>
       </div>
@@ -45,8 +45,8 @@ export function SlideMotorComplexity() {
   const info = slideCatalog.motorComplexity;
   return (
     <Slide id="motorComplexity">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         No todos interactúan con una interfaz con la misma precisión, velocidad
         o margen de error.
       </p>
@@ -70,8 +70,8 @@ export function SlidePageLanguage() {
   const info = slideCatalog.pageLanguage;
   return (
     <Slide id="pageLanguage">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Sin <code>lang="es"</code> en el documento, un lector de pantalla puede leer todo el contenido con
         las reglas fonéticas de otro idioma.
       </p>
@@ -84,8 +84,8 @@ export function SlidePartsLanguage() {
   const info = slideCatalog.partsLanguage;
   return (
     <Slide id="partsLanguage">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Una cita en inglés sin marcar se lee con fonética española — y se vuelve ruido.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -97,8 +97,8 @@ export function SlideOnFocusChange() {
   const info = slideCatalog.onFocusChange;
   return (
     <Slide id="onFocusChange">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Tabular hasta un control no es una decisión — no debería cambiar nada.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -110,8 +110,8 @@ export function SlideOnInputChange() {
   const info = slideCatalog.onInputChange;
   return (
     <Slide id="onInputChange">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Elegir una opción de un filtro no debería borrar lo que alguien estaba escribiendo.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -123,8 +123,8 @@ export function SlideConsistentNavigation() {
   const info = slideCatalog.consistentNavigation;
   return (
     <Slide id="consistentNavigation">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Si el menú cambia de orden entre páginas, cada clic hay que pensarlo de nuevo.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -136,8 +136,8 @@ export function SlideConsistency() {
   const info = slideCatalog.consistency;
   return (
     <Slide id="consistency">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         La misma intención debe producir siempre el mismo comportamiento.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -149,8 +149,8 @@ export function SlideConsistentHelp() {
   const info = slideCatalog.consistentHelp;
   return (
     <Slide id="consistentHelp">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Un botón de ayuda que salta de esquina no ayuda, obliga a buscarlo.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -162,8 +162,8 @@ export function SlideErrorPrevention() {
   const info = slideCatalog.errorPrevention;
   return (
     <Slide id="errorPrevention">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         No alcanza con explicar qué salió mal después de que la persona ya se
         equivocó.
       </p>
@@ -176,8 +176,8 @@ export function SlideAnticipatoryHelp() {
   const info = slideCatalog.anticipatoryHelp;
   return (
     <Slide id="anticipatoryHelp">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Explicar la regla antes de que la rompan es mejor que explicarla
         después.
       </p>
@@ -190,8 +190,8 @@ export function SlideErrorSuggestion() {
   const info = slideCatalog.errorSuggestion;
   return (
     <Slide id="errorSuggestion">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Un error que no dice qué falta obliga a adivinar; decir exactamente qué corregir no es opcional, es
         el criterio.
       </p>
@@ -204,8 +204,8 @@ export function SlideConfirmDestructive() {
   const info = slideCatalog.confirmDestructive;
   return (
     <Slide id="confirmDestructive">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Una acción financiera irreversible sin paso de confirmación es un click de distancia de un
         desastre.
       </p>
@@ -218,8 +218,8 @@ export function SlideRedundantEntry() {
   const info = slideCatalog.redundantEntry;
   return (
     <Slide id="redundantEntry">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Si el sistema ya tiene el dato, pedirlo de nuevo es trabajo extra sin ninguna razón técnica.
       </p>
       <WcagRef>{formatWcag(info.wcag)}</WcagRef>
@@ -231,8 +231,8 @@ export function SlideAccessibleAuth() {
   const info = slideCatalog.accessibleAuth;
   return (
     <Slide id="accessibleAuth">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Bloquear el pegado no suma seguridad, solo rompe gestores de contraseñas y le suma una prueba
         cognitiva innecesaria al login.
       </p>
@@ -245,8 +245,8 @@ export function SlideNameRoleValue() {
   const info = slideCatalog.nameRoleValue;
   return (
     <Slide id="nameRoleValue">
-      <h2 className="text-3xl text-brand-light mb-2">{info.title}</h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <h2 className="text-3xl text-deck-title mb-2">{info.title}</h2>
+      <p className="text-base text-deck-muted mb-4 italic">
         Un div que parece un switch pero no expone rol ni estado es invisible para quien usa lector de
         pantalla, por más bonito que se vea.
       </p>
@@ -259,10 +259,10 @@ export function SlideErrorRecovery() {
   const info = slideCatalog.errorRecovery;
   return (
     <Slide id="errorRecovery">
-      <h2 className="text-3xl text-brand-light mb-2">
+      <h2 className="text-3xl text-deck-title mb-2">
         {info.title}
       </h2>
-      <p className="text-base text-gray-400 mb-4 italic">
+      <p className="text-base text-deck-muted mb-4 italic">
         Los errores van a pasar igual. La pregunta es qué tan fácil es volver
         atrás.
       </p>

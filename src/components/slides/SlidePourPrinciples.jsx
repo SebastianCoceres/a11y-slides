@@ -30,21 +30,21 @@ export function SlidePrinciplesIntro() {
   return (
     <Slide id="principlesIntro">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-12">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-12">{info.title}</h2>
         <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
           {PRINCIPLES_PREVIEW.map(({ letter, icon: Icon, es, en }) => (
-            <div key={letter} className="border-t border-white/10 pt-5">
+            <div key={letter} className="border-t border-deck-ink/10 pt-5">
               <div className="mb-3 flex items-center gap-2">
                 <Icon
-                  className="h-5 w-5 shrink-0 text-brand-light"
+                  className="h-5 w-5 shrink-0 text-deck-title"
                   strokeWidth={2}
                 />
-                <span className="font-mono text-3xl font-black text-brand-light">
+                <span className="font-mono text-3xl font-black text-deck-title">
                   {letter}
                 </span>
               </div>
-              <div className="text-lg font-bold text-white">{es}</div>
-              <div className="text-sm text-gray-500">{en}</div>
+              <div className="text-lg font-bold text-deck-ink">{es}</div>
+              <div className="text-sm text-deck-faint">{en}</div>
             </div>
           ))}
         </div>
@@ -70,7 +70,7 @@ function Example({ variant, children }) {
         <Icon className="size-4" strokeWidth={3} />
         {label}
       </figcaption>
-      <div className="rounded-xl border border-white/10 bg-white/5 p-5 text-base">
+      <div className="rounded-xl border border-deck-ink/10 bg-deck-ink/5 p-5 text-base">
         {children}
       </div>
     </figure>
@@ -78,13 +78,13 @@ function Example({ variant, children }) {
 }
 
 function FieldLabel({ children }) {
-  return <div className="mb-1.5 text-sm text-gray-300">{children}</div>;
+  return <div className="mb-1.5 text-sm text-deck-soft">{children}</div>;
 }
 
 function FakeInput({ className = "", children }) {
   return (
     <div
-      className={`flex items-center justify-between rounded-md border px-3 py-2 text-gray-200 ${className}`}
+      className={`flex items-center justify-between rounded-md border px-3 py-2 text-deck-body ${className}`}
     >
       {children}
     </div>
@@ -93,8 +93,8 @@ function FakeInput({ className = "", children }) {
 
 function ScreenReaderBubble({ children }) {
   return (
-    <div className="mt-3 flex items-start gap-2 rounded-md bg-black/30 px-3 py-2 text-sm text-gray-300">
-      <Volume2 className="mt-0.5 size-4 shrink-0 text-brand-light" />
+    <div className="mt-3 flex items-start gap-2 rounded-md bg-deck-inset px-3 py-2 text-sm text-deck-soft">
+      <Volume2 className="mt-0.5 size-4 shrink-0 text-deck-title" />
       <span className="italic">{children}</span>
     </div>
   );
@@ -102,7 +102,7 @@ function ScreenReaderBubble({ children }) {
 
 function Keycap({ children }) {
   return (
-    <kbd className="rounded border border-white/25 bg-white/10 px-1.5 py-0.5 font-mono text-xs text-gray-200">
+    <kbd className="rounded border border-deck-ink/25 bg-deck-ink/10 px-1.5 py-0.5 font-mono text-xs text-deck-body">
       {children}
     </kbd>
   );
@@ -136,11 +136,11 @@ function PerceptibleGood() {
 function OperableBad() {
   return (
     <div className="flex items-center gap-4">
-      <span className="relative text-gray-200">
+      <span className="relative text-deck-body">
         Categorías
         <MousePointer2 className="absolute -bottom-4 left-10 size-5 fill-white text-black" />
       </span>
-      <span className="text-sm text-gray-500">Solo se abre con el mouse</span>
+      <span className="text-sm text-deck-faint">Solo se abre con el mouse</span>
     </div>
   );
 }
@@ -148,11 +148,11 @@ function OperableBad() {
 function OperableGood() {
   return (
     <div className="flex items-center gap-4">
-      <span className="flex items-center gap-1 rounded-md px-2 py-1 text-gray-200 outline-2 outline-offset-2 outline-brand-light">
+      <span className="flex items-center gap-1 rounded-md px-2 py-1 text-deck-body outline-2 outline-offset-2 outline-deck-title">
         Categorías
         <ChevronDown className="size-4" />
       </span>
-      <span className="flex items-center gap-1.5 text-sm text-gray-500">
+      <span className="flex items-center gap-1.5 text-sm text-deck-faint">
         <Keycap>Tab</Keycap> + <Keycap>Enter</Keycap>
       </span>
     </div>
@@ -162,7 +162,7 @@ function OperableGood() {
 function ComprehensibleBad() {
   return (
     <>
-      <FakeInput className="border-white/20 text-gray-500">Fecha</FakeInput>
+      <FakeInput className="border-deck-ink/20 text-deck-faint">Fecha</FakeInput>
       <div className="mt-1.5 text-sm text-example-bad">Error</div>
     </>
   );
@@ -172,7 +172,7 @@ function ComprehensibleGood() {
   return (
     <>
       <FieldLabel>Fecha de nacimiento</FieldLabel>
-      <FakeInput className="border-white/20 text-gray-500">dd/mm/aaaa</FakeInput>
+      <FakeInput className="border-deck-ink/20 text-deck-faint">dd/mm/aaaa</FakeInput>
       <div className="mt-1.5 text-sm text-example-bad">
         Usa el formato dd/mm/aaaa, por ejemplo 21/03/1990
       </div>
@@ -186,9 +186,9 @@ function CountrySelect() {
   return (
     <>
       <FieldLabel>País</FieldLabel>
-      <FakeInput className="border-white/20">
+      <FakeInput className="border-deck-ink/20">
         España
-        <ChevronDown className="size-4 text-gray-400" />
+        <ChevronDown className="size-4 text-deck-muted" />
       </FakeInput>
     </>
   );
@@ -219,11 +219,11 @@ function PrincipleSlide({ id, english, icon: Icon, bad, good, children }) {
       <div className="mx-auto grid max-w-6xl items-center gap-12 text-left lg:grid-cols-2">
         <div>
           <div className="mb-2 flex items-center gap-4">
-            <Icon className="size-9 text-brand-light" strokeWidth={2} />
-            <h2 className="text-5xl text-brand-light">{info.title}</h2>
+            <Icon className="size-9 text-deck-title" strokeWidth={2} />
+            <h2 className="text-5xl text-deck-title">{info.title}</h2>
           </div>
-          <p className="mb-6 text-sm text-gray-400">{english}</p>
-          <div className="text-2xl leading-snug text-gray-200 sm:text-3xl">
+          <p className="mb-6 text-sm text-deck-muted">{english}</p>
+          <div className="text-2xl leading-snug text-deck-body sm:text-3xl">
             {children}
           </div>
         </div>

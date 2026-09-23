@@ -29,16 +29,16 @@ export function SlideBusinessImpact() {
   return (
     <Slide id="businessImpact">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <div className="grid grid-cols-1 gap-x-12 gap-y-6 sm:grid-cols-2">
           {impacts.map(({ icon: Icon, role, text }) => (
             <div
               key={role}
-              className="flex gap-3 border-t border-white/10 pt-4"
+              className="flex gap-3 border-t border-deck-ink/10 pt-4"
             >
-              <Icon className="mt-1.5 h-6 w-6 shrink-0 text-indigo-300" />
-              <p className="text-xl text-gray-300">
-                <strong className="mb-0.5 block text-white">{role}</strong>
+              <Icon className="mt-1.5 h-6 w-6 shrink-0 text-deck-accent" />
+              <p className="text-xl text-deck-soft">
+                <strong className="mb-0.5 block text-deck-ink">{role}</strong>
                 {text}
               </p>
             </div>
@@ -66,34 +66,34 @@ export function SlideEarlyVsLegacy() {
   return (
     <Slide id="earlyVsLegacy">
       <div className="mx-auto max-w-4xl text-left">
-        <h2 className="text-5xl text-brand-light mb-10">{info.title}</h2>
+        <h2 className="text-5xl text-deck-title mb-10">{info.title}</h2>
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div>
-            <div className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
-              <Rocket className="h-5 w-5 shrink-0 text-brand-light" />
+            <div className="mb-4 flex items-center gap-2 text-2xl font-bold text-deck-ink">
+              <Rocket className="h-5 w-5 shrink-0 text-deck-title" />
               Desde el día uno
             </div>
             <ul className="space-y-4">
               {earlyBenefits.map((text) => (
                 <li
                   key={text}
-                  className="border-t border-white/10 pt-3 text-2xl text-gray-300"
+                  className="border-t border-deck-ink/10 pt-3 text-2xl text-deck-soft"
                 >
                   {text}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="sm:border-l sm:border-white/10 sm:pl-10">
-            <div className="mb-4 flex items-center gap-2 text-2xl font-bold text-white">
-              <History className="h-5 w-5 shrink-0 text-gray-400" />A último
+          <div className="sm:border-l sm:border-deck-ink/10 sm:pl-10">
+            <div className="mb-4 flex items-center gap-2 text-2xl font-bold text-deck-ink">
+              <History className="h-5 w-5 shrink-0 text-deck-muted" />A último
               momento
             </div>
             <ul className="space-y-4">
               {legacyDifficulties.map((text) => (
                 <li
                   key={text}
-                  className="border-t border-white/10 pt-3 text-2xl text-gray-400"
+                  className="border-t border-deck-ink/10 pt-3 text-2xl text-deck-muted"
                 >
                   {text}
                 </li>
