@@ -4,7 +4,11 @@
 
 ## Introducción
 
-<!-- id:title -->
+<!-- id:premise -->
+
+A11Y es un numerónimo, es la abreviatura de "Accessibility". El once es el número de letras que hay entre la A y la Y.
+
+Quiero que la conozcan porque es el término que se usa en la industria y porque si queremos averiguar algo más sobre el tema, se suele encontrar de esta manera.
 
 Esta charla es sobre accesibilidad web: qué es, por qué nos debería de interesar y cómo podemos sumarla a nuestro trabajo.
 
@@ -20,23 +24,15 @@ No voy a entrar mucho en temas técnicos ni aburrilos con ejemplos. No vengo a c
 
 Lo que sí espero es que se enteren que esto existe, por qué nos tiene que importar y que conozcan algunas herramientas para poder empezar a aplicarlo.
 
-> Antes de seguir, quiero aclarar porque esa término que ven en pantalla
-
-<!-- id:premise -->
-
-A11Y es un numerónimo, es la abreviatura de "Accessibility". El once es el número de letras que hay entre la A y la Y.
-
-Quiero que la conozcan porque es el término que se usa en la industria y porque si queremos averiguar algo más sobre el tema, se suele encontrar de esta manera.
-
 Podriamos dar como definicion que es la forma de pensar e implementar nuestro software más allá de las formas básicas de interacción
 
 es medible , es testeable y al igual que la performance o la seguridad es una propiedad de calidad del software
 
-> hace más de treinta años que contamos con un estándar que nos dice qué es accesible y qué no lo es
+> hace casi treinta años que contamos con directrices que nos dicen qué es accesible y qué no lo es
 
 <!-- id:wcagStandard -->
 
-El W3C publica las Web Content Accessibility Guidelines (WCAG) el cual es el estándar desde 1994 y ya vamos por la versión 2.2 el cual se publicó en 2023.
+desde 1999 el W3C publica como Web Content Accessibility Guidelines (WCAG), que es el estándar actual, y ya vamos por la versión 2.2, que se publicó en 2023.
 
 Son criterios puntuales y verificables, agrupados en tres niveles:
 
